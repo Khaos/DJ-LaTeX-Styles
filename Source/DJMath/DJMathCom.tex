@@ -1,0 +1,326 @@
+% ---------------------------------------------------------------------|
+% Commenly-used mathmatical preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+% 20090322	Initial version
+%
+%
+% 20090327	Redefine commands with package xargs.
+%			Examples:
+%				\E x or \E{x}, but \E[f]{x} for the argument which has default value
+%
+%
+% 20090526	Define the new command \sign
+%
+%
+% 20090605	Rewirte the file, now you have to load the required packages yourself.
+%
+%
+
+
+%%
+% The followings come from the LaTeX template ---- tpavlic_masters_thesis
+%
+% Upper-case    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+% Lower-case    a b c d e f g h i j k l m n o p q r s t u v w x y z
+% Digits        0 1 2 3 4 5 6 7 8 9
+% Exclamation   !           Double quote "          Hash (number) #
+% Dollar        $           Percent      %          Ampersand     &
+% Acute accent  '           Left paren   (          Right paren   )
+% Asterisk      *           Plus         +          Comma         ,
+% Minus         -           Point        .          Solidus       /
+% Colon         :           Semicolon    ;          Less than     <
+% Equals        =           Greater than >          Question mark ?
+% At            @           Left bracket [          Backslash     \
+% Right bracket ]           Circumflex   ^          Underscore    _
+% Grave accent  `           Left brace   {          Vertical bar  |
+% Right brace   }           Tilde        ~
+
+% ---------------------------------------------------------------------|
+% --------------------------- 72 characters ---------------------------|
+% ---------------------------------------------------------------------|
+
+% ---------------------------------------------------------------------|
+% Special Symbols/Macros
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2007 by Theodore P. Pavlic
+%
+
+% ---------------------------------------------------------------------|
+% Special Symbols/Macros
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+%
+
+
+% Additional symbols, phrases, etc.
+% DJ's Definition
+
+% *********************************************************************
+% *********************************************************************
+% Part I:		Abbreviation
+
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\etc}{etc.\@\xspace}
+
+% Statistical Abbreviation
+\newcommand{\iid}{i.i.d.\xspace} 		% Should be able to be a label
+
+\newcommand{\djpdf}{p.d.f.\xspace}
+\newcommand{\djcdf}{c.d.f.\xspace}
+
+% Original Ones
+% \newcommand{\ie}{i.e.{}}
+% \newcommand{\eg}{e.g.{}}
+% \newcommand{\exante}{ex ante}
+% \newcommand{\expost}{ex post}
+% \newcommand{\apriori}{a priori}
+% \newcommand{\adinfinitum}{ad infinitum}
+% \newcommand{\aka}{a.k.a.{}}
+
+
+% *********************************************************************
+% *********************************************************************
+% Part II:		Ordinal number
+
+\global\long\def\upst{\ensuremath{^{\text{st}}}\xspace}
+\global\long\def\upnd{\ensuremath{^{\text{nd}}}\xspace}
+\global\long\def\uprd{\ensuremath{^{\text{rd}}}\xspace}
+% Do not use \th command, it is not compatible with OT1 font
+\global\long\def\upth{\ensuremath{^{\text{th}}}\xspace}
+% \th has already been defined
+%\global\long\def\th{\ensuremath{^{\text{th}}}}
+%\newcommand{\th}{\upth}
+
+
+
+% *********************************************************************
+% *********************************************************************
+% Part III:		Math Conventions
+
+% *********************************************************************
+% Math function and operator
+
+% Symbols for the AMA6020 Report
+\DeclareMathOperator \AMISE {AMISE}
+\DeclareMathOperator \MISE {MISE}
+\DeclareMathOperator \Bias {Bias}
+
+% Statistics & statistical
+\DeclareMathOperator \kurt {kurt}			% Kurtosis
+
+\DeclareMathOperator \EX {E}				% Expectation
+
+% Functions
+\DeclareMathOperator* \argmin {arg\,min}
+\DeclareMathOperator* \argmax {arg\,max}
+\DeclareMathOperator \sign {sign}
+
+\DeclareMathOperator \SPAN {span}
+\DeclareMathOperator \NULL {null}
+
+% Differential
+\DeclareMathOperator \diff {d}
+
+% Objective function
+\DeclareMathOperator \obJ {J}
+
+
+% Phantom for math relationship operator
+\global\long\def\relphantom#1{\mathrel{\phantom{#1}}}
+
+% Definition Equal
+\global\long\def\defeq{\stackrel{\mathrm{def}}{=}}
+
+
+
+
+% *********************************************************************
+% Math set
+
+% Common-defined set
+\global\long\def\R{\ensuremath{\mathbb{R}}}		% Real number set
+\global\long\def\N{\ensuremath{\mathbb{N}}}		% Natural number set
+\global\long\def\Z{\ensuremath{\mathbb{Z}}}		% Integer number set
+\global\long\def\Q{\ensuremath{\mathbb{Q}}}		% Rational number set
+\global\long\def\C{\ensuremath{\mathbb{C}}}		% Complex number set
+
+% DJ style set
+% The set of set
+\global\long\def\setset#1{\ensuremath{\mathscr{#1}}}
+% set?
+\global\long\def\setdef#1{\ensuremath{\mathcal{#1}}}
+
+% Matrix or vector
+% Identity matrix
+\global\long\def\I{\ensuremath{\mathbf{I}}}
+% zero matrix or vector
+\global\long\def\matzero{\ensuremath{\mathbf{0}}}
+
+
+
+% *********************************************************************
+% Information theory
+
+% Mutual information
+\global\long\def\muinform#1{\mathrm{I}{\left[#1\right]}}
+\global\long\def\minform#1{\mathrm{I}{\left[#1\right]}}
+% Entropy
+\global\long\def\entropy#1{\mathrm{H}{\left[#1\right]}}
+
+
+
+% *********************************************************************
+% Statistical function
+% The following commands require package xargs
+
+% Expectation
+\newcommandx\E[2][usedefault, addprefix=\global, 1=]{\mathbb{E}_{#1}{\left[#2\right]}}
+
+% Covariance
+\newcommandx\cov[2][usedefault, addprefix=\global, 1=]{\mathrm{cov}_{#1}{\left[#2\right]}}
+
+% Variance
+\newcommandx\var[2][usedefault, addprefix=\global, 1=]{\mathrm{var}_{#1}{\left[#2\right]}}
+
+% Normal Distribution
+\newcommandx\Normal[4][usedefault, addprefix=\global, 1=D]{\mathcal{N}{(#2|#3,#4)} = \frac{1}{(2\pi)^{#1/2}}\frac{1}{|#4|^{1/2}}\exp\left\{  -\frac{1}{2}(#2-#3)^{T}#4^{-1}(#2-#3)\right\}  }
+
+% Normal Distribution right part
+\newcommandx\Normalr[4][usedefault, addprefix=\global, 1=D]{\frac{1}{(2\pi)^{#1/2}}\frac{1}{|#4|^{1/2}}\exp\left\{  -\frac{1}{2}(#2-#3)^{T}#4^{-1}(#2-#3)\right\}  }
+
+% Normal Distribution left part
+\newcommandx\Normall[3][usedefault, addprefix=\global, 1=x]{\mathcal{N}{(#1|#2,#3)}  }
+
+
+
+
+% *********************************************************************
+% *********************************************************************
+% Part IV:
+
+
+% *********************************************************************
+% *********************************************************************
+% Part V:		Others
+
+\newcommand{\ttbs}{\char'134} % double quotation marks
+
+
+%\DeclareMathOperator \var {var}
+
+% \newcommand{\E}[1]{\mathbb{E}{\left[#1\right]}}				% Expected value
+% \newcommand{\cov}[1]{\mathrm{cov}{\left[#1\right]}}			% Covariance
+% \newcommand{\var}[1]{\mathrm{var}{\left[#1\right]}}			% Variance
+% \newcommand{\Ef}[2]{\mathbb{E}_{#1}{\left[#2\right]}}		% Expected value of f
+% \newcommand{\covf}[2]{\mathrm{cov}_{#1}{\left[#2\right]}}	% Cov of f
+% \newcommand{\varf}[2]{\mathrm{var}_{#1}{\left[#2\right]}}	% Var of f
+% \newcommand{\Normal}[3]{\mathcal{N}{(#1|#2,#3)} = \frac{1}{(2\pi)^{D/2}}
+%                         \frac{1}{|#3|^{1/2}}
+%                         \exp{\biggl\{-\frac{1}{2}(#1-#2)^T#3^{-1}(#1-#2)\biggl\}}}
+% \newcommand{\Normall}[3]{\frac{1}{(2\pi)^{D/2}}
+%                         \frac{1}{|#3|^{1/2}}
+%                         \exp{\biggl\{-\frac{1}{2}(#1-#2)^T#3^{-1}(#1-#2)\biggl\}}}
+
+% \newcommand{\relphantom}[1]{\mathrel{\phantom{#1}}}
+
+% \newcommand{\minform}[1]{\mathrm{I}{\left[#1\right]}}	% Mutual Information
+% \newcommand{\entropy}[1]{\mathrm{H}{\left[#1\right]}}	% Entropy
+
+% \newcommand{\defeq}{\stackrel{\mathrm{def}}{=}}
+
+
+%\newcommand{\AmS}{{\protect\the\textfont2
+%  A\kern-.1667em\lower.5ex\hbox{M}\kern-.125emS}}
+
+
+% \global\long\def\sign{\mathrm{sign}}
+
+
+% add words to TeX's hyphenation exception list
+% \hyphenation{MATLAB author another created financial paper re-commend-ed
+% Post-Script}
+
+
+
+
+% \newcommand{\seq}[1]{\ensuremath{\mathcal{#1}}}
+
+% \newcommand{\setset}[1]{\ensuremath{\mathscr{#1}}}
+% \newcommand{\setdef}[1]{\ensuremath{\mathcal{#1}}}
+
+% \newcommand{\rel}[1]{\ensuremath{\mathrel{#1}}}
+% \newcommand{\bin}[1]{\ensuremath{\mathbin{#1}}}
+%\renewcommand{\v}[1]{\ensuremath{#1}}
+%\renewcommand{\v}[1]{{\ensuremath{\underline{#1}}}}
+% \renewcommand{\v}[1]{{\ensuremath{#1}}}
+% \newcommand{\symdiff}{\ensuremath{\mathbin{\Delta}}}
+% \newcommand{\setdiff}{\ensuremath{-}}
+%\newcommand{\setdiff}{\ensuremath{\setminus}}
+% \newcommand{\comp}{\ensuremath{\circ}}
+% \newcommand{\mat}[1]{\ensuremath{#1}}
+
+% \newcommand{\I}{\ensuremath{\mathbb{I}}}	% Identity matrix
+
+%\newcommand{\mat}[1]{\ensuremath{\mathbf{#1}}}
+% \newcommand{\T}{\ensuremath{\top}}
+% \newcommand{\interior}{\ensuremath{\operatorname{int}}}
+% \newcommand{\biject}{\ensuremath{\mathrel{\leftrightarrow}}}
+% \newcommand{\Pow}{\ensuremath{\mathscr{P}}}
+% \newcommand{\Borel}{\ensuremath{\mathfrak{B}}}
+
+% \renewcommand{\th}{\ensuremath{^\text{th}}}	% i^th
+
+% \newcommand{\nhd}{\ensuremath{\setset{N}}}
+
+%\newcommand{\R}{\ensuremath{\mathbb{R}}}	% Real number set
+
+% \newcommand{\extR}{\ensuremath{\mathbb{\overline{R}}}}
+
+% \newcommand{\N}{\ensuremath{\mathbb{N}}}	% Natural number set
+
+% \newcommand{\W}{\ensuremath{\mathbb{W}}}
+
+% \newcommand{\Z}{\ensuremath{\mathbb{Z}}}	% Integer number set
+% \newcommand{\Q}{\ensuremath{\mathbb{Q}}}	% The set of all rational numbers
+% \newcommand{\C}{\ensuremath{\mathbb{C}}}	% The set of all complex numbers
+
+% \newcommand{\bang}{!}
+% \newcommand{\pipe}{|}
+% \newcommand{\ppipe}{\|}
+% \newcommand{\total}{\ensuremath{\operatorname{d}}}
+% \newcommand{\E}{\ensuremath{\operatorname{E}}}
+% \newcommand{\iid}{i.i.d.} % Should be able to be a label
+% \newcommand{\var}{\ensuremath{\operatorname{var}}}
+% \newcommand{\cov}{\ensuremath{\operatorname{cov}}}
+% \newcommand{\std}{\ensuremath{\operatorname{std}}}
+% \newcommand{\LPV}{\ensuremath{\operatorname{LPV}}}
+% \newcommand{\LPM}{\ensuremath{\operatorname{LPM}}}
+% \newcommand{\range}{\ensuremath{\operatorname{range}}}
+% \newcommand{\sgn}{\ensuremath{\operatorname{sgn}}}
+% \newcommand{\aslim}{\ensuremath{\operatorname*{aslim}}}
+% \newcommand{\limean}{\ensuremath{\operatorname*{l.i.m.}}}
+% \newcommand{\mslim}{\ensuremath{\operatorname*{mslim}}}
+% \newcommand{\plim}{\ensuremath{\operatorname*{plim}}}
+% \newcommand{\dlim}{\ensuremath{\operatorname*{dlim}}}
+% \newcommand{\xto}[1]{\ensuremath{\mathrel{\xrightarrow{#1}}}}
+% The classical OFT model
+%\newcommand{\oft}[1]{\ensuremath{\tilde{#1}}}
+% \newcommand{\oft}[1]{\ensuremath{\widetilde{#1}}}
+
+% A special box to catch my eye to highlight spots where work still
+% needs to be done
+% \newcommand{\todo}[1]{\vspace{0.25in}%
+                      % \noindent%
+                      % \fbox{\parbox{\columnwidth}%
+                                   % {\noindent\textbf{\fbox{TODO:} #1}}}%
+                      % \vspace{0.25in}}
+

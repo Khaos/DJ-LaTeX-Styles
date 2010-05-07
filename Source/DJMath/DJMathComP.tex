@@ -1,0 +1,108 @@
+% ---------------------------------------------------------------------|
+% Commenly-used mathmatical preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+% 20090322	Initial version
+%
+%
+% 20090327	Redefine commands with package xargs.
+%			Examples:
+%				\E x or \E{x}, but \E[f]{x} for the argument which has default value
+%
+%
+% 20090526	Define the new command \sign
+%
+%
+% 20090605	Rewirte the file, now you have to load the required packages yourself.
+%
+%
+
+
+%%
+% The followings come from the LaTeX template ---- tpavlic_masters_thesis
+%
+% Upper-case    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+% Lower-case    a b c d e f g h i j k l m n o p q r s t u v w x y z
+% Digits        0 1 2 3 4 5 6 7 8 9
+% Exclamation   !           Double quote "          Hash (number) #
+% Dollar        $           Percent      %          Ampersand     &
+% Acute accent  '           Left paren   (          Right paren   )
+% Asterisk      *           Plus         +          Comma         ,
+% Minus         -           Point        .          Solidus       /
+% Colon         :           Semicolon    ;          Less than     <
+% Equals        =           Greater than >          Question mark ?
+% At            @           Left bracket [          Backslash     \
+% Right bracket ]           Circumflex   ^          Underscore    _
+% Grave accent  `           Left brace   {          Vertical bar  |
+% Right brace   }           Tilde        ~
+
+% ---------------------------------------------------------------------|
+% --------------------------- 72 characters ---------------------------|
+% ---------------------------------------------------------------------|
+
+% ---------------------------------------------------------------------|
+% Special Symbols/Macros
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2007 by Theodore P. Pavlic
+%
+
+
+
+% ---------------------------------------------------------------------|
+% Declare your package here
+\usepackage{xspace}			% For command \xspace
+
+\usepackage{savesym}		% Use this package to save commands,
+							% such as iint, iiint in amsmath, because LyX use esint
+							% package which confilct with amsmath.
+
+\usepackage{amsmath}		% For command \ensuremath
+							% 			  \DeclareMathOperator
+							%			  \mathrel
+
+% Top-or-bottom tags
+% For a split equation, place equation numbers level with the last (resp. first) line, if numbers are on the right (resp. left).
+% \usepackage[tbtags]{amsmath}
+
+
+
+% !!!!!!!!!!
+% Note that if you use LyX, please turn off the options <use esint package automatically>
+% in [Document]->[Settings]->[Math Options]
+
+\savesymbol{iint}
+\savesymbol{iiint}
+\savesymbol{iiiint}
+\usepackage{esint}			% Create nice multiple integral signs
+\restoresymbol{ES}{iint}	% Now use ESiint to generate nice double integral sigh
+\restoresymbol{ES}{iiint}	% Now use ESiiint to generate nice triple integral sigh
+\restoresymbol{ES}{iiiint}	% Now use ESiiiint to generate nice multiple integral sigh
+
+
+
+\usepackage{amssymb}		% For command \mathbb
+
+\usepackage{amsfonts}		% For command \mathbb
+
+\usepackage{xargs}			% For command with optional arguments
+
+\usepackage{mathrsfs}		% For command \mathscr
+
+
+\usepackage{eucal}			% Euler math font
+
+\usepackage{commath}		% \begin{bmatrix} ... \end{bmatrix}, etc.
+\usepackage{amsthm}			% \theoremstyle
+\usepackage{bm}				% \bm
+\usepackage{esvect}
+\usepackage{vector}
+\usepackage{tensor}
+%\usepackage{delarray}		% Delimiters surrounding an array
+\usepackage{pmat}
+% \usepackage{array}
