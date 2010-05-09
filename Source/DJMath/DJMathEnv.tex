@@ -10,6 +10,7 @@
 % 20090608	Initial version, define djmatrix
 %
 %
+% 2010-05-07	Refine the file using my Macbook Pro
 
 
 %%
@@ -45,7 +46,7 @@
 % Special Symbols/Macros
 % ---------------------------------------------------------------------|
 %
-% (c) Copyright 2009 by Dazhi Jiang
+% (c) Copyright 2010 Dazhi Jiang. All Rights Reserved. 
 %
 
 
@@ -57,25 +58,26 @@
 % Part I:		Enviroment
 
 % *********************************************************************
-% Theorem
-% 20090608
+% Matrix
+% 2010-05-07
 \newenvironment{djpmatrix}[1]
 {\left[\begin{array}{#1}}%
 {\end{array}\right]}
 
-\theoremstyle{theorem}
+% Theorem
+% 2010-05-07
+\theoremstyle{theorem}					% theorem
 \newtheorem{thm}{Theorem}[chapter]
-\theoremstyle{definition}
+\theoremstyle{definition}				% definition
 \newtheorem{defn}[thm]{Definition}
-\theoremstyle{lemma}
+\theoremstyle{lemma}					% lemma
 \newtheorem{lem}[thm]{Lemma}
-\theoremstyle{remark}
+\theoremstyle{remark}					% Remark
 \newtheorem{rem}[thm]{Remark}
 
 %\newtheoremstyle{algorithm}{9pt}{9pt} {\rm } {0pt}
 %    {\bfseries}{:} {\,} {}
 
-\theoremstyle{algorithm}
+\theoremstyle{algorithm}				% algorithm
 \newtheorem{algthm}{Algorithm}
-%\theoremstyle{algorithm}
-%\newtheorem{algthm}{Algorithm}
+
