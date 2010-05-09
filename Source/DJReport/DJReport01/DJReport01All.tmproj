@@ -6,47 +6,43 @@
 	<array>
 		<dict>
 			<key>filename</key>
-			<string>DJAlstomReportAlgorithmP.tex</string>
+			<string>DJReportAlgorithmP.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>DJAlstomReportCaptionP.tex</string>
+			<string>DJReportCaptionP.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>DJAlstomReportGraphicsP.tex</string>
+			<string>DJReportGraphicsP.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>DJAlstomReportHyperrefBibUrlP.tex</string>
+			<string>DJReportHyperrefBibUrlP.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>DJAlstomReportIFP.tex</string>
+			<string>DJReportIFP.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>DJAlstomReportLoadAll.tex</string>
+			<string>DJReportLoadAll.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>DJAlstomReportNomenclatureP.tex</string>
+			<string>DJReportMathEnv.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>DJAlstomReportNomenclConfig.tex</string>
+			<string>DJReportNomenclatureP.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>DJAlstomReportOtherP0.tex</string>
+			<string>DJReportOtherP0.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>DJAlstomReportTableP.tex</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>DJCUEDthesisPSnPDF.cls</string>
+			<string>DJReportTableP.tex</string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -56,6 +52,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{48, 54}, {735, 724}}</string>
+	<string>{{61, 54}, {735, 724}}</string>
 </dict>
 </plist>

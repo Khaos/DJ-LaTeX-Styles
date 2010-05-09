@@ -1,0 +1,31 @@
+% ---------------------------------------------------------------------|
+% Commenly-used algorithm relavent preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+% 20090608	Initial version, package <graphics>
+%
+%
+
+
+% Package for algorithms
+\usepackage{algorithm}							% Algorithm
+\usepackage{algpseudocode}						% Algorithmic
+
+
+% Required by titletoc, but should be commented when using \numberwithin
+% Required by article style maybe.
+%\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+\algnewcommand\algorithmicto{\textbf{to}}
+\algrenewtext{For}[3]%
+{\algorithmicfor\ $#1 \gets #2\ \algorithmicto\ #3$ \algorithmicdo}
+
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}%
+\algrenewcommand\algorithmicensure{\textbf{Output:}}%
+% \algrenewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) #1}%
+% \algrenewcommand\algorithmiccomment[1]{\hfill\(\blacktriangleright\) #1}%

@@ -1,0 +1,33 @@
+% ---------------------------------------------------------------------|
+% Commenly-used nomenclature relavent preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+% 20090608	Initial version, package <>
+%
+%
+
+
+% *********************************************************************
+% *********************************************************************
+% Nomenclature
+\usepackage{nomencl}
+\makeglossary
+\renewcommand\nomgroup[1]{%
+  \ifthenelse{\equal{#1}{A}}{%
+   \item[\textbf{Roman Symbols}] }{%             A - Roman
+    \ifthenelse{\equal{#1}{G}}{%
+     \item[\textbf{Greek Symbols}]}{%             G - Greek
+      \ifthenelse{\equal{#1}{R}}{%
+        \item[\textbf{Superscripts}]}{%              R - Superscripts
+          \ifthenelse{\equal{#1}{S}}{%
+           \item[\textbf{Subscripts}]}{{%             S - Subscripts
+        \ifthenelse{\equal{#1}{X}}{%
+         \item[\textbf{Other Symbols}]}{{%    X - Other Symbols
+        \ifthenelse{\equal{#1}{Z}}{%
+         \item[\textbf{Acronyms}]}%              Z - Acronyms
+                        {{}}}}}}}}}}

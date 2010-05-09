@@ -1,0 +1,126 @@
+% ---------------------------------------------------------------------|
+% Commenly-used caption relavent preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+% 20090608	Initial version, package <graphics>
+%
+% 20090724	Rename command \djpagehead to \djpageheadROLE, and define a
+%			new command \djpageheadLORE
+%
+%
+
+
+% *********************************************************************
+% *********************************************************************
+% Section caption
+% \usepackage{kpfonts}
+
+\usepackage[explicit]{titlesec}					% Titles of Chapter, section, subsection ...
+\usepackage{titletoc}							% Titles of Chapter, section, subsection ...
+
+%\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+%                    \thispagestyle{fancy}%
+%                    \global\@topnum\z@
+%                    \@afterindentfalse
+%                    \secdef\@chapter\@schapter}
+
+%\titleformat{\chapter}[hang]{}{}{}{}{}
+%\titleformat{\chapter}[hang]{\normalfont}{\chaptertitlename}{.5em}{}{}
+%
+% Uncomment the following lines to give compact format of chapter
+% \titleformat{\chapter}[hang]{\raggedright \LARGE \bfseries }{\thechapter.}
+            % {1em}{}{}
+% \titlespacing*{\chapter}{0pt}{-25pt}{*2.5}
+%
+% The following lines give a fancy style of chapter
+\titleformat{\chapter}[display]
+	{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge#1}
+\titlespacing*{\chapter}{0pt}{-15pt}{30pt}
+
+%\titleformat{\section}[hang]{\raggedright \Large \bfseries }{\thechapter.}
+%            {.5em}{}{}
+
+%\titleformat{\subsection}[hang]{\raggedright \large \bfseries }{\thechapter.}
+%            {.5em}{}{}
+
+% Another fancy chapter heading
+%\newcommand*\chapterlabel{}
+%
+%\titleformat{\chapter}
+%   {\gdef\chapterlabel{}
+%    \normalfont\sffamily\Huge\bfseries\scshape}
+%   {\gdef\chapterlabel{\chaptertitlename\ \thechapter.\ }}{0pt}
+%   {\begin{tikzpicture}[remember picture,overlay]
+%     \node[yshift=-3cm] at (current page.north west)
+%       {\begin{tikzpicture}[remember picture, overlay]
+%         \draw[fill=LightSkyBlue] (0,0) rectangle
+%           (\paperwidth,3cm);
+%         \node[anchor=east,xshift=.9\paperwidth,rectangle,
+%               rounded corners=20pt,inner sep=11pt,
+%               fill=MidnightBlue]
+%               {\color{white}\chapterlabel#1};
+%        \end{tikzpicture}
+%       };
+%    \end{tikzpicture}
+%   }
+%\titlespacing*{\chapter}{0pt}{50pt}{-60pt}
+
+
+
+% *********************************************************************
+% *********************************************************************
+% Figure and Table caption
+% Define DJ caption formatting.
+% Default formatting of captions
+% \usepackage[font={footnotesize}, labelfont={bf}]{caption}
+\usepackage[font={small}, labelfont={bf}]{caption}
+
+% Style of figure caption
+\captionsetup[figure]{labelsep=period}
+% Style of figure table
+\captionsetup[table]{textfont={sc}}
+
+
+% *********************************************************************
+% *********************************************************************
+% Page header
+\usepackage{fancyhdr}							% Page header
+
+\newcommand{\djpageheadROLE}{\bfseries \slshape
+    $\bf{6^{th}}$ Progress Report on PhD Programme}
+
+\newcommand{\djpageheadLORE}{\bfseries Dazhi Jiang}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\thechapter. #1 }}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+%\fancyhead[RO,LE]{\bfseries\rightmark}
+\fancyhead[RO,LE]{\djpageheadROLE}
+\fancyhead[LO,RE]{\djpageheadLORE}
+%\fancyhead[LO,RE]{\bfseries\leftmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt}
+
+\fancypagestyle{plain}{
+%  \fancyhead{}
+  \fancyhf{}
+%  \fancyhead[RO,LE]{\bfseries\rightmark}
+  \fancyhead[RO,LE]{\djpageheadROLE}
+  \fancyhead[LO,RE]{\djpageheadLORE}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0.6pt}
+  % Uncomment the following line to give a empty headrule
+  % \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \addtolength{\headheight}{0.5pt}
+
+%  \renewcommand{\headrulewidth}{0.5pt}
+}
