@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>iDocs/iProgramming/iTeX/iStyle/dev/Source/DJNote/DJespcrc1.sty</string>
+	<string>DJespcrc1.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -25,7 +25,7 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
-		<key>iDocs/iProgramming/iTeX/iStyle/dev/Source/DJNote/DJespcrc1.sty</key>
+		<key>DJespcrc1.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -39,7 +39,7 @@
 			<key>firstVisibleLine</key>
 			<integer>58</integer>
 		</dict>
-		<key>iDocs/iProgramming/iTeX/iStyle/dev/Source/DJNote/DJespcrc2.sty</key>
+		<key>DJespcrc2.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -72,8 +72,8 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>iDocs/iProgramming/iTeX/iStyle/dev/Source/DJNote/DJespcrc1.sty</string>
-		<string>iDocs/iProgramming/iTeX/iStyle/dev/Source/DJNote/DJespcrc2.sty</string>
+		<string>DJespcrc1.sty</string>
+		<string>DJespcrc2.sty</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>

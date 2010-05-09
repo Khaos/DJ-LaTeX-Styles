@@ -1,0 +1,106 @@
+% ---------------------------------------------------------------------|
+% Commenly-used graphics relavent preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+%
+% 20090608	Initial version, package <graphics>
+%
+% 2010-05-09 Refine this file using my Macbook Pro, add more comments
+%
+%
+
+
+% *********************************************************************
+% *********************************************************************
+% Part I:		Common graphics packages
+\usepackage{graphics}							% Graphy style
+
+% <color> is automatically loaded by beamer
+% \usepackage[usenames, dvipsnames]{color}		% Color
+
+\usepackage{graphicx}
+
+
+% Extra arrows
+\usepackage{extarrows}
+
+% Emphasizing equations
+\usepackage{empheq}
+
+% *********************************************************************
+% *********************************************************************
+% Part II:		Pstricks
+\ifpdf
+    \usepackage{pdftricks}
+	\usepackage{pstricks}
+	\usepackage{pst-node}
+    \usepackage{pst-tree}
+    \usepackage{pst-plot}
+    \usepackage{pst-text}
+    \usepackage{pstricks-add}
+\else
+	\usepackage{pstricks}
+    \usepackage{pst-node}
+    \usepackage{pst-tree}
+    \usepackage{pst-plot}
+    \usepackage{pst-text}
+    \usepackage{pstricks-add}
+\fi
+
+% *********************************************************************
+% *********************************************************************
+% Part III:		Pgf & Tikz
+%\usepackage[version=latest]{pgf}
+
+% Comment this if you use the oxygen style
+\usepackage{pgf}
+
+\usepackage{pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+
+\usepackage{tikz}
+
+\usetikzlibrary{%
+  arrows,%
+  calc,%
+  fit,%
+  patterns,%
+  plotmarks,%
+  shapes.geometric,%
+  shapes.misc,%
+  shapes.symbols,%
+  shapes.arrows,%
+  shapes.callouts,%
+  shapes.multipart,%
+  shapes.gates.logic.US,%
+  shapes.gates.logic.IEC,%
+  er,%
+  automata,%
+  backgrounds,%
+  chains,%
+  topaths,%
+  trees,%
+  petri,%
+  mindmap,%
+  matrix,%
+  calendar,%
+  folding,%
+  fadings,%
+  through,%
+  positioning,%
+  scopes,%
+  decorations.fractals,%
+  decorations.shapes,%
+  decorations.text,%
+  decorations.pathmorphing,%
+  decorations.pathreplacing,%
+  decorations.footprints,%
+  decorations.markings,%
+  shadows}
+
+
+\input{DJpgfmanual-en-macros} 

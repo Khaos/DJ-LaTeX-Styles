@@ -10,17 +10,21 @@
 			<key>filename</key>
 			<string>DJMathCom.tex</string>
 			<key>lastUsed</key>
-			<date>2010-05-09T11:31:02Z</date>
+			<date>2010-05-09T12:56:20Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>DJMathComP.tex</string>
+			<key>lastUsed</key>
+			<date>2010-05-09T12:56:20Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>DJMathComwithP.tex</string>
+			<key>lastUsed</key>
+			<date>2010-05-09T12:54:06Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -48,23 +52,38 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>310</integer>
+				<integer>143</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>15</integer>
+			<integer>176</integer>
+		</dict>
+		<key>DJMathComP.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>28</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>11</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>DJMathCom.tex</string>
+		<string>DJMathComP.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{231, 54}, {735, 724}}</string>
+	<string>{{447, 54}, {735, 724}}</string>
 </dict>
 </plist>

@@ -1,0 +1,324 @@
+% ---------------------------------------------------------------------|
+% Commenly-used preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2008 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+% 20090123 Redefine the automatic reference naming style in package 'hyperref'
+% 			\figurename, \tablename
+%
+% 20090215 Change pgfmanual-en-macros to DJpgfmanual-en-macros
+%
+% 20090322 Split the math macro out
+%
+% 20090513 Add package <ifpdf>
+%
+
+% ---------------------------------------------------------------------|
+% Put package here
+
+\usepackage{ifpdf}
+
+\usepackage{verbatim}	% Environment \begin{comment} \end{comment}
+\usepackage{etex}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+
+\makeatother
+
+
+% Tikz/PGF package configuration part
+%\usepackage{memorandum}
+%\to{Dazhi Jiang}
+
+\usepackage{pstricks}
+\usepackage{pst-node}
+\usepackage{pst-tree}
+\usepackage{pst-plot}
+\usepackage{pst-text}
+\usepackage{pstricks-add}
+
+%\usepackage{tikz}
+%\usetikzlibrary{trees,snakes}
+%\usepackage{verbatim}
+
+\usepackage[version=latest]{pgf}
+
+\usepackage{xkeyval,calc,listings,tikz}
+
+\usetikzlibrary{%
+  arrows,%
+  calc,%
+  fit,%
+  patterns,%
+  plotmarks,%
+  shapes.geometric,%
+  shapes.misc,%
+  shapes.symbols,%
+  shapes.arrows,%
+  shapes.callouts,%
+  shapes.multipart,%
+  shapes.gates.logic.US,%
+  shapes.gates.logic.IEC,%
+  er,%
+  automata,%
+  backgrounds,%
+  chains,%
+  topaths,%
+  trees,%
+  petri,%
+  mindmap,%
+  matrix,%
+  calendar,%
+  folding,%
+  fadings,%
+  through,%
+  positioning,%
+  scopes,%
+  decorations.fractals,%
+  decorations.shapes,%
+  decorations.text,%
+  decorations.pathmorphing,%
+  decorations.pathreplacing,%
+  decorations.footprints,%
+  decorations.markings,%
+  shadows}
+
+
+\input{DJpgfmanual-en-macros}
+
+\makeatletter
+
+% if you want to include PostScript figures
+%\usepackage{graphicx}
+% if you have landscape tables
+%\usepackage[figuresright]{rotating}
+
+% Put all the style files and packages you want here
+\usepackage{paralist}% Environment 'compactenum' etc.
+%\usepackage[tbtags]{amsmath}
+%\usepackage[numbers, sort&compress]{natbib}
+\usepackage{amssymb}    % \mathbb{}, etc.
+\usepackage{commath}    % \begin{bmatrix} ... \end{bmatrix}, etc.
+%\usepackage{amsthm}
+\usepackage{bm}         % \bm
+%\usepackage{vector}
+% \usepackage{fancyhdr}
+% \usepackage{eucal}
+% \usepackage[english]{babel}
+% \usepackage[usenames, dvipsnames]{color}
+% \usepackage[perpage]{footmisc}
+% \usepackage{ifthen}
+% \usepackage{titlesec}
+% \usepackage{gensymb}
+% \usepackage{verbatim}   % Environment \begin{comment} \end{comment}
+%\usepackage[font={footnotesize},labelfont={bf}]{caption}
+\usepackage{xspace}
+%\usepackage{varioref}%  \vrefrange[]{}{}
+%\usepackage{delarray}%  Delimiters surrounding an array
+\usepackage{pmat}
+\usepackage{array}
+\usepackage{tabulary}% Auto adjust column width
+\usepackage{booktabs}% Define the hrule width for tabel
+\usepackage{soul}% Underlining command: \ul
+\newcolumntype{Y}{>{\sf}L}
+
+
+% Define the automatic reference names
+% \usepackage[english]{babel}
+%\addto\extrasnenglish{%
+%\renewcommand{\figurename}{Figure}%
+%}
+
+% put your own definitions here:
+%   \newcommand{\cZ}{\cal{Z}}
+%   \newtheorem{def}{Definition}[section]
+%   ...
+
+% Symbols for the AMA6020 Report
+% \DeclareMathOperator \AMISE {AMISE} \DeclareMathOperator \MISE {MISE}
+% \DeclareMathOperator \Bias {Bias} \DeclareMathOperator* \argmin {arg\,min}
+% \DeclareMathOperator* \argmax {arg\,max}
+%\DeclareMathOperator \var {var}
+
+% \newcommand \E[1] {\mathbb{E}{\left[#1\right]}}
+% \newcommand \cov[1] {\mathrm{cov}{\left[#1\right]}}
+% \newcommand \var[1] {\mathrm{var}{\left[#1\right]}}
+% \newcommand \Ef[2] {\mathbb{E}_{#1}{\left[#2\right]}}
+% \newcommand \covf[2] {\mathrm{cov}_{#1}{\left[#2\right]}}
+% \newcommand \varf[2] {\mathrm{var}_{#1}{\left[#2\right]}}
+% \newcommand \Normal[3] {\mathcal{N}{(#1|#2,#3)} = \frac{1}{(2\pi)^{D/2}}
+                        % \frac{1}{|#3|^{1/2}}
+                        % \exp{\biggl\{-\frac{1}{2}(#1-#2)^T#3^{-1}(#1-#2)\biggl\}}}
+% \newcommand \Normall[3] {\frac{1}{(2\pi)^{D/2}}
+                        % \frac{1}{|#3|^{1/2}}
+                        % \exp{\biggl\{-\frac{1}{2}(#1-#2)^T#3^{-1}(#1-#2)\biggl\}}}
+
+% \newcommand \relphantom[1] {\mathrel{\phantom{#1}}}
+
+% \newcommand \I[1] {\mathrm{I}{\left[#1\right]}}
+% \newcommand \HH[1] {\mathrm{H}{\left[#1\right]}}
+
+% \newcommand \defeq {\stackrel{\mathrm{def}}{=}}
+
+% \newcommand{\ttbs}{\char'134}
+%\newcommand{\AmS}{{\protect\the\textfont2
+%  A\kern-.1667em\lower.5ex\hbox{M}\kern-.125emS}}
+
+% \DeclareMathOperator \EX {E}
+
+% \DeclareMathOperator \kurt {kurt}
+
+% \DeclareMathOperator \diff {d}
+
+% \DeclareMathOperator \J {J}
+
+% \newcommand\eg{e.g.,\xspace}
+% \newcommand\ie{i.e.,\xspace}
+% \newcommand\etc{etc.\@\xspace}
+
+
+
+% \newenvironment{djpmatrix}[1]
+% {\left[\begin{array}{#1}}%
+% {\end{array}\right]}
+
+
+% add words to TeX's hyphenation exception list
+% \hyphenation{MATLAB author another created financial paper re-commend-ed
+% Post-Script}
+
+% set the starting page if not 1
+% \setcounter{page}{17}
+
+% declarations for front matter
+%\title{Progress Summary Report}
+
+%\author{Dazhi Jiang\address[MCSD]{Department of Automatic Control and Systems Engineering\\
+%The University of Sheffield, Mappin Street, Sheffield, S1 3JD, U.K.\\
+%Email: d.jiang@sheffield.ac.uk}
+%        \thanks{Supported by a grant from ALSTOM Power (U.K.).}}
+
+% If you use the option headings,
+% the title is also used as the running title,
+% and the authors are also used as the running authors.
+% You can change that by using \runtitle and \runauthor.
+
+%\runtitle{Progress summary report} \runauthor{D. Jiang}
+
+
+
+\makeatother
+
+\usepackage{babel}
+
+\ifpdf
+    \graphicspath{{Fig/PNG/}{Fig/PDF/}{Fig/}}
+\else
+    \graphicspath{{Fig/EPS/}{Fig/}}
+\fi
+
+% ---------------------------------------------------------------------|
+% ---------------------------------------------------------------------|
+
+
+
+%%
+% The followings come from the LaTeX template ---- tpavlic_masters_thesis
+% 
+% Upper-case    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+% Lower-case    a b c d e f g h i j k l m n o p q r s t u v w x y z
+% Digits        0 1 2 3 4 5 6 7 8 9
+% Exclamation   !           Double quote "          Hash (number) #
+% Dollar        $           Percent      %          Ampersand     &
+% Acute accent  '           Left paren   (          Right paren   )
+% Asterisk      *           Plus         +          Comma         ,
+% Minus         -           Point        .          Solidus       /
+% Colon         :           Semicolon    ;          Less than     <
+% Equals        =           Greater than >          Question mark ?
+% At            @           Left bracket [          Backslash     \
+% Right bracket ]           Circumflex   ^          Underscore    _
+% Grave accent  `           Left brace   {          Vertical bar  |
+% Right brace   }           Tilde        ~
+
+% ---------------------------------------------------------------------|
+% --------------------------- 72 characters ---------------------------|
+% ---------------------------------------------------------------------|
+
+% ---------------------------------------------------------------------|
+% Special Symbols/Macros
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2007 by Theodore P. Pavlic
+%
+
+% Additional symbols, phrases, etc.
+% \newcommand{\ie}{i.e.{}}
+% \newcommand{\eg}{e.g.{}}
+% \newcommand{\exante}{ex ante}
+% \newcommand{\expost}{ex post}
+% \newcommand{\apriori}{a priori}
+% \newcommand{\adinfinitum}{ad infinitum}
+% \newcommand{\aka}{a.k.a.{}}
+
+% Our math conventions
+%\newcommand{\seq}[1]{\ensuremath{\mathcal{#1}}}
+% \newcommand{\setset}[1]{\ensuremath{\mathscr{#1}}}
+% \newcommand{\set}[1]{\ensuremath{\mathcal{#1}}}
+% \newcommand{\rel}[1]{\ensuremath{\mathrel{#1}}}
+% \newcommand{\bin}[1]{\ensuremath{\mathbin{#1}}}
+%\renewcommand{\v}[1]{\ensuremath{#1}}
+%\renewcommand{\v}[1]{{\ensuremath{\underline{#1}}}}
+% \renewcommand{\v}[1]{{\ensuremath{#1}}}
+% \newcommand{\symdiff}{\ensuremath{\mathbin{\Delta}}}
+% \newcommand{\setdiff}{\ensuremath{-}}
+%\newcommand{\setdiff}{\ensuremath{\setminus}}
+% \newcommand{\comp}{\ensuremath{\circ}}
+% \newcommand{\mat}[1]{\ensuremath{#1}}
+% \newcommand{\I}{\ensuremath{\mathbb{I}}}
+%\newcommand{\mat}[1]{\ensuremath{\mathbf{#1}}}
+% \newcommand{\T}{\ensuremath{\top}}
+% \newcommand{\interior}{\ensuremath{\operatorname{int}}}
+% \newcommand{\biject}{\ensuremath{\mathrel{\leftrightarrow}}}
+% \newcommand{\Pow}{\ensuremath{\mathscr{P}}}
+% \newcommand{\Borel}{\ensuremath{\mathfrak{B}}}
+% \renewcommand{\th}{\ensuremath{^\text{th}}}
+% \newcommand{\nhd}{\ensuremath{\setset{N}}}
+% \newcommand{\R}{\ensuremath{\mathbb{R}}}
+% \newcommand{\extR}{\ensuremath{\mathbb{\overline{R}}}}
+% \newcommand{\N}{\ensuremath{\mathbb{N}}}
+% \newcommand{\W}{\ensuremath{\mathbb{W}}}
+% \newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+% \newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+% \newcommand{\bang}{!}
+% \newcommand{\pipe}{|}
+% \newcommand{\ppipe}{\|}
+% \newcommand{\total}{\ensuremath{\operatorname{d}}}
+% \newcommand{\E}{\ensuremath{\operatorname{E}}}
+% \newcommand{\iid}{i.i.d.} % Should be able to be a label
+% \newcommand{\var}{\ensuremath{\operatorname{var}}}
+% \newcommand{\cov}{\ensuremath{\operatorname{cov}}}
+% \newcommand{\std}{\ensuremath{\operatorname{std}}}
+% \newcommand{\LPV}{\ensuremath{\operatorname{LPV}}}
+% \newcommand{\LPM}{\ensuremath{\operatorname{LPM}}}
+% \newcommand{\range}{\ensuremath{\operatorname{range}}}
+% \newcommand{\sgn}{\ensuremath{\operatorname{sgn}}}
+% \newcommand{\aslim}{\ensuremath{\operatorname*{aslim}}}
+% \newcommand{\limean}{\ensuremath{\operatorname*{l.i.m.}}}
+% \newcommand{\mslim}{\ensuremath{\operatorname*{mslim}}}
+% \newcommand{\plim}{\ensuremath{\operatorname*{plim}}}
+% \newcommand{\dlim}{\ensuremath{\operatorname*{dlim}}}
+% \newcommand{\xto}[1]{\ensuremath{\mathrel{\xrightarrow{#1}}}}
+% The classical OFT model
+%\newcommand{\oft}[1]{\ensuremath{\tilde{#1}}}
+% \newcommand{\oft}[1]{\ensuremath{\widetilde{#1}}}
+
+% A special box to catch my eye to highlight spots where work still

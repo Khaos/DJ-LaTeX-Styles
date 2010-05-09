@@ -1,0 +1,340 @@
+% ---------------------------------------------------------------------|
+% Commenly-used preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2008 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+
+%
+% 20090126 Change the formatting of figure and table captions using package caption.
+%
+% 20090126 Add tow package 'varioref' and 'paralist' to give better formatting of cross reference. Note that varioref has to followed by hyperref, and then paralist. Otherwise, if you put varioref last, then \autoref{eq:***} gives 'Figure (1)'
+% 	Now the cross-ref look like:
+%	\ref{eq:1} produces a linked "(1)"
+%	\ref*{eq:1} produces an unlinked "(1)"
+%	\ref{fig:1} produces a linked "1"
+%	\ref*{fig:1} produces an unlinked "1"
+%	\autoref{eq:1} produces a linked "Equation (1)"
+%	\autoref*{eq:1} produces an unlinked "Equation (1)"
+%	\autoref{fig:1} produces a linked "Figure 1"
+%	\autoref*{fig:1} produces an unlinked "Figure 1"
+%	and the item one looks like
+%	\ref{item:1} produces a linked "(i)"
+%	\ref*{item:1} produces an unlinked "(i)"
+%	\autoref{item:1} produces a linked "item (i)"
+%	\autoref*{item:1} produces an unlinked "item (i)"
+% Reference: http://phaseportrait.blogspot.com/search/label/autoref
+%
+
+
+% ---------------------------------------------------------------------|
+% Put package here
+\usepackage{graphics}
+\usepackage{ifpdf}
+
+% Define DJ caption formatting.
+% Default formatting of captions
+\usepackage[font={footnotesize}, labelfont={bf}]{caption}
+% Style of figure caption
+\captionsetup[figure]{labelsep=period}
+% Style of figure table
+\captionsetup[table]{textfont={sc}}
+
+
+% Now define cross-ref formatting, use varioref and paralist
+% \usepackage{varioref}
+% \labelformat{equation}{\textup{(#1)}}
+\usepackage{paralist}
+%\labelformat{item}{\textup{(#1)}}
+
+% Now define cross-ref formatting, use varioref and paralist
+\usepackage{varioref}
+%\labelformat{part}{\textup{(#1)}}
+%\labelformat{chapter}{\textup{(#1)}}
+%\labelformat{section}{\textup{(#1)}}
+%\labelformat{subsection}{\textup{(#1)}}
+%\labelformat{subsubsection}{\textup{(#1)}}
+%\labelformat{paragraph}{\textup{(#1)}}
+%\labelformat{subparagraph}{\textup{(#1)}}
+
+%\labelformat{theorem}{\textup{(#1)}}
+%\labelformat{thm}{\textup{(#1)}}
+%\labelformat{Hfootnote}{\textup{(#1)}}
+%\labelformat{mpfootnote}{\textup{(#1)}}
+%\labelformat{appendix}{\textup{(#1)}}
+%???\labelformat{AMS}{\textup{(#1)}}
+
+\labelformat{equation}{\textup{(#1)}}
+%\labelformat{figure}{\textup{(#1)}}
+%\labelformat{table}{\textup{(#1)}}
+
+%\labelformat{enumi}{\textup{(#1)}}
+\labelformat{enumii}{\textup{{\theenumi}.#1}}
+\labelformat{enumiii}{\textup{{\theenumi}.{\theenumii}.#1}}
+\labelformat{enumiv}{\textup{{\theenumi}.{\theenumii}.{\theenumiii}.#1}}
+
+
+
+% Now add hyperref package
+\ifpdf
+%-->
+%--> Google.com search "hyperref options"
+%-->
+%--> http://www.ai.mit.edu/lab/sysadmin/latex/documentation/latex/hyperref/manual.pdf
+%--> http://www.chemie.unibas.ch/~vogtp/LaTeX2PDFLaTeX.pdf
+%--> http://www.uni-giessen.de/partosch/eurotex99/ oberdiek/print/sli4a4col.pdf
+%--> http://me.in-berlin.de/~miwie/tex-refs/html/latex-packages.html
+%-->
+    \usepackage[ pdftex, plainpages = false, pdfpagelabels,
+                 pdfpagelayout = useoutlines,
+                 bookmarks,
+                 bookmarksopen = true,
+                 bookmarksnumbered = true,
+                 breaklinks = true,
+                 linktocpage,
+                 colorlinks = true,
+                 linkcolor = blue,
+                 urlcolor  = blue,
+                 citecolor = blue,
+                 anchorcolor = green,
+                 hyperindex = true,
+                 hyperfigures
+                 ]{hyperref}
+
+    \DeclareGraphicsExtensions{.png, .jpg, .pdf}
+    \usepackage[pdftex]{graphicx}
+    \pdfcompresslevel=9
+\else
+    \usepackage[ dvips,
+                 bookmarks,
+                 bookmarksopen = true,
+                 bookmarksnumbered = true,
+                 breaklinks = true,
+                 linktocpage,
+                 colorlinks = true,
+                 linkcolor = blue,%black
+                 urlcolor  = blue,%black
+                 citecolor = blue,%black
+                 anchorcolor = green, %black
+                 hyperindex = true,
+                 hyperfigures
+                 ]{hyperref}
+
+    \DeclareGraphicsExtensions{.eps, .ps}
+    \usepackage{epsfig}
+    \usepackage{graphicx}
+\fi
+
+%% We need to redefine \autoref. We should use 
+%% abbreviations inside the sentence and full names 
+%% at the beginning of sentences. Additionally,
+%% need to handle the plural cases.
+
+% \Autoref is for the beginning of the sentence
+\let\orgautoref\autoref
+\providecommand{\Autoref}
+        {\def\equationautorefname{Equation}%
+         \def\figureautorefname{Figure}%
+         \def\subfigureautorefname{Figure}%
+         \def\sectionautorefname{Section}%
+         \def\subsectionautorefname{Section}%
+         \def\subsubsectionautorefname{Section}%
+         \def\Itemautorefname{Item}%
+         \def\tableautorefname{Table}%
+         \orgautoref}
+
+% \Autorefs is plural for the beginning of the sentence
+\providecommand{\Autorefs}
+        {\def\equationautorefname{Equations}%
+         \def\figureautorefname{Figures}%
+         \def\subfigureautorefname{Figures}%
+         \def\sectionautorefname{Sections}%
+         \def\subsectionautorefname{Sections}%
+         \def\subsubsectionautorefname{Sections}%
+         \def\Itemautorefname{Items}%
+         \def\tableautorefname{Tables}%
+         \orgautoref}
+
+% \autoref is used inside a sentence 
+% (this is a renew of the standard)
+% \renewcommand{\autoref}
+%         {\def\equationautorefname{Eq.}%
+%          \def\figureautorefname{Fig.}%
+%          \def\subfigureautorefname{Fig.}%
+%          \def\sectionautorefname{Sect.}%
+%          \def\subsectionautorefname{Sect.}%
+%          \def\subsubsectionautorefname{Sect.}%
+%          \def\Itemautorefname{item}%
+%          \def\tableautorefname{Table}%
+%          \orgautoref}
+
+% % \autorefs is plural for inside a sentence
+% \providecommand{\autorefs}
+%         {\def\equationautorefname{Eqs.}%
+%          \def\figureautorefname{Figs.}%
+%          \def\subfigureautorefname{Figs.}%
+%          \def\sectionautorefname{Sects.}%
+%          \def\subsectionautorefname{Sects.}%
+%          \def\subsubsectionautorefname{Sects.}%
+%          \def\Itemautorefname{items}%
+%          \def\tableautorefname{Tables}%
+%          \orgautoref}
+
+% \autorefs is plural for inside a sentence
+\providecommand{\autorefs}
+        {\def\equationautorefname{Equations}%
+         \def\figureautorefname{Figures}%
+         \def\subfigureautorefname{Figures}%
+         \def\sectionautorefname{sections}%
+         \def\subsectionautorefname{sections}%
+         \def\subsubsectionautorefname{sections}%
+         \def\Itemautorefname{items}%
+         \def\tableautorefname{Tables}%
+         \orgautoref}
+
+% Don't forget \autopageref
+% \Autopageref is for the beginning of the sentence
+\let\orgautopageref\autopageref
+\providecommand{\Autopageref}
+        {\def\pageautorefname{Page}%
+         \orgautopageref}
+
+% \Autopagerefs is plural for the beginning of the sentence
+\providecommand{\Autopagerefs}
+        {\def\pageautorefname{Pages}%
+         \orgautopageref}
+
+
+% SIDE MARGINS:
+\oddsidemargin   4mm              % Left margin on odd-numbered pages.
+\evensidemargin -4mm              % Left margin on even-numbered pages.
+
+% VERTICAL SPACING:
+\topmargin      -4mm              % Nominal distance from top of page to top
+                                  % of box containing running head.
+\headheight     13mm              % No running headline, and no
+\headsep        24pt              % space between running headline and text.
+\footskip       30pt              % Baseline-baseline distance between
+                                  % running footline and last line of text.
+
+% DIMENSION OF TEXT:
+\textheight 230mm                 % Height of text part of page
+\textwidth 160mm                  % Width of text part of page, i.e of line
+
+% PARAGRAPHING
+\parskip 0pt                      % No extra vertical space between paragraphs.
+\parindent 1em                    % Width of paragraph indentation.
+
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatother
+
+% ---------------------------------------------------------------------|
+% ---------------------------------------------------------------------|
+
+
+
+%%
+% The followings come from the LaTeX template ---- tpavlic_masters_thesis
+% 
+% Upper-case    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+% Lower-case    a b c d e f g h i j k l m n o p q r s t u v w x y z
+% Digits        0 1 2 3 4 5 6 7 8 9
+% Exclamation   !           Double quote "          Hash (number) #
+% Dollar        $           Percent      %          Ampersand     &
+% Acute accent  '           Left paren   (          Right paren   )
+% Asterisk      *           Plus         +          Comma         ,
+% Minus         -           Point        .          Solidus       /
+% Colon         :           Semicolon    ;          Less than     <
+% Equals        =           Greater than >          Question mark ?
+% At            @           Left bracket [          Backslash     \
+% Right bracket ]           Circumflex   ^          Underscore    _
+% Grave accent  `           Left brace   {          Vertical bar  |
+% Right brace   }           Tilde        ~
+
+% ---------------------------------------------------------------------|
+% --------------------------- 72 characters ---------------------------|
+% ---------------------------------------------------------------------|
+
+% ---------------------------------------------------------------------|
+% Special Symbols/Macros
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2007 by Theodore P. Pavlic
+%
+
+% Additional symbols, phrases, etc.
+% \newcommand{\ie}{i.e.{}}
+% \newcommand{\eg}{e.g.{}}
+% \newcommand{\exante}{ex ante}
+% \newcommand{\expost}{ex post}
+% \newcommand{\apriori}{a priori}
+% \newcommand{\adinfinitum}{ad infinitum}
+% \newcommand{\aka}{a.k.a.{}}
+
+% Our math conventions
+%\newcommand{\seq}[1]{\ensuremath{\mathcal{#1}}}
+% \newcommand{\setset}[1]{\ensuremath{\mathscr{#1}}}
+% \newcommand{\set}[1]{\ensuremath{\mathcal{#1}}}
+% \newcommand{\rel}[1]{\ensuremath{\mathrel{#1}}}
+% \newcommand{\bin}[1]{\ensuremath{\mathbin{#1}}}
+%\renewcommand{\v}[1]{\ensuremath{#1}}
+%\renewcommand{\v}[1]{{\ensuremath{\underline{#1}}}}
+% \renewcommand{\v}[1]{{\ensuremath{#1}}}
+% \newcommand{\symdiff}{\ensuremath{\mathbin{\Delta}}}
+% \newcommand{\setdiff}{\ensuremath{-}}
+%\newcommand{\setdiff}{\ensuremath{\setminus}}
+% \newcommand{\comp}{\ensuremath{\circ}}
+% \newcommand{\mat}[1]{\ensuremath{#1}}
+% \newcommand{\I}{\ensuremath{\mathbb{I}}}
+%\newcommand{\mat}[1]{\ensuremath{\mathbf{#1}}}
+% \newcommand{\T}{\ensuremath{\top}}
+% \newcommand{\interior}{\ensuremath{\operatorname{int}}}
+% \newcommand{\biject}{\ensuremath{\mathrel{\leftrightarrow}}}
+% \newcommand{\Pow}{\ensuremath{\mathscr{P}}}
+% \newcommand{\Borel}{\ensuremath{\mathfrak{B}}}
+% \renewcommand{\th}{\ensuremath{^\text{th}}}
+% \newcommand{\nhd}{\ensuremath{\setset{N}}}
+% \newcommand{\R}{\ensuremath{\mathbb{R}}}
+% \newcommand{\extR}{\ensuremath{\mathbb{\overline{R}}}}
+% \newcommand{\N}{\ensuremath{\mathbb{N}}}
+% \newcommand{\W}{\ensuremath{\mathbb{W}}}
+% \newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+% \newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+% \newcommand{\bang}{!}
+% \newcommand{\pipe}{|}
+% \newcommand{\ppipe}{\|}
+% \newcommand{\total}{\ensuremath{\operatorname{d}}}
+% \newcommand{\E}{\ensuremath{\operatorname{E}}}
+% \newcommand{\iid}{i.i.d.} % Should be able to be a label
+% \newcommand{\var}{\ensuremath{\operatorname{var}}}
+% \newcommand{\cov}{\ensuremath{\operatorname{cov}}}
+% \newcommand{\std}{\ensuremath{\operatorname{std}}}
+% \newcommand{\LPV}{\ensuremath{\operatorname{LPV}}}
+% \newcommand{\LPM}{\ensuremath{\operatorname{LPM}}}
+% \newcommand{\range}{\ensuremath{\operatorname{range}}}
+% \newcommand{\sgn}{\ensuremath{\operatorname{sgn}}}
+% \newcommand{\aslim}{\ensuremath{\operatorname*{aslim}}}
+% \newcommand{\limean}{\ensuremath{\operatorname*{l.i.m.}}}
+% \newcommand{\mslim}{\ensuremath{\operatorname*{mslim}}}
+% \newcommand{\plim}{\ensuremath{\operatorname*{plim}}}
+% \newcommand{\dlim}{\ensuremath{\operatorname*{dlim}}}
+% \newcommand{\xto}[1]{\ensuremath{\mathrel{\xrightarrow{#1}}}}
+% The classical OFT model
+%\newcommand{\oft}[1]{\ensuremath{\tilde{#1}}}
+% \newcommand{\oft}[1]{\ensuremath{\widetilde{#1}}}
+
+% A special box to catch my eye to highlight spots where work still
+% needs to be done
+% \newcommand{\todo}[1]{\vspace{0.25in}%
+                      % \noindent%
+                      % \fbox{\parbox{\columnwidth}%
+                                   % {\noindent\textbf{\fbox{TODO:} #1}}}%
+                      % \vspace{0.25in}}

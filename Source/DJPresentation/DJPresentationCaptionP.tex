@@ -1,0 +1,101 @@
+% ---------------------------------------------------------------------|
+% Commenly-used caption relavent preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+%
+% 20090608	Initial version, package <graphics>
+%
+% 2010-05-09 Refine this file using my Macbook Pro, add more comments
+%
+%
+
+
+% *********************************************************************
+% *********************************************************************
+% Section caption
+\usepackage{titlesec}							% Titles of Chapter, section, subsection ...
+\usepackage{titletoc}							% Titles of Chapter, section, subsection ...
+
+%\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+%                    \thispagestyle{fancy}%
+%                    \global\@topnum\z@
+%                    \@afterindentfalse
+%                    \secdef\@chapter\@schapter}
+
+%\titleformat{\chapter}[hang]{}{}{}{}{}
+%\titleformat{\chapter}[hang]{\normalfont}{\chaptertitlename}{.5em}{}{}
+\titleformat{\chapter}[hang]{\raggedright \LARGE \bfseries }{\thechapter.}
+            {1em}{}{}
+\titlespacing*{\chapter}{0pt}{-25pt}{*2.5}
+            
+%\titleformat{\section}[hang]{\raggedright \Large \bfseries }{\thechapter.}
+%            {.5em}{}{}
+            
+%\titleformat{\subsection}[hang]{\raggedright \large \bfseries }{\thechapter.}
+%            {.5em}{}{}
+
+
+
+% *********************************************************************
+% *********************************************************************
+% Figure and Table caption
+% Define DJ caption formatting.
+% Default formatting of captions
+% \usepackage[font={footnotesize}, labelfont={bf}]{caption}
+\usepackage[font={small}, labelfont={bf}]{caption}
+
+% Style of figure caption
+\captionsetup[figure]{labelsep=period}
+% Style of figure table
+\captionsetup[table]{textfont={sc}}
+
+
+% *********************************************************************
+% *********************************************************************
+% Page header
+\usepackage{fancyhdr}							% Page header
+
+% Define the right-odd (or left-even) header
+\newcommand{\djpagehead}{\bfseries \slshape 
+    $\bf{6^{th}}$ Progress Report on PhD Programme}
+
+% *** Fancy Style ***
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\thechapter. #1 }}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+
+% Header
+%\fancyhead[RO,LE]{\bfseries\rightmark}
+\fancyhead[RO,LE]{\djpagehead}
+% Define the left-odd (or right-even) header
+\fancyhead[LO,RE]{\bfseries Dazhi Jiang}
+%\fancyhead[LO,RE]{\bfseries\leftmark}
+
+% Footer
+\fancyfoot[C]{\thepage}
+
+% Header/Footer rule
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt}
+
+% *** Plain Style ***
+\fancypagestyle{plain}{
+%  \fancyhead{}
+  \fancyhf{}
+%  \fancyhead[RO,LE]{\bfseries\rightmark}
+  \fancyhead[RO,LE]{\djpagehead}
+  \fancyhead[LO,RE]{\bfseries Dazhi Jiang}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0.6pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \addtolength{\headheight}{0.5pt}
+
+%  \renewcommand{\headrulewidth}{0.5pt}
+}

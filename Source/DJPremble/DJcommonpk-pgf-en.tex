@@ -1,0 +1,244 @@
+% ---------------------------------------------------------------------|
+% Commenly-used preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2008 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+% 20090215 Change pgfmanual-en-macros to DJpgfmanual-en-macros
+%
+
+
+% ---------------------------------------------------------------------|
+% Put package here
+
+\usepackage{verbatim}	% Environment \begin{comment} \end{comment}
+
+\begin{comment}
+
+% \usepackage{graphics}
+% \usepackage{ifpdf}
+
+
+\ifpdf
+%-->
+%--> Google.com search "hyperref options"
+%-->
+%--> % tp://www.ai.mit.edu/lab/sysadmin/latex/documentation/latex/hyperref/manual.pdf
+%--> http://www.chemie.unibas.ch/~vogtp/LaTeX2PDFLaTeX.pdf
+%--> http://www.uni-giessen.de/partosch/eurotex99/ erdiek/print/sli4a4col.pdf
+%--> http://me.in-berlin.de/~miwie/tex-refs/html/latex-packages.html
+%-->
+	\usepackage[pdftex, plainpages = false, pdfpagelabels,
+				pdfpagelayout = useoutlines,
+				bookmarks,
+				bookmarksopen = true,
+				bookmarksnumbered = true,
+				breaklinks = true,
+				linktocpage,
+				colorlinks = true,
+				linkcolor = blue,
+				urlcolor  = blue,
+				citecolor = blue,
+				anchorcolor = green,
+				hyperindex = true,
+				hyperfigures
+				]{hyperref}
+	\DeclareGraphicsExtensions{.png, .jpg, .pdf}
+	\usepackage[pdftex]{graphicx}
+	\pdfcompresslevel=9
+\else
+	\usepackage[dvips,
+				bookmarks,
+				bookmarksopen = true,
+				bookmarksnumbered = true,
+				breaklinks = true,
+				linktocpage,
+				colorlinks = true,
+				linkcolor = blue,%black
+				urlcolor  = blue,%black
+				citecolor = blue,%black
+				anchorcolor = green, %black
+				hyperindex = true,
+				hyperfigures
+				]{hyperref}
+	\DeclareGraphicsExtensions{.eps, .ps}
+	\usepackage{epsfig}
+	\usepackage{graphicx}
+\fi
+
+\end{comment}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatother
+
+% Tikz/PGF package configuration part
+%\usepackage{memorandum}
+%\to{Dazhi Jiang}
+
+\usepackage{pstricks}
+\usepackage{pst-node}
+\usepackage{pst-tree}
+\usepackage{pst-plot}
+\usepackage{pst-text}
+\usepackage{pstricks-add}
+
+%\usepackage{tikz}
+%\usetikzlibrary{trees,snakes}
+%\usepackage{verbatim}
+
+\usepackage[version=latest]{pgf}
+
+\usepackage{xkeyval,calc,listings,tikz}
+
+\usetikzlibrary{%
+  arrows,%
+  calc,%
+  fit,%
+  patterns,%
+  plotmarks,%
+  shapes.geometric,%
+  shapes.misc,%
+  shapes.symbols,%
+  shapes.arrows,%
+  shapes.callouts,%
+  shapes.multipart,%
+  shapes.gates.logic.US,%
+  shapes.gates.logic.IEC,%
+  er,%
+  automata,%
+  backgrounds,%
+  chains,%
+  topaths,%
+  trees,%
+  petri,%
+  mindmap,%
+  matrix,%
+  calendar,%
+  folding,%
+  fadings,%
+  through,%
+  positioning,%
+  scopes,%
+  decorations.fractals,%
+  decorations.shapes,%
+  decorations.text,%
+  decorations.pathmorphing,%
+  decorations.pathreplacing,%
+  decorations.footprints,%
+  decorations.markings,%
+  shadows}
+
+
+\input{DJpgfmanual-en-macros}
+
+
+% ---------------------------------------------------------------------|
+% ---------------------------------------------------------------------|
+
+
+
+%%
+% The followings come from the LaTeX template ---- tpavlic_masters_thesis
+% 
+% Upper-case    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+% Lower-case    a b c d e f g h i j k l m n o p q r s t u v w x y z
+% Digits        0 1 2 3 4 5 6 7 8 9
+% Exclamation   !           Double quote "          Hash (number) #
+% Dollar        $           Percent      %          Ampersand     &
+% Acute accent  '           Left paren   (          Right paren   )
+% Asterisk      *           Plus         +          Comma         ,
+% Minus         -           Point        .          Solidus       /
+% Colon         :           Semicolon    ;          Less than     <
+% Equals        =           Greater than >          Question mark ?
+% At            @           Left bracket [          Backslash     \
+% Right bracket ]           Circumflex   ^          Underscore    _
+% Grave accent  `           Left brace   {          Vertical bar  |
+% Right brace   }           Tilde        ~
+
+% ---------------------------------------------------------------------|
+% --------------------------- 72 characters ---------------------------|
+% ---------------------------------------------------------------------|
+
+% ---------------------------------------------------------------------|
+% Special Symbols/Macros
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2007 by Theodore P. Pavlic
+%
+
+% Additional symbols, phrases, etc.
+% \newcommand{\ie}{i.e.{}}
+% \newcommand{\eg}{e.g.{}}
+% \newcommand{\exante}{ex ante}
+% \newcommand{\expost}{ex post}
+% \newcommand{\apriori}{a priori}
+% \newcommand{\adinfinitum}{ad infinitum}
+% \newcommand{\aka}{a.k.a.{}}
+
+% Our math conventions
+%\newcommand{\seq}[1]{\ensuremath{\mathcal{#1}}}
+% \newcommand{\setset}[1]{\ensuremath{\mathscr{#1}}}
+% \newcommand{\set}[1]{\ensuremath{\mathcal{#1}}}
+% \newcommand{\rel}[1]{\ensuremath{\mathrel{#1}}}
+% \newcommand{\bin}[1]{\ensuremath{\mathbin{#1}}}
+%\renewcommand{\v}[1]{\ensuremath{#1}}
+%\renewcommand{\v}[1]{{\ensuremath{\underline{#1}}}}
+% \renewcommand{\v}[1]{{\ensuremath{#1}}}
+% \newcommand{\symdiff}{\ensuremath{\mathbin{\Delta}}}
+% \newcommand{\setdiff}{\ensuremath{-}}
+%\newcommand{\setdiff}{\ensuremath{\setminus}}
+% \newcommand{\comp}{\ensuremath{\circ}}
+% \newcommand{\mat}[1]{\ensuremath{#1}}
+% \newcommand{\I}{\ensuremath{\mathbb{I}}}
+%\newcommand{\mat}[1]{\ensuremath{\mathbf{#1}}}
+% \newcommand{\T}{\ensuremath{\top}}
+% \newcommand{\interior}{\ensuremath{\operatorname{int}}}
+% \newcommand{\biject}{\ensuremath{\mathrel{\leftrightarrow}}}
+% \newcommand{\Pow}{\ensuremath{\mathscr{P}}}
+% \newcommand{\Borel}{\ensuremath{\mathfrak{B}}}
+% \renewcommand{\th}{\ensuremath{^\text{th}}}
+% \newcommand{\nhd}{\ensuremath{\setset{N}}}
+% \newcommand{\R}{\ensuremath{\mathbb{R}}}
+% \newcommand{\extR}{\ensuremath{\mathbb{\overline{R}}}}
+% \newcommand{\N}{\ensuremath{\mathbb{N}}}
+% \newcommand{\W}{\ensuremath{\mathbb{W}}}
+% \newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+% \newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+% \newcommand{\bang}{!}
+% \newcommand{\pipe}{|}
+% \newcommand{\ppipe}{\|}
+% \newcommand{\total}{\ensuremath{\operatorname{d}}}
+% \newcommand{\E}{\ensuremath{\operatorname{E}}}
+% \newcommand{\iid}{i.i.d.} % Should be able to be a label
+% \newcommand{\var}{\ensuremath{\operatorname{var}}}
+% \newcommand{\cov}{\ensuremath{\operatorname{cov}}}
+% \newcommand{\std}{\ensuremath{\operatorname{std}}}
+% \newcommand{\LPV}{\ensuremath{\operatorname{LPV}}}
+% \newcommand{\LPM}{\ensuremath{\operatorname{LPM}}}
+% \newcommand{\range}{\ensuremath{\operatorname{range}}}
+% \newcommand{\sgn}{\ensuremath{\operatorname{sgn}}}
+% \newcommand{\aslim}{\ensuremath{\operatorname*{aslim}}}
+% \newcommand{\limean}{\ensuremath{\operatorname*{l.i.m.}}}
+% \newcommand{\mslim}{\ensuremath{\operatorname*{mslim}}}
+% \newcommand{\plim}{\ensuremath{\operatorname*{plim}}}
+% \newcommand{\dlim}{\ensuremath{\operatorname*{dlim}}}
+% \newcommand{\xto}[1]{\ensuremath{\mathrel{\xrightarrow{#1}}}}
+% The classical OFT model
+%\newcommand{\oft}[1]{\ensuremath{\tilde{#1}}}
+% \newcommand{\oft}[1]{\ensuremath{\widetilde{#1}}}
+
+% A special box to catch my eye to highlight spots where work still
+% needs to be done
+% \newcommand{\todo}[1]{\vspace{0.25in}%
+                      % \noindent%
+                      % \fbox{\parbox{\columnwidth}%
+                                   % {\noindent\textbf{\fbox{TODO:} #1}}}%
+                      % \vspace{0.25in}}

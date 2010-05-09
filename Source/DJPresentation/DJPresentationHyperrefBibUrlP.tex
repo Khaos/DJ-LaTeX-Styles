@@ -1,0 +1,272 @@
+% ---------------------------------------------------------------------|
+% Commenly-used hyperref, natbib, etc., relavent preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+%
+% 20090608	Initial version, package <>
+%
+% 2010-05-09 Refine this file using my Macbook Pro, add more comments
+%
+%
+
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% Load this preamble after all the others
+% Do not forget to load DJThesisIFP before this preamble
+
+% *********************************************************************
+% *********************************************************************
+% Part I:		Common packages
+
+\usepackage[numbers, sort&compress]{natbib}	% Bibliography
+
+%Bibliography
+%uncomment next line to change bibliography name to references for Book document class
+\renewcommand{\bibname}{References}
+% note that this doesn't do much if you later define another bibliography style
+
+
+
+% *********************************************************************
+% The follows are a happy combination of varioref, paralist and hyperref
+% Now define cross-ref formatting, use varioref and paralist
+% \usepackage{varioref}
+% \labelformat{equation}{\textup{(#1)}}
+\usepackage{paralist}
+%\labelformat{item}{\textup{(#1)}}
+
+% Now define cross-ref formatting, use varioref and paralist
+\usepackage{varioref}
+%\labelformat{part}{\textup{(#1)}}
+%\labelformat{chapter}{\textup{(#1)}}
+%\labelformat{section}{\textup{(#1)}}
+%\labelformat{subsection}{\textup{(#1)}}
+%\labelformat{subsubsection}{\textup{(#1)}}
+%\labelformat{paragraph}{\textup{(#1)}}
+%\labelformat{subparagraph}{\textup{(#1)}}
+
+%\labelformat{theorem}{\textup{(#1)}}
+%\labelformat{thm}{\textup{(#1)}}
+%\labelformat{Hfootnote}{\textup{(#1)}}
+%\labelformat{mpfootnote}{\textup{(#1)}}
+%\labelformat{appendix}{\textup{(#1)}}
+%???\labelformat{AMS}{\textup{(#1)}}
+
+\labelformat{equation}{\textup{(#1)}}
+%\labelformat{figure}{\textup{(#1)}}
+%\labelformat{table}{\textup{(#1)}}
+
+%\labelformat{enumi}{\textup{(#1)}}
+\labelformat{enumii}{\textup{{\theenumi}.#1}}
+\labelformat{enumiii}{\textup{{\theenumi}.{\theenumii}.#1}}
+\labelformat{enumiv}{\textup{{\theenumi}.{\theenumii}.{\theenumiii}.#1}}
+
+
+% Comment the following lines due to <beamer> load hyperref automatically
+% Or you can set hyperref option by command \hypersetup
+%% Now add hyperref package
+%\ifpdf
+%%-->
+%%--> Google.com search "hyperref options"
+%%-->
+%%--> http://www.ai.mit.edu/lab/sysadmin/latex/documentation/latex/hyperref/manual.pdf
+%%--> http://www.chemie.unibas.ch/~vogtp/LaTeX2PDFLaTeX.pdf
+%%--> http://www.uni-giessen.de/partosch/eurotex99/ oberdiek/print/sli4a4col.pdf
+%%--> http://me.in-berlin.de/~miwie/tex-refs/html/latex-packages.html
+%%-->
+%    \usepackage[ pdftex, plainpages = false, pdfpagelabels,
+%                 pdfpagelayout = useoutlines,
+%                 bookmarks,
+%                 bookmarksopen = true,
+%                 bookmarksnumbered = true,
+%                 breaklinks = true,
+%                 linktocpage,
+%                 colorlinks = true,
+%                 linkcolor = blue,
+%                 urlcolor  = blue,
+%                 citecolor = blue,
+%                 anchorcolor = green,
+%                 hyperindex = true,
+%                 hyperfigures
+%                 ]{hyperref}
+%
+%    \DeclareGraphicsExtensions{.png, .jpg, .pdf}
+%	
+%	% Do not give the option for graphicx, otherwise you will get an error
+%	% Conflict to the PGF
+%    % \usepackage[pdftex]{graphicx}
+%	% Remove the option
+%    % \usepackage{graphicx}
+%    \pdfcompresslevel=9
+%\else
+%    \usepackage[ dvips,
+%                 bookmarks,
+%                 bookmarksopen = true,
+%                 bookmarksnumbered = true,
+%                 breaklinks = true,
+%                 linktocpage,
+%                 colorlinks = true,
+%                 linkcolor = blue,%black
+%                 urlcolor  = blue,%black
+%                 citecolor = blue,%black
+%                 anchorcolor = green, %black
+%                 hyperindex = true,
+%                 hyperfigures
+%                 ]{hyperref}
+%
+%    \DeclareGraphicsExtensions{.eps, .ps}
+%    \usepackage{epsfig}
+%    % \usepackage{graphicx}
+%\fi
+
+%% We need to redefine \autoref. We should use
+%% abbreviations inside the sentence and full names
+%% at the beginning of sentences. Additionally,
+%% need to handle the plural cases.
+
+% \Autoref is for the beginning of the sentence
+\let\orgautoref\autoref
+\providecommand{\Autoref}
+        {\def\equationautorefname{Equation}%
+         \def\figureautorefname{Figure}%
+         \def\subfigureautorefname{Figure}%
+         \def\chapterautorefname{Chapter}%
+         \def\sectionautorefname{Section}%
+         \def\subsectionautorefname{Section}%
+         \def\subsubsectionautorefname{Section}%
+         \def\Itemautorefname{Item}%
+         \def\tableautorefname{Table}%
+%         \def\algorithmrefname{Algorithm}%
+         \orgautoref}
+
+% \Autorefs is plural for the beginning of the sentence
+\providecommand{\Autorefs}
+        {\def\equationautorefname{Equations}%
+         \def\figureautorefname{Figures}%
+         \def\subfigureautorefname{Figures}%
+         \def\chapterautorefname{Chapters}%
+         \def\sectionautorefname{Sections}%
+         \def\subsectionautorefname{Sections}%
+         \def\subsubsectionautorefname{Sections}%
+         \def\Itemautorefname{Items}%
+         \def\tableautorefname{Tables}%
+         \orgautoref}
+
+% \autoref is used inside a sentence
+% (this is a renew of the standard)
+% \renewcommand{\autoref}
+%         {\def\equationautorefname{Eq.}%
+%          \def\figureautorefname{Fig.}%
+%          \def\subfigureautorefname{Fig.}%
+%          \def\chapterautorefname{Chap.}%
+%          \def\sectionautorefname{Sect.}%
+%          \def\subsectionautorefname{Sect.}%
+%          \def\subsubsectionautorefname{Sect.}%
+%          \def\Itemautorefname{item}%
+%          \def\tableautorefname{Table}%
+%          \orgautoref}
+
+% % \autorefs is plural for inside a sentence
+% \providecommand{\autorefs}
+%         {\def\equationautorefname{Eqs.}%
+%          \def\figureautorefname{Figs.}%
+%          \def\subfigureautorefname{Figs.}%
+%          \def\chapterautorefname{Chaps.}%
+%          \def\sectionautorefname{Sects.}%
+%          \def\subsectionautorefname{Sects.}%
+%          \def\subsubsectionautorefname{Sects.}%
+%          \def\Itemautorefname{items}%
+%          \def\tableautorefname{Tables}%
+%          \orgautoref}
+
+% \autorefs is plural for inside a sentence
+\providecommand{\autorefs}
+        {\def\equationautorefname{Equations}%
+         \def\figureautorefname{Figures}%
+         \def\subfigureautorefname{Figures}%
+         \def\chapterautorefname{chapters}%
+         \def\sectionautorefname{sections}%
+         \def\subsectionautorefname{sections}%
+         \def\subsubsectionautorefname{sections}%
+         \def\Itemautorefname{items}%
+         \def\tableautorefname{Tables}%
+         \orgautoref}
+
+% Don't forget \autopageref
+% \Autopageref is for the beginning of the sentence
+\let\orgautopageref\autopageref
+\providecommand{\Autopageref}
+        {\def\pageautorefname{Page}%
+         \orgautopageref}
+
+% \Autopagerefs is plural for the beginning of the sentence
+\providecommand{\Autopagerefs}
+        {\def\pageautorefname{Pages}%
+         \orgautopageref}
+
+
+
+% \ifpdf
+%-->
+%--> Google.com search "hyperref options"
+%-->
+%--> http://www.ai.mit.edu/lab/sysadmin/latex/documentation/latex/hyperref/manual.pdf
+%--> http://www.chemie.unibas.ch/~vogtp/LaTeX2PDFLaTeX.pdf
+%--> http://www.uni-giessen.de/partosch/eurotex99/ oberdiek/print/sli4a4col.pdf
+%--> http://me.in-berlin.de/~miwie/tex-refs/html/latex-packages.html
+%-->
+    % \usepackage[ pdftex, plainpages = false, pdfpagelabels,
+                 % pdfpagelayout = useoutlines,
+                 % bookmarks,
+                 % bookmarksopen = true,
+                 % bookmarksnumbered = true,
+                 % breaklinks = true,
+                 % linktocpage,
+                 % colorlinks = true,
+                 % linkcolor = blue,
+                 % urlcolor  = blue,
+                 % citecolor = blue,
+                 % anchorcolor = green,
+                 % hyperindex = true,
+                 % hyperfigures
+                 % ]{hyperref}
+
+    % \DeclareGraphicsExtensions{.png, .jpg, .pdf}
+    % \usepackage[pdftex]{graphicx}
+    % \pdfcompresslevel=9
+    % \graphicspath{{ThesisFigs/PNG/}{ThesisFigs/PDF/}{ThesisFigs/}}
+% \else
+    % \usepackage[ dvips,
+                 % bookmarks,
+                 % bookmarksopen = true,
+                 % bookmarksnumbered = true,
+                 % breaklinks = true,
+                 % linktocpage,
+                 % colorlinks = true,
+                 % linkcolor = blue,%black
+                 % urlcolor  = blue,%black
+                 % citecolor = blue,%black
+                 % anchorcolor = green, %black
+                 % hyperindex = true,
+                 % hyperfigures
+                 % ]{hyperref}
+
+    % \DeclareGraphicsExtensions{.eps, .ps}
+    % \usepackage{epsfig}
+    % \usepackage{graphicx}
+    % \graphicspath{{ThesisFigs/EPS/}{ThesisFigs/}}
+% \fi
+
+%
+
+% Load <hypernat> after <hyperref> and <natbib>
+% Note that <hypernat> has been dropped from CTAN. Its function has been integrated into <hyperref>/<natbib>
+% \usepackage{hypernat}
+
+% Load <breakurl> after <hyperref>
+\usepackage[hyphenbreaks]{breakurl}
+

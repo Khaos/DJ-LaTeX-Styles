@@ -7,6 +7,7 @@
 % ---------------------------------------------------------------------|
 
 %
+%
 % 20090322	Initial version
 %
 %
@@ -20,11 +21,7 @@
 %
 % 20090605	Rewirte the file, now you have to load the required packages yourself.
 %
-% 20090609	Do not reload the package <mathrsfs>, especially in beamer document, other you got a error like,
-%			! Package xkeyval Error: `section' undefined in families `beamertoc'.
-%
-%
-% 2010-05-07	Refine this file using my Macbook Pro, add more comments and packages
+% 2010-05-09 Refine this file using my Macbook Pro, add more comments
 %
 %
 
@@ -79,7 +76,7 @@
 
 
 % !!!!!!!!!!
-% Note that if you use LyX, please turn off the LyX options <use esint package automatically>
+% Note that if you use LyX, please turn off the options <use esint package automatically>
 % in [Document]->[Settings]->[Math Options]
 
 \savesymbol{iint}
@@ -94,9 +91,10 @@
 
 \usepackage{amssymb}		% For command \mathbb
 
-\usepackage{amsfonts}		% For command \mathbb
+% \usepackage{amsfonts}		% For command \mathbb
 
-\usepackage{xargs}			% For command with optional arguments
+\usepackage{xargs}%[2008/03/08]
+                			% For command with optional arguments
 
 \usepackage{mathrsfs}		% For command \mathscr
 
@@ -104,11 +102,24 @@
 \usepackage{eucal}			% Euler math font
 
 \usepackage{commath}		% \begin{bmatrix} ... \end{bmatrix}, etc.
-\usepackage{amsthm}			% \theoremstyle
+
+% Load automatically by beamer
+% \usepackage{amsthm}
+
+% *********************************************************************
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% Plz place the following line before you use package BM
+% \renewcommand{\hmmax}{0}
+\newcommand{\hmmax}{0}
+\newcommand{\bmmax}{0}
+
 \usepackage{bm}				% \bm
-\usepackage{esvect}
+% \renewcommand{\hmmax}{0}
+% \renewcommand{\bmmax}{1}
+
+%\usepackage{esvect}
 \usepackage{vector}
 \usepackage{tensor}
 %\usepackage{delarray}		% Delimiters surrounding an array
 \usepackage{pmat}
-% \usepackage{array}
+\usepackage{array}

@@ -1,0 +1,35 @@
+% ---------------------------------------------------------------------|
+% TikZ externalizing graphics preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+% 20090207 Create this file.
+%
+
+% References: 
+% 	1. http://kogs-www.informatik.uni-hamburg.de/~meine/tikz/process/
+%		2. pgfmanual
+
+\newif\iffinal % introduce a switch for draft vs. final document
+%\finaltrue % use this to compile the final document
+
+% [more preamble that in my case also uses \iffinal for other stuff]
+
+% \usepackage{tikz}
+% \pgfrealjobname{thesis}
+
+\iffinal
+	\newcommand{\inputTikZ}[1]{%
+		\input{#1.tikz}%
+	}
+\else
+	\newcommand{\inputTikZ}[1]{%
+		\beginpgfgraphicnamed{#1-ex}%
+			\input{#1.tikz}%
+		\endpgfgraphicnamed%
+	}
+\fi

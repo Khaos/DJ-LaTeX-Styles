@@ -1,0 +1,60 @@
+% ---------------------------------------------------------------------|
+% Commenly-used nomenclature relavent preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+% 20090608	Initial version, package <>
+%
+% 20090815  Change command \makeglossary to \makenomenclature
+% 
+% 20080826	Add intoc option to package loading
+%
+%
+
+
+
+% *********************************************************************
+% *********************************************************************
+% Nomenclature
+
+% Default, numenclature is not in your table of content
+% \usepackage{nomencl}
+
+% Comment this line, if you don't want to list nomenclature in your table of content
+\usepackage[intoc]{nomencl}
+
+%
+% \makeglossary
+\makenomenclature
+\renewcommand\nomgroup[1]{%
+  \ifthenelse{\equal{#1}{A}}{%
+   \item[\textbf{Roman Symbols}] }{%             A - Roman
+    \ifthenelse{\equal{#1}{G}}{%
+     \item[\textbf{Greek Symbols}]}{%             G - Greek
+      \ifthenelse{\equal{#1}{R}}{%
+        \item[\textbf{Superscripts}]}{%              R - Superscripts
+          \ifthenelse{\equal{#1}{S}}{%
+           \item[\textbf{Subscripts}]}{{%             S - Subscripts
+        \ifthenelse{\equal{#1}{X}}{%
+         \item[\textbf{Other Symbols}]}{{%    X - Other Symbols
+        \ifthenelse{\equal{#1}{Z}}{%
+         \item[\textbf{Acronyms}]}%              Z - Acronyms
+                        {{}}}}}}}}}} 
+
+% To use glossary in a book style, just put the following lines in your frontmatter of your main document
+% \cleardoublepage% or \clearpage
+% \markboth{\nomname}{\nomname}% maybe with \MakeUppercase
+% \printnomenclature
+
+% If use glossary in an article style, just simply put the command
+% \printnomenclature
+
+% You can also specify the lable width of nomenclature by giving the option to \printnomenclature, e.g.,
+% \printnomenclature[3cm]
+% This option actually redefines the value of \nomlabelwidth macro.
+
+% If need ny other help, please check the document of package nomencl.

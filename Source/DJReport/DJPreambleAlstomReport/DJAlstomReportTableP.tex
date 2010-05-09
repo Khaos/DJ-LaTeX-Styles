@@ -1,0 +1,35 @@
+% ---------------------------------------------------------------------|
+% Commenly-used table relavent preamble
+% Put this file in the preamble of your main document rather than the class file
+% ---------------------------------------------------------------------|
+%
+% (c) Copyright 2009 by Dazhi Jiang
+% ---------------------------------------------------------------------|
+
+%
+% 20090608	Initial version, package <>
+%
+%
+
+
+% *********************************************************************
+% *********************************************************************
+% Part I:		Common table packages
+\usepackage{longtable}			% Long table
+\usepackage{tabulary}			% Auto adjust column width
+\usepackage{booktabs}			% Define the hrule width for tabel
+\usepackage{multirow}			% Multirow
+
+
+\newcolumntype{Y}{>{\sf}L}
+
+% Compatibility with LyX
+\providecommand{\tabularnewline}{\\}
+
+% !!! Don't use arydshln package, if you want to use tabulary. Plz avoid this!!!
+%\usepackage{array, arydshln}
+
+
+%\usepackage{tabulary}
+%\setlength\tymin{20pt}
+%\setlength\tymax{70pt}
