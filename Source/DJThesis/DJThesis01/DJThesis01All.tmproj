@@ -15,6 +15,8 @@
 		<dict>
 			<key>filename</key>
 			<string>DJThesisCaptionP.tex</string>
+			<key>lastUsed</key>
+			<date>2010-07-13T22:01:03Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -23,6 +25,8 @@
 		<dict>
 			<key>filename</key>
 			<string>DJThesisHyperrefBibUrlP.tex</string>
+			<key>lastUsed</key>
+			<date>2010-07-13T22:02:11Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -35,27 +39,37 @@
 		<dict>
 			<key>filename</key>
 			<string>DJThesisNomenclatureP.tex</string>
+			<key>lastUsed</key>
+			<date>2010-07-13T22:01:46Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>DJThesisNomenclConfig.tex</string>
+			<key>lastUsed</key>
+			<date>2010-07-13T22:02:20Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>DJThesisOtherP0.tex</string>
+			<key>lastUsed</key>
+			<date>2010-07-13T22:01:29Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>DJThesisTableP.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-14T10:33:06Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>200</integer>
+	<integer>211</integer>
 	<key>metaData</key>
 	<dict/>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{48, 54}, {735, 724}}</string>
+	<string>{{1, 54}, {735, 724}}</string>
 </dict>
 </plist>

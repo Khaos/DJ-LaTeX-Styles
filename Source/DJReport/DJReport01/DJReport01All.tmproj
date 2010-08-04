@@ -11,6 +11,8 @@
 		<dict>
 			<key>filename</key>
 			<string>DJReportCaptionP.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-17T13:23:14Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -27,6 +29,8 @@
 		<dict>
 			<key>filename</key>
 			<string>DJReportLoadAll.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-17T13:23:19Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -39,6 +43,10 @@
 		<dict>
 			<key>filename</key>
 			<string>DJReportOtherP0.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-17T13:23:32Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -52,6 +60,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{61, 54}, {735, 724}}</string>
+	<string>{{605, 54}, {735, 724}}</string>
 </dict>
 </plist>
