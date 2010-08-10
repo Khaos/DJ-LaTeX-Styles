@@ -1,3 +1,6 @@
 tmp
 recycle
 .DS_Store
+Test/DJMemo/*.*
+!Test/DJMemo/*.lyx
+!Test/DJMemo/*.tex

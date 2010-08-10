@@ -1,0 +1,445 @@
+#LyX 1.5.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass DJcsmemo
+\begin_preamble
+%\usepackage{memorandum}
+%\to{Dazhi Jiang}
+\end_preamble
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout AddressName
+Dazhi Jiang
+\end_layout
+
+\begin_layout AddressTitle
+Rearch Student
+\end_layout
+
+\begin_layout AddressEmail
+d.jiang@sheffield.ac.uk
+\end_layout
+
+\begin_layout AddressExt
+5632
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout MemoTo
+Dazhi Jiang
+\end_layout
+
+\begin_layout MemoFrom
+Dazhi Jiang
+\end_layout
+
+\begin_layout MemoDate
+June 7, 2008
+\end_layout
+
+\begin_layout MemoSubject
+Define the LyX layout file 
+\begin_inset Quotes eld
+\end_inset
+
+DJcsmemo.layout
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout MemoKeywords
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+LyX
+\end_layout
+
+\end_inset
+
+ layout
+\end_layout
+
+\begin_layout --makenewmemo--
+
+\end_layout
+
+\begin_layout Section
+Styles in the layout file
+\end_layout
+
+\begin_layout Standard
+Style --Separator-- is defined in file 
+\begin_inset Quotes eld
+\end_inset
+
+stdlayout.inc
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Add the following line to the Style of MemoTo and so on
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Margin Dynamic
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Styles defined in file lyxmacros.inc:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Address
+\end_layout
+
+\begin_layout Itemize
+Right_Address
+\end_layout
+
+\begin_layout Itemize
+LyX-Code
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Styles defined in file stdstruct.inc:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Abstract
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status inlined
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the sloppypar environments are employed here to switch off hyphenation
+ within the itemization.
+\end_layout
+
+\begin_layout Section
+More details about how to construct the layout file
+\end_layout
+
+\begin_layout Standard
+Please see the source document DJcsmemo.layout.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout MemoTo
+Dazhi Jiang
+\end_layout
+
+\begin_layout MemoFrom
+Dazhi Jiang
+\end_layout
+
+\begin_layout MemoDate
+June 7, 2008
+\end_layout
+
+\begin_layout MemoSubject
+Define the LyX layout file 
+\begin_inset Quotes eld
+\end_inset
+
+DJcsmemo.layout
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout MemoKeywords
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+LyX
+\end_layout
+
+\end_inset
+
+ layout
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+MemoSpecial{BCC}{Dazhi Jiang}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --makenewmemo--
+
+\end_layout
+
+\begin_layout Section
+Two memorandums in one document
+\end_layout
+
+\begin_layout Standard
+This is a test that two memorandums are in the same document.
+\end_layout
+
+\begin_layout Standard
+Note that in this memorandum, we define a special command 
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+verb|
+\backslash
+MemoSpecial{***}{****}|
+\end_layout
+
+\end_inset
+
+ by inserting LaTeX code directly.
+ This command gives an extra line in the memorandum information.
+ I did not define a new style for this inner command of DJcsmemo.cls, because
+ LyX do not support to construct the layout for the command which has more
+ than one argument.
+\end_layout
+
+\begin_layout Section
+Update the class fiel DJcsmemo.cls
+\end_layout
+
+\begin_layout Standard
+I corrected an error in DJcsmemo.cls, where a colon was missing after the
+ 
+\backslash
+@memospecial@header in the definition of 
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Section
+DJcsmemo has been done! :)
+\end_layout
+
+\begin_layout Standard
+So far, I wrote a memorandum class package based on the csmemo class.
+ This package includes two groups of files:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A LaTeX class file DJcsmemo.cls and two Sheffield University logo figures,
+ sheffield.pdf and sheffield.eps.
+ These file are located in the directory: ...
+\backslash
+MiKTeX
+\backslash
+2.7
+\backslash
+tex
+\backslash
+DJ
+\backslash
+DJMemos.
+\end_layout
+
+\begin_layout Itemize
+A LyX layout file DJcsmemo.layout and another extra common-style definition
+ file DJcsmemo.inc.
+ This two files are located in the directory: ...
+\backslash
+LyX15
+\backslash
+Resources
+\backslash
+layouts.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some examples: this document
+\end_layout
+
+\end_body
+\end_document

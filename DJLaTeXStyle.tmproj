@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>iDocs/iProgramming/iTeX/iStyle/dev/.gitignore</string>
+	<string>.gitignore</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -62,21 +62,31 @@
 			<key>filename</key>
 			<string>.gitignore</string>
 			<key>lastUsed</key>
-			<date>2010-08-04T13:32:38Z</date>
+			<date>2010-08-10T10:13:45Z</date>
+		</dict>
+		<dict>
+			<key>expanded</key>
+			<true/>
+			<key>name</key>
+			<string>Test</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>Test</string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
-		<key>iDocs/iProgramming/iTeX/iStyle/dev/.gitignore</key>
+		<key>.gitignore</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>6</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -86,11 +96,11 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>iDocs/iProgramming/iTeX/iStyle/dev/.gitignore</string>
+		<string>.gitignore</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{34, 52}, {692, 726}}</string>
+	<string>{{7, 52}, {692, 726}}</string>
 </dict>
 </plist>
