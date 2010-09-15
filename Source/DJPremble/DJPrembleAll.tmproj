@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>DJTikZExtraFig.tex</string>
+	<string>DJcommonpk.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -40,7 +40,9 @@
 			<key>filename</key>
 			<string>DJcommonpk.tex</string>
 			<key>lastUsed</key>
-			<date>2010-05-09T13:12:17Z</date>
+			<date>2010-09-06T17:02:48Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -54,9 +56,7 @@
 			<key>filename</key>
 			<string>DJTikZExtraFig.tex</string>
 			<key>lastUsed</key>
-			<date>2010-05-09T13:12:17Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2010-09-06T16:52:41Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -101,7 +101,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>49</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>

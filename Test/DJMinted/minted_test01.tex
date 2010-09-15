@@ -1,0 +1,42 @@
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+
+%%% My Packages
+\usepackage{DJminted}
+\usemintedstyle{trac}
+% 
+% \makeatletter
+% \newcommand{\mintedtabsizedirty}{4}
+% \makeatother
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Brief Article}
+\author{The Author}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed
+
+\begin{document}
+\maketitle
+
+\section{First section}
+
+% \PY{n+nf}{Verbatim}
+
+\begin{minted}[linenos,VerbOutTabSize=4]{matlab}
+% \begin{minted}[linenos,tabsize=4]{matlab}
+for i = 1:10
+	x(i) = a(i);
+end
+\end{minted}
+
+\VerbatimInput[tabsize=4]{minted_test01vb.pyg}
+
+
+\end{document}

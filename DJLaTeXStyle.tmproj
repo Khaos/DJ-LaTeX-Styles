@@ -3,10 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>.gitignore</string>
+	<string>CTeX@Mac/ctex-xecjk-winfonts.def</string>
 	<key>documents</key>
 	<array>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>CTeX@Mac</string>
 			<key>regexFolderFilter</key>
@@ -43,6 +45,8 @@
 			<string>Release</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>Source</string>
 			<key>regexFolderFilter</key>
@@ -62,11 +66,9 @@
 			<key>filename</key>
 			<string>.gitignore</string>
 			<key>lastUsed</key>
-			<date>2010-08-10T10:13:45Z</date>
+			<date>2010-08-27T09:25:22Z</date>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>Test</string>
 			<key>regexFolderFilter</key>
@@ -93,14 +95,29 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>CTeX@Mac/ctex-xecjk-winfonts.def</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>32</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>.gitignore</string>
+		<string>CTeX@Mac/ctex-xecjk-winfonts.def</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{7, 52}, {692, 726}}</string>
+	<string>{{209, 52}, {692, 726}}</string>
 </dict>
 </plist>

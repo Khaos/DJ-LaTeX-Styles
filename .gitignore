@@ -4,3 +4,6 @@ recycle
 Test/DJMemo/*.*
 !Test/DJMemo/*.lyx
 !Test/DJMemo/*.tex
+Test/DJMinted/*.*
+!Test/DJMinted/*.lyx
+!Test/DJMinted/*.tex
