@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>CTeX@Mac/ctex-xecjk-winfonts.def</string>
+	<string>tmp/pgfplots/pgfplots.libs.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -55,6 +55,8 @@
 			<string>Source</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>tmp</string>
 			<key>regexFolderFilter</key>
@@ -66,7 +68,7 @@
 			<key>filename</key>
 			<string>.gitignore</string>
 			<key>lastUsed</key>
-			<date>2010-08-27T09:25:22Z</date>
+			<date>2010-09-15T15:45:46Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -78,46 +80,108 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>200</integer>
+	<integer>239</integer>
 	<key>metaData</key>
 	<dict>
-		<key>.gitignore</key>
+		<key>tmp/pgfplots/pgfplots-macros.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>112</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>67</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>112</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>32</integer>
+				<key>line</key>
+				<integer>112</integer>
+			</dict>
+		</dict>
+		<key>tmp/pgfplots/pgfplots.libs.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>0</integer>
+			<integer>55</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>203</integer>
 		</dict>
-		<key>CTeX@Mac/ctex-xecjk-winfonts.def</key>
+		<key>tmp/pgfplots/pgfplots.preamble.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>32</integer>
+				<integer>25</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>175</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>13</integer>
+		</dict>
+		<key>tmp/pgfplots/pgfplots.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>24</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>24</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>36</integer>
+				<key>line</key>
+				<integer>24</integer>
+			</dict>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>.gitignore</string>
-		<string>CTeX@Mac/ctex-xecjk-winfonts.def</string>
+		<string>tmp/pgfplots/pgfplots-macros.tex</string>
+		<string>tmp/pgfplots/pgfplots.libs.tex</string>
+		<string>tmp/pgfplots/pgfplots.tex</string>
+		<string>tmp/pgfplots/pgfplots.preamble.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{209, 52}, {692, 726}}</string>
+	<string>{{623, 10}, {655, 768}}</string>
 </dict>
 </plist>
