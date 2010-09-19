@@ -1,9 +1,15 @@
 tmp
 recycle
 .DS_Store
+
 Test/DJMemo/*.*
 !Test/DJMemo/*.lyx
 !Test/DJMemo/*.tex
 Test/DJMinted/*.*
 !Test/DJMinted/*.lyx
 !Test/DJMinted/*.tex
+Test/DJPgfplotsPreamble/*.*
+!Test/DJPgfplotsPreamble/*.lyx
+!Test/DJPgfplotsPreamble/*.tex
+
+.tex

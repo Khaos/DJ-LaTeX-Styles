@@ -2,6 +2,9 @@
 % 2010-09-06
 % (c) Copyright 2010 Dazhi Jiang. All Rights Reserved. 
 
+\pdfminorversion=5 % to allow compression
+\pdfobjcompresslevel=2
+
 \documentclass[10pt,a4paper,extrafontsizes]{memoir}
 \listfiles
 \usepackage{comment}
@@ -87,7 +90,17 @@
 \newcommand\svnidlong[4]{}
 \fi
 
+%% Load DJ's pgfplots preamble
+\input{pgfplots.preamble-test.tex}
 
+\pgfplotsmanualexternalexpensivetrue
+% \usepackage{hyperref}
+% \hypersetup{pdfborder=0 0 0}
+% \hypersetup{pdfborder=0 0 1}
+% \usepackage{memhfixc}
+% \usepackage{mempatch}
+
+\usepackage{cleveref}
 
 %% end preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -303,8 +316,14 @@ Manual last changed \svnyear/\svnmonth/\svnday
 
 % chapter example_from_books (end)
 
+An example of codeexample environment, which is defined in pgfmanual-en-macro.tex
+\begin{codeexample}[code only]
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.3}
+\end{codeexample}
 
-Section~\ref{sub:subsec1}
+
+\Cref{sub:subsec1}
 
 \section{section name} % (fold)
 \label{sec:section_name}
