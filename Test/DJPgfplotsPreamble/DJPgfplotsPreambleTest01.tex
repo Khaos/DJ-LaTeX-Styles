@@ -1,0 +1,335 @@
+%
+% 2010-09-06
+% (c) Copyright 2010 Dazhi Jiang. All Rights Reserved. 
+
+\documentclass[10pt,a4paper,extrafontsizes]{memoir}
+\listfiles
+\usepackage{comment}
+
+
+% For (non-printing) notes  \PWnote{date}{text}
+\newcommand{\PWnote}[2]{} 
+\PWnote{2009/04/29}{Added fonttable to the used packages}
+\PWnote{2009/08/19}{Made Part I a separate doc (memdesign.tex).}
+
+% same
+\newcommand{\LMnote}[2]{} 
+
+
+\usepackage{memsty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{titlepages}  % code of the example titlepages
+\usepackage{memlays}     % extra layout diagrams
+\usepackage{dpfloat}     % floats on facing pages
+\usepackage{fonttable}[2009/04/01]   % font tables
+%%%%\usepackage{xr-hyper} \externaldocument{memdesign} Doesn't work, 
+%%%%                      Idea won't work in general for memman/memdesin
+%%%%                      as at display time, who knows where everything
+%%%%                      will be located on the individual's computer.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Change section heading styles
+%%%\memmansecheads
+
+%%%% Use the built-in division styling
+\headstyles{memman}
+
+%%% ToC down to subsections
+\settocdepth{subsection}
+%%% Numbering down to subsections as well
+\setsecnumdepth{subsection}
+
+%%%% extra index for first lines
+\makeindex[lines]
+
+
+% this 'if' is used to determine whether we are compiling the memoir
+% master in the subversion repository, or the public memman.tex
+\newif\ifMASTER
+\MASTERfalse
+%\MASTERtrue
+
+\ifMASTER
+% private package, not in circulation
+% enables us to gather svn information on a single file basis
+\usepackage[filehooks]{svn-multi-private}
+
+% \svnidlong
+% {}
+% {$LastChangedDate: 2010-07-01 00:21:04 +0200 (Thu, 01 Jul 2010) $}
+% {$LastChangedRevision: 244 $}
+% {$LastChangedBy: daleif $}
+
+
+
+\makeatletter
+\newcommand\addRevisionData{%
+  \begin{picture}(0,0)%
+    \put(0,-20){%
+      \tiny%
+      \expandafter\@ifmtarg\expandafter{\svnfiledate}{}{%
+        \textit{\textcolor{darkgray}{Chapter last updated \svnfileyear/\svnfilemonth/\svnfileday
+         \enspace (revision \svnfilerev)}}
+     }%
+    }%
+  \end{picture}%
+}
+\makeatother
+
+% we add this to the first page of each chapter
+
+\makepagestyle{chapter}
+\makeoddfoot{chapter}{\addRevisionData}{\thepage}{}
+\makeevenfoot{chapter}{\addRevisionData}{\thepage}{}
+
+\else
+% disable svn info collecting
+\newcommand\svnidlong[4]{}
+\fi
+
+
+
+%% end preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%#% extend
+
+\begin{document}
+
+
+
+%#% extstart input intro.tex
+
+
+
+
+
+\tightlists
+%%%%\firmlists
+\midsloppy
+\raggedbottom
+\chapterstyle{demo3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \input{memnoidxnum}
+
+\frontmatter
+\pagestyle{empty}
+
+
+% half-title page
+\vspace*{\fill}
+\begin{adjustwidth}{1in}{1in}
+\begin{flushleft}
+\HUGE\sffamily Notes
+\end{flushleft}
+\begin{center}
+\HUGE\sffamily  on
+\end{center}
+\begin{flushright}
+\HUGE\sffamily  PGF
+\end{flushright}
+%%\begin{center}
+%%\sffamily (Draft Edition 7)
+%%\end{center}
+\end{adjustwidth}
+\vspace*{\fill}
+\cleardoublepage
+
+% title page
+\vspace*{\fill}
+\begin{center}
+\HUGE\textsf{Notes on PGF}\par
+\end{center}
+\begin{center}
+\LARGE\textsf{for}\par
+\end{center}
+\begin{center}
+\HUGE\textsf{Configurable Typesetting}\par
+\end{center}
+
+\begin{center}
+\Huge\textsf{User Guide}\par
+\end{center}
+\begin{center}
+\LARGE\textsf{Dazhi Jiang}\par
+\end{center}
+\vspace*{\fill}
+\def\THP{T\kern-0.2em H\kern-0.4em P}%   OK for CMR
+\def\THP{T\kern-0.15em H\kern-0.3em P}%   OK for Palatino
+\newcommand*{\THPress}{The Herries Press}%
+\begin{center}
+\settowidth{\droptitle}{\textsf{\THPress}}%
+\textrm{\normalsize \THP} \\
+\textsf{\THPress} \\[0.2\baselineskip]
+\includegraphics[width=\droptitle]{anvil2.mps}
+\setlength{\droptitle}{0pt}%
+\end{center}
+\clearpage
+
+\PWnote{2009/06/26}{Updated the copyright page for 9th impression}
+% copyright page
+\begingroup
+\footnotesize
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+%%\ttfamily
+\textcopyright{} 2010 Dazhi Jiang \\
+All rights reserved
+
+
+\ifMASTER
+Manual last changed \svnyear/\svnmonth/\svnday
+\fi
+
+\endgroup
+
+\clearpage
+\vspace*{\fill}
+\begin{quote}
+\textbf{PGF,} \textit{n.} a LaTeX graph-drawing backend \\[0.5\baselineskip]
+  \hspace*{\fill} 
+      \textit{Dazhi Jiang}, 2010.
+\end{quote}
+
+\vspace{2\baselineskip}
+
+\begin{quote}
+\textbf{TikZ,} a extension package of PGF \\[0.5\baselineskip]
+  \hspace*{\fill} \textit{Dazhi Jiang}.
+\end{quote}
+
+\vspace{2\baselineskip}
+
+\vspace*{\fill}
+
+\cleardoublepage
+
+% ToC, etc
+%%%\pagenumbering{roman}
+\pagestyle{headings}
+%%%%\pagestyle{Ruled}
+
+\setupshorttoc
+\tableofcontents
+\clearpage
+\setupparasubsecs
+\setupmaintoc
+\tableofcontents
+\setlength{\unitlength}{1pt}
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+\listofegresults
+
+%#% extend
+
+
+%#% extstart include preface.tex
+%\chapter{Foreword}
+
+\svnidlong
+{$Ignore: $}
+{$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
+{$LastChangedRevision: 210 $}
+{$LastChangedBy: daleif $}
+
+\chapter{Preface}
+
+    From personal experience and also from lurking on the \url{comp.text.tex}
+
+
+%#% extstart include preface.tex
+%\chapter{Foreword}
+
+\svnidlong
+{$Ignore: $}
+{$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
+{$LastChangedRevision: 210 $}
+{$LastChangedBy: daleif $}
+
+\chapter{Introduction to the eighth edition}
+
+
+\PWnote{2009/07/26}{Added `Remarks to the user' chapter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Remarks to the user}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%#% extend
+%#% extstart include terminology.tex
+
+\svnidlong
+{$Ignore: $}
+{$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
+{$LastChangedRevision: 210 $}
+{$LastChangedBy: daleif $}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Terminology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%#% extend
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+% body
+\mainmatter
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%\part{Practice} \label{part:practice}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%#% extstart include start-off.tex
+
+
+\svnidlong
+{$Ignore: $}
+{$LastChangedDate: 2010-07-15 22:37:02 +0200 (Thu, 15 Jul 2010) $}
+{$LastChangedRevision: 256 $}
+{$LastChangedBy: daleif $}
+
+
+\chapter{Examples from Books} % (fold)
+\label{chap:examples_from_books}
+
+% chapter examples_from_books (end)
+
+% chapter example_from_books (end)
+
+
+Section~\ref{sub:subsec1}
+
+\section{section name} % (fold)
+\label{sec:section_name}
+
+
+% section section_name (end)
+
+\subsection{subsection name} % (fold)
+\label{sub:subsection_name}
+
+% subsection subsection_name (end)
+
+\section{Section Test}
+
+\subsection{SubSection Test1}
+\label{sub:subsec1}
+
+\end{document}
+
+%\endinput
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%%% (TeX-source-specials-mode: t)
+%%% TeX-PDF-mode: t
+%%% End: 
