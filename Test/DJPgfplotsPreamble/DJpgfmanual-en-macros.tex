@@ -207,14 +207,30 @@
 
 
 % \begin{environment}{{name}\marg{arguments}}
-\renewenvironment{environment}[1]{
-  \begin{pgfmanualentry}
-    \extractenvironement#1\@@
-    \pgfmanualbody
-}
-{
-  \end{pgfmanualentry}
-}
+%% !!!
+%% Changed by Dazhi Jiang - 2010-09-20
+%% Environment 'environment' could be defined before here, so use
+%% \@ifundefined switcher to avoid the duplicate defining.
+%% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=isdef
+\makeatletter
+\@ifundefined{environment}{%
+	\newenvironment{environment}[1]{
+	  \begin{pgfmanualentry}
+	    \extractenvironement#1\@@
+	    \pgfmanualbody
+	}%
+	{
+	  \end{pgfmanualentry}
+	}}{%
+	\renewenvironment{environment}[1]{
+	  \begin{pgfmanualentry}
+	    \extractenvironement#1\@@
+	    \pgfmanualbody
+	}
+	{
+	  \end{pgfmanualentry}
+	}}
+\makeatother
 
 \def\extractenvironement#1#2\@@{%
   \pgfmanualentryheadline{{\ttfamily\char`\\begin\char`\{\declare{#1}\char`\}}#2}%
@@ -842,6 +858,10 @@
   not a good index.
   \bigskip
 }
+%% !!!
+%% Changed by Dazhi Jiang - 2010-09-20
+%% \c@IndexColumns is a new counter, so add its definition here.
+\newcount\c@IndexColumns
 \c@IndexColumns=2
   \def\theindex{\@restonecoltrue
     \columnseprule \z@  \columnsep 29\p@

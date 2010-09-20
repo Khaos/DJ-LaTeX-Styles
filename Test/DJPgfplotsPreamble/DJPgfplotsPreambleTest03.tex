@@ -2,49 +2,8 @@
 % 2010-09-06
 % (c) Copyright 2010 Dazhi Jiang. All Rights Reserved. 
 
-%% This part of comment has intent to calculate the number of stream used in it.
-%% Input:
-%%			.tex
-%%			.aux
-%% Output:
-%%			\openout1 = `DJPgfplotsPreambleTest01.aux'.
-%%			\DJPgfplotsPreambleTest01@idxfile=\write5
-%%			\openout5 = `DJPgfplotsPreambleTest01.idx'.
-%%			Writing index file DJPgfplotsPreambleTest01.idx 
-%%			\DJPgfplotsPreambleTest01memglofile=\write6
-%%			\openout6 = `DJPgfplotsPreambleTest01.glo'.
-%%			Writing glossary file DJPgfplotsPreambleTest01.glo 
-%%			\@notefile=\write7
-%%			\openout7 = `DJPgfplotsPreambleTest01.ent'.
-%%			\egoutoutstre@m=\write8
-%%			\openout8 = `DJPgfplotsPreambleTest01.ego'.
-%%			\lines@idxfile=\write9
-%%			\openout9 = `lines.idx'.
-%%			\openout12 = `DJPgfplotsPreambleTest01.out'.
-%%			\tf@toc=\write13
-%%			\openout13 = `DJPgfplotsPreambleTest01.toc'.
-%%			\tf@lof=\write14
-%%			\openout14 = `DJPgfplotsPreambleTest01.lof'.
-%%			\tf@lot=\write15
-%%			\openout15 = `DJPgfplotsPreambleTest01.lot'.
-%% 					\makeindex[lines]
-%%					\tableofcontents
-%%					\listoffigures
-%%					\listoftables
-%%					!! Dropped for saving \write output streams
-%%					\listofegresults
-%%					\pgfplotsmanualexternalexpensivetrue
-%%					!! Three additional streams in memsty.sty
-%%					\makeglossary
-%%					\makepagenote
-%%					\newoutputstream{egout}
-%%					  \openoutputfile{\jobname.ego}{egout}
-
-
 \pdfminorversion=5 % to allow compression
 \pdfobjcompresslevel=2
-
-%% !!!
 % \RequirePackage{etex} % This needs an additional output stream
 \documentclass[10pt,a4paper,extrafontsizes]{memoir}
 \listfiles
@@ -62,9 +21,6 @@
 
 
 \usepackage{memsty}
-%% Check out whether stream 'egout' is open
-% \IfStreamOpen{egout}{\closeoutputstream{egout}}{}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{titlepages}  % code of the example titlepages
 \usepackage{memlays}     % extra layout diagrams
@@ -88,8 +44,6 @@
 \setsecnumdepth{subsection}
 
 %%%% extra index for first lines
-%% !!!
-%% Comment this line to save room for \write
 \makeindex[lines]
 
 
@@ -139,10 +93,8 @@
 
 %% Load DJ's pgfplots preamble
 \input{DJpgfplots.preamble.tex}
-	
+
 % \pgfplotsmanualexternalexpensivetrue
-
-
 % \usepackage{hyperref}
 % \hypersetup{pdfborder=0 0 0}
 % \hypersetup{pdfborder=0 0 1}
@@ -292,11 +244,11 @@ Manual last changed \svnyear/\svnmonth/\svnday
 %#% extstart include preface.tex
 %\chapter{Foreword}
 
-\svnidlong
-{$Ignore: $}
-{$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
-{$LastChangedRevision: 210 $}
-{$LastChangedBy: daleif $}
+% \svnidlong
+% {$Ignore: $}
+% {$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
+% {$LastChangedRevision: 210 $}
+% {$LastChangedBy: daleif $}
 
 \chapter{Preface}
 
@@ -306,16 +258,16 @@ Manual last changed \svnyear/\svnmonth/\svnday
 %#% extstart include preface.tex
 %\chapter{Foreword}
 
-\svnidlong
-{$Ignore: $}
-{$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
-{$LastChangedRevision: 210 $}
-{$LastChangedBy: daleif $}
+% \svnidlong
+% {$Ignore: $}
+% {$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
+% {$LastChangedRevision: 210 $}
+% {$LastChangedBy: daleif $}
 
 \chapter{Introduction to the eighth edition}
 
 
-\PWnote{2009/07/26}{Added `Remarks to the user' chapter}
+% \PWnote{2009/07/26}{Added `Remarks to the user' chapter}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Remarks to the user}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -324,11 +276,11 @@ Manual last changed \svnyear/\svnmonth/\svnday
 %#% extend
 %#% extstart include terminology.tex
 
-\svnidlong
-{$Ignore: $}
-{$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
-{$LastChangedRevision: 210 $}
-{$LastChangedBy: daleif $}
+% \svnidlong
+% {$Ignore: $}
+% {$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
+% {$LastChangedRevision: 210 $}
+% {$LastChangedBy: daleif $}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Terminology}
@@ -351,11 +303,11 @@ Manual last changed \svnyear/\svnmonth/\svnday
 %#% extstart include start-off.tex
 
 
-\svnidlong
-{$Ignore: $}
-{$LastChangedDate: 2010-07-15 22:37:02 +0200 (Thu, 15 Jul 2010) $}
-{$LastChangedRevision: 256 $}
-{$LastChangedBy: daleif $}
+% \svnidlong
+% {$Ignore: $}
+% {$LastChangedDate: 2010-07-15 22:37:02 +0200 (Thu, 15 Jul 2010) $}
+% {$LastChangedRevision: 256 $}
+% {$LastChangedBy: daleif $}
 
 
 \chapter{Examples from Books} % (fold)
@@ -366,10 +318,10 @@ Manual last changed \svnyear/\svnmonth/\svnday
 % chapter example_from_books (end)
 
 An example of codeexample environment, which is defined in pgfmanual-en-macro.tex
-\begin{codeexample}[code only]
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.3}
-\end{codeexample}
+% \begin{codeexample}[code only]
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.3}
+% \end{codeexample}
 
 
 \Cref{sub:subsec1}

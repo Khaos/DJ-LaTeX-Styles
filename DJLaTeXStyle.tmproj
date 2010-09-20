@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Test/DJPgfplotsPreamble/pgfmanual-en-macros.tex</string>
+	<string>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -55,6 +55,8 @@
 			<string>Source</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>tmp</string>
 			<key>regexFolderFilter</key>
@@ -66,7 +68,7 @@
 			<key>filename</key>
 			<string>.gitignore</string>
 			<key>lastUsed</key>
-			<date>2010-09-15T15:45:46Z</date>
+			<date>2010-09-19T22:57:25Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -83,105 +85,28 @@
 	<integer>239</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Test/DJPgfplotsPreamble/pgfmanual-en-macros.tex</key>
+		<key>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>1072</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>1054</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>1072</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
-				<integer>1072</integer>
-			</dict>
-		</dict>
-		<key>Test/DJPgfplotsPreamble/pgfplots-macros-test.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>13</integer>
-				<key>line</key>
-				<integer>92</integer>
+				<integer>338</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>268</integer>
-		</dict>
-		<key>Test/DJPgfplotsPreamble/pgfplots.preamble-test.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>175</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>160</integer>
-		</dict>
-		<key>Test/DJPgfplotsPreamble/pgfplots.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>159</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>116</integer>
-			<key>firstVisibleLine</key>
-			<integer>152</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>29</integer>
-				<key>line</key>
-				<integer>159</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>159</integer>
-			</dict>
+			<integer>319</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Test/DJPgfplotsPreamble/pgfmanual-en-macros.tex</string>
-		<string>Test/DJPgfplotsPreamble/pgfplots-macros-test.tex</string>
-		<string>Test/DJPgfplotsPreamble/pgfplots.preamble-test.tex</string>
-		<string>Test/DJPgfplotsPreamble/pgfplots.tex</string>
+		<string>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{249, 4}, {1031, 774}}</string>
+	<string>{{559, 4}, {690, 774}}</string>
 </dict>
 </plist>

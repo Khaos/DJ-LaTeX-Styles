@@ -194,13 +194,18 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 
-\ifpdf
-	% this allows to disable the clickable lib from command line using
-	% \pdflatex '\def\pgfplotsclickabledisabled{1}\input{pgfplots.tex}'
-	\expandafter\ifx\csname pgfplotsclickabledisabled\endcsname\relax
-		\usepgfplotslibrary{clickable}
-	\fi
-\fi
+%% !!!
+%% Changed by Dazhi Jiang - 2010-09-20
+%% The below code snippet is commented because using 'clickable' library
+%% causes some problems. 
+%% TODO: need more investigation
+% \ifpdf
+% 	% this allows to disable the clickable lib from command line using
+% 	% \pdflatex '\def\pgfplotsclickabledisabled{1}\input{pgfplots.tex}'
+% 	\expandafter\ifx\csname pgfplotsclickabledisabled\endcsname\relax
+% 		\usepgfplotslibrary{clickable}
+% 	\fi
+% \fi
 
 %\usepackage{fp}
 % ATTENTION:
@@ -217,7 +222,7 @@
 \usepackage{amsmath}
 \usepackage{eurosym}
 \usepackage{nicefrac}
-\input{pgfplots-macros}
+\input{DJpgfplots-macros}
 
 \usepackage{nicefrac}
 
@@ -284,7 +289,10 @@
 \newcommand\PGFPlots{\pgfplotsmakefilelinkifuseful{pgfplots}{\textsc{pgfplots}}}
 \newcommand\PGFPlotstable{\pgfplotsmakefilelinkifuseful{pgfplotstable}{\textsc{PgfplotsTable}}}
 
-\makeindex
+%% !!!
+%% Change by Dazhi Jiang - 2010-09-20
+%% The index can be made later in your preamble. So this line was commented.
+% \makeindex
 
 % Fix overful hboxes automatically:
 \tolerance=2000

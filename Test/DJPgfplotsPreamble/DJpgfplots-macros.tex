@@ -1,7 +1,7 @@
 
 \def\eps{\textsc{eps}}
 
-\input pgfmanual-en-macros.tex
+\input DJpgfmanual-en-macros.tex
 
 
 \def\pgfplotsifdocpackageuptodate#1#2{%
@@ -107,7 +107,11 @@
 		verbose IO=false,
 		%xport=true,% FASTER FOR DEBUGGING
 	]
-		{pgfplots}
+		%% !!!
+		%% Changed by Dazhi Jiang - 2010-09-20
+		%% The following line is commented since the new definition of
+		%% \tikzexternalize in PGF cvs
+		% {pgfplots}
 	\tikzifexternalizing{%
 		\nofiles
 		\pgfkeys{/pdflinks/codeexample links=false}%
@@ -326,7 +330,12 @@
 \def\choicearg#1{\texttt{#1}}
 
 \newif\iffirstchoice
-\newcommand\mchoice[1]{%
+%% !!!
+%% Changed by Dazhi Jiang - 2010-09-20
+%% \mchoice has been defined in 'pgfmanual-en-macros.tex'. So use
+%% \renewcommand instead of \newcommand
+% \newcommand\mchoice[1]{%
+\renewcommand\mchoice[1]{%
 	\begingroup
 	\let\margold=\marg
 	\def\marg##1{{\normalfont\margold{##1}}}%
@@ -414,7 +423,12 @@
 % \begin{keylist}[default path]
 % 	{/path/option 1=value,/path/option 2=value2}
 % \end{keylist}
-\newenvironment{keylist}[2][]{%
+%% !!!
+%% Changed by Dazhi Jiang - 2010-09-20
+%% keylist has been defined in 'pgfmanual-en-macros.tex'. So use
+%% \renewenvironment instead of \newenvironment
+% \newenvironment{keylist}[2][]{%
+\renewenvironment{keylist}[2][]{%
 	\begin{pgfmanualentry}
     \def\extrakeytext{}%
 	\foreach \xx in {#2} {%
@@ -495,7 +509,12 @@
 % \begin{commandlist}
 % 	{\command1{arg1},\command2{\arg2}}
 % \end{commandlist}
-\newenvironment{commandlist}[1]{%
+%% !!!
+%% Changed by Dazhi Jiang - 2010-09-20
+%% commandlist has been defined in 'pgfmanual-en-macros.tex'. So use
+%% \renewenvironment instead of \newenvironment
+% \newenvironment{commandlist}[1]{%
+\renewenvironment{commandlist}[1]{%
 	\begin{pgfmanualentry}
 	\foreach \xx in {#1} {%
 		\expandafter\extractcommand\xx\@@%
