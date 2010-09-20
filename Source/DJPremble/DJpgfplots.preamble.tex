@@ -1,0 +1,309 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Package pgfplots.sty documentation. 
+%
+% Copyright 2007/2008 by Christian Feuersaenger.
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages loaded in this file
+% \usepackage{makeidx}
+% \usepackage{ifpdf}
+% \usepackage[pdfborder=0 0 0]{hyperref}
+% \usepackage{textcomp}
+% \usepackage{booktabs}
+% \usepackage{calc}
+% \usepackage[formats]{listings}
+% \usepackage{array}
+% \usepackage{pgfplots}
+% \usepackage{pgfplotstable}
+% \usepackage[a4paper,left=2.25cm,right=2.25cm,top=2.5cm,bottom=2.5cm,nohead]{geometry}
+% \usepackage{amsmath,amssymb}
+% \usepackage{xxcolor}
+% \usepackage{pifont}
+% \usepackage[latin1]{inputenc}
+% \usepackage{amsmath}
+% \usepackage{eurosym}
+% \usepackage{nicefrac}
+% \input{pgfplots-macros}
+% \usepackage{nicefrac}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TikZ libraries
+% \usepgfplotslibrary{dateplot,units,groupplots}
+% \usetikzlibrary{backgrounds,patterns}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% 2009-02-15 Create the file base on pgfplots.preamble.tex.
+%%
+%% 2009-02-15 Comment the line '\documentclass[a4paper]{ltxdoc}'.
+%%
+%% 2010-09-19 Comment the lines before '\documentclass[a4paper]{ltxdoc}'.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% !!!
+%% Changed by Dazhi Jiang - 2010-09-19
+%% The following lines can be added in your main tex file
+%%
+% \pdfminorversion=5 % to allow compression
+% \pdfobjcompresslevel=2
+% \documentclass[a4paper]{ltxdoc}
+
+\usepackage{makeidx}
+
+% DON't let hyperref overload the format of index and glossary. 
+% I want to do that on my own in the stylefiles for makeindex...
+\makeatletter
+\let\@old@wrindex=\@wrindex
+\makeatother
+
+\usepackage{ifpdf}
+%% Load hyperref without any options. One of benefit of this is to
+%% co-operate with some other document classes, e.g., memoir.
+%% Option 'pdfborder' is special. It can be loaded using either one of the
+%% following two syntaxes.
+%% \usepackage[pdfborder={0 0 0}]{hyperref}
+%% \hypersetup{pdfborder=0 0 0}
+%% Note that the former one is protected by curly braces.
+\usepackage{hyperref}
+	\hypersetup{%
+		colorlinks=true,	% use true to enable colors below:
+		linkcolor=blue,%red,
+		filecolor=blue,%magenta,
+		%% !!!
+		%% Changed by Dazhi Jiang - 2010-09-19
+		%% Option 'pagecolor' has been removed in v6.76a, so the below line
+		%% is commented.
+		% pagecolor=blue,%red,
+		urlcolor=blue,%cyan,
+		citecolor=blue,
+		%frenchlinks=false,	% small caps instead of colors
+		%% The below line is not necessary, because the colorlinks=true will
+		%% set pdfborder as 0pt automatically.
+		pdfborder=0 0 0,	% PDF link-darstellung, falls colorlinks=false. 0 0 0: nix. 0 0 1: default.
+		%plainpages=false,	% Das ist notwendig, wenn die Seitenzahlen z.T. in Arabischen und z.T. in römischen Ziffern gemacht werden.
+		%% !!!
+		%% Changed by Dazhi Jiang - 2010-09-19
+		%% You can set up the below options by  \hypersetup{} command
+		% pdftitle=Package PGFPLOTS manual,
+		% pdfauthor=Christian Feuersänger,
+		% %pdfsubject=,
+		% pdfkeywords={pgfplots pgf tikz tex latex},
+	}
+%% !!!
+%% The package 'hyperref' is quite special. The following lines are
+%% commented because some options have been changed or removed in a recent
+%% version of 'hyperref'.
+% \usepackage[pdfborder=0 0 0]{hyperref}
+% 	\hypersetup{%
+% 		colorlinks=true,	% use true to enable colors below:
+% 		linkcolor=blue,%red,
+% 		filecolor=blue,%magenta,
+% 		pagecolor=blue,%red,
+% 		urlcolor=blue,%cyan,
+% 		citecolor=blue,
+% 		%frenchlinks=false,	% small caps instead of colors
+% 		pdfborder=0 0 0,	% PDF link-darstellung, falls colorlinks=false. 0 0 0: nix. 0 0 1: default.
+% 		%plainpages=false,	% Das ist notwendig, wenn die Seitenzahlen z.T. in Arabischen und z.T. in römischen Ziffern gemacht werden.
+% 		pdftitle=Package PGFPLOTS manual,
+% 		pdfauthor=Christian Feuersänger,
+% 		%pdfsubject=,
+% 		pdfkeywords={pgfplots pgf tikz tex latex},
+% 	}
+
+\makeatletter
+\let\@wrindex=\@old@wrindex
+\makeatother
+
+
+\makeatletter
+% disables colorlinks for all following \ref commands
+\def\pgfplotsmanualdisablecolorforref{%
+	\pgfutil@ifundefined{pgfplotsmanual@oldref}{%
+		\let\pgfplotsmanual@oldref=\ref
+	}{}%
+	\def\ref##1{%
+		\begingroup
+		\let\Hy@colorlink=\pgfplots@disabled@Hy@colorlink
+		\let\Hy@endcolorlink=\pgfplots@disabled@Hy@endcolorlink
+		\pgfplotsmanual@oldref{##1}%
+		\endgroup
+	}%
+}%
+\def\pgfplots@disabled@Hy@colorlink#1{\begingroup}%
+\def\pgfplots@disabled@Hy@endcolorlink{\endgroup}%
+\makeatother
+
+% Formatiere Seitennummern im Index:
+\newcommand{\indexpageno}[1]{%
+	{\bfseries\hyperpage{#1}}%
+}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\long\def\COMMENTLOWLEVEL#1\ENDCOMMENT{}
+\def\ENDCOMMENT{}
+
+\usepackage{textcomp}
+\usepackage{booktabs}
+
+\usepackage{calc}
+\usepackage[formats]{listings}
+%\usepackage{courier} % don't use it - the '^' character can't be copy-pasted in courier
+
+\usepackage{array}
+\lstset{%
+	basicstyle=\ttfamily,
+	language=[LaTeX]tex, % Seems as if \lstset{language=tex} must be invoked BEFORE loading tikz!?
+	tabsize=4,
+	breaklines=true,
+	breakindent=0pt
+}
+
+\ifpdf
+	\pdfinfo {
+		/Author	(Christian Feuersaenger)
+	}
+
+\else
+%	\def\pgfsysdriver{pgfsys-dvipdfm.def}
+\fi
+%\def\pgfsysdriver{pgfsys-pdftex.def}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+%% !!!
+%% Changed by Dazhi Jiang - 2010-09-20
+%% The below code snippet is commented because using 'clickable' library
+%% causes some problems. 
+%% TODO: need more investigation
+% \ifpdf
+% 	% this allows to disable the clickable lib from command line using
+% 	% \pdflatex '\def\pgfplotsclickabledisabled{1}\input{pgfplots.tex}'
+% 	\expandafter\ifx\csname pgfplotsclickabledisabled\endcsname\relax
+% 		\usepgfplotslibrary{clickable}
+% 	\fi
+% \fi
+
+%\usepackage{fp}
+% ATTENTION:
+% this requires pgf version NEWER than 2.00 :
+%\usetikzlibrary{fixedpointarithmetic}
+
+\usepgfplotslibrary{dateplot,units,groupplots}
+
+\usepackage[a4paper,left=2.25cm,right=2.25cm,top=2.5cm,bottom=2.5cm,nohead]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{xxcolor}
+\usepackage{pifont}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{eurosym}
+\usepackage{nicefrac}
+\input{DJpgfplots-macros}
+
+\usepackage{nicefrac}
+
+\graphicspath{{figures/}}
+
+\def\preambleconfig{width=7cm,compat=1.3}
+
+
+\expandafter\pgfplotsset\expandafter{\preambleconfig}
+
+
+\makeatletter
+% And now, invoke
+% 	/codeexample/typeset listing/.add={% Preamble:\pgfplotsset{\preambleconfig}}{}}
+% since listings are VERBATIM, I need to do some low-level things
+% here to get the correct \catcodes:
+\pgfkeys{/codeexample/typeset listing/.add code={%
+		\ifcode@execute
+			\pgfutil@in@{axis}{#1}%
+			\ifpgfutil@in@
+				{\tiny
+					\% Preamble: \pgfmanualpdfref{\textbackslash pgfplotsset}{\pgfmanual@pretty@backslash pgfplotsset}%
+						\pgfmanual@pretty@lbrace \expandafter\pgfmanualprettyprintpgfkeys\expandafter{\preambleconfig}\pgfmanual@pretty@rbrace
+				}%
+			\fi
+		\fi
+	}{},%
+	%/codeexample/typeset listing/.show code,
+}%
+\makeatother
+
+\pgfplotsset{
+	%every axis/.append style={width=7cm},
+	filter discard warning=false,
+}
+
+\pgfqkeys{/codeexample}{%
+	every codeexample/.append style={
+		width=8cm,
+		/pgfplots/legend style={fill=graphicbackground}
+	},
+	tabsize=4,
+}
+
+\usetikzlibrary{backgrounds,patterns}
+% Global styles:
+\tikzset{
+  shape example/.style={
+    color=black!30,
+    draw,
+    fill=yellow!30,
+    line width=.5cm,
+    inner xsep=2.5cm,
+    inner ysep=0.5cm}
+}
+
+\newcommand{\FIXME}[1]{\textcolor{red}{(FIXME: #1)}}
+
+% fuer endvironment 'sidewaysfigure' bspw
+% \usepackage{rotating}
+
+\newcommand\Tikz{Ti\textit kZ}
+\newcommand\PGF{\textsc{pgf}}
+\newcommand\PGFPlots{\pgfplotsmakefilelinkifuseful{pgfplots}{\textsc{pgfplots}}}
+\newcommand\PGFPlotstable{\pgfplotsmakefilelinkifuseful{pgfplotstable}{\textsc{PgfplotsTable}}}
+
+%% !!!
+%% Change by Dazhi Jiang - 2010-09-20
+%% The index can be made later in your preamble. So this line was commented.
+% \makeindex
+
+% Fix overful hboxes automatically:
+\tolerance=2000
+\emergencystretch=10pt
+
+\tikzset{prefix=gnuplot/pgfplots_} % prefix for 'plot function'
+
+%% !!!
+%% Changed by Dazhi Jiang - 2010-09-19
+% \author{%
+% 	Christian Feuers\"anger\footnote{\url{http://wissrech.ins.uni-bonn.de/people/feuersaenger}}\\%
+% 	Institut f\"ur Numerische Simulation\\
+% 	Universit\"at Bonn, Germany}
+
