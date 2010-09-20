@@ -55,8 +55,6 @@
 			<string>Source</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>tmp</string>
 			<key>regexFolderFilter</key>
@@ -85,19 +83,47 @@
 	<integer>239</integer>
 	<key>metaData</key>
 	<dict>
+		<key>Source/DJPremble/DJ4DJespcrc.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Source/DJPremble/DJcommonpk.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>49</integer>
+		</dict>
 		<key>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>338</integer>
+				<integer>148</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>319</integer>
+			<integer>130</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -107,6 +133,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{559, 4}, {690, 774}}</string>
+	<string>{{1529, 32}, {775, 768}}</string>
 </dict>
 </plist>
