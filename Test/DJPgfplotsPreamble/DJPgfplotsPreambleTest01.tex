@@ -2,6 +2,10 @@
 % 2010-09-06
 % (c) Copyright 2010 Dazhi Jiang. All Rights Reserved. 
 
+%% TextMate Settings
+%!TEX TS-program = pdflatex
+%!TEX TS-options = "-interaction=nonstopmode -file-line-error-style"
+
 %% This part of comment has intent to calculate the number of stream used in it.
 %% Input:
 %%			.tex
@@ -90,19 +94,24 @@
 %%%% extra index for first lines
 %% !!!
 %% Comment this line to save room for \write
-\makeindex[lines]
+%% This the second index in memoir manual, named index of the first lines
+% \makeindex[lines]
 
 
 % this 'if' is used to determine whether we are compiling the memoir
 % master in the subversion repository, or the public memman.tex
 \newif\ifMASTER
-\MASTERfalse
-%\MASTERtrue
+% \MASTERfalse
+%% Note that an additional stream is require to enable this feature.
+\MASTERtrue
 
 \ifMASTER
 % private package, not in circulation
 % enables us to gather svn information on a single file basis
-\usepackage[filehooks]{svn-multi-private}
+% \usepackage[filehooks]{svn-multi-private}
+%% Use 'svn-multi' stead
+\usepackage[filehooks]{svn-multi}
+
 
 % \svnidlong
 % {}
@@ -157,13 +166,7 @@
 
 \begin{document}
 
-
-
 %#% extstart input intro.tex
-
-
-
-
 
 \tightlists
 %%%%\firmlists
@@ -176,164 +179,8 @@
 % \input{memnoidxnum}
 
 \frontmatter
-\pagestyle{empty}
 
-
-% half-title page
-\vspace*{\fill}
-\begin{adjustwidth}{1in}{1in}
-\begin{flushleft}
-\HUGE\sffamily Notes
-\end{flushleft}
-\begin{center}
-\HUGE\sffamily  on
-\end{center}
-\begin{flushright}
-\HUGE\sffamily  PGF
-\end{flushright}
-%%\begin{center}
-%%\sffamily (Draft Edition 7)
-%%\end{center}
-\end{adjustwidth}
-\vspace*{\fill}
-\cleardoublepage
-
-% title page
-\vspace*{\fill}
-\begin{center}
-\HUGE\textsf{Notes on PGF}\par
-\end{center}
-\begin{center}
-\LARGE\textsf{for}\par
-\end{center}
-\begin{center}
-\HUGE\textsf{Configurable Typesetting}\par
-\end{center}
-
-\begin{center}
-\Huge\textsf{User Guide}\par
-\end{center}
-\begin{center}
-\LARGE\textsf{Dazhi Jiang}\par
-\end{center}
-\vspace*{\fill}
-\def\THP{T\kern-0.2em H\kern-0.4em P}%   OK for CMR
-\def\THP{T\kern-0.15em H\kern-0.3em P}%   OK for Palatino
-\newcommand*{\THPress}{The Herries Press}%
-\begin{center}
-\settowidth{\droptitle}{\textsf{\THPress}}%
-\textrm{\normalsize \THP} \\
-\textsf{\THPress} \\[0.2\baselineskip]
-% \includegraphics[width=\droptitle]{anvil2.mps}
-\setlength{\droptitle}{0pt}%
-\end{center}
-\clearpage
-
-\PWnote{2009/06/26}{Updated the copyright page for 9th impression}
-% copyright page
-\begingroup
-\footnotesize
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{\baselineskip}
-%%\ttfamily
-\textcopyright{} 2010 Dazhi Jiang \\
-All rights reserved
-
-
-\ifMASTER
-Manual last changed \svnyear/\svnmonth/\svnday
-\fi
-
-\endgroup
-
-\clearpage
-\vspace*{\fill}
-\begin{quote}
-\textbf{PGF,} \textit{n.} a LaTeX graph-drawing backend \\[0.5\baselineskip]
-  \hspace*{\fill} 
-      \textit{Dazhi Jiang}, 2010.
-\end{quote}
-
-\vspace{2\baselineskip}
-
-\begin{quote}
-\textbf{TikZ,} a extension package of PGF \\[0.5\baselineskip]
-  \hspace*{\fill} \textit{Dazhi Jiang}.
-\end{quote}
-
-\vspace{2\baselineskip}
-
-\vspace*{\fill}
-
-\cleardoublepage
-
-% ToC, etc
-%%%\pagenumbering{roman}
-\pagestyle{headings}
-%%%%\pagestyle{Ruled}
-
-\setupshorttoc
-\tableofcontents
-\clearpage
-\setupparasubsecs
-\setupmaintoc
-\tableofcontents
-\setlength{\unitlength}{1pt}
-\clearpage
-\listoffigures
-\clearpage
-\listoftables
-% \clearpage
-% \listofegresults
-
-%#% extend
-
-
-%#% extstart include preface.tex
-%\chapter{Foreword}
-
-\svnidlong
-{$Ignore: $}
-{$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
-{$LastChangedRevision: 210 $}
-{$LastChangedBy: daleif $}
-
-\chapter{Preface}
-
-    From personal experience and also from lurking on the \url{comp.text.tex}
-
-
-%#% extstart include preface.tex
-%\chapter{Foreword}
-
-\svnidlong
-{$Ignore: $}
-{$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
-{$LastChangedRevision: 210 $}
-{$LastChangedBy: daleif $}
-
-\chapter{Introduction to the eighth edition}
-
-
-\PWnote{2009/07/26}{Added `Remarks to the user' chapter}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Remarks to the user}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%#% extend
-%#% extstart include terminology.tex
-
-\svnidlong
-{$Ignore: $}
-{$LastChangedDate: 2010-05-13 17:10:00 +0200 (Thu, 13 May 2010) $}
-{$LastChangedRevision: 210 $}
-{$LastChangedBy: daleif $}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Terminology}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\input{NotesonPGF-frontmatter.tex}
 
 %#% extend
 
@@ -344,11 +191,13 @@ Manual last changed \svnyear/\svnmonth/\svnday
 \mainmatter
 
 
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%\part{Practice} \label{part:practice}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%#% extstart include start-off.tex
+%#% extstart include *.tex
 
 
 \svnidlong
@@ -363,7 +212,12 @@ Manual last changed \svnyear/\svnmonth/\svnday
 
 % chapter examples_from_books (end)
 
-% chapter example_from_books (end)
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\chapter{Test} % (fold)
+\label{chap:test}
+
+% chapter test (end)
 
 An example of codeexample environment, which is defined in pgfmanual-en-macro.tex
 \begin{codeexample}[code only]
@@ -391,6 +245,13 @@ An example of codeexample environment, which is defined in pgfmanual-en-macro.te
 \end{tikzpicture}%
 \end{codeexample}
 
+% chapter test (end)
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\chapter{Dump} % (fold)
+\label{chap:dump}
+
 \section{section name} % (fold)
 \label{sec:section_name}
 
@@ -404,8 +265,18 @@ An example of codeexample environment, which is defined in pgfmanual-en-macro.te
 
 \section{Section Test}
 
+\begin{verbatimoutput}{memoir-verbatim.txt}
+This is a 'verbatimoutput' environment which is used to test the tab character in the output file.
+	At the head of this line, there is a tab.
+    At the head of this line, there are four spaces.
+Tab is eaten while spaces can be kept.
+Also, it seems that the 'verbatimoutput' environment uses a temporary stream, this implies that no additional stream needed.
+\end{verbatimoutput}
+
 \subsection{SubSection Test1}
 \label{sub:subsec1}
+
+% chapter dump (end)
 
 \end{document}
 

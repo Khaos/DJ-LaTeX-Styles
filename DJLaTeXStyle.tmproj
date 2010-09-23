@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</string>
+	<string>Test/DJPgfplotsPreamble/recycle/DJpgfmanual-en-macros.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -45,8 +45,6 @@
 			<string>Release</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>Source</string>
 			<key>regexFolderFilter</key>
@@ -55,6 +53,8 @@
 			<string>Source</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>tmp</string>
 			<key>regexFolderFilter</key>
@@ -80,59 +80,136 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>239</integer>
+	<integer>178</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Source/DJPremble/DJ4DJespcrc.tex</key>
+		<key>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.log</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>838</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>Source/DJPremble/DJcommonpk.tex</key>
-		<dict>
-			<key>caret</key>
+			<integer>812</integer>
+			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>22</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>838</integer>
 			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>49</integer>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>838</integer>
+			</dict>
 		</dict>
 		<key>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>23</integer>
+				<integer>98</integer>
 				<key>line</key>
-				<integer>148</integer>
+				<integer>268</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>130</integer>
+			<integer>246</integer>
+		</dict>
+		<key>Test/DJPgfplotsPreamble/NotesonPGF-frontmatter.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>137</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Test/DJPgfplotsPreamble/recycle/DJpgfmanual-en-macros.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>81</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>63</integer>
+		</dict>
+		<key>tmp/DJpgfplots-macros.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>70</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>48</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>28</integer>
+				<key>line</key>
+				<integer>70</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>70</integer>
+			</dict>
+		</dict>
+		<key>tmp/verbtest01.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>59</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>41</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</string>
+		<string>Test/DJPgfplotsPreamble/recycle/DJpgfmanual-en-macros.tex</string>
+		<string>tmp/verbtest01.tex</string>
+		<string>tmp/DJpgfplots-macros.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{1529, 32}, {775, 768}}</string>
+	<string>{{442, 10}, {836, 768}}</string>
 </dict>
 </plist>
