@@ -265,6 +265,8 @@ An example of codeexample environment, which is defined in pgfmanual-en-macro.te
 
 \section{Section Test}
 
+{
+\catcode`\^^I=12
 \begin{verbatimoutput}{memoir-verbatim.txt}
 This is a 'verbatimoutput' environment which is used to test the tab character in the output file.
 	At the head of this line, there is a tab.
@@ -272,6 +274,7 @@ This is a 'verbatimoutput' environment which is used to test the tab character i
 Tab is eaten while spaces can be kept.
 Also, it seems that the 'verbatimoutput' environment uses a temporary stream, this implies that no additional stream needed.
 \end{verbatimoutput}
+}
 
 \subsection{SubSection Test1}
 \label{sub:subsec1}

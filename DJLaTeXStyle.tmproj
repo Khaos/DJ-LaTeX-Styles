@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Test/DJPgfplotsPreamble/recycle/DJpgfmanual-en-macros.tex</string>
+	<string>Test/DJMinted/minted_test01.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -45,6 +45,8 @@
 			<string>Release</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>Source</string>
 			<key>regexFolderFilter</key>
@@ -53,8 +55,6 @@
 			<string>Source</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>tmp</string>
 			<key>regexFolderFilter</key>
@@ -80,136 +80,88 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>178</integer>
+	<integer>232</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.log</key>
+		<key>Source/DJPreamble/DJpgfmanual-en-macros.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>4</integer>
 				<key>line</key>
-				<integer>838</integer>
+				<integer>1074</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>812</integer>
-			<key>selectFrom</key>
+			<integer>1062</integer>
+		</dict>
+		<key>Source/DJPreamble/DJpgfplots-macros.tex</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>838</integer>
+				<integer>108</integer>
 			</dict>
-			<key>selectTo</key>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>91</integer>
+		</dict>
+		<key>Source/DJPreamble/DJpgfplots.preamble.tex</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>838</integer>
+				<integer>27</integer>
 			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>231</integer>
+		</dict>
+		<key>Test/DJMinted/minted_test01.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>32</integer>
+				<key>line</key>
+				<integer>32</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>6</integer>
 		</dict>
 		<key>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>98</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>268</integer>
+				<integer>276</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>246</integer>
-		</dict>
-		<key>Test/DJPgfplotsPreamble/NotesonPGF-frontmatter.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>137</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>Test/DJPgfplotsPreamble/recycle/DJpgfmanual-en-macros.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>81</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>63</integer>
-		</dict>
-		<key>tmp/DJpgfplots-macros.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>70</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>48</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>28</integer>
-				<key>line</key>
-				<integer>70</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>70</integer>
-			</dict>
-		</dict>
-		<key>tmp/verbtest01.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>59</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>41</integer>
+			<integer>260</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</string>
-		<string>Test/DJPgfplotsPreamble/recycle/DJpgfmanual-en-macros.tex</string>
-		<string>tmp/verbtest01.tex</string>
-		<string>tmp/DJpgfplots-macros.tex</string>
+		<string>Test/DJMinted/minted_test01.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{442, 10}, {836, 768}}</string>
+	<string>{{1528, 32}, {775, 768}}</string>
 </dict>
 </plist>

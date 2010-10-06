@@ -42,6 +42,7 @@
 \else
   \providecommand\DeleteFile[1]{\immediate\write18{rm #1}}
 \fi
+
 %% Define \CopyFile command for debugging purpose
 \ifwindows
   \providecommand\CopyFile[2]{\immediate\write18{copy #1 #2}}
@@ -74,24 +75,30 @@
       \DeleteFile{\jobname.aex}}
      {\AppExistsfalse}
   \fi}
+
 \newcommand\minted@resetoptions{}
+
 \newcommand\minted@defopt[1]{
   \expandafter\def\expandafter\minted@resetoptions\expandafter{%
     \minted@resetoptions
     \@namedef{minted@opt@#1}{}}}
+
 \newcommand\minted@opt[1]{
   \expandafter\detokenize%
     \expandafter\expandafter\expandafter{\csname minted@opt@#1\endcsname}}
+
 \newcommand\minted@define@opt[3][]{
   \minted@defopt{#2}
   \ifthenelse{\equal{#1}{}}{
     \define@key{minted@opt}{#2}{\@namedef{minted@opt@#2}{#3}}}
    {\define@key{minted@opt}{#2}[#1]{\@namedef{minted@opt@#2}{#3}}}}
+
 \newcommand\minted@define@switch[3][]{
   \minted@defopt{#2}
   \define@booleankey{minted@opt}{#2}
    {\@namedef{minted@opt@#2}{#3}}
    {\@namedef{minted@opt@#2}{#1}}}
+
 \minted@defopt{extra}
 \newcommand\minted@define@extra[1]{
   \define@key{minted@opt}{#1}{
@@ -103,13 +110,16 @@
       \minted@opt@extra,#1}}
    {\expandafter\def\expandafter\minted@opt@extra\expandafter{%
       \minted@opt@extra,#1=false}}}
+
 \minted@define@switch{texcl}{-P texcomments}
 \minted@define@switch{mathescape}{-P mathescape}
 \minted@define@switch{linenos}{-P linenos}
 \minted@define@switch{startinline}{-P startinline}
 \minted@define@switch[-P funcnamehighlighting=False]{funcnamehighlighting}{-P funcnamehighlighting}
+
 \minted@define@opt{gobble}{-F gobble:n=#1}
 \minted@define@opt{bgcolor}{#1}
+
 \minted@define@extra{frame}
 \minted@define@extra{framesep}
 \minted@define@extra{framerule}
@@ -129,12 +139,14 @@
 \minted@define@extra{fontshape}
 \minted@define@extra{fontseries}
 \minted@define@extra{formatcom}
+
 \minted@define@extra@switch{numberblanklines}
 \minted@define@extra@switch{showspaces}
 \minted@define@extra@switch{resetmargins}
 \minted@define@extra@switch{samepage}
 \minted@define@extra@switch{showtabs}
 \minted@define@extra@switch{obeytabs}
+
 %% Define key 'VerbOutTabSize' for 'VerbatimOut'
 %% Default tabsize = 8
 \def\minted@opt@VerbOutTabSize{8}
@@ -147,6 +159,7 @@
     % \def\minted@opt@VerbOutTabSize #1}
     % \expandafter\def\expandafter\minted@opt@VerbOutTabSize\expandafter{#1}}
     % #1 \def\minted@opt@VerbOutTabSize 4}
+
 \newsavebox{\minted@bgbox}
 \newenvironment{minted@colorbg}[1]{
   \def\minted@bgcol{#1}
@@ -156,11 +169,13 @@
  {\end{minipage}
   \end{lrbox}%
   \colorbox{\minted@bgcol}{\usebox{\minted@bgbox}}}
+
 \newwrite\minted@code
 \newcommand\minted@savecode[1]{
   \immediate\openout\minted@code\jobname.pyg
   \immediate\write\minted@code{#1}
   \immediate\closeout\minted@code}
+
 \newcommand\minted@pygmentize[2][\jobname.pyg]{
   \def\minted@cmd{pygmentize -l #2 -f latex -F tokenmerge
     \minted@opt{gobble} \minted@opt{texcl} \minted@opt{mathescape}
@@ -177,12 +192,16 @@
   \ifthenelse{\equal{\minted@opt@bgcolor}{}}
    {}
    {\end{minted@colorbg}}
+  %% Backup the pyg file for debugging
+  % \CopyFile{\jobname.out.pyg}{\jobname.out.pyg.bak}
   \DeleteFile{\jobname.out.pyg}}
+
 \newcommand\minted@usedefaultstyle{\usemintedstyle{default}}
 \newcommand\usemintedstyle[1]{
   \renewcommand\minted@usedefaultstyle{}
   \immediate\write18{pygmentize -S #1 -f latex > \jobname.pyg}
   \input{\jobname.pyg}}
+
 \newcommand\mint[3][]{
   \DefineShortVerb{#3}
   \minted@resetoptions
@@ -192,7 +211,9 @@
     \minted@savecode{\FV@SV@minted@verb}
     \minted@pygmentize{#2}
     \DeleteFile{\jobname.pyg}}]{minted@verb}#3}
+
 \newcommand\minted@proglang[1]{}
+
 \newenvironment{minted}[2][]
  {\VerbatimEnvironment
   \renewcommand{\minted@proglang}[1]{#2}
@@ -206,7 +227,8 @@
   % \begin{VerbatimOut}[\@nameuse{minted@opt@extra}]{\jobname.pyg}}%
   % \begin{VerbatimOut}[\minted@opt{extra}}]{\jobname.pyg}}%
   % \begin{VerbatimOut}[\minted@opt@extra]{\jobname.pyg}}%
-  \begin{VerbatimOut}[tabsize=\minted@opt@VerbOutTabSize]{\jobname.pyg}}%
+  % \begin{VerbatimOut}[tabsize=\minted@opt@VerbOutTabSize]{\jobname.pyg}}%
+  \begin{VerbatimOut}[codes={\catcode`\^^I=12}]{\jobname.pyg}}%
   % \begin{VerbatimOut}{\jobname.pyg}}%
 % \begin{VerbatimOut}[tabsize=\KV@minted@opt@tabsize]{\jobname.pyg}}%
  {\end{VerbatimOut}
@@ -214,10 +236,12 @@
   %% Backup the pyg file for debugging
   % \CopyFile{\jobname.pyg}{\jobname.pyg.bak}
   \DeleteFile{\jobname.pyg}}
+
 \newcommand\inputminted[3][]{
   \minted@resetoptions
   \setkeys{minted@opt}{#1}
   \minted@pygmentize[#3]{#2}}
+
 \newcommand\newminted[3][]{
   \ifthenelse{\equal{#1}{}}
    {\def\minted@envname{#2code}}
@@ -228,23 +252,31 @@
   \newenvironment{\minted@envname *}[1]
    {\VerbatimEnvironment\begin{minted}[#3,##1]{#2}}
    {\end{minted}}}
+
 \newcommand\newmint[3][]{
   \ifthenelse{\equal{#1}{}}
    {\def\minted@shortname{#2}}
    {\def\minted@shortname{#1}}
   \expandafter\newcommand\csname\minted@shortname\endcsname[2][]{
     \mint[#3,##1]{#2}##2}}
+
 \newcommand\newmintedfile[3][]{
   \ifthenelse{\equal{#1}{}}
    {\def\minted@shortname{#2file}}
    {\def\minted@shortname{#1}}
   \expandafter\newcommand\csname\minted@shortname\endcsname[2][]{
     \inputminted[#3,##1]{#2}{##2}}}
+
 \newfloat{listing}{h}{lol}
+
 \newcommand\listingscaption{Listing}
+
 \floatname{listing}{\listingscaption}
+
 \newcommand\listoflistingscaption{List of listings}
+
 \providecommand\listoflistings{\listof{listing}{\listoflistingscaption}}
+
 \AtBeginDocument{
   \minted@usedefaultstyle}
 \AtEndOfPackage{
