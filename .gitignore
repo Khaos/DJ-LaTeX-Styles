@@ -11,5 +11,9 @@ Test/DJMinted/*.*
 Test/DJPgfplotsPreamble/*.*
 !Test/DJPgfplotsPreamble/*.lyx
 !Test/DJPgfplotsPreamble/*.tex
+Test/tkz-bode/*.*
+!Test/tkz-bode/*.lyx
+!Test/tkz-bode/*.tex
+Test/tkz-bode/gnuplot
 
 .tex
