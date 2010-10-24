@@ -58,6 +58,26 @@
 %%
 %% 2010-09-19 Comment the lines before '\documentclass[a4paper]{ltxdoc}'.
 %%
+%% 2010-10-24 Stop loading the following pakcages
+%%              \usepackage{textcomp}
+%%              \usepackage{booktabs}
+%%              \usepackage{calc}
+%%              \usepackage[formats]{listings}
+%%              \usepackage{array}
+%%               \usepackage[a4paper,left=2.25cm,right=2.25cm,top=2.5cm,bottom=2.5cm,nohead]{geometry}
+%%              \usepackage{amsmath,amssymb}
+%%              \usepackage{pifont}
+%%              \usepackage[latin1]{inputenc}
+%%              \usepackage{amsmath}
+%%              \usepackage{eurosym}
+%%              \usepackage{nicefrac}
+%%              \usepackage{nicefrac}
+%%            &&&
+%%            Remove the definition of the following commands
+%%              \newcommand{\R}{\mathbb{R}}
+%%              \newcommand{\N}{\mathbb{N}}
+%%              \newcommand{\Z}{\mathbb{Z}}
+%%            !!! If you want use them, load them manually.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% !!!
@@ -159,28 +179,46 @@
 }
 
 
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% !!!
+%% Modified by Dazhi Jiang, 2010-10-24 13:03:53 +0100 (Sun, 24 Oct 2010)
+%% Comment some math commands
+
+% \newcommand{\R}{\mathbb{R}}
+% \newcommand{\N}{\mathbb{N}}
+% \newcommand{\Z}{\mathbb{Z}}
+
+%% END: Comment some math commands
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 \long\def\COMMENTLOWLEVEL#1\ENDCOMMENT{}
 \def\ENDCOMMENT{}
 
-\usepackage{textcomp}
-\usepackage{booktabs}
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% !!!
+%% Modified by Dazhi Jiang, 2010-10-24 13:07:05 +0100 (Sun, 24 Oct 2010)
+%% Comment some packages
 
+% \usepackage{textcomp}	%% Text Companion font encoding
+% \usepackage{booktabs} %% Publication quality tables in LaTeX
+% 
 \usepackage{calc}
-\usepackage[formats]{listings}
-%\usepackage{courier} % don't use it - the '^' character can't be copy-pasted in courier
+% \usepackage[formats]{listings}
+% %\usepackage{courier} % don't use it - the '^' character can't be copy-pasted in courier
+% 
+% \usepackage{array}
+% \lstset{%
+% 	basicstyle=\ttfamily,
+% 	language=[LaTeX]tex, % Seems as if \lstset{language=tex} must be invoked BEFORE loading tikz!?
+% 	tabsize=4,
+% 	breaklines=true,
+% 	breakindent=0pt
+% }
 
-\usepackage{array}
-\lstset{%
-	basicstyle=\ttfamily,
-	language=[LaTeX]tex, % Seems as if \lstset{language=tex} must be invoked BEFORE loading tikz!?
-	tabsize=4,
-	breaklines=true,
-	breakindent=0pt
-}
+%% END: Comment some packages
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 \ifpdf
 	\pdfinfo {
@@ -214,19 +252,29 @@
 
 \usepgfplotslibrary{dateplot,units,groupplots}
 
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% !!!
+%% Modified by Dazhi Jiang, 2010-10-24 13:16:41 +0100 (Sun, 24 Oct 2010)
+%% Comment the unnecessary packages
+
 %% If your want to use geometry, load it yourself. This is because many other
 %% document classes have their own page layout style.
 % \usepackage[a4paper,left=2.25cm,right=2.25cm,top=2.5cm,bottom=2.5cm,nohead]{geometry}
-\usepackage{amsmath,amssymb}
-\usepackage{xxcolor}
-\usepackage{pifont}
-\usepackage[latin1]{inputenc}
-\usepackage{amsmath}
-\usepackage{eurosym}
-\usepackage{nicefrac}
+% \usepackage{amsmath,amssymb}
+\usepackage{xxcolor} %% Part of <pgf>
+% \usepackage{pifont} %% pifont symbols
+% \usepackage[latin1]{inputenc}
+% \usepackage{amsmath} %% AMS mathematical facilities for LaTeX.
+% \usepackage{eurosym} %% MetaFont and macros for Euro sign.
+% \usepackage{nicefrac} %% Typeset in-line fractions in a "nice" way. Part of <units>
+% 
+% \usepackage{nicefrac}
+
+%% END: Comment the unnecessary packages
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 \input{DJpgfplots-macros}
 
-\usepackage{nicefrac}
 
 \graphicspath{{figures/}}
 
