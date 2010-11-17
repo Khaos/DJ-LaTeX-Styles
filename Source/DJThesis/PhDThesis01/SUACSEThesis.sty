@@ -6,7 +6,7 @@
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% * Usage
-%%   -
+%%   - 
 %%
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -17,5 +17,156 @@
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% * TODO
-%%   -
+%%   - 
 %%
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:04:33 +0000 (Tue, 16 Nov 2010)
+%% Initialisation
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{SUACSEThesis}[2010/11/16 v0.0.1 SUACSE thesis]
+
+%% ! SUACSEThesis relies on the memoir class
+\@ifclassloaded{memoir}{\let\endsuacsethesis\relax}{\let\endsuacsethesis\endinput
+  \PackageError{SUACSEThesis}{The SUACSEThesis package only works with the memoir class}{\@ehd}}
+\endsuacsethesis
+
+%% END: Initialisation
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:01:56 +0000 (Tue, 16 Nov 2010)
+%% Packages
+\RequirePackage{pgfkeys}  % Load Package 'pgfkeys'
+% \RequirePackage{pgfopts}  % Load Package 'pgfopts'
+
+%% END: Packages
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 18:55:59 +0000 (Tue, 16 Nov 2010)
+%% Define Package Keys
+
+% \newcommand*{\setsuacsespacing}[1]{%
+%   \let\SUACSESpacing#1
+%   \SUACSESpacing}
+% \setsuacsespacing{\OnehalfSpacing}
+
+
+%% * Define switchers
+% \newif\ifsuacse@
+
+%% * Define keys for SUACSEThesis
+\pgfkeys{%
+	/suacse/.cd,
+	spacing/.is choice,
+	spacing/single/.code={\SingleSpacing},
+	spacing/onehalf/.code={\OnehalfSpacing},
+	spacing/double/.code={\DoubleSpacing},
+	spacing/.default=onehalf,
+}
+
+% \pgfkeys{%
+%     /suacse/.cd,
+%     spacing/.is choice,
+%     spacing/single/.code={\setsuacsespacing{\SingleSpacing}},
+%     spacing/onehalf/.code={\setsuacsespacing{\OnehalfSpacing}},
+%     spacing/double/.code={\setsuacsespacing{\DoubleSpacing}},
+% }
+
+
+%% * Use '\suacseset' to set-up the keys 
+\def\suacseset#1{\pgfkeys{/suacse/.cd,#1}}
+
+
+%% * Commands required by the keys
+% \newcommand*{\setsuacsespacing}[1]{%
+%   \let\SUACSESpacing#1
+%   \SUACSESpacing}
+% \setsuacsespacing{\OnehalfSpacing}
+
+%% * Setting-up the default options
+\pgfkeys{%
+	/suacse/.cd,
+	spacing=onehalf,
+}
+
+
+%% END: Define Package Keys
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:02:34 +0000 (Tue, 16 Nov 2010)
+%% Page Layout
+
+%% END: Page Layout
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:03:55 +0000 (Tue, 16 Nov 2010)
+%% Page Styles
+
+%% END: Page Styles
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:10:39 +0000 (Tue, 16 Nov 2010)
+%% TOC etc.
+
+%% END: TOC etc.
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:10:58 +0000 (Tue, 16 Nov 2010)
+%% Chapter Styling
+
+%% END: Chapter Styling
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:11:38 +0000 (Tue, 16 Nov 2010)
+%% Section, etc., Styling
+
+%% END: Section, etc., Styling
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:12:17 +0000 (Tue, 16 Nov 2010)
+%% Captions
+
+%% END: Captions
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:12:36 +0000 (Tue, 16 Nov 2010)
+%% Bibliography
+
+%% END: Bibliography
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:03:18 +0000 (Tue, 16 Nov 2010)
+%% Fonts
+
+%% END: Fonts
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:42:17 +0000 (Tue, 16 Nov 2010)
+%% Commands
+
+
+%% END: Commands
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+

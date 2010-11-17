@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>.gitignore</string>
+	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -66,9 +66,7 @@
 			<key>filename</key>
 			<string>.gitignore</string>
 			<key>lastUsed</key>
-			<date>2010-11-01T23:57:22Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2010-11-16T11:37:52Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -113,6 +111,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>33</integer>
+				<key>line</key>
+				<integer>59</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>105</integer>
+		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
 			<key>caret</key>
@@ -127,19 +139,33 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</key>
+		<key>Test/DJThesis/SUACSEThesis-test01.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>446</integer>
 				<key>line</key>
-				<integer>245</integer>
+				<integer>31</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>228</integer>
+			<integer>16</integer>
+		</dict>
+		<key>Test/DJThesis/stypull.sh</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>70</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>Test/tkz-bode/bodeplot-pgfplot-test02.tex</key>
 		<dict>
@@ -184,6 +210,20 @@
 				<key>line</key>
 				<integer>39</integer>
 			</dict>
+		</dict>
+		<key>tmp/Templete/pwasu.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>41</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>35</integer>
 		</dict>
 		<key>tmp/pgf-2.00-cvs/tex/latex/pgf/doc/pgfmanual.code.tex</key>
 		<dict>
@@ -278,7 +318,10 @@
 	<array>
 		<string>Source/DJMath/DJMathComwithP.tex</string>
 		<string>.gitignore</string>
-		<string>Test/DJPgfplotsPreamble/DJPgfplotsPreambleTest01.tex</string>
+		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+		<string>Test/DJThesis/stypull.sh</string>
+		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
+		<string>tmp/Templete/pwasu.sty</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
