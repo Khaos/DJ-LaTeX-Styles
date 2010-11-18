@@ -39,7 +39,7 @@
 %% Created by Dazhi Jiang, 2010-11-16 16:01:56 +0000 (Tue, 16 Nov 2010)
 %% Packages
 \RequirePackage{pgfkeys}  % Load Package 'pgfkeys'
-% \RequirePackage{pgfopts}  % Load Package 'pgfopts'
+\RequirePackage{pgfopts}  % Load Package 'pgfopts'
 
 %% END: Packages
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -56,7 +56,10 @@
 
 
 %% * Define switchers
-% \newif\ifsuacse@
+%%   - Switchers for fonts
+\newif\ifsuacse@font@cm			% Computer Modern
+\newif\ifsuacse@font@ppl		% Palatino
+\newif\ifsuacse@font@memfonts	% Hybrid of Palatino and Computer Modern, memfonts
 
 %% * Define keys for SUACSEThesis
 \pgfkeys{%
@@ -66,6 +69,21 @@
 	spacing/onehalf/.code={\OnehalfSpacing},
 	spacing/double/.code={\DoubleSpacing},
 	spacing/.default=onehalf,
+	%% - page layout
+	pagelayout/.is choice,
+	pagelayout/asu/.code={\pagelayout@asu},
+	pagelayout/memsty/.code={\pagelayout@memsty},
+	pagelayout/acsei/.code={\pagelayout@acsei},
+	pagelayout/acseii/.code={\pagelayout@acseii},
+	%% - font
+	font@cm/.is if=suacse@font@cm,
+	font@ppl/.is if=suacse@font@ppl,
+	font@memfonts/.is if=suacse@font@memfonts,
+	font/.is choice,
+	font/cm/.style={font@cm=true, font@ppl=false, font@memfonts=false},
+	font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
+	font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
+	font/.default=cm,
 }
 
 % \pgfkeys{%
@@ -87,12 +105,19 @@
 %   \SUACSESpacing}
 % \setsuacsespacing{\OnehalfSpacing}
 
-%% * Setting-up the default options
+
+%% * Declare the package options
+%%   - Define the package options
 \pgfkeys{%
-	/suacse/.cd,
-	spacing=onehalf,
+	/suacseopt/.cd,
+	spacing/.code={\suacseset{spacing=#1}},
+	pagelayout/.code={\suacseset{pagelayout=#1}},
+	font/.code={\suacseset{font=#1}},
 }
 
+%%   - Declare pgf package options
+%%     Note that this declaration command has to be put after all \pgfkeys
+\ProcessPgfPackageOptions{/suacseopt}
 
 %% END: Define Package Keys
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -101,6 +126,117 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:02:34 +0000 (Tue, 16 Nov 2010)
 %% Page Layout
+
+%% * Some useful lengths for layout purposes
+\newlength{\toptafiddle}
+\newlength{\bottafiddle}
+\newlength{\topfiddle}
+\newlength{\botfiddle}
+\newlength{\linespace}
+
+%% * ASU page layout
+\newcommand{\pagelayout@asu}{%
+	%% * set up margins for a4paper stock
+	%%   - left, right and textwidth
+	\setlrmarginsandblock{1.5in}{1in}{*}
+
+	%% for main body
+	%% bottom of text at 1in, footer below
+	%% top of header at 1in, first text line double spaced below base of header
+	\setlength{\linespace}{\baselineskip} %% the current equivalent of \onelineskip
+	\setlength{\headheight}{\onelineskip}
+	\setlength{\headsep}{\linespace}
+	\addtolength{\headsep}{-\topskip}
+	\setlength{\uppermargin}{1in}
+	\addtolength{\uppermargin}{\headheight}
+	\addtolength{\uppermargin}{\headsep}
+	\setlength{\lowermargin}{1in}
+	\setlength{\footskip}{\onelineskip}
+	\setlength{\textheight}{\paperheight}
+	\addtolength{\textheight}{-\uppermargin}
+	\addtolength{\textheight}{-\lowermargin}
+	%% the fiddle lengths (..ta.. for title/approval page, others for prelims)
+	%% (determined by many trials and errors)
+	\setlength{\toptafiddle}{2\linespace}
+	\setlength{\topfiddle}{\toptafiddle}
+	\setlength{\bottafiddle}{\onelineskip}
+	\setlength{\botfiddle}{0pt} % actually this is not used
+
+	\checkandfixthelayout[nearest]
+}
+
+
+%% * memsty page layout
+\newcommand{\pagelayout@memsty}{%
+	%% set up the page layout
+	\settrimmedsize{11in}{210mm}{*}
+	\setlength{\trimtop}{0pt}
+	\setlength{\trimedge}{\stockwidth}
+	\addtolength{\trimedge}{-\paperwidth}
+	\settypeblocksize{7.75in}{33pc}{*}
+	\setulmargins{4cm}{*}{*}
+	\setlrmargins{1.25in}{*}{*}
+	\setmarginnotes{17pt}{51pt}{\onelineskip}
+	\setheadfoot{\onelineskip}{2\onelineskip}
+	\setheaderspaces{*}{2\onelineskip}{*}
+	\setsidefeet{\marginparsep}{9em}%
+	   {\onelineskip}{0pt}%
+	   {\normalfont\footnotesize}{\textheight}%
+	\checkandfixthelayout
+}
+
+
+%% * ACSE page layout I
+\newcommand{\pagelayout@acsei}{%
+	%% * set up margins for a4paper stock
+	%%   - left, right and textwidth
+	\setlrmarginsandblock{1.5in}{1.2in}{*}
+
+	%% for main body
+	%% bottom of text at 1in, footer below
+	%% top of header at 1in, first text line double spaced below base of header
+	\setlength{\linespace}{\baselineskip} %% the current equivalent of \onelineskip
+	\setlength{\headheight}{\onelineskip}
+	\setlength{\headsep}{\linespace}
+	\addtolength{\headsep}{-\topskip}
+	\setlength{\uppermargin}{1.2in}
+	\addtolength{\uppermargin}{\headheight}
+	\addtolength{\uppermargin}{\headsep}
+	\setlength{\lowermargin}{1.2in}
+	\setlength{\footskip}{\onelineskip}
+	\setlength{\textheight}{\paperheight}
+	\addtolength{\textheight}{-\uppermargin}
+	\addtolength{\textheight}{-\lowermargin}
+	%% the fiddle lengths (..ta.. for title/approval page, others for prelims)
+	%% (determined by many trials and errors)
+	\setlength{\toptafiddle}{2\linespace}
+	\setlength{\topfiddle}{\toptafiddle}
+	\setlength{\bottafiddle}{\onelineskip}
+	\setlength{\botfiddle}{0pt} % actually this is not used
+
+	\checkandfixthelayout[nearest]
+}
+
+
+%% * ACSE page layout II
+\newcommand{\pagelayout@acseii}{%
+	%% set up the page layout
+	\settrimmedsize{11in}{210mm}{*}
+	\setlength{\trimtop}{0pt}
+	\setlength{\trimedge}{\stockwidth}
+	\addtolength{\trimedge}{-\paperwidth}
+	\settypeblocksize{8.5in}{33pc}{*}
+	\setulmargins{4cm}{*}{*}
+	\setlrmargins{1.5in}{*}{*}
+	\setmarginnotes{17pt}{51pt}{\onelineskip}
+	\setheadfoot{\onelineskip}{2\onelineskip}
+	\setheaderspaces{*}{2\onelineskip}{*}
+	\setsidefeet{\marginparsep}{9em}%
+	   {\onelineskip}{0pt}%
+	   {\normalfont\footnotesize}{\textheight}%
+	\checkandfixthelayout
+}
+
 
 %% END: Page Layout
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -157,6 +293,29 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:03:18 +0000 (Tue, 16 Nov 2010)
 %% Fonts
+\RequirePackage{textcomp} % provide lots of new symbols
+\RequirePackage{lmodern} % for sensible sans and tt font
+
+\ifsuacse@font@ppl
+	\RequirePackage[sc,osf]{mathpazo}  % Load Package 'mathpazo'
+	% \RequirePackage{mathpazo}
+\fi
+
+\ifsuacse@font@memfonts
+	\RequirePackage{memfonts}  % Load Package 'memfonts'
+\fi
+
+%% Make maths use lining numbers: (old-style look bad most-times)
+\DeclareMathSymbol{0}{0}{letters}{'060}
+\DeclareMathSymbol{1}{0}{letters}{'061}
+\DeclareMathSymbol{2}{0}{letters}{'062}
+\DeclareMathSymbol{3}{0}{letters}{'063}
+\DeclareMathSymbol{4}{0}{letters}{'064}
+\DeclareMathSymbol{5}{0}{letters}{'065}
+\DeclareMathSymbol{6}{0}{letters}{'066}
+\DeclareMathSymbol{7}{0}{letters}{'067}
+\DeclareMathSymbol{8}{0}{letters}{'070}
+\DeclareMathSymbol{9}{0}{letters}{'071}
 
 %% END: Fonts
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -168,5 +327,20 @@
 
 
 %% END: Commands
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-17 14:05:56 +0000 (Wed, 17 Nov 2010)
+%% Initialise Keys
+
+%% * Setting-up the default options
+\pgfkeys{%
+	/suacse/.cd,
+	spacing=onehalf,
+	pagelayout=acseii,
+	font=cm,
+}
+
+%% END: Initialise Keys
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

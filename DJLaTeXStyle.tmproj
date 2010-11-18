@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+	<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -66,7 +66,7 @@
 			<key>filename</key>
 			<string>.gitignore</string>
 			<key>lastUsed</key>
-			<date>2010-11-16T11:37:52Z</date>
+			<date>2010-11-17T16:37:48Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -97,33 +97,19 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>Source/DJMath/DJMathComwithP.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>15</integer>
 				<key>line</key>
-				<integer>59</integer>
+				<integer>299</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>105</integer>
+			<integer>282</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -144,14 +130,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>446</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>31</integer>
+				<integer>69</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>0</integer>
+			<integer>258</integer>
 			<key>firstVisibleLine</key>
-			<integer>16</integer>
+			<integer>60</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
@@ -316,7 +302,6 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Source/DJMath/DJMathComwithP.tex</string>
 		<string>.gitignore</string>
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 		<string>Test/DJThesis/stypull.sh</string>
@@ -326,6 +311,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{314, 65}, {966, 713}}</string>
+	<string>{{431, 4}, {966, 774}}</string>
 </dict>
 </plist>
