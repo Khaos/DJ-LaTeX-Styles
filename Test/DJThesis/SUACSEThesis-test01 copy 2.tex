@@ -20,13 +20,16 @@
 \usepackage{comment}
 
 \usepackage[%
-	font=ppl
-	]{SUACSEThesis}
+			pagelayout=acseii,
+			% font=ppl,
+			]{SUACSEThesis}
 
 \suacseset{%
-	pagelayout=acseii,
+	% pagelayout=acseii,
 	% font=ppl,
 }
+
+\usepackage{fonttable}
 
 \begin{document}
 
@@ -103,7 +106,7 @@ In file ../texmf-dist/tex/latex/psnfss/ot1zplm.fd, the following line indicates 
 \end{verbatim}
 
 Thus we can draw the font table for `zplm7m' by \verb+\fonttable{zplmr7m}+. This gives
-% \fonttable{zplmr7m}
+\fonttable{zplmr7m}
 
 From the table, charater `0' is defined as ``'060''. So we can redefine the math symbol `0' by
 \begin{verbatim}
@@ -111,7 +114,6 @@ From the table, charater `0' is defined as ``'060''. So we can redefine the math
 \end{verbatim}
 
 \clearpage
-
 
 \end{document}
 
