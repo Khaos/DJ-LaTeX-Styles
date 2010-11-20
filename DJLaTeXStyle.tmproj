@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Test/DJThesis/SUACSEThesis.sty</string>
+	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -102,14 +102,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>114</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>296</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -124,36 +124,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>Test/DJThesis/SUACSEThesis copy.sty</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>61</integer>
-				<key>line</key>
-				<integer>11</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>346</integer>
-			</dict>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test01 copy 2.tex</key>
 		<dict>
@@ -215,48 +185,6 @@
 				<integer>84</integer>
 			</dict>
 		</dict>
-		<key>Test/DJThesis/SUACSEThesis-test01.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>23</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>25</integer>
-		</dict>
-		<key>Test/DJThesis/SUACSEThesis.sty</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>37</integer>
-				<key>line</key>
-				<integer>291</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>273</integer>
-		</dict>
-		<key>Test/DJThesis/stypull.sh</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>70</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>Test/tkz-bode/bodeplot-pgfplot-test02.tex</key>
 		<dict>
 			<key>caret</key>
@@ -313,7 +241,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>35</integer>
+			<integer>178</integer>
 		</dict>
 		<key>tmp/Templete/thesis-preamble.sty</key>
 		<dict>
@@ -436,14 +364,8 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
-		<string>Test/DJThesis/SUACSEThesis.sty</string>
-		<string>Test/DJThesis/SUACSEThesis copy.sty</string>
-		<string>Test/DJThesis/stypull.sh</string>
-		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
-		<string>Test/DJThesis/SUACSEThesis-test01 copy.tex</string>
-		<string>Test/DJThesis/SUACSEThesis-test01 copy 2.tex</string>
 		<string>tmp/Templete/pwasu.sty</string>
+		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
