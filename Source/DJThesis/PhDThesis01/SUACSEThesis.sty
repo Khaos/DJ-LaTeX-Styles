@@ -249,8 +249,8 @@
 %% * ACSE page layout II
 % \renewcommand{\pagelayout@acseii}{%
 \newcommand{\pagelayout@acseii}{%
-	%% set up the page layout
-	\settrimmedsize{11in}{210mm}{*}
+	%% set up the page layout%
+	\settrimmedsize{11in}{210mm}{*} % a4paper: 297mm * 210mm%
 	\setlength{\trimtop}{0pt}
 	\setlength{\trimedge}{\stockwidth}
 	\addtolength{\trimedge}{-\paperwidth}
@@ -263,8 +263,12 @@
 	\setsidefeet{\marginparsep}{9em}%
 	   {\onelineskip}{0pt}%
 	   {\normalfont\footnotesize}{\textheight}%
+	\setlength{\footskip}{\onelineskip}
+	\setlength{\footnotesep}{\onelineskip}
 	\checkandfixthelayout
 }
+
+% \renewcommand{\pagelayout@acseii}{}
 
 
 %% END: Page Layout
@@ -329,12 +333,13 @@
 \RequirePackage{textcomp} % provide lots of new symbols
 \RequirePackage{lmodern} % for sensible sans and tt font
 
+% \renewcommand{\suacseopt@setfont}{%
 \newcommand{\suacseopt@setfont}{%
 	%% Palatino
 	\ifsuacseopt@font@ppl
 		\RequirePackage[sc,osf]{mathpazo}  % Load Package 'mathpazo'
 		% \RequirePackage{mathpazo}
-		% \renewcommand{\rmdefault}{ppl} 
+		\renewcommand{\rmdefault}{ppl} 
 		% \renewcommand{\oldstylenums}[1]{{\fontfamily{pplj}\selectfont #1}}
 	\fi
 	
@@ -413,6 +418,23 @@
 %% END: Declare Package Options
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+% \renewcommand{\pagelayout@acseii}{%
+% 	%% set up the page layout
+% 	\settrimmedsize{11in}{210mm}{*}
+% 	\setlength{\trimtop}{0pt}
+% 	\setlength{\trimedge}{\stockwidth}
+% 	\addtolength{\trimedge}{-\paperwidth}
+% 	\settypeblocksize{8.5in}{32pc}{*}
+% 	\setulmargins{4.5cm}{*}{*}
+% 	\setlrmargins{1.6in}{*}{*}
+% 	\setmarginnotes{17pt}{51pt}{\onelineskip}
+% 	\setheadfoot{\onelineskip}{2\onelineskip}
+% 	\setheaderspaces{*}{2\onelineskip}{*}
+% 	\setsidefeet{\marginparsep}{9em}%
+% 	   {\onelineskip}{0pt}%
+% 	   {\normalfont\footnotesize}{\textheight}%
+% 	\checkandfixthelayout
+% }
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-17 14:05:56 +0000 (Wed, 17 Nov 2010)
