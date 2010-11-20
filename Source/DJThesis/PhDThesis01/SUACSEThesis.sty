@@ -1,0 +1,440 @@
+%% -*- Mode: LaTeX Memoir; tab-width: 4;
+
+%% SUACSEThesis.sty    ACSE@SU Thesis
+%% !THE TEMPLETE IS BASED ON THE 'MEMOIR' CLASS
+%% Created by Dazhi Jiang, 2010-11-16 12:41:58 +0000 (Tue, 16 Nov 2010)
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% * Usage
+%%   - 
+%%
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% * Change Log
+%%   @ 2010-11-16 12:41:58 +0000 (Tue, 16 Nov 2010)
+%%     - Create the initial file
+%%   @ 2010-11-20 13:33:07 +0000 (Sat, 20 Nov 2010)
+%%     - Fix the font options problem, the command, \ProcessPgfPackageOptions,
+%%       has to be put somewhere carefully as stated in the code.
+%%
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% * TODO
+%%   - 
+%%
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:04:33 +0000 (Tue, 16 Nov 2010)
+%% Initialisation
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{SUACSEThesis}[2010/11/16 v0.0.1 SUACSE thesis]
+
+%% ! SUACSEThesis relies on the memoir class
+\@ifclassloaded{memoir}{\let\endsuacsethesis\relax}{\let\endsuacsethesis\endinput
+  \PackageError{SUACSEThesis}{The SUACSEThesis package only works with the memoir class}{\@ehd}}
+\endsuacsethesis
+
+%% END: Initialisation
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:01:56 +0000 (Tue, 16 Nov 2010)
+%% Packages
+\RequirePackage{pgfkeys}  % Load Package 'pgfkeys'
+\RequirePackage{pgfopts}  % Load Package 'pgfopts'
+
+%% END: Packages
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 18:55:59 +0000 (Tue, 16 Nov 2010)
+%% Define Package Keys
+
+% \newcommand*{\setsuacsespacing}[1]{%
+%   \let\SUACSESpacing#1
+%   \SUACSESpacing}
+% \setsuacsespacing{\OnehalfSpacing}
+
+
+%% * Define switchers
+%%   - Switchers for fonts
+\newif\ifsuacseopt@font@cm			% Computer Modern
+\newif\ifsuacseopt@font@ppl		% Palatino
+\newif\ifsuacseopt@font@memfonts	% Hybrid of Palatino and Computer Modern, memfonts
+
+%% * Define keys for SUACSEThesis
+\pgfkeys{%
+	/suacse/.cd,
+	spacing/.is choice,
+	spacing/single/.code={\SingleSpacing},
+	spacing/onehalf/.code={\OnehalfSpacing},
+	spacing/double/.code={\DoubleSpacing},
+	spacing/.default=onehalf,
+	% %% - page layout
+	% pagelayout/.is choice,
+	% pagelayout/asu/.code={\pagelayout@asu},
+	% pagelayout/memsty/.code={\pagelayout@memsty},
+	% pagelayout/acsei/.code={\pagelayout@acsei},
+	% pagelayout/acseii/.code={\pagelayout@acseii},
+	% %% - font
+	% font@cm/.is if=suacse@font@cm,
+	% font@ppl/.is if=suacse@font@ppl,
+	% font@memfonts/.is if=suacse@font@memfonts,
+	% font/.is choice,
+	% font/cm/.style={font@cm=true, font@ppl=false, font@memfonts=false},
+	% font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
+	% font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
+	% font/.default=cm,
+}
+
+% \pgfkeys{%
+%     /suacse/.cd,
+%     spacing/.is choice,
+%     spacing/single/.code={\setsuacsespacing{\SingleSpacing}},
+%     spacing/onehalf/.code={\setsuacsespacing{\OnehalfSpacing}},
+%     spacing/double/.code={\setsuacsespacing{\DoubleSpacing}},
+% }
+
+
+%% * Use '\suacseset' to set-up the keys 
+\def\suacseset#1{\pgfkeys{/suacse/.cd,#1}}
+
+
+%% * Commands required by the keys
+% \newcommand*{\setsuacsespacing}[1]{%
+%   \let\SUACSESpacing#1
+%   \SUACSESpacing}
+% \setsuacsespacing{\OnehalfSpacing}
+
+%%   - Pre-defined commands
+%%     - Page layout
+% \newcommand{\pagelayout@asu}{}
+% \newcommand{\pagelayout@memsty}{}
+% \newcommand{\pagelayout@acsei}{}
+% \newcommand{\pagelayout@acseii}{}
+%%     - Font setting-up
+% \newcommand{\suacseopt@setfont}{}
+
+
+%% * Declare the package options
+%%   - Define the package options
+\pgfkeys{%
+	/suacseopt/.cd,
+	spacing/.code={\suacseset{spacing=#1}},
+	%% - page layout
+	pagelayout/.is choice,
+	pagelayout/asu/.code={\pagelayout@asu},
+	pagelayout/memsty/.code={\pagelayout@memsty},
+	pagelayout/acsei/.code={\pagelayout@acsei},
+	pagelayout/acseii/.code={\pagelayout@acseii},
+	% pagelayout/.code={\suacseset{pagelayout=#1}},
+	%% - font
+	font@cm/.is if=suacseopt@font@cm,
+	font@ppl/.is if=suacseopt@font@ppl,
+	font@memfonts/.is if=suacseopt@font@memfonts,
+	font/.is choice,
+	font/cm/.style={font@cm=true, font@ppl=false, font@memfonts=false},
+	font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
+	font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
+	font/.default=cm,
+	font/.append code={\suacseopt@setfont},
+	% font/.code={\suacseset{font=#1}},
+}
+
+
+%% END: Define Package Keys
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:02:34 +0000 (Tue, 16 Nov 2010)
+%% Page Layout
+
+%% * Some useful lengths for layout purposes
+\newlength{\toptafiddle}
+\newlength{\bottafiddle}
+\newlength{\topfiddle}
+\newlength{\botfiddle}
+\newlength{\linespace}
+
+%% * ASU page layout
+% \renewcommand{\pagelayout@asu}{%
+\newcommand{\pagelayout@asu}{%
+	%% * set up margins for a4paper stock
+	%%   - left, right and textwidth
+	\setlrmarginsandblock{1.5in}{1in}{*}
+
+	%% for main body
+	%% bottom of text at 1in, footer below
+	%% top of header at 1in, first text line double spaced below base of header
+	\setlength{\linespace}{\baselineskip} %% the current equivalent of \onelineskip
+	\setlength{\headheight}{\onelineskip}
+	\setlength{\headsep}{\linespace}
+	\addtolength{\headsep}{-\topskip}
+	\setlength{\uppermargin}{1in}
+	\addtolength{\uppermargin}{\headheight}
+	\addtolength{\uppermargin}{\headsep}
+	\setlength{\lowermargin}{1in}
+	\setlength{\footskip}{\onelineskip}
+	\setlength{\textheight}{\paperheight}
+	\addtolength{\textheight}{-\uppermargin}
+	\addtolength{\textheight}{-\lowermargin}
+	%% the fiddle lengths (..ta.. for title/approval page, others for prelims)
+	%% (determined by many trials and errors)
+	\setlength{\toptafiddle}{2\linespace}
+	\setlength{\topfiddle}{\toptafiddle}
+	\setlength{\bottafiddle}{\onelineskip}
+	\setlength{\botfiddle}{0pt} % actually this is not used
+
+	\checkandfixthelayout[nearest]
+}
+
+
+%% * memsty page layout
+% \renewcommand{\pagelayout@memsty}{%
+\newcommand{\pagelayout@memsty}{%
+	%% set up the page layout
+	\settrimmedsize{11in}{210mm}{*}
+	\setlength{\trimtop}{0pt}
+	\setlength{\trimedge}{\stockwidth}
+	\addtolength{\trimedge}{-\paperwidth}
+	\settypeblocksize{7.75in}{33pc}{*}
+	\setulmargins{4cm}{*}{*}
+	\setlrmargins{1.25in}{*}{*}
+	\setmarginnotes{17pt}{51pt}{\onelineskip}
+	\setheadfoot{\onelineskip}{2\onelineskip}
+	\setheaderspaces{*}{2\onelineskip}{*}
+	\setsidefeet{\marginparsep}{9em}%
+	   {\onelineskip}{0pt}%
+	   {\normalfont\footnotesize}{\textheight}%
+	\checkandfixthelayout
+}
+
+
+%% * ACSE page layout I
+% \renewcommand{\pagelayout@acsei}{%
+\newcommand{\pagelayout@acsei}{%
+	%% * set up margins for a4paper stock
+	%%   - left, right and textwidth
+	\setlrmarginsandblock{1.5in}{1.2in}{*}
+
+	%% for main body
+	%% bottom of text at 1in, footer below
+	%% top of header at 1in, first text line double spaced below base of header
+	\setlength{\linespace}{\baselineskip} %% the current equivalent of \onelineskip
+	\setlength{\headheight}{\onelineskip}
+	\setlength{\headsep}{\linespace}
+	\addtolength{\headsep}{-\topskip}
+	\setlength{\uppermargin}{1.2in}
+	\addtolength{\uppermargin}{\headheight}
+	\addtolength{\uppermargin}{\headsep}
+	\setlength{\lowermargin}{1.2in}
+	\setlength{\footskip}{\onelineskip}
+	\setlength{\textheight}{\paperheight}
+	\addtolength{\textheight}{-\uppermargin}
+	\addtolength{\textheight}{-\lowermargin}
+	%% the fiddle lengths (..ta.. for title/approval page, others for prelims)
+	%% (determined by many trials and errors)
+	\setlength{\toptafiddle}{2\linespace}
+	\setlength{\topfiddle}{\toptafiddle}
+	\setlength{\bottafiddle}{\onelineskip}
+	\setlength{\botfiddle}{0pt} % actually this is not used
+
+	\checkandfixthelayout[nearest]
+}
+
+
+%% * ACSE page layout II
+% \renewcommand{\pagelayout@acseii}{%
+\newcommand{\pagelayout@acseii}{%
+	%% set up the page layout
+	\settrimmedsize{11in}{210mm}{*}
+	\setlength{\trimtop}{0pt}
+	\setlength{\trimedge}{\stockwidth}
+	\addtolength{\trimedge}{-\paperwidth}
+	\settypeblocksize{8.5in}{32pc}{*}
+	\setulmargins{4.5cm}{*}{*}
+	\setlrmargins{1.6in}{*}{*}
+	\setmarginnotes{17pt}{51pt}{\onelineskip}
+	\setheadfoot{\onelineskip}{2\onelineskip}
+	\setheaderspaces{*}{2\onelineskip}{*}
+	\setsidefeet{\marginparsep}{9em}%
+	   {\onelineskip}{0pt}%
+	   {\normalfont\footnotesize}{\textheight}%
+	\checkandfixthelayout
+}
+
+
+%% END: Page Layout
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:03:55 +0000 (Tue, 16 Nov 2010)
+%% Page Styles
+
+%% END: Page Styles
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:10:39 +0000 (Tue, 16 Nov 2010)
+%% TOC etc.
+
+%% END: TOC etc.
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:10:58 +0000 (Tue, 16 Nov 2010)
+%% Chapter Styling
+
+%% END: Chapter Styling
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:11:38 +0000 (Tue, 16 Nov 2010)
+%% Section, etc., Styling
+
+%% END: Section, etc., Styling
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:12:17 +0000 (Tue, 16 Nov 2010)
+%% Captions
+
+%% END: Captions
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:12:36 +0000 (Tue, 16 Nov 2010)
+%% Bibliography
+
+%% END: Bibliography
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:03:18 +0000 (Tue, 16 Nov 2010)
+%% Fonts
+
+%% * Load the commonly-used packages
+\RequirePackage[T1]{fontenc} % sane font encoding
+
+\RequirePackage{textcomp} % provide lots of new symbols
+\RequirePackage{lmodern} % for sensible sans and tt font
+
+\newcommand{\suacseopt@setfont}{%
+	%% Palatino
+	\ifsuacseopt@font@ppl
+		\RequirePackage[sc,osf]{mathpazo}  % Load Package 'mathpazo'
+		% \RequirePackage{mathpazo}
+		% \renewcommand{\rmdefault}{ppl} 
+		% \renewcommand{\oldstylenums}[1]{{\fontfamily{pplj}\selectfont #1}}
+	\fi
+	
+	%% Memoir Manual Font Style
+	\ifsuacseopt@font@memfonts
+		\RequirePackage{memfonts}  % Load Package 'memfonts'
+	\fi
+}
+
+\RequirePackage{pifont}  % Load Package 'pifont'
+\newcommand\diameter{\Pisymbol{psy}{'306}} % Define new symbol
+
+%% * Make maths use lining numbers: (old-style look bad most-times)
+\DeclareMathSymbol{0}{0}{letters}{'060}
+\DeclareMathSymbol{1}{0}{letters}{'061}
+\DeclareMathSymbol{2}{0}{letters}{'062}
+\DeclareMathSymbol{3}{0}{letters}{'063}
+\DeclareMathSymbol{4}{0}{letters}{'064}
+\DeclareMathSymbol{5}{0}{letters}{'065}
+\DeclareMathSymbol{6}{0}{letters}{'066}
+\DeclareMathSymbol{7}{0}{letters}{'067}
+\DeclareMathSymbol{8}{0}{letters}{'070}
+\DeclareMathSymbol{9}{0}{letters}{'071}
+
+%% END: Fonts
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:42:17 +0000 (Tue, 16 Nov 2010)
+%% Commands
+\RequirePackage{amsmath,amssymb,bm,cool,mathtools}
+
+%% For COOL
+%% * Brilliant Definition!
+%%   This gives a nested integrate, that is,
+%%     \Integrate{f(x,y,z,t)}{t}{x}{y}{z}
+%%   gives a fourth-order integrate
+\let\orig@Integrate\Integrate
+\renewcommand\Integrate[2]{%
+  \@ifnextchar\bgroup
+    {\Integrate{\orig@Integrate{#1}{#2}}}
+    {\orig@Integrate{#1}{#2}}}
+\let\Int\Integrate
+
+%% END: Commands
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-18 11:59:23 +0000 (Thu, 18 Nov 2010)
+%% MISC
+
+%% END: MISC
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-18 13:11:44 +0000 (Thu, 18 Nov 2010)
+%% Declare Package Options
+%%   - Declare pgf package options
+%%     Note that the command,\ProcessPgfPackageOptions, has to be put
+%%     an proper place, see below,
+%%     1. This declaration command has to be put after all \pgfkeys
+%%     2. If the <if> keys are used directly, this command has to be put
+%%        somewhere before the commands that include the <if> keys. This is
+%%        because that the <if> keys are set in this command and will take
+%%        the default value if the command is used after the <if> keys.
+%%     3. Any command used by keys has to be defined before the declaration.
+%%        You can define an empty command in advance, do the declaration
+%%        and then renew it.
+%%     4. Avoid to use the <if> keys directly. If necessary, define a new
+%%        command within which the <if> keys is used and include this command
+%%        into a key, /path/key/.append code.
+\ProcessPgfPackageOptions{/suacseopt}
+%% END: Declare Package Options
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-17 14:05:56 +0000 (Wed, 17 Nov 2010)
+%% Initialise Keys
+
+%% * Setting-up the default options
+\pgfkeys{%
+	/suacse/.cd,
+	spacing=onehalf,
+	% pagelayout=acseii,
+	% font=cm,
+}
+
+\pgfkeys{%
+	/suacseopt/.cd,
+	spacing=onehalf,
+	pagelayout=acseii,
+	font=cm,
+}
+
+%% END: Initialise Keys
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+\endinput
