@@ -13,6 +13,9 @@
 %% * Change Log
 %%   @ 2010-11-16 12:41:58 +0000 (Tue, 16 Nov 2010)
 %%     - Create the initial file
+%%   @ 2010-11-20 13:33:07 +0000 (Sat, 20 Nov 2010)
+%%     - Fix the font options problem, the command, \ProcessPgfPackageOptions,
+%%       has to be put somewhere carefully as stated in the code.
 %%
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -57,9 +60,9 @@
 
 %% * Define switchers
 %%   - Switchers for fonts
-\newif\ifsuacse@font@cm			% Computer Modern
-\newif\ifsuacse@font@ppl		% Palatino
-\newif\ifsuacse@font@memfonts	% Hybrid of Palatino and Computer Modern, memfonts
+\newif\ifsuacseopt@font@cm			% Computer Modern
+\newif\ifsuacseopt@font@ppl		% Palatino
+\newif\ifsuacseopt@font@memfonts	% Hybrid of Palatino and Computer Modern, memfonts
 
 %% * Define keys for SUACSEThesis
 \pgfkeys{%
@@ -69,21 +72,21 @@
 	spacing/onehalf/.code={\OnehalfSpacing},
 	spacing/double/.code={\DoubleSpacing},
 	spacing/.default=onehalf,
-	%% - page layout
-	pagelayout/.is choice,
-	pagelayout/asu/.code={\pagelayout@asu},
-	pagelayout/memsty/.code={\pagelayout@memsty},
-	pagelayout/acsei/.code={\pagelayout@acsei},
-	pagelayout/acseii/.code={\pagelayout@acseii},
-	%% - font
-	font@cm/.is if=suacse@font@cm,
-	font@ppl/.is if=suacse@font@ppl,
-	font@memfonts/.is if=suacse@font@memfonts,
-	font/.is choice,
-	font/cm/.style={font@cm=true, font@ppl=false, font@memfonts=false},
-	font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
-	font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
-	font/.default=cm,
+	% %% - page layout
+	% pagelayout/.is choice,
+	% pagelayout/asu/.code={\pagelayout@asu},
+	% pagelayout/memsty/.code={\pagelayout@memsty},
+	% pagelayout/acsei/.code={\pagelayout@acsei},
+	% pagelayout/acseii/.code={\pagelayout@acseii},
+	% %% - font
+	% font@cm/.is if=suacse@font@cm,
+	% font@ppl/.is if=suacse@font@ppl,
+	% font@memfonts/.is if=suacse@font@memfonts,
+	% font/.is choice,
+	% font/cm/.style={font@cm=true, font@ppl=false, font@memfonts=false},
+	% font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
+	% font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
+	% font/.default=cm,
 }
 
 % \pgfkeys{%
@@ -105,19 +108,41 @@
 %   \SUACSESpacing}
 % \setsuacsespacing{\OnehalfSpacing}
 
+%%   - Pre-defined commands
+%%     - Page layout
+% \newcommand{\pagelayout@asu}{}
+% \newcommand{\pagelayout@memsty}{}
+% \newcommand{\pagelayout@acsei}{}
+% \newcommand{\pagelayout@acseii}{}
+%%     - Font setting-up
+% \newcommand{\suacseopt@setfont}{}
+
 
 %% * Declare the package options
 %%   - Define the package options
 \pgfkeys{%
 	/suacseopt/.cd,
 	spacing/.code={\suacseset{spacing=#1}},
-	pagelayout/.code={\suacseset{pagelayout=#1}},
-	font/.code={\suacseset{font=#1}},
+	%% - page layout
+	pagelayout/.is choice,
+	pagelayout/asu/.code={\pagelayout@asu},
+	pagelayout/memsty/.code={\pagelayout@memsty},
+	pagelayout/acsei/.code={\pagelayout@acsei},
+	pagelayout/acseii/.code={\pagelayout@acseii},
+	% pagelayout/.code={\suacseset{pagelayout=#1}},
+	%% - font
+	font@cm/.is if=suacseopt@font@cm,
+	font@ppl/.is if=suacseopt@font@ppl,
+	font@memfonts/.is if=suacseopt@font@memfonts,
+	font/.is choice,
+	font/cm/.style={font@cm=true, font@ppl=false, font@memfonts=false},
+	font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
+	font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
+	font/.default=cm,
+	font/.append code={\suacseopt@setfont},
+	% font/.code={\suacseset{font=#1}},
 }
 
-%%   - Declare pgf package options
-%%     Note that this declaration command has to be put after all \pgfkeys
-\ProcessPgfPackageOptions{/suacseopt}
 
 %% END: Define Package Keys
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -135,6 +160,7 @@
 \newlength{\linespace}
 
 %% * ASU page layout
+% \renewcommand{\pagelayout@asu}{%
 \newcommand{\pagelayout@asu}{%
 	%% * set up margins for a4paper stock
 	%%   - left, right and textwidth
@@ -167,6 +193,7 @@
 
 
 %% * memsty page layout
+% \renewcommand{\pagelayout@memsty}{%
 \newcommand{\pagelayout@memsty}{%
 	%% set up the page layout
 	\settrimmedsize{11in}{210mm}{*}
@@ -187,6 +214,7 @@
 
 
 %% * ACSE page layout I
+% \renewcommand{\pagelayout@acsei}{%
 \newcommand{\pagelayout@acsei}{%
 	%% * set up margins for a4paper stock
 	%%   - left, right and textwidth
@@ -219,15 +247,16 @@
 
 
 %% * ACSE page layout II
+% \renewcommand{\pagelayout@acseii}{%
 \newcommand{\pagelayout@acseii}{%
 	%% set up the page layout
 	\settrimmedsize{11in}{210mm}{*}
 	\setlength{\trimtop}{0pt}
 	\setlength{\trimedge}{\stockwidth}
 	\addtolength{\trimedge}{-\paperwidth}
-	\settypeblocksize{8.5in}{33pc}{*}
-	\setulmargins{4cm}{*}{*}
-	\setlrmargins{1.5in}{*}{*}
+	\settypeblocksize{8.5in}{32pc}{*}
+	\setulmargins{4.5cm}{*}{*}
+	\setlrmargins{1.6in}{*}{*}
 	\setmarginnotes{17pt}{51pt}{\onelineskip}
 	\setheadfoot{\onelineskip}{2\onelineskip}
 	\setheaderspaces{*}{2\onelineskip}{*}
@@ -293,19 +322,32 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:03:18 +0000 (Tue, 16 Nov 2010)
 %% Fonts
+
+%% * Load the commonly-used packages
+\RequirePackage[T1]{fontenc} % sane font encoding
+
 \RequirePackage{textcomp} % provide lots of new symbols
 \RequirePackage{lmodern} % for sensible sans and tt font
 
-\ifsuacse@font@ppl
-	\RequirePackage[sc,osf]{mathpazo}  % Load Package 'mathpazo'
-	% \RequirePackage{mathpazo}
-\fi
+\newcommand{\suacseopt@setfont}{%
+	%% Palatino
+	\ifsuacseopt@font@ppl
+		\RequirePackage[sc,osf]{mathpazo}  % Load Package 'mathpazo'
+		% \RequirePackage{mathpazo}
+		% \renewcommand{\rmdefault}{ppl} 
+		% \renewcommand{\oldstylenums}[1]{{\fontfamily{pplj}\selectfont #1}}
+	\fi
+	
+	%% Memoir Manual Font Style
+	\ifsuacseopt@font@memfonts
+		\RequirePackage{memfonts}  % Load Package 'memfonts'
+	\fi
+}
 
-\ifsuacse@font@memfonts
-	\RequirePackage{memfonts}  % Load Package 'memfonts'
-\fi
+\RequirePackage{pifont}  % Load Package 'pifont'
+\newcommand\diameter{\Pisymbol{psy}{'306}} % Define new symbol
 
-%% Make maths use lining numbers: (old-style look bad most-times)
+%% * Make maths use lining numbers: (old-style look bad most-times)
 \DeclareMathSymbol{0}{0}{letters}{'060}
 \DeclareMathSymbol{1}{0}{letters}{'061}
 \DeclareMathSymbol{2}{0}{letters}{'062}
@@ -324,10 +366,53 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:42:17 +0000 (Tue, 16 Nov 2010)
 %% Commands
+\RequirePackage{amsmath,amssymb,bm,cool,mathtools}
 
+%% For COOL
+%% * Brilliant Definition!
+%%   This gives a nested integrate, that is,
+%%     \Integrate{f(x,y,z,t)}{t}{x}{y}{z}
+%%   gives a fourth-order integrate
+\let\orig@Integrate\Integrate
+\renewcommand\Integrate[2]{%
+  \@ifnextchar\bgroup
+    {\Integrate{\orig@Integrate{#1}{#2}}}
+    {\orig@Integrate{#1}{#2}}}
+\let\Int\Integrate
 
 %% END: Commands
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-18 11:59:23 +0000 (Thu, 18 Nov 2010)
+%% MISC
+
+%% END: MISC
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-18 13:11:44 +0000 (Thu, 18 Nov 2010)
+%% Declare Package Options
+%%   - Declare pgf package options
+%%     Note that the command,\ProcessPgfPackageOptions, has to be put
+%%     an proper place, see below,
+%%     1. This declaration command has to be put after all \pgfkeys
+%%     2. If the <if> keys are used directly, this command has to be put
+%%        somewhere before the commands that include the <if> keys. This is
+%%        because that the <if> keys are set in this command and will take
+%%        the default value if the command is used after the <if> keys.
+%%     3. Any command used by keys has to be defined before the declaration.
+%%        You can define an empty command in advance, do the declaration
+%%        and then renew it.
+%%     4. Avoid to use the <if> keys directly. If necessary, define a new
+%%        command within which the <if> keys is used and include this command
+%%        into a key, /path/key/.append code.
+\ProcessPgfPackageOptions{/suacseopt}
+%% END: Declare Package Options
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-17 14:05:56 +0000 (Wed, 17 Nov 2010)
@@ -337,6 +422,13 @@
 \pgfkeys{%
 	/suacse/.cd,
 	spacing=onehalf,
+	% pagelayout=acseii,
+	% font=cm,
+}
+
+\pgfkeys{%
+	/suacseopt/.cd,
+	spacing=onehalf,
 	pagelayout=acseii,
 	font=cm,
 }
@@ -344,3 +436,5 @@
 %% END: Initialise Keys
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+
+\endinput

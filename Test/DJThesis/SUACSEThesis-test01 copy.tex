@@ -19,13 +19,10 @@
 \usepackage{etex}
 \usepackage{comment}
 
-\usepackage[%
-	pagelayout=acseii,
-	font=ppl,
-	]{SUACSEThesis}
+\usepackage[font=ppl]{SUACSEThesis}
 
 \suacseset{%
-	% pagelayout=acseii,
+	pagelayout=acseii,
 	% font=ppl,
 }
 
@@ -67,51 +64,11 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-\clearpage
-\section{Equations}
-
 y570123456789 $y570123456789$
 
 \[
 y_{57}=0123456789=f(x)=\sum\sin(x)\int\limits_0^{\infty}x^2 dx
 \]
-
-\[
-\Integrate{g(x,y,z,t)}{t,-\infty,\infty}{z,0,\infty}{y,0,\infty}{z,0,\infty}
-\]
-
-\[
-\Integrate{f(x,y,z,t)}{t}{x}{y}{z}
-\]
-
-{\scshape Small Caps shape}
-
-Mixing \textbf{different series, \textsf{families}} and \textsl{\texttt{shapes,}} \textsc{especially in one sentence,} is usually \emph{highly inadvisable!}
-
-\clearpage
-\section{Math Fonts}
-
-In file ../texmf-dist/tex/latex/psnfss/mathpazo.sty, the below line shows that the `letter' symbol font is defined by the it shape of zplm's (series) of OML (family).
-\begin{verbatim}
-\DeclareSymbolFont{letters}       {OML}{zplm}{m}{it}
-\end{verbatim}
-
-In file ../texmf-dist/tex/latex/psnfss/ot1zplm.fd, the following line indicates that `zplm7m' font is used to define zplm in OML
-\begin{verbatim}
-	\DeclareFontShape{OML}{zplm}{m}{it}{
-	   <-> zplmr7m
-	}{}
-\end{verbatim}
-
-Thus we can draw the font table for `zplm7m' by \verb+\fonttable{zplmr7m}+. This gives
-% \fonttable{zplmr7m}
-
-From the table, charater `0' is defined as ``'060''. So we can redefine the math symbol `0' by
-\begin{verbatim}
-	\DeclareMathSymbol{0}{0}{letters}{'060}
-\end{verbatim}
-
-\clearpage
 
 
 \end{document}
