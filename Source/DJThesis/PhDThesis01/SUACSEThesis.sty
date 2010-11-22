@@ -64,6 +64,12 @@
 \newif\ifsuacseopt@font@ppl		% Palatino
 \newif\ifsuacseopt@font@memfonts	% Hybrid of Palatino and Computer Modern, memfonts
 
+%%   - Switcher for the extra chapter styles
+\newif\ifsuacse@chapterstyle@daleifi
+\newif\ifsuacse@chapterstyle@GreyNum
+\newif\ifsuacse@chapterstyle@texblogtikz
+\newif\ifsuacse@chapterstyle@acsei
+
 %% * Define keys for SUACSEThesis
 \pgfkeys{%
 	/suacse/.cd,
@@ -87,6 +93,34 @@
 	% font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
 	% font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
 	% font/.default=cm,
+	%% - chapter style
+	chapterstyle/.code={\chapterstyle{#1}},
+	chapterstyle@daleifi/.is if=suacse@chapterstyle@daleifi,
+	chapterstyle@GreyNum/.is if=suacse@chapterstyle@GreyNum,
+	chapterstyle@texblogtikz/.is if=suacse@chapterstyle@texblogtikz,
+	chapterstyle@acsei/.is if=suacse@chapterstyle@acsei,
+	loadextrachapsty/.is choice,
+	loadextrachapsty/all/.style={chapterstyle@daleifi=true,%
+								 chapterstyle@GreyNum=true,%
+								 chapterstyle@texblogtikz=true,%
+								 chapterstyle@acsei=true},
+	loadextrachapsty/daleifi/.style={chapterstyle@daleifi=true,%
+									 chapterstyle@GreyNum=false,%
+									 chapterstyle@texblogtikz=false,%
+					 				 chapterstyle@acsei=false},
+	loadextrachapsty/GreyNum/.style={chapterstyle@daleifi=false,%
+									 chapterstyle@GreyNum=true,%
+									 chapterstyle@texblogtikz=false,%
+					 				 chapterstyle@acsei=false},
+	loadextrachapsty/texblogtikz/.style={chapterstyle@daleifi=false,%
+										 chapterstyle@GreyNum=false,%
+										 chapterstyle@texblogtikz=true,%
+					 					 chapterstyle@acsei=false},
+	loadextrachapsty/acsei/.style={chapterstyle@daleifi=false,%
+								   chapterstyle@GreyNum=false,%
+								   chapterstyle@texblogtikz=false,%
+					 			   chapterstyle@acsei=true},
+	loadextrachapsty/.append code={\suacse@loadextrachapsty},
 }
 
 % \pgfkeys{%
@@ -141,6 +175,8 @@
 	font/.default=cm,
 	font/.append code={\suacseopt@setfont},
 	% font/.code={\suacseset{font=#1}},
+	%% - chapter style
+	chapterstyle/.code={\suacseset{chapterstyle=#1}},
 }
 
 
@@ -301,6 +337,130 @@
 %% Created by Dazhi Jiang, 2010-11-16 16:10:58 +0000 (Tue, 16 Nov 2010)
 %% Chapter Styling
 
+%% ! Note that in the nested \newcommand command, #1 is the first argument
+%%   for the most outer one, and ##1 is the first argument for the next less
+%%   outer one.
+\newcommand{\suacse@loadextrachapsty}{%
+\ifsuacse@chapterstyle@daleifi
+	\RequirePackage{color,calc,graphicx,soul}
+	\definecolor{nicered}{rgb}{.647,.129,.149}
+	\newlength\dlf@normtxtw
+	\setlength\dlf@normtxtw{\textwidth}
+	\def\myhelvetfont{\def\sfdefault{mdput}}
+	\newsavebox{\feline@chapter}
+	\newcommand\feline@chapter@marker[1][4cm]{%
+	  \sbox\feline@chapter{%
+	    \resizebox{!}{##1}{\fboxsep=1pt%
+	      \colorbox{nicered}{\color{white}\bfseries\sffamily\thechapter}%
+	    }}%
+	  \rotatebox{90}{%
+	    \resizebox{%
+	      \heightof{\usebox{\feline@chapter}}+\depthof{\usebox{\feline@chapter}}}%
+	    {!}{\scshape\so\@chapapp}}\quad%
+	  \raisebox{\depthof{\usebox{\feline@chapter}}}{\usebox{\feline@chapter}}% 
+	}
+	\newcommand\feline@chm[1][4cm]{%
+	  \sbox\feline@chapter{\feline@chapter@marker[##1]}%
+	  \makebox[0pt][l]{% aka \rlap
+	    \makebox[1cm][r]{\usebox\feline@chapter}%
+	  }}
+	\makechapterstyle{daleifi}{
+	  \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
+	  \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{nicered}}
+	  \renewcommand\chapternamenum{}
+	  \renewcommand\printchaptername{}
+	  \renewcommand\printchapternum{\null\hfill\feline@chm[2.5cm]\par}
+	  \renewcommand\afterchapternum{\par\vskip\midchapskip}
+	  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ####1\par}
+	}
+\fi
+\ifsuacse@chapterstyle@GreyNum
+	\RequirePackage{fix-cm}
+	\RequirePackage{fourier}%................... Roman+math - Utopia
+	\RequirePackage{color}
+	\definecolor{ChapGrey}{rgb}{0.6,0.6,0.6}
+	\newcommand{\LargeFont}{% Needs a 'stretchable' font
+	      \usefont{\encodingdefault}{\rmdefault}{b}{n}%
+	      \fontsize{60}{80}\selectfont\color{ChapGrey}}
+	\makechapterstyle{GreyNum}{%
+	  \renewcommand{\chapnamefont}{\large\sffamily\bfseries\itshape}
+	  \renewcommand{\chapnumfont}{\LargeFont}
+	  \renewcommand{\chaptitlefont}{\Huge\sffamily\bfseries\itshape}
+	  \setlength{\beforechapskip}{0pt}
+	  \setlength{\midchapskip}{40pt}
+	  \setlength{\afterchapskip}{60pt}
+	  \renewcommand\chapterheadstart{\vspace*{\beforechapskip}}
+	  \renewcommand\printchaptername{%
+	    \begin{tabular}{@{}c@{}}
+	      \chapnamefont \@chapapp\\}
+	    \renewcommand\chapternamenum{\noalign{\vskip 2ex}}
+	    \renewcommand\printchapternum{\chapnumfont\thechapter\par}
+	    \renewcommand\afterchapternum{%
+	    \end{tabular}
+	    \par\nobreak\vskip\midchapskip}
+	  \renewcommand\printchapternonum{}
+	  \renewcommand\printchaptertitle[1]{%
+	    {\chaptitlefont{####1}\par}}
+	  \renewcommand\afterchaptertitle{\par\nobreak\vskip \afterchapskip}
+	}
+\fi
+\ifsuacse@chapterstyle@texblogtikz
+	\RequirePackage[svgnames]{xcolor}
+	\RequirePackage{tikz}
+	% helper macros
+	\newcommand{\ChapWithNumber}[1]{
+	\begin{tikzpicture}[remember picture,overlay]
+	    \node[yshift=-3cm] at (current page.north west)
+	      {\begin{tikzpicture}[remember picture, overlay]
+	        \draw[fill=LightSkyBlue] (0,0) rectangle
+	          (\stockwidth,3cm);
+	        \node[anchor=east,xshift=.9\stockwidth,rectangle,
+	              rounded corners=20pt,inner sep=11pt,
+	              fill=MidnightBlue]
+	              {\color{white}\chapnamefont\thechapter\space ##1};
+	       \end{tikzpicture}
+	      };
+	   \end{tikzpicture}
+	}
+	\newcommand{\ChapWithoutNumber}[1]{
+	  \begin{tikzpicture}[remember picture,overlay]
+	    \node[yshift=-3cm] at (current page.north west)
+	    {\begin{tikzpicture}[remember picture, overlay]
+	        \draw[fill=LightSkyBlue] (0,0) rectangle
+	        (\stockwidth,3cm);
+	        \node[anchor=east,xshift=.9\stockwidth,rectangle,
+	        rounded corners=20pt,inner sep=11pt,
+	        fill=MidnightBlue]
+	        {\color{white}\chapnamefont##1};
+	      \end{tikzpicture}
+	    };
+	  \end{tikzpicture}
+	}
+	\newif\ifnumberedchap
+	\numberedchaptrue
+	\makechapterstyle{texblogtikz}{
+	  \renewcommand\chapnamefont{\normalfont\sffamily\Huge\bfseries}
+	  \renewcommand\chapnumfont{\normalfont\sffamily\Huge\bfseries}
+	  \renewcommand\chaptitlefont{\normalfont\sffamily\Huge\bfseries}
+	  \renewcommand\chapternamenum{}
+	  \renewcommand{\afterchapternum}{}
+	  \renewcommand\printchaptername{}
+	  \renewcommand\printchapternum{}
+	  \renewcommand\printchapternonum{\global\numberedchapfalse}
+	  \renewcommand\printchaptertitle[1]{%
+	    \ifnumberedchap
+	    \ChapWithNumber{####1}
+	    \else
+	    \ChapWithoutNumber{####1}
+	    \fi
+	    \global\numberedchaptrue
+	  }
+	}
+\fi
+\ifsuacse@chapterstyle@acsei
+\fi
+}
+
 %% END: Chapter Styling
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -371,41 +531,92 @@
 \DeclareMathSymbol{8}{0}{letters}{'070}
 \DeclareMathSymbol{9}{0}{letters}{'071}
 
+%% * Use Latin Modern for other fonts
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\ttdefault}{lmtt}
+
+%%   - scaled version of t1lmtt
+
+\DeclareFontFamily{T1}{lmtt}{\hyphenchar \font\m@ne}
+\DeclareFontShape{T1}{lmtt}{m}{n}
+  {<-8.5> s * [1.09] ec-lmtt8 <8.5-9.5> s * [1.09] ec-lmtt9
+   <9.5-11> s * [1.09] ec-lmtt10 <11-> s * [1.09] ec-lmtt12
+  }{}
+
+\DeclareFontShape{T1}{lmtt}{m}{sl}
+  {<-> s * [1.09] ec-lmtto10}{}
+\DeclareFontShape{T1}{lmtt}{m}{it}
+  {<-> s * [1.09] ec-lmtti10}{}
+\DeclareFontShape{T1}{lmtt}{m}{sc}
+  {<-> s * [1.09] ec-lmtcsc10}{}
+\DeclareFontShape{T1}{lmtt}{m}{scsl}
+  {<-> s * [1.09] ec-lmtcso10}{}
+%%%% light (l), light condensed (lc), and dark (b) variants
+\DeclareFontShape{T1}{lmtt}{l}{n}
+  {<-> s * [1.09] ec-lmtl10}{}
+\DeclareFontShape{T1}{lmtt}{l}{sl}
+  {<-> s * [1.09] ec-lmtlo10}{}
+\DeclareFontShape{T1}{lmtt}{l}{it}
+  {<->sub*lmtt/l/sl}{}
+
+\DeclareFontShape{T1}{lmtt}{lc}{n}
+  {<-> s * [1.09] ec-lmtlc10}{}
+\DeclareFontShape{T1}{lmtt}{lc}{sl}
+  {<-> s * [1.09] ec-lmtlco10}{}
+\DeclareFontShape{T1}{lmtt}{lc}{it}
+  {<->sub*lmtt/lc/sl}{}
+
+\DeclareFontShape{T1}{lmtt}{b}{n}
+  {<-> s * [1.09] ec-lmtk10}{}
+\DeclareFontShape{T1}{lmtt}{b}{sl}
+  {<-> s * [1.09] ec-lmtko10}{}
+\DeclareFontShape{T1}{lmtt}{b}{it}
+  {<->sub*lmtt/b/sl}{}
+
+\DeclareFontShape{T1}{lmtt}{bx}{n}
+  {<->ssub*lmtt/b/n}{}
+\DeclareFontShape{T1}{lmtt}{bx}{sl}
+  {<->ssub*lmtt/b/sl}{}
+\DeclareFontShape{T1}{lmtt}{bx}{it}
+  {<->ssub*lmtt/b/sl}{}
+
+
+%%   - scaled version of t1lmss
+
+\DeclareFontFamily{T1}{lmss}{}
+\DeclareFontShape{T1}{lmss}{m}{n}
+  {<-8.5> s * [1.07] ec-lmss8 <8.5-9.5> s * [1.07] ec-lmss9
+   <9.5-11> s * [1.07] ec-lmss10 <11-15.5> s * [1.07] ec-lmss12
+   <15.5-> s * [1.07] ec-lmss17
+  }{}
+\DeclareFontShape{T1}{lmss}{m}{sl}
+  {<-8.5> s * [1.07] ec-lmsso8 <8.5-9.5> s * [1.07] ec-lmsso9
+   <9.5-11> s * [1.07] ec-lmsso10 <11-15.5> s * [1.07] ec-lmsso12
+   <15.5-> s * [1.07] ec-lmsso17
+  }{}
+\DeclareFontShape{T1}{lmss}{m}{it}
+  {<->ssub*lmss/m/sl}{}
+\DeclareFontShape{T1}{lmss}{m}{sc}
+  {<->sub*lmr/m/sc}{}
+
+%%%%%%%%%%% semibold condensed
+\DeclareFontShape{T1}{lmss}{sbc}{n}
+  {<-> s * [1.07] ec-lmssdc10}{}
+\DeclareFontShape{T1}{lmss}{sbc}{sl}
+  {<-> s * [1.07] ec-lmssdo10}{}
+\DeclareFontShape{T1}{lmss}{sbc}{it}
+  {<->ssub*lmss/sbc/sl}{}
+
+%%%%%%%%%%%% bold extended
+\DeclareFontShape{T1}{lmss}{bx}{n}
+  {<-> s * [1.07] ec-lmssbx10}{}
+\DeclareFontShape{T1}{lmss}{bx}{sl}
+  {<-> s * [1.07] ec-lmssbo10}{}
+\DeclareFontShape{T1}{lmss}{bx}{it}
+  {<->ssub*lmss/bx/sl}{}
+
+
 %% END: Fonts
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% Created by Dazhi Jiang, 2010-11-16 16:42:17 +0000 (Tue, 16 Nov 2010)
-%% Commands
-% \RequirePackage{amsmath,amssymb,bm,cool,mathtools}
-\RequirePackage{amsmath}  % Load Package 'amsmath'
-\RequirePackage{amssymb}  % Load Package 'amssymb'
-\RequirePackage{bm}  % Load Package 'bm'
-\RequirePackage{cool}  % Load Package 'cool'
-\RequirePackage{mathtools}  % Load Package 'mathtools'
-
-%% For COOL
-%% * Brilliant Definition!
-%%   This gives a nested integrate, that is,
-%%     \Integrate{f(x,y,z,t)}{t}{x}{y}{z}
-%%   gives a fourth-order integrate
-\let\orig@Integrate\Integrate
-\renewcommand\Integrate[2]{%
-  \@ifnextchar\bgroup
-    {\Integrate{\orig@Integrate{#1}{#2}}}
-    {\orig@Integrate{#1}{#2}}}
-\let\Int\Integrate
-
-%% END: Commands
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% Created by Dazhi Jiang, 2010-11-18 11:59:23 +0000 (Thu, 18 Nov 2010)
-%% MISC
-
-%% END: MISC
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -451,6 +662,40 @@
 }
 
 %% END: Initialise Keys
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:42:17 +0000 (Tue, 16 Nov 2010)
+%% Commands
+% \RequirePackage{amsmath,amssymb,bm,cool,mathtools}
+\RequirePackage{amsmath}  % Load Package 'amsmath'
+\RequirePackage{amssymb}  % Load Package 'amssymb'
+\RequirePackage{bm}  % Load Package 'bm'
+\RequirePackage{cool}  % Load Package 'cool'
+\RequirePackage{mathtools}  % Load Package 'mathtools'
+
+%% For COOL
+%% * Brilliant Definition!
+%%   This gives a nested integrate, that is,
+%%     \Integrate{f(x,y,z,t)}{t}{x}{y}{z}
+%%   gives a fourth-order integrate
+\let\orig@Integrate\Integrate
+\renewcommand\Integrate[2]{%
+  \@ifnextchar\bgroup
+    {\Integrate{\orig@Integrate{#1}{#2}}}
+    {\orig@Integrate{#1}{#2}}}
+\let\Int\Integrate
+
+%% END: Commands
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-18 11:59:23 +0000 (Thu, 18 Nov 2010)
+%% MISC
+
+%% END: MISC
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
