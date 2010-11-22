@@ -19,26 +19,45 @@
 \usepackage{etex}
 \usepackage{comment}
 
-\usepackage[%
-	pagelayout=acseii,
-	font=ppl,
-	]{SUACSEThesis}
-
-\suacseset{%
-	% pagelayout=acseii,
-	% font=ppl,
-}
-
-\pgfkeys{/suacseopt/pagelayout=acseii}
+% \usepackage{SUACSEThesis-test02}
+% \usepackage[%
+% 	pagelayout=acseii,
+% 	font=ppl,
+% 	]{SUACSEThesis}
+% 
+% \suacseset{%
+% 	% pagelayout=acseii,
+% 	% font=ppl,
+% }
 
 % \settrimmedsize{11in}{210mm}{*}
 % \checkandfixthelayout
 
+%% set up the page layout%
+\settrimmedsize{11in}{210mm}{*} % a4paper: 297mm * 210mm%
+\setlength{\trimtop}{0pt}
+\setlength{\trimedge}{\stockwidth}
+\addtolength{\trimedge}{-\paperwidth}
+\settypeblocksize{8.5in}{32pc}{*}
+\setulmargins{4.5cm}{*}{*}
+\setlrmargins{1.6in}{*}{*}
+\setmarginnotes{17pt}{51pt}{\onelineskip}
+\setheadfoot{\onelineskip}{2\onelineskip}
+\setheaderspaces{*}{2\onelineskip}{*}
+\setsidefeet{\marginparsep}{9em}%
+   {\onelineskip}{0pt}%
+   {\normalfont\footnotesize}{\textheight}%
+\setlength{\footskip}{\onelineskip}
+\setlength{\footnotesep}{\onelineskip}
+\checkandfixthelayout
+\fixpdflayout
+
+\RequirePackage{mathtools-test}  % Load Package ''
+
+
 \usepackage{fonttable}
 
 \begin{document}
-
-% \pgfkeys{/suacseopt/pagelayout=acseii}
 
 \frontmatter
 
@@ -54,7 +73,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \section{Text} % (fold)
 \label{sec:text}
 
-\suacseset{spacing=onehalf}
+% \suacseset{spacing=onehalf}
 % \pgfkeys{%
 %     /suacse/.cd,
 %     spacing=onehalf}
@@ -62,16 +81,16 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-\suacseset{spacing=double}
+% \suacseset{spacing=double}
 % \DoubleSpacing
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-\suacseset{spacing=single}
+% \suacseset{spacing=single}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-\suacseset{spacing}
+% \suacseset{spacing}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -103,13 +122,13 @@ y570123456789, 1977 $y570123456789$
 y_{57}=0123456789=f(x)=\sum\sin(x)\int\limits_0^{\infty}x^2 dx
 \]
 
-\[
-\Integrate{g(x,y,z,t)}{t,-\infty,\infty}{z,0,\infty}{y,0,\infty}{z,0,\infty}
-\]
-
-\[
-\Integrate{f(x,y,z,t)}{t}{x}{y}{z}
-\]
+% \[
+% \Integrate{g(x,y,z,t)}{t,-\infty,\infty}{z,0,\infty}{y,0,\infty}{z,0,\infty}
+% \]
+% 
+% \[
+% \Integrate{f(x,y,z,t)}{t}{x}{y}{z}
+% \]
 
 {\scshape Small Caps shape}
 

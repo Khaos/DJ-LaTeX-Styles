@@ -190,7 +190,7 @@
 
 	\checkandfixthelayout[nearest]
 }
-
+\@onlypreamble\pagelayout@asu
 
 %% * memsty page layout
 % \renewcommand{\pagelayout@memsty}{%
@@ -211,7 +211,7 @@
 	   {\normalfont\footnotesize}{\textheight}%
 	\checkandfixthelayout
 }
-
+\@onlypreamble\pagelayout@memsty
 
 %% * ACSE page layout I
 % \renewcommand{\pagelayout@acsei}{%
@@ -244,13 +244,16 @@
 
 	\checkandfixthelayout[nearest]
 }
-
+\@onlypreamble\pagelayout@acsei
 
 %% * ACSE page layout II
 % \renewcommand{\pagelayout@acseii}{%
 \newcommand{\pagelayout@acseii}{%
 	%% set up the page layout%
-	\settrimmedsize{11in}{210mm}{*} % a4paper: 297mm * 210mm%
+	%% \settrimmedsize is incompatible with the command,
+	%%   \AtBeginDocument{\usepackage{graphicx}}
+	%% which is included in the package 'mathtools'.
+	% \settrimmedsize{11in}{210mm}{*} % a4paper: 297mm * 210mm%
 	\setlength{\trimtop}{0pt}
 	\setlength{\trimedge}{\stockwidth}
 	\addtolength{\trimedge}{-\paperwidth}
@@ -266,9 +269,12 @@
 	\setlength{\footskip}{\onelineskip}
 	\setlength{\footnotesep}{\onelineskip}
 	\checkandfixthelayout
+	% \fixpdflayout
 }
+\@onlypreamble\pagelayout@acseii
 
 % \renewcommand{\pagelayout@acseii}{}
+% \newcommand{\pagelayout@acseii}{}
 
 
 %% END: Page Layout
@@ -348,6 +354,7 @@
 		\RequirePackage{memfonts}  % Load Package 'memfonts'
 	\fi
 }
+\@onlypreamble\suacseopt@setfont
 
 \RequirePackage{pifont}  % Load Package 'pifont'
 \newcommand\diameter{\Pisymbol{psy}{'306}} % Define new symbol
@@ -371,7 +378,12 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:42:17 +0000 (Tue, 16 Nov 2010)
 %% Commands
-\RequirePackage{amsmath,amssymb,bm,cool,mathtools}
+% \RequirePackage{amsmath,amssymb,bm,cool,mathtools}
+\RequirePackage{amsmath}  % Load Package 'amsmath'
+\RequirePackage{amssymb}  % Load Package 'amssymb'
+\RequirePackage{bm}  % Load Package 'bm'
+\RequirePackage{cool}  % Load Package 'cool'
+\RequirePackage{mathtools}  % Load Package 'mathtools'
 
 %% For COOL
 %% * Brilliant Definition!
@@ -418,23 +430,6 @@
 %% END: Declare Package Options
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-% \renewcommand{\pagelayout@acseii}{%
-% 	%% set up the page layout
-% 	\settrimmedsize{11in}{210mm}{*}
-% 	\setlength{\trimtop}{0pt}
-% 	\setlength{\trimedge}{\stockwidth}
-% 	\addtolength{\trimedge}{-\paperwidth}
-% 	\settypeblocksize{8.5in}{32pc}{*}
-% 	\setulmargins{4.5cm}{*}{*}
-% 	\setlrmargins{1.6in}{*}{*}
-% 	\setmarginnotes{17pt}{51pt}{\onelineskip}
-% 	\setheadfoot{\onelineskip}{2\onelineskip}
-% 	\setheaderspaces{*}{2\onelineskip}{*}
-% 	\setsidefeet{\marginparsep}{9em}%
-% 	   {\onelineskip}{0pt}%
-% 	   {\normalfont\footnotesize}{\textheight}%
-% 	\checkandfixthelayout
-% }
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-17 14:05:56 +0000 (Wed, 17 Nov 2010)
