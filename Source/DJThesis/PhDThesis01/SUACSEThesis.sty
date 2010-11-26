@@ -574,55 +574,55 @@
 \ifsuacse@chapterstyle@texblogtikz
 	\RequirePackage[svgnames]{xcolor}
 	\RequirePackage{tikz}
-	% helper macros
-	\newcommand{\ChapWithNumber}[1]{
-	\begin{tikzpicture}[remember picture,overlay]
-	    \node[yshift=-3cm] at (current page.north west)
-	      {\begin{tikzpicture}[remember picture, overlay]
-	        \draw[fill=LightSkyBlue] (0,0) rectangle
-	          (\stockwidth,3cm);
-	        \node[anchor=east,xshift=.9\stockwidth,rectangle,
-	              rounded corners=20pt,inner sep=11pt,
-	              fill=MidnightBlue]
-	              {\color{white}\chapnamefont\thechapter\space ##1};
-	       \end{tikzpicture}
-	      };
-	   \end{tikzpicture}
-	}
-	\newcommand{\ChapWithoutNumber}[1]{
-	  \begin{tikzpicture}[remember picture,overlay]
-	    \node[yshift=-3cm] at (current page.north west)
-	    {\begin{tikzpicture}[remember picture, overlay]
-	        \draw[fill=LightSkyBlue] (0,0) rectangle
-	        (\stockwidth,3cm);
-	        \node[anchor=east,xshift=.9\stockwidth,rectangle,
-	        rounded corners=20pt,inner sep=11pt,
-	        fill=MidnightBlue]
-	        {\color{white}\chapnamefont##1};
-	      \end{tikzpicture}
-	    };
-	  \end{tikzpicture}
-	}
-	\newif\ifnumberedchap
-	\numberedchaptrue
-	\makechapterstyle{texblogtikz}{
-	  \renewcommand\chapnamefont{\normalfont\sffamily\Huge\bfseries}
-	  \renewcommand\chapnumfont{\normalfont\sffamily\Huge\bfseries}
-	  \renewcommand\chaptitlefont{\normalfont\sffamily\Huge\bfseries}
-	  \renewcommand\chapternamenum{}
-	  \renewcommand{\afterchapternum}{}
-	  \renewcommand\printchaptername{}
-	  \renewcommand\printchapternum{}
-	  \renewcommand\printchapternonum{\global\numberedchapfalse}
-	  \renewcommand\printchaptertitle[1]{%
-	    \ifnumberedchap
-	    \ChapWithNumber{####1}
-	    \else
-	    \ChapWithoutNumber{####1}
-	    \fi
-	    \global\numberedchaptrue
-	  }
-	}
+	%% helper macros
+	% \newcommand{\ChapWithNumber}[1]{
+	% \begin{tikzpicture}[remember picture,overlay]
+	%     \node[yshift=-3cm] at (current page.north west)
+	%       {\begin{tikzpicture}[remember picture, overlay]
+	%         \draw[fill=LightSkyBlue] (0,0) rectangle
+	%           (\stockwidth,3cm);
+	%         \node[anchor=east,xshift=.9\stockwidth,rectangle,
+	%               rounded corners=20pt,inner sep=11pt,
+	%               fill=MidnightBlue]
+	%               {\color{white}\chapnamefont\thechapter\space ##1};
+	%        \end{tikzpicture}
+	%       };
+	%    \end{tikzpicture}
+	% }
+	% \newcommand{\ChapWithoutNumber}[1]{
+	%   \begin{tikzpicture}[remember picture,overlay]
+	%     \node[yshift=-3cm] at (current page.north west)
+	%     {\begin{tikzpicture}[remember picture, overlay]
+	%         \draw[fill=LightSkyBlue] (0,0) rectangle
+	%         (\stockwidth,3cm);
+	%         \node[anchor=east,xshift=.9\stockwidth,rectangle,
+	%         rounded corners=20pt,inner sep=11pt,
+	%         fill=MidnightBlue]
+	%         {\color{white}\chapnamefont##1};
+	%       \end{tikzpicture}
+	%     };
+	%   \end{tikzpicture}
+	% }
+	% \newif\ifnumberedchap
+	% \numberedchaptrue
+	% \makechapterstyle{texblogtikz}{
+	%   \renewcommand\chapnamefont{\normalfont\sffamily\Huge\bfseries}
+	%   \renewcommand\chapnumfont{\normalfont\sffamily\Huge\bfseries}
+	%   \renewcommand\chaptitlefont{\normalfont\sffamily\Huge\bfseries}
+	%   \renewcommand\chapternamenum{}
+	%   \renewcommand{\afterchapternum}{}
+	%   \renewcommand\printchaptername{}
+	%   \renewcommand\printchapternum{}
+	%   \renewcommand\printchapternonum{\global\numberedchapfalse}
+	%   \renewcommand\printchaptertitle[1]{%
+	%     \ifnumberedchap
+	%     \ChapWithNumber{####1}
+	%     \else
+	%     \ChapWithoutNumber{####1}
+	%     \fi
+	%     \global\numberedchaptrue
+	%   }
+	% }
 \fi
 \ifsuacse@chapterstyle@acsei
 	\providecommand\thesispage{\normalfont p.\,\thepage}
