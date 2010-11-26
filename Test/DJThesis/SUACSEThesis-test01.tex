@@ -20,6 +20,7 @@
 \usepackage{comment}
 
 \usepackage[%
+	spacing=onehalf,
 	pagelayout=acseii,
 	font=ppl,
 	]{SUACSEThesis}
@@ -29,7 +30,51 @@
 	% font=ppl,
 	% chapterstyle=lyhne,
 	loadextrachapsty=all,
+	% loadextrachapsty=acsei,
 }
+
+% \suacseset{%
+% 	% pagelayout=acseii,
+% 	% font=ppl,
+% 	% chapterstyle=lyhne,
+% 	loadextrachapsty=daleifi,
+% }
+
+% \makeheadrule{headings}{}{0.5pt}
+
+% \makeatletter
+% %% Page headers
+% \setlength{\headheight}{\baselineskip}
+% \setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
+% \makepagestyle{wspr}
+% \makepsmarks{wspr}{%
+%   \let\@mkboth\markboth%
+%   \def\chaptermark##1{%
+%     \markboth{%
+%       \if@mainmatter
+%         \textsc{Chapter \thechapter:} %
+%       \fi
+%       left ##1}{right ##1}}%
+%   \def\sectionmark##1{%
+%     \markright{%
+%       \if@mainmatter
+%         \textsc{\S\thesection:} %
+%       \fi
+%       ##1}}}
+% \makerunningwidth{wspr}{\headwidth}
+% \makeheadposition{wspr}{flushright}{flushleft}{}{}
+% \makeevenhead{wspr}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
+% \makeoddhead{wspr} {\small\rightmark}              {} {\thesispage}
+% \makeheadrule{wspr}{\headwidth}{0.5pt}
+% \pagestyle{wspr}
+% 
+% \makeatother
+\suacseset{%
+	loadpagestyle=acsei,
+}
+\pagestyle{acsei}
+
+
 
 % \pgfkeys{/suacseopt/pagelayout=acseii}
 
@@ -46,10 +91,12 @@
 
 \chapter{Preface}
 
+\tableofcontents
+
 %% Main body
 \mainmatter
 
-\chapter{Test} % (fold)
+\chapter[Test TOC][Test Header]{Test} % (fold)
 \label{chap:test}
 
 \clearpage
@@ -156,10 +203,33 @@ Mixing \textbf{different series, \textsf{families}} and \textsl{\texttt{shapes,}
 % chapter a_long_texblogtikz_chapter_style (end)
 
 
+\suacseset{chapterstyle=acsei}
+\chapter{An `acsei--wspr' Chapter Style} % (fold)
+\label{chap:a_acsei_chapter_style}
+
+% chapter a_acsei_chapter_style (end)
+
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `acsei--wspr' Chapter Style} % (fold)
+\label{chap:a_long_acsei_chapter_style}
+
+% chapter a_long_acsei_chapter_style (end)
+
+
 \chapterstyle{default}
 \chapter{Introduction}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\clearpage
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\clearpage
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\clearpage
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 
 \section{Text} % (fold)
 \label{sec:text}
@@ -184,6 +254,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \suacseset{spacing}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% \suacseset{spacingfactor=1.2}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 

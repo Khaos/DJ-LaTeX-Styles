@@ -70,21 +70,34 @@
 \newif\ifsuacse@chapterstyle@texblogtikz
 \newif\ifsuacse@chapterstyle@acsei
 
+
+%% * Define commands
+%%   - Commands for spacing
+% \newcommand*{\@suacse@spacing}{}
+
+%%   - Commans for page style
+% \newcommand{\suacse@loadpagestyle@asu}{}
+% \newcommand{\suacse@loadpagestyle@wspr}{}
+% \newcommand{\suacse@loadpagestyle@acsei}{}
+
 %% * Define keys for SUACSEThesis
 \pgfkeys{%
+	%% - Spacing
 	/suacse/.cd,
 	spacing/.is choice,
 	spacing/single/.code={\SingleSpacing},
 	spacing/onehalf/.code={\OnehalfSpacing},
 	spacing/double/.code={\DoubleSpacing},
 	spacing/.default=onehalf,
-	% %% - page layout
+	% spacing/.code args={#1 equal to #2}{\if#1}
+	spacingfactor/.code={\setSingleSpace{#1} \SingleSpacing},
+	% %% - Page layout
 	% pagelayout/.is choice,
 	% pagelayout/asu/.code={\pagelayout@asu},
 	% pagelayout/memsty/.code={\pagelayout@memsty},
 	% pagelayout/acsei/.code={\pagelayout@acsei},
 	% pagelayout/acseii/.code={\pagelayout@acseii},
-	% %% - font
+	% %% - Font
 	% font@cm/.is if=suacse@font@cm,
 	% font@ppl/.is if=suacse@font@ppl,
 	% font@memfonts/.is if=suacse@font@memfonts,
@@ -93,7 +106,7 @@
 	% font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
 	% font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
 	% font/.default=cm,
-	%% - chapter style
+	%% - Chapter style
 	chapterstyle/.code={\chapterstyle{#1}},
 	chapterstyle@daleifi/.is if=suacse@chapterstyle@daleifi,
 	chapterstyle@GreyNum/.is if=suacse@chapterstyle@GreyNum,
@@ -121,6 +134,11 @@
 								   chapterstyle@texblogtikz=false,%
 					 			   chapterstyle@acsei=true},
 	loadextrachapsty/.append code={\suacse@loadextrachapsty},
+	%% - Page style
+	loadpagestyle/.is choice,
+	loadpagestyle/asu/.code={\suacse@loadpagestyle@asu},
+	loadpagestyle/wspr/.code={\suacse@loadpagestyle@wspr},
+	loadpagestyle/acsei/.code={\suacse@loadpagestyle@acsei},
 }
 
 % \pgfkeys{%
@@ -155,16 +173,18 @@
 %% * Declare the package options
 %%   - Define the package options
 \pgfkeys{%
+	%% - Spacing
 	/suacseopt/.cd,
 	spacing/.code={\suacseset{spacing=#1}},
-	%% - page layout
+	spacingfactor/.code={\suacseset{spacingfactor=#1}},
+	%% - Page layout
 	pagelayout/.is choice,
 	pagelayout/asu/.code={\pagelayout@asu},
 	pagelayout/memsty/.code={\pagelayout@memsty},
 	pagelayout/acsei/.code={\pagelayout@acsei},
 	pagelayout/acseii/.code={\pagelayout@acseii},
 	% pagelayout/.code={\suacseset{pagelayout=#1}},
-	%% - font
+	%% - Font
 	font@cm/.is if=suacseopt@font@cm,
 	font@ppl/.is if=suacseopt@font@ppl,
 	font@memfonts/.is if=suacseopt@font@memfonts,
@@ -175,8 +195,9 @@
 	font/.default=cm,
 	font/.append code={\suacseopt@setfont},
 	% font/.code={\suacseset{font=#1}},
-	%% - chapter style
+	%% - Chapter style
 	chapterstyle/.code={\suacseset{chapterstyle=#1}},
+	%% - Page style
 }
 
 
@@ -320,6 +341,152 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:03:55 +0000 (Tue, 16 Nov 2010)
 %% Page Styles
+%%   * \markboth takes the effect for the twosides documents, while \markright
+%%     is used for the oneside documents.
+
+% \renewcommand{\suacse@loadpagestyle@asu}{%
+\newcommand{\suacse@loadpagestyle@asu}{%
+	%% - Main text
+	\makepagestyle{asu}
+	  \makeevenhead{asu}{\thepage}{}{}
+	  \makeoddhead{asu}{}{}{\thepage}
+	%% - For continuation pages of the ToC, LoF, LoT
+	\makepagestyle{toc}
+	  \makeevenfoot{toc}{}{\thepage}{}
+	  \makeoddfoot{toc}{}{\thepage}{}
+	  \makeevenhead{toc}{Chapter}{}{Page}
+	  \makeoddhead{toc}{Chapter}{}{Page}
+	\makepagestyle{lof}
+	  \makeevenfoot{lof}{}{\thepage}{}
+	  \makeoddfoot{lof}{}{\thepage}{}
+	  \makeevenhead{lof}{Figure}{}{Page}
+	  \makeoddhead{lof}{Figure}{}{Page}
+	\makepagestyle{lot}
+	  \makeevenfoot{lot}{}{\thepage}{}
+	  \makeoddfoot{lot}{}{\thepage}{}
+	  \makeevenhead{lot}{Table}{}{Page}
+	  \makeoddhead{lot}{Table}{}{Page}
+	%% Use \pagestyle{plain} for prelims
+}
+
+% \renewcommand{\suacse@loadpagestyle@wspr}{%
+\newcommand{\suacse@loadpagestyle@wspr}{%
+	\if@twoside
+		% 
+	\else
+		\setlength{\headheight}{\baselineskip}
+		\setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
+		\makepagestyle{wspr}
+		\makepsmarks{wspr}{%
+		  % \let\@mkboth\markboth%
+		  \def\chaptermark####1{%
+		    \markright{%
+		      \if@mainmatter
+		        \textsc{Chapter \thechapter:} %
+		      \fi
+		      ####1}}%
+		  \def\sectionmark####1{%
+		    \markright{%
+		      \if@mainmatter
+		        \textsc{\S\thesection:} %
+		      \fi
+		      ####1}}}
+		\makerunningwidth{wspr}{\headwidth}
+		\makeheadposition{wspr}{flushright}{flushleft}{}{}
+		\makeevenhead{wspr}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
+		\makeoddhead{wspr} {\small\rightmark}              {} {\thesispage}
+		% \makeheadrule{wspr}{\headwidth}{0.5pt}		
+	\fi
+}
+
+% \renewcommand{\suacse@loadpagestyle@acsei}{%
+\newcommand{\suacse@loadpagestyle@acsei}{%
+	\providecommand\thesispage{\normalfont p.\,\thepage}
+	\if@twoside
+		% 
+	\else
+		\makepagestyle{acsei}
+		  \makepsmarks{acsei}{%
+		    % \let\@mkboth\markboth%
+		    \def\chaptermark####1{%
+		      \markright{%
+		        \if@mainmatter
+		          \textsc{\S\thechapter:} %
+		        \fi
+		        ####1}}%
+		    \def\sectionmark####1{%
+		      \markright{%
+		        \if@mainmatter
+		          \textsc{\S\thesection:} %
+		        \fi
+		        ####1}}}
+		  \makeevenhead{acsei}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
+		  \makeoddhead{acsei} {\small\rightmark}              {} {\thesispage}
+	\fi
+}
+
+%% Pagestyle: headings, demo codes from the memoir class
+% \if@twoside
+%   \makepagestyle{headings}
+%     \makepsmarks{headings}{%
+%       \def\chaptermark##1{%
+%         \markboth{\memUChead{%
+%           \ifnum \c@secnumdepth >\m@ne
+%             \if@mainmatter
+%               \@chapapp\ \thechapter. \ %
+%             \fi
+%           \fi
+%           ##1}}{}}%
+%       \def\tocmark{\markboth{\memUChead{\contentsname}}{\memUChead{\contentsname}}}%
+%       \def\lofmark{\markboth{\memUChead{\listfigurename}}{\memUChead{\listfigurename}}}%
+%       \def\lotmark{\markboth{\memUChead{\listtablename}}{\memUChead{\listtablename}}}%
+%       \def\bibmark{\markboth{\memUChead{\bibname}}{\memUChead{\bibname}}}%
+%       \def\indexmark{\markboth{\memUChead{\indexname}}{\memUChead{\indexname}}}%
+%       \def\sectionmark##1{%
+%         \markright{\memUChead{%
+%           \ifnum \c@secnumdepth > \z@
+%             \thesection. \ %
+%           \fi
+%           ##1}}}}
+%     \makepsmarks{headings}{%
+%       \createmark{chapter}{left}{shownumber}{\@chapapp\ }{. \ }
+%       \createmark{section}{right}{shownumber}{}{. \ }
+%       \createplainmark{toc}{both}{\contentsname}
+%       \createplainmark{lof}{both}{\listfigurename}
+%       \createplainmark{lot}{both}{\listtablename}
+%       \createplainmark{bib}{both}{\bibname}
+%       \createplainmark{index}{both}{\indexname}
+%       \createplainmark{glossary}{both}{\glossaryname}
+%     }
+%     \makeevenhead{headings}{\thepage}{}{\slshape\leftmark}
+%     \makeoddhead{headings}{\slshape\rightmark}{}{\thepage}
+% \else
+%   \makepagestyle{headings}
+%     \makepsmarks{headings}{%
+%       \def\chaptermark##1{%
+%         \markright{\memUChead{%
+%           \ifnum \c@secnumdepth >\m@ne
+%             \if@mainmatter
+%               \@chapapp\ \thechapter. \ %
+%             \fi
+%           \fi
+%           ##1}}}%
+%       \def\tocmark{\markright{\memUChead{\contentsname}}}%
+%       \def\lofmark{\markright{\memUChead{\listfigurename}}}%
+%       \def\lotmark{\markright{\memUChead{\listtablename}}}%
+%       \def\bibmark{\markright{\memUChead{\bibname}}}%
+%       \def\indexmark{\markright{\memUChead{\indexname}}}}
+%     \makepsmarks{headings}{%
+%       \createmark{chapter}{right}{shownumber}{\@chapapp\ }{. \ }
+%       \createplainmark{toc}{right}{\contentsname}
+%       \createplainmark{lof}{right}{\listfigurename}
+%       \createplainmark{lot}{right}{\listtablename}
+%       \createplainmark{bib}{right}{\bibname}
+%       \createplainmark{index}{right}{\indexname}
+%       \createplainmark{glossary}{right}{\glossaryname}
+%     }
+%     \makeoddhead{headings}{\slshape\rightmark}{}{\thepage}
+% \fi
 
 %% END: Page Styles
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -375,8 +542,8 @@
 	}
 \fi
 \ifsuacse@chapterstyle@GreyNum
-	\RequirePackage{fix-cm}
-	\RequirePackage{fourier}%................... Roman+math - Utopia
+	% \RequirePackage{fix-cm}
+	% \RequirePackage{fourier}%................... Roman+math - Utopia
 	\RequirePackage{color}
 	\definecolor{ChapGrey}{rgb}{0.6,0.6,0.6}
 	\newcommand{\LargeFont}{% Needs a 'stretchable' font
@@ -458,6 +625,29 @@
 	}
 \fi
 \ifsuacse@chapterstyle@acsei
+	\providecommand\thesispage{\normalfont p.\,\thepage}
+	\makechapterstyle{acsei}{%
+	  \setlength\beforechapskip{0pt}
+	  \setlength\midchapskip{0pt}
+	  \setlength\afterchapskip{40pt}
+	  \renewcommand\chapnamefont{%
+	    \normalfont\centering\large\scshape\MakeLowercase}
+	  \renewcommand\chapnumfont{%
+	    \normalfont\centering\fontsize{60pt}{0pt}\selectfont}
+	  \renewcommand\chaptitlefont{%
+	    \normalfont\HUGE\bfseries\centering}
+	  \renewcommand\printchaptername{%
+	    \marginpar{\chapnamefont{\@chapapp}}}
+	  \renewcommand\chapternamenum{}
+	  \renewcommand\printchapternum{%
+	    \marginpar{\chapnumfont\thechapter}}
+	    % \makeoddfoot{plain}{}{\thesispage}{}
+	  \if@mainmatter
+	    \makeoddfoot{plain}{}{}{\thesispage}
+	  \else
+	    \makeoddfoot{plain}{}{}{\thepage}
+	  \fi
+	}
 \fi
 }
 
@@ -652,6 +842,7 @@
 	spacing=onehalf,
 	% pagelayout=acseii,
 	% font=cm,
+	% loadextrachapsty=acsei,
 }
 
 \pgfkeys{%
@@ -659,6 +850,7 @@
 	spacing=onehalf,
 	pagelayout=acseii,
 	font=cm,
+	% chapterstyle=acsei
 }
 
 %% END: Initialise Keys
