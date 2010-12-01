@@ -1,0 +1,38 @@
+%
+%  Test the nested \newif
+%
+%  Created by Dazhi Jiang on 2010-11-27.
+%  Copyright (c) 2010 Khaos. All rights reserved.
+%
+\documentclass[]{article}
+
+\newif\ifouterif
+% \outeriftrue
+
+
+\newif\ifinnerif
+\inneriftrue
+
+
+\ifouterif
+	\typeout{Outer if is true. -->}
+	
+	% \newif\ifinnerif
+	% \inneriftrue
+	
+	\ifinnerif
+		\typeout{Inner if is true.}
+	\else
+		\typeout{Inner if is false.}
+	\fi
+	
+\else
+	\typeout{Outer if is false. -->}
+\fi
+
+
+\begin{document}
+
+some words.
+
+\end{document}

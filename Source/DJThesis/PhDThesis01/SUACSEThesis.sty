@@ -314,9 +314,9 @@
 	\setlength{\trimtop}{0pt}
 	\setlength{\trimedge}{\stockwidth}
 	\addtolength{\trimedge}{-\paperwidth}
-	\settypeblocksize{8.5in}{32pc}{*}
+	\settypeblocksize{8.5in}{30pc}{*}
 	\setulmargins{4.5cm}{*}{*}
-	\setlrmargins{1.6in}{*}{*}
+	\setlrmargins{1.8in}{*}{*}
 	\setmarginnotes{17pt}{51pt}{\onelineskip}
 	\setheadfoot{\onelineskip}{2\onelineskip}
 	\setheaderspaces{*}{2\onelineskip}{*}
@@ -395,7 +395,7 @@
 		\makeheadposition{wspr}{flushright}{flushleft}{}{}
 		\makeevenhead{wspr}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
 		\makeoddhead{wspr} {\small\rightmark}              {} {\thesispage}
-		% \makeheadrule{wspr}{\headwidth}{0.5pt}		
+		% \makeheadrule{wspr}{\headwidth}{0.5pt}
 	\fi
 }
 
@@ -403,7 +403,25 @@
 \newcommand{\suacse@loadpagestyle@acsei}{%
 	\providecommand\thesispage{\normalfont p.\,\thepage}
 	\if@twoside
-		% 
+		\makepagestyle{acsei}
+		  \makepsmarks{acsei}{%
+		    % \let\@mkboth\markboth%
+		    \def\chaptermark####1{%
+		      \markboth{%
+		        \if@mainmatter
+		          \textsc{\S\thechapter:} %
+		        \fi
+		        ####1}{####1}}%
+		    \def\sectionmark####1{%
+		      \markright{%
+		        \if@mainmatter
+		          \textsc{\S\thesection:} %
+		        \fi
+		        ####1}}}
+		  \makeevenhead{acsei}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
+		  \makeoddhead{acsei} {\small\rightmark}              {} {\thesispage}
+		  \setlength{\headwidth}{\textwidth}
+		  \makeheadrule{acsei}{\headwidth}{0.4pt}
 	\else
 		\makepagestyle{acsei}
 		  \makepsmarks{acsei}{%
@@ -422,6 +440,8 @@
 		        ####1}}}
 		  \makeevenhead{acsei}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
 		  \makeoddhead{acsei} {\small\rightmark}              {} {\thesispage}
+		  \setlength{\headwidth}{\textwidth}
+		  \makeheadrule{acsei}{\headwidth}{0.4pt}
 	\fi
 }
 
@@ -571,58 +591,68 @@
 	  \renewcommand\afterchaptertitle{\par\nobreak\vskip \afterchapskip}
 	}
 \fi
+\newif\ifnumberedchap
+\numberedchaptrue
 \ifsuacse@chapterstyle@texblogtikz
+	% \newif\iftestii
+	% \testiitrue
+	% \iftestii
+	% 	\typeout{iftestii is true.}
+	% \else
+	% 	\typeout{iftestii is false.}
+	% \fi
+	% \typeout{done!}
 	\RequirePackage[svgnames]{xcolor}
 	\RequirePackage{tikz}
 	%% helper macros
-	% \newcommand{\ChapWithNumber}[1]{
-	% \begin{tikzpicture}[remember picture,overlay]
-	%     \node[yshift=-3cm] at (current page.north west)
-	%       {\begin{tikzpicture}[remember picture, overlay]
-	%         \draw[fill=LightSkyBlue] (0,0) rectangle
-	%           (\stockwidth,3cm);
-	%         \node[anchor=east,xshift=.9\stockwidth,rectangle,
-	%               rounded corners=20pt,inner sep=11pt,
-	%               fill=MidnightBlue]
-	%               {\color{white}\chapnamefont\thechapter\space ##1};
-	%        \end{tikzpicture}
-	%       };
-	%    \end{tikzpicture}
-	% }
-	% \newcommand{\ChapWithoutNumber}[1]{
-	%   \begin{tikzpicture}[remember picture,overlay]
-	%     \node[yshift=-3cm] at (current page.north west)
-	%     {\begin{tikzpicture}[remember picture, overlay]
-	%         \draw[fill=LightSkyBlue] (0,0) rectangle
-	%         (\stockwidth,3cm);
-	%         \node[anchor=east,xshift=.9\stockwidth,rectangle,
-	%         rounded corners=20pt,inner sep=11pt,
-	%         fill=MidnightBlue]
-	%         {\color{white}\chapnamefont##1};
-	%       \end{tikzpicture}
-	%     };
-	%   \end{tikzpicture}
-	% }
+	\newcommand{\ChapWithNumber}[1]{
+	\begin{tikzpicture}[remember picture,overlay]
+	    \node[yshift=-3cm] at (current page.north west)
+	      {\begin{tikzpicture}[remember picture, overlay]
+	        \draw[fill=LightSkyBlue] (0,0) rectangle
+	          (\stockwidth,3cm);
+	        \node[anchor=east,xshift=.9\stockwidth,rectangle,
+	              rounded corners=20pt,inner sep=11pt,
+	              fill=MidnightBlue]
+	              {\color{white}\chapnamefont\thechapter\space ##1};
+	       \end{tikzpicture}
+	      };
+	   \end{tikzpicture}
+	}
+	\newcommand{\ChapWithoutNumber}[1]{
+	  \begin{tikzpicture}[remember picture,overlay]
+	    \node[yshift=-3cm] at (current page.north west)
+	    {\begin{tikzpicture}[remember picture, overlay]
+	        \draw[fill=LightSkyBlue] (0,0) rectangle
+	        (\stockwidth,3cm);
+	        \node[anchor=east,xshift=.9\stockwidth,rectangle,
+	        rounded corners=20pt,inner sep=11pt,
+	        fill=MidnightBlue]
+	        {\color{white}\chapnamefont##1};
+	      \end{tikzpicture}
+	    };
+	  \end{tikzpicture}
+	}
 	% \newif\ifnumberedchap
 	% \numberedchaptrue
-	% \makechapterstyle{texblogtikz}{
-	%   \renewcommand\chapnamefont{\normalfont\sffamily\Huge\bfseries}
-	%   \renewcommand\chapnumfont{\normalfont\sffamily\Huge\bfseries}
-	%   \renewcommand\chaptitlefont{\normalfont\sffamily\Huge\bfseries}
-	%   \renewcommand\chapternamenum{}
-	%   \renewcommand{\afterchapternum}{}
-	%   \renewcommand\printchaptername{}
-	%   \renewcommand\printchapternum{}
-	%   \renewcommand\printchapternonum{\global\numberedchapfalse}
-	%   \renewcommand\printchaptertitle[1]{%
-	%     \ifnumberedchap
-	%     \ChapWithNumber{####1}
-	%     \else
-	%     \ChapWithoutNumber{####1}
-	%     \fi
-	%     \global\numberedchaptrue
-	%   }
-	% }
+	\makechapterstyle{texblogtikz}{
+	  \renewcommand\chapnamefont{\normalfont\sffamily\Huge\bfseries}
+	  \renewcommand\chapnumfont{\normalfont\sffamily\Huge\bfseries}
+	  \renewcommand\chaptitlefont{\normalfont\sffamily\Huge\bfseries}
+	  \renewcommand\chapternamenum{}
+	  \renewcommand{\afterchapternum}{}
+	  \renewcommand\printchaptername{}
+	  \renewcommand\printchapternum{}
+	  \renewcommand\printchapternonum{\global\numberedchapfalse}
+	  \renewcommand\printchaptertitle[1]{%
+	    \ifnumberedchap
+	    \ChapWithNumber{####1}
+	    \else
+	    \ChapWithoutNumber{####1}
+	    \fi
+	    \global\numberedchaptrue
+	  }
+	}
 \fi
 \ifsuacse@chapterstyle@acsei
 	\providecommand\thesispage{\normalfont p.\,\thepage}

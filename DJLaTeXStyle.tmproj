@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
+	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -55,8 +55,6 @@
 			<string>Source</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>tmp</string>
 			<key>regexFolderFilter</key>
@@ -104,14 +102,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>46</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>167</integer>
+				<integer>441</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>149</integer>
+			<integer>422</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -206,14 +204,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>38</integer>
 				<key>line</key>
-				<integer>59</integer>
+				<integer>276</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>29</integer>
+			<integer>272</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
@@ -280,21 +278,37 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>41</integer>
+				<integer>114</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>118</integer>
+			<integer>147</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>89</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>114</integer>
+			</dict>
 		</dict>
 		<key>tmp/Templete/thesis-preamble.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>10</integer>
 				<key>line</key>
-				<integer>328</integer>
+				<integer>316</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
@@ -305,16 +319,16 @@
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>15</integer>
 				<key>line</key>
-				<integer>305</integer>
+				<integer>316</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>10</integer>
 				<key>line</key>
-				<integer>328</integer>
+				<integer>316</integer>
 			</dict>
 		</dict>
 		<key>tmp/pgf-2.00-cvs/tex/latex/pgf/doc/pgfmanual.code.tex</key>
@@ -417,6 +431,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{311, 4}, {966, 774}}</string>
+	<string>{{306, 10}, {966, 768}}</string>
 </dict>
 </plist>
