@@ -314,7 +314,7 @@
 	\setlength{\trimtop}{0pt}
 	\setlength{\trimedge}{\stockwidth}
 	\addtolength{\trimedge}{-\paperwidth}
-	\settypeblocksize{8.5in}{30pc}{*}
+	\settypeblocksize{8.5in}{31pc}{*}
 	\setulmargins{4.5cm}{*}{*}
 	\setlrmargins{1.8in}{*}{*}
 	\setmarginnotes{17pt}{51pt}{\onelineskip}
@@ -401,7 +401,30 @@
 
 % \renewcommand{\suacse@loadpagestyle@acsei}{%
 \newcommand{\suacse@loadpagestyle@acsei}{%
-	\providecommand\thesispage{\normalfont p.\,\thepage}
+	\RequirePackage{xcolor}  % Load Package 'xcolor'
+	\RequirePackage{tikz}  % Load Package 'tikz'
+	% \providecommand\thesispage{\normalfont p.\,\thepage}
+	% \providecommand\thesispage{\normalfont \colorbox{black}%
+	% 		{\color{white}p.\,\thepage}}
+	\providecommand\thesispage{\normalfont \show\if@mainmatter %
+		\if@mainmatter
+			\tikz [baseline=0pt]
+			\node [fill=black!100,
+				   text=white,
+				   anchor=base,
+				   rounded corners=2pt,
+				   minimum height=1.5em,
+				   minimum width=2em]		{p.\,\thepage};
+		\else
+			\tikz [baseline=0pt]
+			\node [fill=black!100,
+				   text=white,
+				   anchor=base,
+				   rounded corners=2pt,
+				   minimum height=1.5em,
+				   minimum width=2em]		{\thepage};
+		\fi
+	}
 	\if@twoside
 		\makepagestyle{acsei}
 		  \makepsmarks{acsei}{%
@@ -423,6 +446,8 @@
 		  \setlength{\headwidth}{\textwidth}
 		  \makeheadrule{acsei}{\headwidth}{0.4pt}
 	\else
+		\setlength{\headheight}{\baselineskip}
+		\setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
 		\makepagestyle{acsei}
 		  \makepsmarks{acsei}{%
 		    % \let\@mkboth\markboth%
@@ -438,10 +463,26 @@
 		          \textsc{\S\thesection:} %
 		        \fi
 		        ####1}}}
-		  \makeevenhead{acsei}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
-		  \makeoddhead{acsei} {\small\rightmark}              {} {\thesispage}
-		  \setlength{\headwidth}{\textwidth}
-		  \makeheadrule{acsei}{\headwidth}{0.4pt}
+		  \makerunningwidth{acsei}{\headwidth}
+		  \makeheadposition{acsei}{flushright}{flushleft}{}{}
+		  % \if@mainmatter
+		    \makeevenhead{acsei}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
+		    \makeoddhead{acsei} {\small\rightmark}              {} {\thesispage}
+		  % \else
+		  %   \makeevenhead{acsei}{\makebox[0pt][c]{\thepage}} {} {\small\leftmark}
+		  %   \makeoddhead{acsei} {\small\rightmark}              {} {\thepage}
+		  % \fi
+		  % \setlength{\headwidth}{\textwidth}
+		  % \makeheadrule{acsei}{\headwidth}{0.4pt}
+		  \makeheadrule{acsei}{\textwidth}{0.4pt}
+		
+		% \if@mainmatter
+		\makerunningwidth{plain}{\headwidth}
+		\makeheadposition{plain}{flushright}{flushleft}{flushright}{flushleft}
+		\makeoddfoot{plain}{}{}{\thesispage}
+		% \else
+		% \makeoddfoot{plain}{}{}{\thepage}
+		% \fi
 	\fi
 }
 
@@ -655,7 +696,15 @@
 	}
 \fi
 \ifsuacse@chapterstyle@acsei
-	\providecommand\thesispage{\normalfont p.\,\thepage}
+	% \RequirePackage{xcolor}  % Load Package 'xcolor'
+	% \RequirePackage{tikz}  % Load Package 'tikz'
+	% \providecommand\thesispage{\normalfont p.\,\thepage}
+	% \providecommand\thesispage{\normalfont \colorbox{gray}%
+	% 				{\color{white}p.\,\thepage}}
+	% \providecommand\thesispage{\normalfont \tikz[baseline=0pt] %
+	% 		\node[fill=black!75,text=white,anchor=base] {p.\,\thepage};}
+	% \setlength{\headheight}{\baselineskip}
+	% \setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
 	\makechapterstyle{acsei}{%
 	  \setlength\beforechapskip{0pt}
 	  \setlength\midchapskip{0pt}
@@ -672,11 +721,13 @@
 	  \renewcommand\printchapternum{%
 	    \marginpar{\chapnumfont\thechapter}}
 	    % \makeoddfoot{plain}{}{\thesispage}{}
-	  \if@mainmatter
-	    \makeoddfoot{plain}{}{}{\thesispage}
-	  \else
-	    \makeoddfoot{plain}{}{}{\thepage}
-	  \fi
+		% 	  \if@mainmatter
+		% \makerunningwidth{plain}{\headwidth}
+		% \makeheadposition{plain}{flushright}{flushleft}{flushright}{flushleft}
+		% \makeoddfoot{plain}{}{}{\thesispage}
+		% 	  \else
+		% \makeoddfoot{plain}{}{}{\thepage}
+		% 	  \fi
 	}
 \fi
 }
