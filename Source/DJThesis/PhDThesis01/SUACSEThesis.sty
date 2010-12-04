@@ -64,11 +64,17 @@
 \newif\ifsuacseopt@font@ppl		% Palatino
 \newif\ifsuacseopt@font@memfonts	% Hybrid of Palatino and Computer Modern, memfonts
 
-%%   - Switcher for the extra chapter styles
+%%   - Switchers for the extra chapter styles
 \newif\ifsuacse@chapterstyle@daleifi
 \newif\ifsuacse@chapterstyle@GreyNum
 \newif\ifsuacse@chapterstyle@texblogtikz
 \newif\ifsuacse@chapterstyle@acsei
+
+%%   - Switchers for TOC
+\newif\ifsuacse@toc@short@show
+\newif\ifsuacse@toc@style@memsty
+\newif\ifsuacse@toc@style@wspr
+\newif\ifsuacse@toc@style@acsei
 
 
 %% * Define commands
@@ -139,6 +145,25 @@
 	loadpagestyle/asu/.code={\suacse@loadpagestyle@asu},
 	loadpagestyle/wspr/.code={\suacse@loadpagestyle@wspr},
 	loadpagestyle/acsei/.code={\suacse@loadpagestyle@acsei},
+	%% - TOC
+	showshorttoc/.is if=suacse@toc@short@show,
+	showshorttoc/.default=false,
+	tocstyle@memsty/.is if=suacse@toc@style@memsty,
+	tocstyle@wspr/.is if=suacse@toc@style@wspr,
+	tocstyle@acsei/.is if=suacse@toc@style@acsei,
+	loadtocstyle/.is choice,
+	loadtocstyle/memsty/.style={tocstyle@memsty=true,%
+								tocstyle@wspr=false,%
+								tocstyle@acsei=false,},
+	loadtocstyle/wspr/.style={tocstyle@memsty=false,%
+							  tocstyle@wspr=true,%
+							  tocstyle@acsei=false,},
+	loadtocstyle/acsei/.style={tocstyle@memsty=false,%
+							   tocstyle@wspr=false,%
+							   tocstyle@acsei=true,},
+	loadtocstyle/.default=acsei,
+	loadtocstyle/.append code={\suacse@loadtocstyle},
+	%% - Section style
 }
 
 % \pgfkeys{%
@@ -344,6 +369,7 @@
 %%   * \markboth takes the effect for the twosides documents, while \markright
 %%     is used for the oneside documents.
 
+%% * ASU thesis page style
 % \renewcommand{\suacse@loadpagestyle@asu}{%
 \newcommand{\suacse@loadpagestyle@asu}{%
 	%% - Main text
@@ -369,6 +395,7 @@
 	%% Use \pagestyle{plain} for prelims
 }
 
+%% * Will Robertson's page thesis style
 % \renewcommand{\suacse@loadpagestyle@wspr}{%
 \newcommand{\suacse@loadpagestyle@wspr}{%
 	\if@twoside
@@ -399,6 +426,7 @@
 	\fi
 }
 
+%% * ACSE thesis page style I
 % \renewcommand{\suacse@loadpagestyle@acsei}{%
 \newcommand{\suacse@loadpagestyle@acsei}{%
 	\RequirePackage{xcolor}  % Load Package 'xcolor'
@@ -556,6 +584,274 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:10:39 +0000 (Tue, 16 Nov 2010)
 %% TOC etc.
+
+%% * Load TOC styles
+
+%%   - Switcher required by style
+\newif\if@shorttoc
+
+%%   - Pre-defined command
+%%     Hide content line in short toc
+\newenvironment {hideshorttoc} {
+  \addtocontents{toc}{ \protect\if@shorttoc \protect\else }
+}{
+  \addtocontents{toc}{ \protect\fi }
+}
+
+
+\newcommand{\suacse@loadtocstyle}{%
+%% * Memsty style
+\ifsuacse@toc@style@memsty
+	%% - Define short TOC
+	\newcommand*{\setupshorttoc}{%
+	  \@shorttoctrue
+	  \renewcommand*{\contentsname}{Short contents}
+	  \let\oldchangetocdepth\changetocdepth
+	  \let\oldprecistoctext\precistoctext
+	  \renewcommand{\precistoctext}[1]{}
+	  \let\oldcftchapterfillnum\cftchapterfillnum
+	  \renewcommand*{\changetocdepth}[1]{}
+	  \setcounter{tocdepth}{0}% chapters
+	  % \renewcommand*{\cftpartfont}{\hfill\sffamily}
+	  % \renewcommand*{\cftpartpagefont}{\normalfont}
+	  % \renewcommand*{\cftpartleader}{ \textperiodcentered\space}
+	  % \renewcommand*{\cftpartafterpnum}{\cftparfillskip}
+	  \renewcommand*{\cftchapterfont}{\hfill\sffamily}
+	  \renewcommand*{\cftchapterpagefont}{\normalfont}
+	  \renewcommand*{\cftchapterleader}{ \textperiodcentered\space}
+	  \renewcommand*{\cftchapterafterpnum}{\cftparfillskip}
+	  % \setpnumwidth{0em}
+	  % \setpnumwidth{1.5em}
+	  \renewcommand*{\cftchapterfillnum}[1]{%
+	    {\cftchapterleader}\nobreak
+	    \hbox to 1.5em{\cftchapterpagefont ####1\hfil}\cftchapterafterpnum\par}
+	  \setrmarg{0.3\textwidth}
+	  \setlength{\unitlength}{\@tocrmarg}
+	  \addtolength{\unitlength}{1.5em}
+	  \let\oldcftpartformatpnum\cftpartformatpnum
+	  \renewcommand*{\cftpartformatpnum}[1]{%
+	    \hbox to\unitlength{{\cftpartpagefont ####1}}}
+	  \let\oldcftbookformatpnum\cftbookformatpnum
+	  \renewcommand*{\cftbookformatpnum}[1]{%
+	    \hbox to\unitlength{{\cftbookpagefont ####1}}}}
+
+	\newcommand*{\setupparasubsecs}{%
+	  \@shorttocfalse
+	  \let\oldnumberline\numberline
+	  \renewcommand*{\cftsubsectionfont}{\itshape}
+	  \renewcommand*{\cftsubsectionpagefont}{\itshape}
+	  \renewcommand{\l@subsection}[2]{
+	    \ifnum\c@tocdepth > 1\relax
+	      \def\numberline########1{\textit{########1}~}%
+	      \leftskip=\cftsubsectionindent
+	      \rightskip=\@tocrmarg
+	      % \advance\rightskip 0pt plus \hsize % uncomment this for raggedright
+	      % \advance\rightskip 0pt plus 2em    % uncomment this for semi-ragged
+	      \parfillskip=\fill
+	      \ifhmode ,\ \else\noindent\fi
+	      \ignorespaces 
+	      {\cftsubsectionfont ####1}~{\cftsubsectionpagefont####2}%
+	       \let\numberline\oldnumberline\ignorespaces
+	    \fi}}
+
+	\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
+
+	%%   - Define long TOC
+	\newcommand*{\setupmaintoc}{%
+	  \renewcommand{\contentsname}{Contents}
+	  \let\changetocdepth\oldchangetocdepth
+	  \let\precistoctext\oldprecistoctext
+	  \let\cftchapterfillnum\oldcftchapterfillnum
+	  \addtodef{\cftchapterbreak}{\par}{}
+	  \renewcommand*{\cftchapterfont}{\normalfont\sffamily}
+	  \renewcommand*{\cftchapterleader}{\sffamily\cftdotfill{\cftchapterdotsep}}
+	  \renewcommand*{\cftchapterafterpnum}{}
+	  \renewcommand{\cftchapterbreak}{\par\addpenalty{-\@highpenalty}}
+	  \setpnumwidth{2.55em}
+	  \setrmarg{3.55em}
+	  \setcounter{tocdepth}{2}
+	  \let\cftpartformatpnum\oldcftpartformatpnum
+	  \addtodef{\cftpartbreak}{\par}{}
+	  \let\cftbookformatpnum\oldcftbookformatpnum
+	  \addtodef{\cftbookbreak}{\par}{}
+	}
+\fi
+
+%% * Will Robertson's style
+\ifsuacse@toc@style@wspr
+	\newcommand*{\setupshorttoc}{%
+	  \@shorttoctrue
+	  \renewcommand*{\contentsname}{Short contents}
+	  \let\oldchangetocdepth\changetocdepth
+	  \renewcommand{\precistoctext}[1]{%
+	    \nobreak
+	    \begin{quote}
+	      \leftskip    = 0cm plus  0.5fil
+	      \rightskip   = 0cm plus -0.5fil
+	      \parfillskip = 0cm plus    1fil
+	      \footnotesize ####1
+	    \end{quote}
+	  }
+	  \let\oldcftchapterfillnum\cftchapterfillnum
+	  \renewcommand*{\changetocdepth}[1]{}
+	  \setcounter{tocdepth}{0}% chapters
+	  %
+	  \renewcommand*{\cftchapterfont}{\hfill}
+	  \renewcommand*{\cftchapterfillnum}[1]{%
+	    \quad \nobreak p.\,####1\hfill \null \par
+	  }
+	  %
+	  \renewcommand*{\cftpartfont}{\hfill \bfseries}
+	  \renewcommand*{\cftpartfillnum}[1]{\hfill\null\par}
+	}
+
+	\newcommand*{\setupparasubsecs}{%
+	  \@shorttocfalse
+	  \let\oldnumberline\numberline
+	  \renewcommand \cftsubsectionfont     {\small}
+	  \renewcommand \cftsubsectionpagefont {\upshape\small}
+	  \renewcommand \l@subsection [2] {%
+	    \ifnum\c@tocdepth > 1
+	      \def\numberline########1{\parsesubsection########1\@nil}%
+	      \leftskip=\cftsubsectionindent
+	      \rightskip=\@tocrmarg
+	      \advance\rightskip 0pt plus 2em
+	      \parfillskip=\fill
+	      \ifhmode
+	        \unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip \unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\,,\space
+	      \else
+	        \noindent
+	      \fi
+	      \ignorespaces
+	      {\cftsubsectionfont ####1}~{\cftsubsectionpagefont####2}%
+	       \let\numberline\oldnumberline\expandafter\ignorespaces
+	    \fi
+	  }%
+	}
+
+	\def\parsesubsection##1.##2.##3\@nil{##3 \itshape}
+
+	\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
+
+	\newcommand*{\setupmaintoc}{%
+	  \renewcommand{\contentsname}{Contents}
+	  \let\changetocdepth\oldchangetocdepth
+	  \renewcommand{\precistoctext}[1]{}
+	  \let\cftchapterfillnum\oldcftchapterfillnum
+	  \addtodef{\cftchapterbreak}{\par}{}
+	  \renewcommand*{\cftchapterfont}{\normalfont}
+	  \renewcommand*{\cftchapterleader}{\cftdotfill{\cftchapterdotsep}}
+	  \renewcommand*{\cftchapterafterpnum}{}
+	  \renewcommand{\cftchapterbreak}{\par\addpenalty{-\@highpenalty}}
+	  \setpnumwidth{2.55em}
+	  \setrmarg{3.55em}
+	  \setcounter{tocdepth}{2}
+	  \let\cftpartformatpnum\oldcftpartformatpnum
+	  \addtodef{\cftpartbreak}{\par}{}
+	  \let\cftbookformatpnum\oldcftbookformatpnum
+	  \addtodef{\cftbookbreak}{\par}{}
+	}
+
+	\renewcommand\chapterprecistoc[1]{%
+	  \addtocontents{toc}{\protect\precistoctext{##1}}%
+	}
+
+	\renewcommand\chapterprecishere[1]{}
+
+\fi
+
+%% * ACSE style I
+\ifsuacse@toc@style@acsei
+	%% - Define short TOC
+	\newcommand*{\setupshorttoc}{%
+	  \@shorttoctrue
+	  \renewcommand*{\contentsname}{Short contents}
+	  \let\oldchangetocdepth\changetocdepth
+	  \let\oldprecistoctext\precistoctext
+	  \renewcommand{\precistoctext}[1]{}
+	  \let\oldcftchapterfillnum\cftchapterfillnum
+	  \renewcommand*{\changetocdepth}[1]{}
+	  \setcounter{tocdepth}{0}% chapters
+	  % \renewcommand*{\cftpartfont}{\hfill\sffamily}
+	  % \renewcommand*{\cftpartpagefont}{\normalfont}
+	  % \renewcommand*{\cftpartleader}{ \textperiodcentered\space}
+	  % \renewcommand*{\cftpartafterpnum}{\cftparfillskip}
+	  \renewcommand*{\cftchapterfont}{\hfill\sffamily}
+	  \renewcommand*{\cftchapterpagefont}{\normalfont}
+	  \renewcommand*{\cftchapterleader}{ \textperiodcentered\space}
+	  \renewcommand*{\cftchapterafterpnum}{\cftparfillskip}
+	  % \setpnumwidth{0em}
+	  % \setpnumwidth{1.5em}
+	  \renewcommand*{\cftchapterfillnum}[1]{%
+	    {\cftchapterleader}\nobreak
+	    \hbox to 1.5em{\cftchapterpagefont ####1\hfil}\cftchapterafterpnum\par}
+	  \setrmarg{0.3\textwidth}
+	  \setlength{\unitlength}{\@tocrmarg}
+	  \addtolength{\unitlength}{1.5em}
+	  \let\oldcftpartformatpnum\cftpartformatpnum
+	  \renewcommand*{\cftpartformatpnum}[1]{%
+	    \hbox to\unitlength{{\cftpartpagefont ####1}}}
+	  \let\oldcftbookformatpnum\cftbookformatpnum
+	  \renewcommand*{\cftbookformatpnum}[1]{%
+	    \hbox to\unitlength{{\cftbookpagefont ####1}}}}
+
+	\newcommand*{\setupparasubsecs}{%
+	  \@shorttocfalse
+	  \let\oldnumberline\numberline
+	  \renewcommand*{\cftsubsectionfont}{\itshape}
+	  \renewcommand*{\cftsubsectionpagefont}{\itshape}
+	  \renewcommand{\l@subsection}[2]{
+	    \ifnum\c@tocdepth > 1\relax
+	      \def\numberline########1{\textit{########1}~}%
+	      \leftskip=\cftsubsectionindent
+	      \rightskip=\@tocrmarg
+	      % \advance\rightskip 0pt plus \hsize % uncomment this for raggedright
+	      % \advance\rightskip 0pt plus 2em    % uncomment this for semi-ragged
+	      \parfillskip=\fill
+	      \ifhmode ,\ \else\noindent\fi
+	      \ignorespaces 
+	      {\cftsubsectionfont ####1}~{\cftsubsectionpagefont####2}%
+	       \let\numberline\oldnumberline\ignorespaces
+	    \fi}}
+
+	\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
+
+	%%   - Define long TOC
+	\newcommand*{\setupmaintoc}{%
+	  \renewcommand{\contentsname}{Contents}
+	  \let\changetocdepth\oldchangetocdepth
+	  \let\precistoctext\oldprecistoctext
+	  \let\cftchapterfillnum\oldcftchapterfillnum
+	  \addtodef{\cftchapterbreak}{\par}{}
+	  \renewcommand*{\cftchapterfont}{\normalfont\sffamily}
+	  \renewcommand*{\cftchapterleader}{\sffamily\cftdotfill{\cftchapterdotsep}}
+	  \renewcommand*{\cftchapterafterpnum}{}
+	  \renewcommand{\cftchapterbreak}{\par\addpenalty{-\@highpenalty}}
+	  \setpnumwidth{2.55em}
+	  \setrmarg{3.55em}
+	  \setcounter{tocdepth}{2}
+	  \let\cftpartformatpnum\oldcftpartformatpnum
+	  \addtodef{\cftpartbreak}{\par}{}
+	  \let\cftbookformatpnum\oldcftbookformatpnum
+	  \addtodef{\cftbookbreak}{\par}{}
+	}
+\fi
+
+}
+
+%% * Show TOC
+\newcommand{\printtoc}{%
+\ifsuacse@toc@short@show
+	\setupshorttoc
+	\tableofcontents
+	\clearpage
+\fi
+\setupparasubsecs
+\setupmaintoc
+\tableofcontents
+\clearpage
+}
+
 
 %% END: TOC etc.
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -739,6 +1035,79 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:11:38 +0000 (Tue, 16 Nov 2010)
 %% Section, etc., Styling
+
+\newcommand\marginnum[2]{%
+  \noindent
+  \let\@tempa\relax
+  \savebox\@tempboxa{#2}%
+  %\null\marginpar{#1\@tempa}%
+  #1\@tempa\quad#2}
+
+\def\secstyle{\centering\scshape}
+\def\subsecstyle{\centering\itshape}
+\def\subsubsecstyle{\centering\small\itshape}
+
+\setsecheadstyle{\marginnum\secstyle}
+\setsubsecheadstyle{\marginnum\subsecstyle}
+\setsubsubsecheadstyle{\marginnum\subsubsecstyle}
+
+\setsecnumformat{\unexpanded{%
+  \protected@xdef\@tempa{{\upshape\S\csname the#1\endcsname}}}}
+
+
+%%%%%%%%% section head designs
+\newcommand*{\defaultsecheads}{
+  \setsecheadstyle{\normalfont\Large\bfseries\raggedright}
+    \setsecindent{0pt}
+    \setbeforesecskip{-3.5ex plus -1ex minus -.2ex}
+    \setaftersecskip{2.3ex plus .2ex}
+  \setsubsecheadstyle{\normalfont\large\bfseries\raggedright}
+    \setsubsecindent{0pt}
+    \setbeforesubsecskip{-3.25ex plus -1ex minus -.2ex}
+    \setaftersubsecskip{1.5ex plus .2ex}
+  \setsubsubsecheadstyle{\normalfont\bfseries\raggedright}
+    \setsubsubsecindent{0pt}
+    \setbeforesubsubsecskip{-3.25ex plus -1ex minus -.2ex}
+    \setaftersubsubsecskip{1.5ex plus .2ex}
+  \setparaheadstyle{\normalfont\bfseries}
+    \setparaindent{0pt}
+    \setbeforeparaskip{3.25ex plus 1ex minus .2ex}
+    \setafterparaskip{-1em}
+  \setsubparaheadstyle{\normalfont\bfseries}
+    \setsubparaindent{0pt}
+    \setbeforesubparaskip{3.25ex plus 1ex minus .2ex}
+    \setaftersubparaskip{-1em}
+}
+
+%%%%%%%%%%%%%% Manual layout and design elements
+
+\newcommand*{\memmansecheads}{
+  \setsecheadstyle{\normalfont\scshape\raggedright}
+    \setsecindent{0pt}
+    \setbeforesecskip{-1.333\onelineskip plus -0.5\onelineskip minus -0.5\onelineskip}
+    \setaftersecskip{.667\onelineskip plus 0.1\onelineskip}
+%%% surround = 2 lines (1.333/.667)
+%%% surround = 1 line (.667/.333)
+  \setsubsecheadstyle{\normalfont\sffamily\raggedright}
+    \setsubsecindent{0pt}
+    \setbeforesubsecskip{-.667\onelineskip plus -0.5\onelineskip minus -0.5\onelineskip}
+    \setaftersubsecskip{0.333\onelineskip plus 0.1\onelineskip}
+%%% surround = 1 line (.667/.333)
+  \setsubsubsecheadstyle{\normalfont\itshape\raggedright}
+    \setsubsubsecindent{0pt}
+    \setbeforesubsubsecskip{-0.667\onelineskip plus -0.25\onelineskip minus -0.25\onelineskip}
+    \setaftersubsubsecskip{0.333\onelineskip plus 0.1\onelineskip}
+%%% no surround
+  \setparaheadstyle{\normalfont\sffamily}
+    \setparaindent{0pt}
+    \setbeforeparaskip{1.0\onelineskip plus 0.5\onelineskip minus 0.25\onelineskip}
+    \setafterparaskip{-1em}
+  \setsubparaheadstyle{\normalfont\sffamily}
+    \setsubparaindent{0pt}
+    \setbeforesubparaskip{1.0\onelineskip plus 0.5\onelineskip minus 0.25\onelineskip}
+    \setaftersubparaskip{-1em}
+}
+
 
 %% END: Section, etc., Styling
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
