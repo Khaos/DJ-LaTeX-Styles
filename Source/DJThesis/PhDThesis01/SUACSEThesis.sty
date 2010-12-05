@@ -16,6 +16,8 @@
 %%   @ 2010-11-20 13:33:07 +0000 (Sat, 20 Nov 2010)
 %%     - Fix the font options problem, the command, \ProcessPgfPackageOptions,
 %%       has to be put somewhere carefully as stated in the code.
+%%   @ 2010-12-05 10:07:25 +0000 (Sun,  5 Dec 2010)
+%%     - Seperate the pgf-key's definition
 %%
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -52,44 +54,34 @@
 %% Created by Dazhi Jiang, 2010-11-16 18:55:59 +0000 (Tue, 16 Nov 2010)
 %% Define Package Keys
 
+%% !!! A few comment
+%% The key 'chapterstyle' saves the name of the current chapter style. It can
+%% be used by another key, e.g., 'headstyle'. The reason is that some head
+%% styles set up the chapter styles as well as the section head ones and
+%% therefore they have to be set back to the original one.
+
+
+%% * Use '\suacseset' to set-up the suacse keys 
+\def\suacseset#1{\pgfkeys{/suacse/.cd,#1}}
+
+
 % \newcommand*{\setsuacsespacing}[1]{%
 %   \let\SUACSESpacing#1
 %   \SUACSESpacing}
 % \setsuacsespacing{\OnehalfSpacing}
 
-
-%% * Define switchers
-%%   - Switchers for fonts
-\newif\ifsuacseopt@font@cm			% Computer Modern
-\newif\ifsuacseopt@font@ppl		% Palatino
-\newif\ifsuacseopt@font@memfonts	% Hybrid of Palatino and Computer Modern, memfonts
-
-%%   - Switchers for the extra chapter styles
-\newif\ifsuacse@chapterstyle@daleifi
-\newif\ifsuacse@chapterstyle@GreyNum
-\newif\ifsuacse@chapterstyle@texblogtikz
-\newif\ifsuacse@chapterstyle@acsei
-
-%%   - Switchers for TOC
-\newif\ifsuacse@toc@short@show
-\newif\ifsuacse@toc@style@memsty
-\newif\ifsuacse@toc@style@wspr
-\newif\ifsuacse@toc@style@acsei
+%% END: Define Package Keys
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-%% * Define commands
-%%   - Commands for spacing
-% \newcommand*{\@suacse@spacing}{}
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-05 10:19:36 +0000 (Sun,  5 Dec 2010)
+%% Spacing
 
-%%   - Commans for page style
-% \newcommand{\suacse@loadpagestyle@asu}{}
-% \newcommand{\suacse@loadpagestyle@wspr}{}
-% \newcommand{\suacse@loadpagestyle@acsei}{}
-
-%% * Define keys for SUACSEThesis
+%% * Define spacing-related keys
 \pgfkeys{%
-	%% - Spacing
 	/suacse/.cd,
+	%% - Spacing
 	spacing/.is choice,
 	spacing/single/.code={\SingleSpacing},
 	spacing/onehalf/.code={\OnehalfSpacing},
@@ -97,142 +89,34 @@
 	spacing/.default=onehalf,
 	% spacing/.code args={#1 equal to #2}{\if#1}
 	spacingfactor/.code={\setSingleSpace{#1} \SingleSpacing},
-	% %% - Page layout
-	% pagelayout/.is choice,
-	% pagelayout/asu/.code={\pagelayout@asu},
-	% pagelayout/memsty/.code={\pagelayout@memsty},
-	% pagelayout/acsei/.code={\pagelayout@acsei},
-	% pagelayout/acseii/.code={\pagelayout@acseii},
-	% %% - Font
-	% font@cm/.is if=suacse@font@cm,
-	% font@ppl/.is if=suacse@font@ppl,
-	% font@memfonts/.is if=suacse@font@memfonts,
-	% font/.is choice,
-	% font/cm/.style={font@cm=true, font@ppl=false, font@memfonts=false},
-	% font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
-	% font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
-	% font/.default=cm,
-	%% - Chapter style
-	chapterstyle/.code={\chapterstyle{#1}},
-	chapterstyle@daleifi/.is if=suacse@chapterstyle@daleifi,
-	chapterstyle@GreyNum/.is if=suacse@chapterstyle@GreyNum,
-	chapterstyle@texblogtikz/.is if=suacse@chapterstyle@texblogtikz,
-	chapterstyle@acsei/.is if=suacse@chapterstyle@acsei,
-	loadextrachapsty/.is choice,
-	loadextrachapsty/all/.style={chapterstyle@daleifi=true,%
-								 chapterstyle@GreyNum=true,%
-								 chapterstyle@texblogtikz=true,%
-								 chapterstyle@acsei=true},
-	loadextrachapsty/daleifi/.style={chapterstyle@daleifi=true,%
-									 chapterstyle@GreyNum=false,%
-									 chapterstyle@texblogtikz=false,%
-					 				 chapterstyle@acsei=false},
-	loadextrachapsty/GreyNum/.style={chapterstyle@daleifi=false,%
-									 chapterstyle@GreyNum=true,%
-									 chapterstyle@texblogtikz=false,%
-					 				 chapterstyle@acsei=false},
-	loadextrachapsty/texblogtikz/.style={chapterstyle@daleifi=false,%
-										 chapterstyle@GreyNum=false,%
-										 chapterstyle@texblogtikz=true,%
-					 					 chapterstyle@acsei=false},
-	loadextrachapsty/acsei/.style={chapterstyle@daleifi=false,%
-								   chapterstyle@GreyNum=false,%
-								   chapterstyle@texblogtikz=false,%
-					 			   chapterstyle@acsei=true},
-	loadextrachapsty/.append code={\suacse@loadextrachapsty},
-	%% - Page style
-	loadpagestyle/.is choice,
-	loadpagestyle/asu/.code={\suacse@loadpagestyle@asu},
-	loadpagestyle/wspr/.code={\suacse@loadpagestyle@wspr},
-	loadpagestyle/acsei/.code={\suacse@loadpagestyle@acsei},
-	%% - TOC
-	showshorttoc/.is if=suacse@toc@short@show,
-	showshorttoc/.default=false,
-	tocstyle@memsty/.is if=suacse@toc@style@memsty,
-	tocstyle@wspr/.is if=suacse@toc@style@wspr,
-	tocstyle@acsei/.is if=suacse@toc@style@acsei,
-	loadtocstyle/.is choice,
-	loadtocstyle/memsty/.style={tocstyle@memsty=true,%
-								tocstyle@wspr=false,%
-								tocstyle@acsei=false,},
-	loadtocstyle/wspr/.style={tocstyle@memsty=false,%
-							  tocstyle@wspr=true,%
-							  tocstyle@acsei=false,},
-	loadtocstyle/acsei/.style={tocstyle@memsty=false,%
-							   tocstyle@wspr=false,%
-							   tocstyle@acsei=true,},
-	loadtocstyle/.default=acsei,
-	loadtocstyle/.append code={\suacse@loadtocstyle},
-	%% - Section style
 }
 
-% \pgfkeys{%
-%     /suacse/.cd,
-%     spacing/.is choice,
-%     spacing/single/.code={\setsuacsespacing{\SingleSpacing}},
-%     spacing/onehalf/.code={\setsuacsespacing{\OnehalfSpacing}},
-%     spacing/double/.code={\setsuacsespacing{\DoubleSpacing}},
-% }
-
-
-%% * Use '\suacseset' to set-up the keys 
-\def\suacseset#1{\pgfkeys{/suacse/.cd,#1}}
-
-
-%% * Commands required by the keys
-% \newcommand*{\setsuacsespacing}[1]{%
-%   \let\SUACSESpacing#1
-%   \SUACSESpacing}
-% \setsuacsespacing{\OnehalfSpacing}
-
-%%   - Pre-defined commands
-%%     - Page layout
-% \newcommand{\pagelayout@asu}{}
-% \newcommand{\pagelayout@memsty}{}
-% \newcommand{\pagelayout@acsei}{}
-% \newcommand{\pagelayout@acseii}{}
-%%     - Font setting-up
-% \newcommand{\suacseopt@setfont}{}
-
-
-%% * Declare the package options
-%%   - Define the package options
+%% * Define spacing-related option keys
 \pgfkeys{%
 	%% - Spacing
 	/suacseopt/.cd,
 	spacing/.code={\suacseset{spacing=#1}},
 	spacingfactor/.code={\suacseset{spacingfactor=#1}},
-	%% - Page layout
-	pagelayout/.is choice,
-	pagelayout/asu/.code={\pagelayout@asu},
-	pagelayout/memsty/.code={\pagelayout@memsty},
-	pagelayout/acsei/.code={\pagelayout@acsei},
-	pagelayout/acseii/.code={\pagelayout@acseii},
-	% pagelayout/.code={\suacseset{pagelayout=#1}},
-	%% - Font
-	font@cm/.is if=suacseopt@font@cm,
-	font@ppl/.is if=suacseopt@font@ppl,
-	font@memfonts/.is if=suacseopt@font@memfonts,
-	font/.is choice,
-	font/cm/.style={font@cm=true, font@ppl=false, font@memfonts=false},
-	font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
-	font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
-	font/.default=cm,
-	font/.append code={\suacseopt@setfont},
-	% font/.code={\suacseset{font=#1}},
-	%% - Chapter style
-	chapterstyle/.code={\suacseset{chapterstyle=#1}},
-	%% - Page style
 }
 
-
-%% END: Define Package Keys
+%% END: Spacing
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:02:34 +0000 (Tue, 16 Nov 2010)
 %% Page Layout
+
+%% * Define page-layout-ralated option keys
+\pgfkeys{%
+	/suacseopt/.cd,
+	pagelayout/.is choice,
+	pagelayout/asu/.code={\pagelayout@asu},
+	pagelayout/memsty/.code={\pagelayout@memsty},
+	pagelayout/acsei/.code={\pagelayout@acsei},
+	pagelayout/acseii/.code={\pagelayout@acseii},
+	% pagelayout/.code={\suacseset{pagelayout=#1}},
+}
 
 %% * Some useful lengths for layout purposes
 \newlength{\toptafiddle}
@@ -368,6 +252,17 @@
 %% Page Styles
 %%   * \markboth takes the effect for the twosides documents, while \markright
 %%     is used for the oneside documents.
+
+%% * Define page-style-related keys
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Page style
+	loadpagestyle/.is choice,
+	loadpagestyle/asu/.code={\suacse@loadpagestyle@asu},
+	loadpagestyle/wspr/.code={\suacse@loadpagestyle@wspr},
+	loadpagestyle/acsei/.code={\suacse@loadpagestyle@acsei},
+	pagestyle/.code={\pagestyle{#1}},
+}
 
 %% * ASU thesis page style
 % \renewcommand{\suacse@loadpagestyle@asu}{%
@@ -584,6 +479,39 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:10:39 +0000 (Tue, 16 Nov 2010)
 %% TOC etc.
+
+%% * Declare switchers for TOC
+\newif\ifsuacse@toc@short@show
+\newif\ifsuacse@toc@style@memsty
+\newif\ifsuacse@toc@style@wspr
+\newif\ifsuacse@toc@style@acsei
+
+%% * Define TOC-related keys
+\pgfkeys{%
+	/suacse/.cd,
+	%% - TOC
+	showshorttoc/.is if=suacse@toc@short@show,
+	showshorttoc/.default=false,
+	tocstyle@memsty/.is if=suacse@toc@style@memsty,
+	tocstyle@wspr/.is if=suacse@toc@style@wspr,
+	tocstyle@acsei/.is if=suacse@toc@style@acsei,
+	loadtocstyle/.is choice,
+	loadtocstyle/memsty/.style={tocstyle@memsty=true,%
+								tocstyle@wspr=false,%
+								tocstyle@acsei=false,},
+	loadtocstyle/wspr/.style={tocstyle@memsty=false,%
+							  tocstyle@wspr=true,%
+							  tocstyle@acsei=false,},
+	loadtocstyle/acsei/.style={tocstyle@memsty=false,%
+							   tocstyle@wspr=false,%
+							   tocstyle@acsei=true,},
+	loadtocstyle/.default=acsei,
+	loadtocstyle/.append code={\suacse@loadtocstyle},
+	tocstyle/.style={loadtocstyle=#1},
+}
+
+%% * Define TOC-related option keys
+
 
 %% * Load TOC styles
 
@@ -861,6 +789,53 @@
 %% Created by Dazhi Jiang, 2010-11-16 16:10:58 +0000 (Tue, 16 Nov 2010)
 %% Chapter Styling
 
+%% * Declare switchers for the extra chapter styles
+\newif\ifsuacse@chapterstyle@daleifi
+\newif\ifsuacse@chapterstyle@GreyNum
+\newif\ifsuacse@chapterstyle@texblogtikz
+\newif\ifsuacse@chapterstyle@acsei
+
+%% * Define chapter-style-related keys
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Chapter style
+	chapterstyle/.code={\chapterstyle{#1}
+						\def\@suacse@chapter@style{#1}},
+	chapterstyle@daleifi/.is if=suacse@chapterstyle@daleifi,
+	chapterstyle@GreyNum/.is if=suacse@chapterstyle@GreyNum,
+	chapterstyle@texblogtikz/.is if=suacse@chapterstyle@texblogtikz,
+	chapterstyle@acsei/.is if=suacse@chapterstyle@acsei,
+	loadextrachapsty/.is choice,
+	loadextrachapsty/all/.style={chapterstyle@daleifi=true,%
+								 chapterstyle@GreyNum=true,%
+								 chapterstyle@texblogtikz=true,%
+								 chapterstyle@acsei=true},
+	loadextrachapsty/daleifi/.style={chapterstyle@daleifi=true,%
+									 chapterstyle@GreyNum=false,%
+									 chapterstyle@texblogtikz=false,%
+					 				 chapterstyle@acsei=false},
+	loadextrachapsty/GreyNum/.style={chapterstyle@daleifi=false,%
+									 chapterstyle@GreyNum=true,%
+									 chapterstyle@texblogtikz=false,%
+					 				 chapterstyle@acsei=false},
+	loadextrachapsty/texblogtikz/.style={chapterstyle@daleifi=false,%
+										 chapterstyle@GreyNum=false,%
+										 chapterstyle@texblogtikz=true,%
+					 					 chapterstyle@acsei=false},
+	loadextrachapsty/acsei/.style={chapterstyle@daleifi=false,%
+								   chapterstyle@GreyNum=false,%
+								   chapterstyle@texblogtikz=false,%
+					 			   chapterstyle@acsei=true},
+	loadextrachapsty/.append code={\suacse@loadextrachapsty},
+}
+
+%% * Define chapter-style-related option keys
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Chapter style
+	chapterstyle/.code={\suacseset{chapterstyle=#1}},
+}
+
 %% ! Note that in the nested \newcommand command, #1 is the first argument
 %%   for the most outer one, and ##1 is the first argument for the next less
 %%   outer one.
@@ -1036,6 +1011,34 @@
 %% Created by Dazhi Jiang, 2010-11-16 16:11:38 +0000 (Tue, 16 Nov 2010)
 %% Section, etc., Styling
 
+%% * Define section-head-style-related keys
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Section head style
+	headstyle/.code={\headstyles{#1}
+					 \chapterstyle{\@suacse@chapter@style}},
+	makeheadstyle/.code 2 args={\makeheadstyles{#1}{#2}},
+	loadheadstyle/.is choice,
+	loadheadstyle/memsty/.code={\suacse@loadheadstyle@memsty},
+	loadheadstyle/wspr/.code={\suacse@loadheadstyle@wspr},
+	loadheadstyle/acsei/.code={\suacse@loadheadstyle@acsei},
+}
+
+%% * Define section-head-style-related options keys
+
+
+%% 
+\newcommand{\suacse@loadheadstyle@memsty}{%
+}
+
+
+\newcommand{\suacse@loadheadstyle@wspr}{%
+}
+
+
+\newcommand{\suacse@loadheadstyle@acsei}{%
+}
+
 \newcommand\marginnum[2]{%
   \noindent
   \let\@tempa\relax
@@ -1132,6 +1135,27 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:03:18 +0000 (Tue, 16 Nov 2010)
 %% Fonts
+
+%% * Switchers for fonts
+\newif\ifsuacseopt@font@cm			% Computer Modern
+\newif\ifsuacseopt@font@ppl		% Palatino
+\newif\ifsuacseopt@font@memfonts	% Hybrid of Palatino and Computer Modern, memfonts
+
+%% * Define font-related keys
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Font
+	font@cm/.is if=suacseopt@font@cm,
+	font@ppl/.is if=suacseopt@font@ppl,
+	font@memfonts/.is if=suacseopt@font@memfonts,
+	font/.is choice,
+	font/cm/.style={font@cm=true, font@ppl=false, font@memfonts=false},
+	font/ppl/.style={font@cm=false, font@ppl=true, font@memfonts=false},
+	font/memfonts/.style={font@cm=false, font@ppl=false, font@memfonts=true},
+	font/.default=cm,
+	font/.append code={\suacseopt@setfont},
+	% font/.code={\suacseset{font=#1}},
+}
 
 %% * Load the commonly-used packages
 \RequirePackage[T1]{fontenc} % sane font encoding

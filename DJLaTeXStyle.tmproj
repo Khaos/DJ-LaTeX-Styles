@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tmp/Templete/thesis-preamble.sty</string>
+	<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -55,6 +55,8 @@
 			<string>Source</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>tmp</string>
 			<key>regexFolderFilter</key>
@@ -102,14 +104,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>4</integer>
+				<integer>39</integer>
 				<key>line</key>
-				<integer>485</integer>
+				<integer>1061</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>743</integer>
+			<integer>1037</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -204,14 +206,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>129</integer>
+				<integer>85</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>426</integer>
+			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>111</integer>
+			<integer>67</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
@@ -271,6 +273,36 @@
 				<integer>39</integer>
 			</dict>
 		</dict>
+		<key>tmp/Templete/contents.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>7</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>7</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>7</integer>
+			</dict>
+		</dict>
 		<key>tmp/Templete/pwasu.sty</key>
 		<dict>
 			<key>caret</key>
@@ -285,7 +317,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>140</integer>
+			<integer>0</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
@@ -306,14 +338,60 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>376</integer>
+				<integer>298</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>363</integer>
+			<integer>268</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>281</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>298</integer>
+			</dict>
+		</dict>
+		<key>tmp/Templete/thesis.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>11</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>8</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>11</integer>
+			</dict>
 		</dict>
 		<key>tmp/pgf-2.00-cvs/tex/latex/pgf/doc/pgfmanual.code.tex</key>
 		<dict>
@@ -410,11 +488,13 @@
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 		<string>tmp/Templete/thesis-preamble.sty</string>
+		<string>tmp/Templete/contents.tex</string>
+		<string>tmp/Templete/thesis.tex</string>
 		<string>tmp/Templete/pwasu.sty</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{309, 10}, {966, 768}}</string>
+	<string>{{313, 10}, {966, 768}}</string>
 </dict>
 </plist>
