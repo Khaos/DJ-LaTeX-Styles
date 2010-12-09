@@ -60,6 +60,9 @@
 %% styles set up the chapter styles as well as the section head ones and
 %% therefore they have to be set back to the original one.
 
+%% * Initialisation for the keys
+%%   - Initialise the macro required by the keys
+\def\@suacse@chapter@style{default}	% Initial chapter style: default
 
 %% * Use '\suacseset' to set-up the suacse keys 
 \def\suacseset#1{\pgfkeys{/suacse/.cd,#1}}
@@ -253,6 +256,7 @@
 %%   * \markboth takes the effect for the twosides documents, while \markright
 %%     is used for the oneside documents.
 
+
 %% * Define page-style-related keys
 \pgfkeys{%
 	/suacse/.cd,
@@ -260,9 +264,177 @@
 	loadpagestyle/.is choice,
 	loadpagestyle/asu/.code={\suacse@loadpagestyle@asu},
 	loadpagestyle/wspr/.code={\suacse@loadpagestyle@wspr},
-	loadpagestyle/acsei/.code={\suacse@loadpagestyle@acsei},
+	loadpagestyle/acsei/.code={\suacse@loadpagenumberstyle
+							   \suacse@loadpagestyle@acsei},
 	pagestyle/.code={\pagestyle{#1}},
 }
+
+%% * Define page-style-related option keys
+
+
+
+%% * Declare the style switchers for page number
+\newif\if@suacse@page@numbering@style@default
+\newif\if@suacse@page@numbering@style@plain
+\newif\if@suacse@page@numbering@style@bold
+\newif\if@suacse@page@numbering@style@largebold
+\newif\if@suacse@page@numbering@style@blackbg
+\newif\if@suacse@page@numbering@style@bari
+\newif\if@suacse@page@numbering@style@acsei
+
+\newcommand*{\@suacse@switch@page@numbering@off}{%
+	\@suacse@page@numbering@style@defaultfalse
+	\@suacse@page@numbering@style@plainfalse
+	\@suacse@page@numbering@style@boldfalse
+	\@suacse@page@numbering@style@largeboldfalse
+	\@suacse@page@numbering@style@blackbgfalse
+	\@suacse@page@numbering@style@barifalse
+	\@suacse@page@numbering@style@acseifalse
+}
+
+%% * Define page-number-style-related keys
+%%   ! The 'pagenumberstyle' key has to be set up before any \pagestyle
+%%     command.
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Page number style
+	pagenumberstyle/.is choice,
+	pagenumberstyle/default/.code={\@suacse@switch@page@numbering@off
+							\@suacse@page@numbering@style@defaulttrue},
+	pagenumberstyle/plain/.code={\@suacse@switch@page@numbering@off
+							\@suacse@page@numbering@style@plaintrue},
+	pagenumberstyle/bold/.code={\@suacse@switch@page@numbering@off
+							\@suacse@page@numbering@style@boldtrue},
+	pagenumberstyle/largebold/.code={\@suacse@switch@page@numbering@off
+							\@suacse@page@numbering@style@largeboldtrue},
+	pagenumberstyle/blackbg/.code={\@suacse@switch@page@numbering@off
+							\@suacse@page@numbering@style@blackbgtrue},
+	pagenumberstyle/bari/.code={\@suacse@switch@page@numbering@off
+							\@suacse@page@numbering@style@baritrue},
+	pagenumberstyle/acsei/.code={\@suacse@switch@page@numbering@off
+							\@suacse@page@numbering@style@acseitrue},
+	pagenumberstyle/.default=default,
+}
+
+
+%% * Define page-number style
+%%   ! The following styles are only available when ACSE page styles are used.
+\newcommand{\suacse@loadpagenumberstyle}{%
+	%% - Load required package
+	\RequirePackage[svgnames]{xcolor}  % Load Package 'xcolor'
+	\RequirePackage{tikz}  % Load Package 'tikz'
+	% \providecommand\thesispage{\normalfont p.\,\thepage}
+	% \providecommand\thesispage{\normalfont \colorbox{black}%
+	% 		{\color{white}p.\,\thepage}}
+	%% - Default style: number only
+	\@ifundefined{@suacse@pagenumber@font}%
+		{\newcommand*{\@suacse@pagenumber@font}{\normalfont}}
+		{\renewcommand*{\@suacse@pagenumber@font}{\normalfont}}
+	\@ifundefined{@suacse@pagenumber@text}%
+		{\newcommand*{\@suacse@pagenumber@text}{\thepage}}
+		{\renewcommand*{\@suacse@pagenumber@text}{\thepage}}
+	\@ifundefined{@suacse@pagenumber}%
+		{\newcommand{\@suacse@pagenumber}%
+			{\@suacse@pagenumber@font\@suacse@pagenumber@text}}{}
+	\if@suacse@page@numbering@style@default
+		\renewcommand*{\@suacse@pagenumber@font}{\normalfont}
+		\renewcommand*{\@suacse@pagenumber@text}{\thepage}
+	\fi
+	%% - Plain style
+	\if@suacse@page@numbering@style@plain
+		\renewcommand{\@suacse@pagenumber@text}{%
+			\if@mainmatter
+				p.\,\thepage
+			\else
+				\thepage
+			\fi
+		}
+	\fi
+	%% - Bold style
+	\if@suacse@page@numbering@style@bold
+		\renewcommand{\@suacse@pagenumber@font}{\normalfont\bfseries}
+	\fi
+	%% - Large-bold style
+	\if@suacse@page@numbering@style@largebold
+		\renewcommand{\@suacse@pagenumber@font}{\normalfont\large\bfseries}
+	\fi
+	%% - Black-background style
+	\if@suacse@page@numbering@style@blackbg
+		\renewcommand{\@suacse@pagenumber}{\normalfont \bfseries %
+			\if@mainmatter
+				\tikz [baseline=0pt]
+				\node [preaction={draw=black, line width=2.5pt}]
+					  [draw=lightgray,
+					   line width=0.5pt,
+					   fill=black!100,
+					   text=white,
+					   anchor=base,
+					   rounded corners=2pt,
+					   minimum height=1.5em,
+					   minimum width=2em]		{p.\,\thepage};
+				% \tikz [baseline=0pt]
+				% \node [anchor=base,
+				% 	   rounded corners=2pt,
+				% 	   minimum height=1.5em,
+				% 	   minimum width=2em]		{p.\,\thepage};
+			\else
+				\tikz [baseline=0pt]
+				\node [preaction={draw=black, line width=2.5pt}]
+					  [draw=lightgray,
+					   line width=0.5pt,
+					   fill=black!100,
+					   text=white,
+					   anchor=base,
+					   rounded corners=2pt,
+					   minimum height=1.5em,
+					   minimum width=2em]		{\thepage};
+				% \tikz [baseline=0pt]
+				% \node [anchor=base,
+				% 	   rounded corners=2pt,
+				% 	   minimum height=1.5em,
+				% 	   minimum width=2em]		{\thepage};
+			\fi
+		}
+	\fi
+	%% - Bar style I
+	\if@suacse@page@numbering@style@bari
+		\renewcommand{\@suacse@pagenumber}{\normalfont \bfseries %
+			\if@mainmatter
+				\thepage\;%
+				\tikz [baseline=0pt]{%[baseline=(current bounding box.south)]
+				\path [use as bounding box] (0, 0) rectangle (2mm, 2ex);
+				% \filldraw[anchor=base] (0,0) rectangle (2mm, 2.5ex); \;\thepage
+				\filldraw [anchor=base,
+						   gray] (0,-1mm) rectangle (1.5mm, 1.8ex);}
+			\else
+				\thepage\;%
+				\tikz [baseline=0pt]{%[baseline=(current bounding box.south)]
+				\path [use as bounding box] (0, 0) rectangle (2mm, 2ex);
+				% \filldraw[anchor=base] (0,0) rectangle (2mm, 2.5ex); \;\thepage
+				\path [anchor=base] (0,-1mm) rectangle (1.5mm, 1.8ex);}
+			\fi
+		}
+	\fi
+	%% - ACSE style I
+	\if@suacse@page@numbering@style@acsei
+		\renewcommand{\@suacse@pagenumber}{\normalfont \bfseries %
+			\if@mainmatter
+				\tikz [baseline=0pt]
+				\node [anchor=base,
+					   rounded corners=2pt,
+					   minimum height=1.5em,
+					   minimum width=2em]		{p.\,\thepage};
+			\else
+				\tikz [baseline=0pt]
+				\node [anchor=base,
+					   rounded corners=2pt,
+					   minimum height=1.5em,
+					   minimum width=2em]		{\thepage};
+			\fi
+		}
+	\fi
+}
+
 
 %% * ASU thesis page style
 % \renewcommand{\suacse@loadpagestyle@asu}{%
@@ -322,32 +494,9 @@
 }
 
 %% * ACSE thesis page style I
+%%   - Load page style
 % \renewcommand{\suacse@loadpagestyle@acsei}{%
 \newcommand{\suacse@loadpagestyle@acsei}{%
-	\RequirePackage{xcolor}  % Load Package 'xcolor'
-	\RequirePackage{tikz}  % Load Package 'tikz'
-	% \providecommand\thesispage{\normalfont p.\,\thepage}
-	% \providecommand\thesispage{\normalfont \colorbox{black}%
-	% 		{\color{white}p.\,\thepage}}
-	\providecommand\thesispage{\normalfont \show\if@mainmatter %
-		\if@mainmatter
-			\tikz [baseline=0pt]
-			\node [fill=black!100,
-				   text=white,
-				   anchor=base,
-				   rounded corners=2pt,
-				   minimum height=1.5em,
-				   minimum width=2em]		{p.\,\thepage};
-		\else
-			\tikz [baseline=0pt]
-			\node [fill=black!100,
-				   text=white,
-				   anchor=base,
-				   rounded corners=2pt,
-				   minimum height=1.5em,
-				   minimum width=2em]		{\thepage};
-		\fi
-	}
 	\if@twoside
 		\makepagestyle{acsei}
 		  \makepsmarks{acsei}{%
@@ -355,7 +504,8 @@
 		    \def\chaptermark####1{%
 		      \markboth{%
 		        \if@mainmatter
-		          \textsc{\S\thechapter:} %
+		          % \textsc{\S\thechapter:} %
+		          \textsc{Chapter\ \thechapter:} %
 		        \fi
 		        ####1}{####1}}%
 		    \def\sectionmark####1{%
@@ -364,20 +514,22 @@
 		          \textsc{\S\thesection:} %
 		        \fi
 		        ####1}}}
-		  \makeevenhead{acsei}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
-		  \makeoddhead{acsei} {\small\rightmark}              {} {\thesispage}
+		  \makeevenhead{acsei}{\makebox[0pt][c]{\@suacse@pagenumber}} {} {\small\leftmark}
+		  \makeoddhead{acsei} {\small\rightmark}              {} {\@suacse@pagenumber}
 		  \setlength{\headwidth}{\textwidth}
 		  \makeheadrule{acsei}{\headwidth}{0.4pt}
 	\else
 		\setlength{\headheight}{\baselineskip}
-		\setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
+		% \setlength{\headwidth}{\textwidth}
+		\setlength{\headwidth}{\textwidth+\marginparsep+0.4\marginparwidth}
 		\makepagestyle{acsei}
 		  \makepsmarks{acsei}{%
 		    % \let\@mkboth\markboth%
 		    \def\chaptermark####1{%
 		      \markright{%
 		        \if@mainmatter
-		          \textsc{\S\thechapter:} %
+		          % \textsc{\S\thechapter:} %
+		          \textsc{Chapter\ \thechapter:} %
 		        \fi
 		        ####1}}%
 		    \def\sectionmark####1{%
@@ -386,11 +538,12 @@
 		          \textsc{\S\thesection:} %
 		        \fi
 		        ####1}}}
-		  \makerunningwidth{acsei}{\headwidth}
+		  % \makerunningwidth{acsei}{\headwidth}
+		  \makerunningwidth{acsei}[\headwidth]{\textwidth}
 		  \makeheadposition{acsei}{flushright}{flushleft}{}{}
 		  % \if@mainmatter
-		    \makeevenhead{acsei}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
-		    \makeoddhead{acsei} {\small\rightmark}              {} {\thesispage}
+		    \makeevenhead{acsei}{\makebox[0pt][c]{\@suacse@pagenumber}} {} {\small\leftmark}
+		    \makeoddhead{acsei} {\small\rightmark}              {} {\@suacse@pagenumber}
 		  % \else
 		  %   \makeevenhead{acsei}{\makebox[0pt][c]{\thepage}} {} {\small\leftmark}
 		  %   \makeoddhead{acsei} {\small\rightmark}              {} {\thepage}
@@ -400,9 +553,11 @@
 		  \makeheadrule{acsei}{\textwidth}{0.4pt}
 		
 		% \if@mainmatter
+		% \setlength{\headwidth}{\textwidth+\marginparsep+0.4\marginparwidth}
 		\makerunningwidth{plain}{\headwidth}
+		% \makerunningwidth{plain}[\headwidth]{\textwidth}
 		\makeheadposition{plain}{flushright}{flushleft}{flushright}{flushleft}
-		\makeoddfoot{plain}{}{}{\thesispage}
+		\makeoddfoot{plain}{}{}{\@suacse@pagenumber}
 		% \else
 		% \makeoddfoot{plain}{}{}{\thepage}
 		% \fi
@@ -480,6 +635,9 @@
 %% Created by Dazhi Jiang, 2010-11-16 16:10:39 +0000 (Tue, 16 Nov 2010)
 %% TOC etc.
 
+%% * Set the default TOC depth
+\maxtocdepth{subsection}    % include subsections in ToC
+
 %% * Declare switchers for TOC
 \newif\ifsuacse@toc@short@show
 \newif\ifsuacse@toc@style@memsty
@@ -508,6 +666,8 @@
 	loadtocstyle/.default=acsei,
 	loadtocstyle/.append code={\suacse@loadtocstyle},
 	tocstyle/.style={loadtocstyle=#1},
+	tocdepth/.code={\settocdepth{#1}},
+	maxtocdepth/.code={\maxtocdepth{#1}},
 }
 
 %% * Define TOC-related option keys
@@ -1011,6 +1171,9 @@
 %% Created by Dazhi Jiang, 2010-11-16 16:11:38 +0000 (Tue, 16 Nov 2010)
 %% Section, etc., Styling
 
+%% Set the default section number depth
+\maxsecnumdepth{subsection} % number  subsections
+
 %% * Define section-head-style-related keys
 \pgfkeys{%
 	/suacse/.cd,
@@ -1022,6 +1185,8 @@
 	loadheadstyle/memsty/.code={\suacse@loadheadstyle@memsty},
 	loadheadstyle/wspr/.code={\suacse@loadheadstyle@wspr},
 	loadheadstyle/acsei/.code={\suacse@loadheadstyle@acsei},
+	secnumdepth/.code={\setsecnumdepth{#1}},
+	maxsecnumdepth/.code={\maxsecnumdepth{#1}},
 }
 
 %% * Define section-head-style-related options keys
@@ -1029,37 +1194,72 @@
 
 %% 
 \newcommand{\suacse@loadheadstyle@memsty}{%
+	\makeheadstyles{memsty}{%
+		\defaultsecnum
+		\memmansecheads
+	}
 }
 
 
 \newcommand{\suacse@loadheadstyle@wspr}{%
+	\newcommand\marginnum[2]{%
+	  \noindent
+	  \let\@tempa\relax
+	  \savebox\@tempboxa{##2}%
+	  %\null\marginpar{#1\@tempa}%
+	  ##1\@tempa\quad##2}
+	
+	\makeheadstyles{wspr}{%
+		\defaultsecheads
+	
+		\def\secstyle{\centering\scshape}
+		\def\subsecstyle{\centering\itshape}
+		\def\subsubsecstyle{\centering\small\itshape}
+	
+		\setsecheadstyle{\marginnum\secstyle}
+		\setsubsecheadstyle{\marginnum\subsecstyle}
+		\setsubsubsecheadstyle{\marginnum\subsubsecstyle}
+	
+		\setsecnumformat{\unexpanded{%
+		  \protected@xdef\@tempa{{\upshape\S \csname the####1\endcsname}}}}
+	}
 }
 
 
 \newcommand{\suacse@loadheadstyle@acsei}{%
+	\newcommand\marginnum[2]{%
+	  \noindent
+	  \let\@tempa\relax
+	  \savebox\@tempboxa{##2}%
+	  %\null\marginpar{#1\@tempa}%
+	  ##1\@tempa##2}
+	\makeheadstyles{acsei}{%
+		\defaultsecnum
+		
+		\def\secstyle{\Large\bfseries\raggedright}
+		\def\subsecstyle{\large\bfseries\raggedright}
+		\def\subsubsecstyle{\bfseries\raggedright}
+	
+		\setsecheadstyle{\normalfont\marginnum\secstyle}
+		\setsubsecheadstyle{\normalfont\marginnum\subsecstyle}
+		\setsubsubsecheadstyle{\normalfont\marginnum\subsubsecstyle}
+		  \setsubsubsecindent{0pt}
+		
+		\setsecnumformat{\unexpanded{%
+		  \protected@xdef\@tempa{{\upshape\S\,\csname the####1\endcsname\quad}}}}
+	}
 }
-
-\newcommand\marginnum[2]{%
-  \noindent
-  \let\@tempa\relax
-  \savebox\@tempboxa{#2}%
-  %\null\marginpar{#1\@tempa}%
-  #1\@tempa\quad#2}
-
-\def\secstyle{\centering\scshape}
-\def\subsecstyle{\centering\itshape}
-\def\subsubsecstyle{\centering\small\itshape}
-
-\setsecheadstyle{\marginnum\secstyle}
-\setsubsecheadstyle{\marginnum\subsecstyle}
-\setsubsubsecheadstyle{\marginnum\subsubsecstyle}
-
-\setsecnumformat{\unexpanded{%
-  \protected@xdef\@tempa{{\upshape\S\csname the#1\endcsname}}}}
+%% !!! A few comment
+%% The original command \marginnum puts the \quad into \@tempa. This can cause
+%% unexpected extra spaces when print the unnumbered section head. The solution
+%% is to move \quad to the definition of \@seccntformat which can be changed
+%% using \setsecnumformat
 
 
-%%%%%%%%% section head designs
+
+%% * Command used to set the default head style
 \newcommand*{\defaultsecheads}{
+  \defaultsecnum
   \setsecheadstyle{\normalfont\Large\bfseries\raggedright}
     \setsecindent{0pt}
     \setbeforesecskip{-3.5ex plus -1ex minus -.2ex}
@@ -1082,8 +1282,7 @@
     \setaftersubparaskip{-1em}
 }
 
-%%%%%%%%%%%%%% Manual layout and design elements
-
+%% * Memoir manual section head style
 \newcommand*{\memmansecheads}{
   \setsecheadstyle{\normalfont\scshape\raggedright}
     \setsecindent{0pt}

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
+	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -104,14 +104,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>39</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>1061</integer>
+				<integer>272</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1037</integer>
+			<integer>253</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -206,14 +206,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>17</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>85</integer>
+				<integer>170</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>67</integer>
+			<integer>159</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
@@ -340,27 +340,27 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>298</integer>
+				<integer>251</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>268</integer>
+			<integer>219</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>281</integer>
+				<integer>249</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>298</integer>
+				<integer>251</integer>
 			</dict>
 		</dict>
 		<key>tmp/Templete/thesis.tex</key>
@@ -495,6 +495,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{313, 10}, {966, 768}}</string>
+	<string>{{211, 10}, {966, 768}}</string>
 </dict>
 </plist>
