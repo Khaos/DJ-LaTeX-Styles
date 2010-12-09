@@ -360,77 +360,65 @@
 	\fi
 	%% - Black-background style
 	\if@suacse@page@numbering@style@blackbg
-		\renewcommand{\@suacse@pagenumber}{\normalfont \bfseries %
+		\renewcommand{\@suacse@pagenumber@font}{\normalfont\bfseries}
+		\renewcommand{\@suacse@pagenumber@text}{%
 			\if@mainmatter
-				\tikz [baseline=0pt]
-				\node [preaction={draw=black, line width=2.5pt}]
-					  [draw=lightgray,
-					   line width=0.5pt,
-					   fill=black!100,
-					   text=white,
-					   anchor=base,
-					   rounded corners=2pt,
-					   minimum height=1.5em,
-					   minimum width=2em]		{p.\,\thepage};
-				% \tikz [baseline=0pt]
-				% \node [anchor=base,
-				% 	   rounded corners=2pt,
-				% 	   minimum height=1.5em,
-				% 	   minimum width=2em]		{p.\,\thepage};
+				p.\,\thepage
 			\else
-				\tikz [baseline=0pt]
-				\node [preaction={draw=black, line width=2.5pt}]
-					  [draw=lightgray,
-					   line width=0.5pt,
-					   fill=black!100,
-					   text=white,
-					   anchor=base,
-					   rounded corners=2pt,
-					   minimum height=1.5em,
-					   minimum width=2em]		{\thepage};
-				% \tikz [baseline=0pt]
-				% \node [anchor=base,
-				% 	   rounded corners=2pt,
-				% 	   minimum height=1.5em,
-				% 	   minimum width=2em]		{\thepage};
+				\thepage
 			\fi
+		}
+		\renewcommand{\@suacse@pagenumber}{\@suacse@pagenumber@font %
+			\tikz [baseline=0pt]
+			\node [preaction={draw=black, line width=2.5pt}]
+				  [draw=lightgray,
+				   line width=0.5pt,
+				   fill=black!100,
+				   text=white,
+				   anchor=base,
+				   rounded corners=2pt,
+				   minimum height=1.5em,
+				   minimum width=2em]		{\@suacse@pagenumber@text};
 		}
 	\fi
 	%% - Bar style I
 	\if@suacse@page@numbering@style@bari
-		\renewcommand{\@suacse@pagenumber}{\normalfont \bfseries %
+		\renewcommand{\@suacse@pagenumber@font}{\normalfont\bfseries}
+		\renewcommand{\@suacse@pagenumber@text}{\thepage}
+		\renewcommand{\@suacse@pagenumber}{\@suacse@pagenumber@font %
 			\if@mainmatter
-				\thepage\;%
+				\@suacse@pagenumber@text\;%
 				\tikz [baseline=0pt]{%[baseline=(current bounding box.south)]
-				\path [use as bounding box] (0, 0) rectangle (2mm, 2ex);
+				\path [use as bounding box] (0, 0) rectangle (1.5mm, 2ex);
 				% \filldraw[anchor=base] (0,0) rectangle (2mm, 2.5ex); \;\thepage
 				\filldraw [anchor=base,
 						   gray] (0,-1mm) rectangle (1.5mm, 1.8ex);}
 			\else
-				\thepage\;%
-				\tikz [baseline=0pt]{%[baseline=(current bounding box.south)]
-				\path [use as bounding box] (0, 0) rectangle (2mm, 2ex);
-				% \filldraw[anchor=base] (0,0) rectangle (2mm, 2.5ex); \;\thepage
-				\path [anchor=base] (0,-1mm) rectangle (1.5mm, 1.8ex);}
+				\@suacse@pagenumber@text%
+				% \;%
+				% \tikz [baseline=0pt]{%[baseline=(current bounding box.south)]
+				% \path [use as bounding box] (0, 0) rectangle (2mm, 2ex);
+				% % \filldraw[anchor=base] (0,0) rectangle (2mm, 2.5ex); \;\thepage
+				% \path [anchor=base] (0,-1mm) rectangle (1.5mm, 1.8ex);}
 			\fi
 		}
 	\fi
 	%% - ACSE style I
 	\if@suacse@page@numbering@style@acsei
-		\renewcommand{\@suacse@pagenumber}{\normalfont \bfseries %
+		\renewcommand{\@suacse@pagenumber@font}{\normalfont\bfseries}
+		\renewcommand{\@suacse@pagenumber@text}{%
 			\if@mainmatter
-				\tikz [baseline=0pt]
-				\node [anchor=base,
-					   rounded corners=2pt,
-					   minimum height=1.5em,
-					   minimum width=2em]		{p.\,\thepage};
+				p.\,\thepage
 			\else
-				\tikz [baseline=0pt]
-				\node [anchor=base,
-					   rounded corners=2pt,
-					   minimum height=1.5em,
-					   minimum width=2em]		{\thepage};
+				\thepage
 			\fi
+		}
+		\renewcommand{\@suacse@pagenumber}{\@suacse@pagenumber@font %
+			\tikz [baseline=0pt]
+			\node [anchor=base,
+				   rounded corners=2pt,
+				   minimum height=1.5em,
+				   minimum width=2em]		{\@suacse@pagenumber@text};
 		}
 	\fi
 }
