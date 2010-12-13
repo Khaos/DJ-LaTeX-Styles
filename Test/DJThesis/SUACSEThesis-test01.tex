@@ -212,6 +212,10 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \subsection{Figure} % (fold)
 \label{sub:figure}
 
+text before figure
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 \begin{figure}[!htbp]
 \centering{}\includegraphics{FrameworkofAD01} \caption{Framework of anomaly detection. The raw data points, originally lying
 in the measurement space, are sequentially transformed into the feature
@@ -223,17 +227,13 @@ the class space.}
 \end{figure}
 
 \begin{figure}[!htbp]
-\centering{}\includegraphics{FrameworkofAD01} \caption{Framework of anomaly detection. The raw data points, originally lying
-in the measurement space, are sequentially transformed into the feature
-space via the first stage and then into the decision space via the
-second stage. A further stage can be included when more a priori knowledge
-is available. This stage maps data points in the decision space into
-the class space.}
+\centering{}\includegraphics{FrameworkofAD01} \caption{Short caption.}
 \label{fig:ADFramework1}
 \end{figure}
 
 \begin{figure}[!htbp]
-\centering{}\includegraphics{FrameworkofAD01} \caption{Framework of anomaly detection. The raw data points, originally lying
+\includegraphics{FrameworkofAD01} 
+\caption{Framework of anomaly detection. The raw data points, originally lying
 in the measurement space, are sequentially transformed into the feature
 space via the first stage and then into the decision space via the
 second stage. A further stage can be included when more a priori knowledge
@@ -241,7 +241,8 @@ is available. This stage maps data points in the decision space into
 the class space.}
 \label{fig:ADFramework2}
 \end{figure}
-
+\show\linewidth
+\show\textwidth
 text after figure
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -261,7 +262,42 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 text before table
 
 \begin{table}[!ht]
-\centering
+\caption{Table Test} \label{tab:rectsize}
+%\begin{tabular}{ccc|l} \hline
+\begin{tabular}{cccl} \toprule
+\meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
+ H   & W   & r   & ambiguous \\
+ H   & W   & {*} & $H$, $W$  \\
+ H   & {*} & r   & $W = rH$  \\
+ H   & {*} & {*} & ambiguous \\
+{*}  & W   & r   & $H = rW$  \\
+{*}  & W   & {*} & ambiguous \\
+{*}  & {*} & r   & ambiguous \\
+{*}  & {*} & {*} & ambiguous \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+\caption{Table Test} \label{tab:rectsize}
+%\begin{tabular}{ccc|l} \hline
+\begin{tabular}{cccl} \toprule
+\meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
+ H   & W   & r   & ambiguous \\
+ H   & W   & {*} & $H$, $W$  \\
+ H   & {*} & r   & $W = rH$  \\
+ H   & {*} & {*} & ambiguous \\
+{*}  & W   & r   & $H = rW$  \\
+{*}  & W   & {*} & ambiguous \\
+{*}  & {*} & r   & ambiguous \\
+{*}  & {*} & {*} & ambiguous \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+text between tables
+
+\begin{table}[!ht]
 \caption{Table Test} \label{tab:rectsize}
 %\begin{tabular}{ccc|l} \hline
 \begin{tabular}{cccl} \toprule
