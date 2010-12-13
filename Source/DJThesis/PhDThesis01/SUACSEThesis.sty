@@ -52,6 +52,9 @@
 \RequirePackage{ifthen}  % Load Package 'ifthen'
 \RequirePackage{ifpdf}  % Load Package 'ifpdf'
 
+%% * Graph-related package
+\RequirePackage[svgnames]{xcolor}
+
 
 %% END: Packages
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -331,7 +334,7 @@
 %%   ! The following styles are only available when ACSE page styles are used.
 \newcommand{\suacse@loadpagenumberstyle}{%
 	%% - Load required package
-	\RequirePackage[svgnames]{xcolor}  % Load Package 'xcolor'
+	% \RequirePackage[svgnames]{xcolor}  % Load Package 'xcolor'
 	\RequirePackage{tikz}  % Load Package 'tikz'
 	% \providecommand\thesispage{\normalfont p.\,\thepage}
 	% \providecommand\thesispage{\normalfont \colorbox{black}%
@@ -1077,7 +1080,7 @@
 	% 	\typeout{iftestii is false.}
 	% \fi
 	% \typeout{done!}
-	\RequirePackage[svgnames]{xcolor}
+	% \RequirePackage[svgnames]{xcolor}
 	\RequirePackage{tikz}
 	%% helper macros
 	\newcommand{\ChapWithNumber}[1]{
@@ -1565,7 +1568,6 @@
 %%   - Initialise the hyperref options
 \def\@suacse@hyperref@option{}
 
-\RequirePackage[svgnames]{xcolor}
 \definecolor{darkred}{rgb}{0.4,0,0}
 \definecolor{darkgreen}{rgb}{0,0.4,0}
 \definecolor{darkblue}{rgb}{0,0,0.4}
