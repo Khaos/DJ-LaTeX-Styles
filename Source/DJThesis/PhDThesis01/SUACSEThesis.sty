@@ -43,8 +43,15 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:01:56 +0000 (Tue, 16 Nov 2010)
 %% Packages
+
+\RequirePackage{etex}  % Load Package 'etex'
+
 \RequirePackage{pgfkeys}  % Load Package 'pgfkeys'
 \RequirePackage{pgfopts}  % Load Package 'pgfopts'
+
+\RequirePackage{ifthen}  % Load Package 'ifthen'
+\RequirePackage{ifpdf}  % Load Package 'ifpdf'
+
 
 %% END: Packages
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -66,6 +73,9 @@
 
 %% * Use '\suacseset' to set-up the suacse keys 
 \def\suacseset#1{\pgfkeys{/suacse/.cd,#1}}
+
+%% * Use '\suacse@opt@set' to set-up the suacseopt keys 
+\def\suacse@opt@set#1{\pgfkeys{/suacseopt/.cd,#1}}
 
 
 % \newcommand*{\setsuacsespacing}[1]{%
@@ -389,10 +399,15 @@
 			\if@mainmatter
 				\@suacse@pagenumber@text\;%
 				\tikz [baseline=0pt]{%[baseline=(current bounding box.south)]
-				\path [use as bounding box] (0, 0) rectangle (1.5mm, 2ex);
+				\path [use as bounding box] (0, 0) rectangle (1.5mm, 2.5ex);
 				% \filldraw[anchor=base] (0,0) rectangle (2mm, 2.5ex); \;\thepage
+				% \filldraw [anchor=base,
+				% \node [anchor=base,
+				% 	   fill=gray,
+				% 	   minimum height=2ex,
+				% 	   minimum width=1.2mm] {};}
 				\filldraw [anchor=base,
-						   gray] (0,-1mm) rectangle (1.5mm, 1.8ex);}
+						   gray,] (0,-1.3mm) rectangle (1.3mm, 2.3ex);}
 			\else
 				\@suacse@pagenumber@text%
 				% \;%
@@ -509,7 +524,7 @@
 	\else
 		\setlength{\headheight}{\baselineskip}
 		% \setlength{\headwidth}{\textwidth}
-		\setlength{\headwidth}{\textwidth+\marginparsep+0.4\marginparwidth}
+		\setlength{\headwidth}{\textwidth+\marginparsep+0.2\marginparwidth}
 		\makepagestyle{acsei}
 		  \makepsmarks{acsei}{%
 		    % \let\@mkboth\markboth%
@@ -538,7 +553,7 @@
 		  % \fi
 		  % \setlength{\headwidth}{\textwidth}
 		  % \makeheadrule{acsei}{\headwidth}{0.4pt}
-		  \makeheadrule{acsei}{\textwidth}{0.4pt}
+		  \makeheadrule{acsei}{\textwidth}{0.6pt}
 		
 		% \if@mainmatter
 		% \setlength{\headwidth}{\textwidth+\marginparsep+0.4\marginparwidth}
@@ -1244,7 +1259,6 @@
 %% using \setsecnumformat
 
 
-
 %% * Command used to set the default head style
 \newcommand*{\defaultsecheads}{
   \defaultsecnum
@@ -1304,14 +1318,6 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% Created by Dazhi Jiang, 2010-11-16 16:12:17 +0000 (Tue, 16 Nov 2010)
-%% Captions
-
-%% END: Captions
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:12:36 +0000 (Tue, 16 Nov 2010)
 %% Bibliography
 
@@ -1344,7 +1350,7 @@
 	% font/.code={\suacseset{font=#1}},
 }
 
-%% * Load the commonly-used packages
+%% * Load the commonly-used font & symbol packages
 \RequirePackage[T1]{fontenc} % sane font encoding
 
 \RequirePackage{textcomp} % provide lots of new symbols
@@ -1472,53 +1478,6 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% Created by Dazhi Jiang, 2010-11-18 13:11:44 +0000 (Thu, 18 Nov 2010)
-%% Declare Package Options
-%%   - Declare pgf package options
-%%     Note that the command,\ProcessPgfPackageOptions, has to be put
-%%     an proper place, see below,
-%%     1. This declaration command has to be put after all \pgfkeys
-%%     2. If the <if> keys are used directly, this command has to be put
-%%        somewhere before the commands that include the <if> keys. This is
-%%        because that the <if> keys are set in this command and will take
-%%        the default value if the command is used after the <if> keys.
-%%     3. Any command used by keys has to be defined before the declaration.
-%%        You can define an empty command in advance, do the declaration
-%%        and then renew it.
-%%     4. Avoid to use the <if> keys directly. If necessary, define a new
-%%        command within which the <if> keys is used and include this command
-%%        into a key, /path/key/.append code.
-\ProcessPgfPackageOptions{/suacseopt}
-%% END: Declare Package Options
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% Created by Dazhi Jiang, 2010-11-17 14:05:56 +0000 (Wed, 17 Nov 2010)
-%% Initialise Keys
-
-%% * Setting-up the default options
-\pgfkeys{%
-	/suacse/.cd,
-	spacing=onehalf,
-	% pagelayout=acseii,
-	% font=cm,
-	% loadextrachapsty=acsei,
-}
-
-\pgfkeys{%
-	/suacseopt/.cd,
-	spacing=onehalf,
-	pagelayout=acseii,
-	font=cm,
-	% chapterstyle=acsei
-}
-
-%% END: Initialise Keys
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:42:17 +0000 (Tue, 16 Nov 2010)
 %% Commands
 % \RequirePackage{amsmath,amssymb,bm,cool,mathtools}
@@ -1549,6 +1508,234 @@
 %% MISC
 
 %% END: MISC
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-12 10:25:57 +0000 (Sun, 12 Dec 2010)
+%% Hyperref Options
+
+%% * Define keys for hyperref options
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Options for hyperref
+	sethyperrefopt/.code={\hypersetup{#1}},
+}
+
+
+%% * Define package option keys for hyperref options
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for hyperref
+	hyperrefopt/.code={\@suacse@hyperref@option@setup{#1}},
+	% hyperrefopt/.store in=\@suacse@hyperref@option,
+	hyperrefopt@wspr/.style={hyperrefopt={ocgcolorlinks,breaklinks,%
+							plainpages=false,pdfpagelabels,linktocpage}},
+	hyperrefopt@acsei/.style={hyperrefopt=\@suacse@hyperref@opt@acsei},
+	hyperrefopt@djreport/.style={hyperrefopt=\@suacse@hyperref@opt@djreport},
+}
+
+%% * Commands required by key /suacse/hyperrefopt
+\newif\if@suacse@hyperref@option@predefined
+\newcommand{\@suacse@hyperref@option@setup}[1]{%
+	\@suacse@hyperref@option@predefinedfalse
+	\nametest{#1}{wspr}
+	\ifsamename
+		\suacse@opt@set{hyperrefopt@wspr}
+		\samenamefalse
+		\@suacse@hyperref@option@predefinedtrue
+	\fi
+	\nametest{#1}{acsei}
+	\ifsamename
+		\suacse@opt@set{hyperrefopt@acsei}
+		\samenamefalse
+		\@suacse@hyperref@option@predefinedtrue
+	\fi
+	\nametest{#1}{djreport}
+	\ifsamename
+		\suacse@opt@set{hyperrefopt@djreport}
+		\samenamefalse
+		\@suacse@hyperref@option@predefinedtrue
+	\fi
+	\if@suacse@hyperref@option@predefined \else
+		\def\@suacse@hyperref@option{#1}
+	\fi
+}
+
+%%   - Initialise the hyperref options
+\def\@suacse@hyperref@option{}
+
+\RequirePackage[svgnames]{xcolor}
+\definecolor{darkred}{rgb}{0.4,0,0}
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{darkblue}{rgb}{0,0,0.4}
+
+\ifpdf
+	\def\@suacse@hyperref@opt@acsei{pdftex,%
+									ocgcolorlinks,%
+									plainpages=false,%
+									pdfpagelabels,%
+									pdfpagelayout = useoutlines,%
+									bookmarks,%
+									bookmarksopen = true,%
+									bookmarksnumbered = true,%
+									breaklinks = true,%
+									linktocpage,%
+									colorlinks = true,%
+									linkcolor = darkblue,%
+									urlcolor  = darkblue,%
+									citecolor = darkblue,%
+									anchorcolor = darkgreen,%
+									hyperindex = true,%
+									hyperfigures}
+	\def\@suacse@hyperref@opt@djreport{pdftex,%
+									   plainpages = false,%
+									   pdfpagelabels,%
+									   pdfpagelayout = useoutlines,%
+									   bookmarks,%
+									   bookmarksopen = true,%
+									   bookmarksnumbered = true,%
+									   breaklinks = true,%
+									   linktocpage,%
+									   colorlinks = true,%
+									   linkcolor = blue,%
+									   urlcolor  = blue,%
+									   citecolor = blue,%
+									   anchorcolor = green,%
+									   hyperindex = true,%
+									   hyperfigures}
+\else
+	\def\@suacse@hyperref@opt@acsei{dvips,%
+									plainpages=false,%
+									bookmarks,%
+									bookmarksopen = true,%
+									bookmarksnumbered = true,%
+									breaklinks = true,%
+									linktocpage,%
+									colorlinks = true,%
+									linkcolor = darkblue,%
+									urlcolor  = darkblue,%
+									citecolor = darkblue,%
+									anchorcolor = darkgreen,%
+									hyperindex = true,%
+									hyperfigures}
+	\def\@suacse@hyperref@opt@djreport{dvips,%
+									   plainpages=false,%
+									   bookmarks,%
+									   bookmarksopen = true,%
+									   bookmarksnumbered = true,%
+									   breaklinks = true,%
+									   linktocpage,%
+									   colorlinks = true,%
+									   linkcolor = blue,%
+									   urlcolor  = blue,%
+									   citecolor = blue,%
+									   anchorcolor = green,%
+									   hyperindex = true,%
+									   hyperfigures}
+\fi
+
+
+%% END: Hyperref Options
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:12:17 +0000 (Tue, 16 Nov 2010)
+%% Captions
+
+%%
+
+%% * Define float placement parameters
+\renewcommand{\topfraction}{.8}
+\renewcommand{\bottomfraction}{.3}
+\renewcommand{\textfraction}{.15}
+\renewcommand{\floatpagefraction}{.66}
+\renewcommand{\dbltopfraction}{.66}
+\renewcommand{\dblfloatpagefraction}{.66}
+
+\setcounter{topnumber}{9}
+\setcounter{bottomnumber}{9}
+\setcounter{totalnumber}{20}
+\setcounter{dbltopnumber}{9}
+
+
+% \renewenvironment{figure}[1][\fps@figure]
+%                  {\edef\@tempa{\noexpand\@float{figure}[#1]}
+%                   \@tempa\capstart\centering}
+%                  {\end@float}
+% \renewenvironment{table}[1][\fps@table]
+%                  {\edef\@tempa{\noexpand\@float{table}[#1]}
+%                   \@tempa\capstart\centering}
+%                  {\end@float}
+%% !!! A few comment
+%% The command \capstart is defined in the package 'hypcap'
+
+
+%% * Specify the caption name font
+\captionnamefont{\bfseries}
+
+%% END: Captions
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-17 14:05:56 +0000 (Wed, 17 Nov 2010)
+%% Initialise Keys
+
+%% * Setting-up the default options
+\pgfkeys{%
+	/suacse/.cd,
+	spacing=onehalf,
+	% pagelayout=acseii,
+	% font=cm,
+	% loadextrachapsty=acsei,
+}
+
+\pgfkeys{%
+	/suacseopt/.cd,
+	spacing=onehalf,
+	pagelayout=acseii,
+	font=cm,
+	% chapterstyle=acsei
+}
+
+%% END: Initialise Keys
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-18 13:11:44 +0000 (Thu, 18 Nov 2010)
+%% Declare Package Options
+%%   - Declare pgf package options
+%%     Note that the command,\ProcessPgfPackageOptions, has to be put
+%%     an proper place, see below,
+%%     1. This declaration command has to be put after all \pgfkeys
+%%     2. If the <if> keys are used directly, this command has to be put
+%%        somewhere before the commands that include the <if> keys. This is
+%%        because that the <if> keys are set in this command and will take
+%%        the default value if the command is used after the <if> keys.
+%%     3. Any command used by keys has to be defined before the declaration.
+%%        You can define an empty command in advance, do the declaration
+%%        and then renew it.
+%%     4. Avoid to use the <if> keys directly. If necessary, define a new
+%%        command within which the <if> keys is used and include this command
+%%        into a key, /path/key/.append code.
+%%     5. Put this command before the hyperref loaded since it sets up the
+%%        options for hyperref
+\ProcessPgfPackageOptions{/suacseopt}
+%% END: Declare Package Options
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-13 10:35:16 +0000 (Mon, 13 Dec 2010)
+%% Load Packages with Options Given by /suacseopt
+
+%% !!! Now we are safe to load hyperref
+\RequirePackage[\@suacse@hyperref@option]{hyperref}
+
+%% END: Load Packages with Options Given by /suacseopt
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
