@@ -26,6 +26,8 @@
 	% hyperrefopt=wspr,
 	% hyperrefopt=djreport,
 	hyperrefopt=acsei,
+	biblatexopt=wspr,
+	biblatexopt=acsei,
 	]{SUACSEThesis}
 
 \suacseset{%
@@ -263,7 +265,6 @@ text before table
 
 \begin{table}[!ht]
 \caption{Table Test} \label{tab:rectsize}
-%\begin{tabular}{ccc|l} \hline
 \begin{tabular}{cccl} \toprule
 \meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
  H   & W   & r   & ambiguous \\
@@ -279,8 +280,7 @@ text before table
 \end{table}
 
 \begin{table}[!ht]
-\caption{Table Test} \label{tab:rectsize}
-%\begin{tabular}{ccc|l} \hline
+\caption{Table Test} \label{tab:rectsize1}
 \begin{tabular}{cccl} \toprule
 \meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
  H   & W   & r   & ambiguous \\
@@ -298,8 +298,7 @@ text before table
 text between tables
 
 \begin{table}[!ht]
-\caption{Table Test} \label{tab:rectsize}
-%\begin{tabular}{ccc|l} \hline
+\caption{Table Test} \label{tab:rectsize2}
 \begin{tabular}{cccl} \toprule
 \meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
  H   & W   & r   & ambiguous \\
@@ -321,6 +320,23 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 % subsection table (end)
 
 % section float (end)
+
+
+\section{Environment} % (fold)
+\label{sec:environment}
+
+\subsection{Itemise} % (fold)
+\label{sub:itemise}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{itemize}
+	\item 	
+\end{itemize}
+
+% subsection itemise (end)
+
+% section environment (end)
 
 
 \suacseset{chapterstyle=lyhne}

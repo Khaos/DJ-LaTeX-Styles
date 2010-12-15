@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+	<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -97,49 +97,63 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportHyperrefBibUrlP.tex</key>
+		<key>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportIFP.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>33</integer>
 				<key>line</key>
-				<integer>120</integer>
+				<integer>16</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>65</integer>
+			<integer>0</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>66</integer>
+				<integer>15</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>33</integer>
 				<key>line</key>
-				<integer>120</integer>
+				<integer>16</integer>
 			</dict>
+		</dict>
+		<key>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportLoadAll.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>41</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>8</integer>
 		</dict>
 		<key>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>37</integer>
 				<key>line</key>
-				<integer>1673</integer>
+				<integer>69</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1637</integer>
+			<integer>63</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -234,28 +248,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>11</integer>
 				<key>line</key>
-				<integer>25</integer>
+				<integer>336</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>7</integer>
-		</dict>
-		<key>Test/DJThesis/SUACSEThesis.sty</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>26</integer>
-				<key>line</key>
-				<integer>1524</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>1506</integer>
+			<integer>323</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
@@ -357,21 +357,37 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>290</integer>
+			<integer>280</integer>
 		</dict>
 		<key>tmp/Templete/thesis-preamble.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>37</integer>
 				<key>line</key>
-				<integer>59</integer>
+				<integer>18</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>48</integer>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>16</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>37</integer>
+				<key>line</key>
+				<integer>18</integer>
+			</dict>
 		</dict>
 		<key>tmp/Templete/thesis.tex</key>
 		<dict>
@@ -497,15 +513,15 @@
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
-		<string>Test/DJThesis/SUACSEThesis.sty</string>
 		<string>tmp/Templete/thesis-preamble.sty</string>
-		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportHyperrefBibUrlP.tex</string>
+		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportLoadAll.tex</string>
+		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportIFP.tex</string>
 		<string>tmp/Templete/thesis.tex</string>
 		<string>tmp/Templete/pwasu.sty</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{314, 10}, {966, 768}}</string>
+	<string>{{511, 10}, {966, 768}}</string>
 </dict>
 </plist>

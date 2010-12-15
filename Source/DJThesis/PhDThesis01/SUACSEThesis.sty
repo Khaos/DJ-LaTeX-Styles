@@ -61,6 +61,13 @@
 % \RequirePackage[width=\textwidth]{caption}
 % \captionsetup[table]{position=top}
 
+%% * Language
+\RequirePackage[british]{babel}
+
+%% * Input encoding
+\RequirePackage[utf8]{inputenc}% sane input encoding
+\DeclareUnicodeCharacter{2014}{\dash}
+\DeclareUnicodeCharacter{2022}{\item}
 
 %% END: Packages
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1482,6 +1489,69 @@
 %% Created by Dazhi Jiang, 2010-11-16 16:12:36 +0000 (Tue, 16 Nov 2010)
 %% Bibliography
 
+%% * Define keys for biblatex options
+% \pgfkeys{%
+% 	/suacse/.cd,
+% 	%% - Options for biblatex
+% }
+
+%% * Define package option keys for hyperref options
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for biblatex
+	biblatexopt/.code={\@suacse@biblatex@option@setup{#1}},
+	% biblatexopt/.store in=\@suacse@hyperref@option,
+	biblatexopt@wspr/.style={biblatexopt={hyperref,backref,%
+										  defernums,sortcites,%
+										  date=short,%
+										  bibencoding=inputenc,%
+										  maxnames=3,%
+										  minnames=2,%
+										  firstinits=true,%
+										  sorting=nyt,%
+										  bibstyle=numeric,%
+										  citestyle=numeric-comp,}},
+	biblatexopt@acsei/.style={biblatexopt=\@suacse@biblatex@opt@acsei},
+}
+
+%% * Commands required by key /suacse/hyperrefopt
+\newif\if@suacse@biblatex@option@predefined
+\newcommand{\@suacse@biblatex@option@setup}[1]{%
+	\@suacse@biblatex@option@predefinedfalse
+	\nametest{#1}{wspr}
+	\ifsamename
+		\suacse@opt@set{biblatexopt@wspr}
+		\samenamefalse
+		\@suacse@biblatex@option@predefinedtrue
+	\fi
+	\nametest{#1}{acsei}
+	\ifsamename
+		\suacse@opt@set{biblatexopt@acsei}
+		\samenamefalse
+		\@suacse@biblatex@option@predefinedtrue
+	\fi
+	\if@suacse@biblatex@option@predefined \else
+		\def\@suacse@biblatex@option{#1}
+	\fi
+}
+
+
+%%   - Initialise the biblatex options
+\def\@suacse@biblatex@option{}
+
+
+\def\@suacse@biblatex@opt@acsei{hyperref,backref,%
+							    defernums,sortcites,%
+							    date=short,%
+							    bibencoding=inputenc,%
+							    maxnames=3,%
+							    minnames=2,%
+							    firstinits=true,%
+							    sorting=nyt,%
+							    bibstyle=numeric,%
+							    citestyle=numeric-comp,}
+
+
 %% END: Bibliography
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -1706,6 +1776,12 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-12-13 10:35:16 +0000 (Mon, 13 Dec 2010)
 %% Load Packages with Options Given by /suacseopt
+
+%% * Load biblatex
+\RequirePackage[\@suacse@biblatex@option]{biblatex}
+\def\bibfont{\small}
+\bibliography{journals,phd,ARK}
+\renewcommand\bibname{References}
 
 %% !!! Now we are safe to load hyperref
 \RequirePackage[\@suacse@hyperref@option]{hyperref}
