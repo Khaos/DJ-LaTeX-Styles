@@ -69,6 +69,11 @@
 \DeclareUnicodeCharacter{2014}{\dash}
 \DeclareUnicodeCharacter{2022}{\item}
 
+%% * Font & Symbol
+\RequirePackage{pifont}  % Load Package 'pifont'
+\newcommand\diameter{\Pisymbol{psy}{'306}} % Define new symbol
+
+
 %% END: Packages
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -663,30 +668,34 @@
 \newif\ifsuacse@toc@style@wspr
 \newif\ifsuacse@toc@style@acsei
 
+\newif\if@suacse@toc@toc@show
+
 %% * Define TOC-related keys
 \pgfkeys{%
 	/suacse/.cd,
 	%% - TOC
-	showshorttoc/.is if=suacse@toc@short@show,
-	showshorttoc/.default=false,
-	tocstyle@memsty/.is if=suacse@toc@style@memsty,
-	tocstyle@wspr/.is if=suacse@toc@style@wspr,
-	tocstyle@acsei/.is if=suacse@toc@style@acsei,
+	showshorttoc/.is if = suacse@toc@short@show,
+	showshorttoc/.default = false,
+	tocstyle@memsty/.is if = suacse@toc@style@memsty,
+	tocstyle@wspr/.is if = suacse@toc@style@wspr,
+	tocstyle@acsei/.is if = suacse@toc@style@acsei,
 	loadtocstyle/.is choice,
-	loadtocstyle/memsty/.style={tocstyle@memsty=true,%
-								tocstyle@wspr=false,%
+	loadtocstyle/memsty/.style = {tocstyle@memsty=true,%
+								  tocstyle@wspr=false,%
+								  tocstyle@acsei=false,},
+	loadtocstyle/wspr/.style = {tocstyle@memsty=false,%
+								tocstyle@wspr=true,%
 								tocstyle@acsei=false,},
-	loadtocstyle/wspr/.style={tocstyle@memsty=false,%
-							  tocstyle@wspr=true,%
-							  tocstyle@acsei=false,},
-	loadtocstyle/acsei/.style={tocstyle@memsty=false,%
-							   tocstyle@wspr=false,%
-							   tocstyle@acsei=true,},
-	loadtocstyle/.default=acsei,
-	loadtocstyle/.append code={\suacse@loadtocstyle},
-	tocstyle/.style={loadtocstyle=#1},
-	tocdepth/.code={\settocdepth{#1}},
-	maxtocdepth/.code={\maxtocdepth{#1}},
+	loadtocstyle/acsei/.style = {tocstyle@memsty=false,%
+								 tocstyle@wspr=false,%
+								 tocstyle@acsei=true,},
+	loadtocstyle/.default = acsei,
+	loadtocstyle/.append code = {\suacse@loadtocstyle},
+	tocstyle/.style = {loadtocstyle=#1},
+	tocdepth/.code = {\settocdepth{#1}},
+	maxtocdepth/.code = {\maxtocdepth{#1}},
+	addtoctotoc/.is if = @suacse@toc@toc@show,
+	addtoctotoc/.default = true,
 }
 
 %% * Define TOC-related option keys
@@ -915,11 +924,18 @@
 	      % \advance\rightskip 0pt plus \hsize % uncomment this for raggedright
 	      % \advance\rightskip 0pt plus 2em    % uncomment this for semi-ragged
 	      \parfillskip=\fill
-	      \ifhmode ,\ \else\noindent\fi
+	      \ifhmode
+	        \unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip%
+	        \unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip%
+	        \,,\space\space\space\space
+	      \else
+	        \noindent
+	      \fi
 	      \ignorespaces 
-	      {\cftsubsectionfont ####1}~{\cftsubsectionpagefont####2}%
+	      {\cftsubsectionfont \S\,####1}~~~{\cftsubsectionpagefont####2}%
 	       \let\numberline\oldnumberline\ignorespaces
-	    \fi}}
+	    \fi}
+	}
 
 	\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
 
@@ -934,6 +950,8 @@
 	  \renewcommand*{\cftchapterleader}{\sffamily\cftdotfill{\cftchapterdotsep}}
 	  \renewcommand*{\cftchapterafterpnum}{}
 	  \renewcommand{\cftchapterbreak}{\par\addpenalty{-\@highpenalty}}
+	  % \renewcommand{\cftsectionname}{\S\,}
+	  % \renewcommand{\cftsubsectionname}{\S\,}
 	  \setpnumwidth{2.55em}
 	  \setrmarg{3.55em}
 	  \setcounter{tocdepth}{2}
@@ -950,12 +968,12 @@
 \newcommand{\printtoc}{%
 \ifsuacse@toc@short@show
 	\setupshorttoc
-	\tableofcontents
+	\if@suacse@toc@toc@show \tableofcontents \else \tableofcontents* \fi
 	\clearpage
 \fi
 \setupparasubsecs
 \setupmaintoc
-\tableofcontents
+\if@suacse@toc@toc@show \tableofcontents \else \tableofcontents* \fi
 \clearpage
 }
 
@@ -1381,9 +1399,6 @@
 }
 \@onlypreamble\suacseopt@setfont
 
-\RequirePackage{pifont}  % Load Package 'pifont'
-\newcommand\diameter{\Pisymbol{psy}{'306}} % Define new symbol
-
 %% * Make maths use lining numbers: (old-style look bad most-times)
 \DeclareMathSymbol{0}{0}{letters}{'060}
 \DeclareMathSymbol{1}{0}{letters}{'061}
@@ -1619,7 +1634,7 @@
 									ocgcolorlinks,%
 									plainpages=false,%
 									pdfpagelabels,%
-									pdfpagelayout = useoutlines,%
+									pdfpagelayout = OneColumn,%
 									bookmarks,%
 									bookmarksopen = true,%
 									bookmarksnumbered = true,%
@@ -1635,7 +1650,7 @@
 	\def\@suacse@hyperref@opt@djreport{pdftex,%
 									   plainpages = false,%
 									   pdfpagelabels,%
-									   pdfpagelayout = useoutlines,%
+									   pdfpagelayout = OneColumn,%
 									   bookmarks,%
 									   bookmarksopen = true,%
 									   bookmarksnumbered = true,%

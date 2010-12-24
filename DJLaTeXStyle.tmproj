@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
+	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -97,6 +97,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportHyperrefBibUrlP.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>161</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>159</integer>
+		</dict>
 		<key>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportIFP.tex</key>
 		<dict>
 			<key>caret</key>
@@ -146,14 +160,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>69</integer>
+				<integer>848</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>63</integer>
+			<integer>832</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -248,14 +262,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>336</integer>
+				<integer>42</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>323</integer>
+			<integer>24</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
@@ -364,29 +378,29 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>18</integer>
+				<integer>334</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>401</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>16</integer>
+				<integer>334</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>18</integer>
+				<integer>334</integer>
 			</dict>
 		</dict>
 		<key>tmp/Templete/thesis.tex</key>
@@ -515,6 +529,7 @@
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 		<string>tmp/Templete/thesis-preamble.sty</string>
 		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportLoadAll.tex</string>
+		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportHyperrefBibUrlP.tex</string>
 		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportIFP.tex</string>
 		<string>tmp/Templete/thesis.tex</string>
 		<string>tmp/Templete/pwasu.sty</string>
@@ -522,6 +537,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{511, 10}, {966, 768}}</string>
+	<string>{{314, 4}, {966, 774}}</string>
 </dict>
 </plist>
