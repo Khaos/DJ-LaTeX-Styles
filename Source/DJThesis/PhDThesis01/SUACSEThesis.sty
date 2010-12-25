@@ -714,12 +714,17 @@
   \addtocontents{toc}{ \protect\fi }
 }
 
+%%   - Pre-define commands for TOC
+\newcommand{\setupshorttoc}{}
+\newcommand{\setupparasubsecs}{}
+\newcommand{\setupmaintoc}{}
+
 
 \newcommand{\suacse@loadtocstyle}{%
 %% * Memsty style
 \ifsuacse@toc@style@memsty
 	%% - Define short TOC
-	\newcommand*{\setupshorttoc}{%
+	\renewcommand*{\setupshorttoc}{%
 	  \@shorttoctrue
 	  \renewcommand*{\contentsname}{Short contents}
 	  \let\oldchangetocdepth\changetocdepth
@@ -751,7 +756,7 @@
 	  \renewcommand*{\cftbookformatpnum}[1]{%
 	    \hbox to\unitlength{{\cftbookpagefont ####1}}}}
 
-	\newcommand*{\setupparasubsecs}{%
+	\renewcommand*{\setupparasubsecs}{%
 	  \@shorttocfalse
 	  \let\oldnumberline\numberline
 	  \renewcommand*{\cftsubsectionfont}{\itshape}
@@ -773,7 +778,7 @@
 	\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
 
 	%%   - Define long TOC
-	\newcommand*{\setupmaintoc}{%
+	\renewcommand*{\setupmaintoc}{%
 	  \renewcommand{\contentsname}{Contents}
 	  \let\changetocdepth\oldchangetocdepth
 	  \let\precistoctext\oldprecistoctext
@@ -795,7 +800,7 @@
 
 %% * Will Robertson's style
 \ifsuacse@toc@style@wspr
-	\newcommand*{\setupshorttoc}{%
+	\renewcommand*{\setupshorttoc}{%
 	  \@shorttoctrue
 	  \renewcommand*{\contentsname}{Short contents}
 	  \let\oldchangetocdepth\changetocdepth
@@ -821,7 +826,7 @@
 	  \renewcommand*{\cftpartfillnum}[1]{\hfill\null\par}
 	}
 
-	\newcommand*{\setupparasubsecs}{%
+	\renewcommand*{\setupparasubsecs}{%
 	  \@shorttocfalse
 	  \let\oldnumberline\numberline
 	  \renewcommand \cftsubsectionfont     {\small}
@@ -849,7 +854,7 @@
 
 	\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
 
-	\newcommand*{\setupmaintoc}{%
+	\renewcommand*{\setupmaintoc}{%
 	  \renewcommand{\contentsname}{Contents}
 	  \let\changetocdepth\oldchangetocdepth
 	  \renewcommand{\precistoctext}[1]{}
@@ -879,7 +884,7 @@
 %% * ACSE style I
 \ifsuacse@toc@style@acsei
 	%% - Define short TOC
-	\newcommand*{\setupshorttoc}{%
+	\renewcommand*{\setupshorttoc}{%
 	  \@shorttoctrue
 	  \renewcommand*{\contentsname}{Short contents}
 	  \let\oldchangetocdepth\changetocdepth
@@ -892,10 +897,14 @@
 	  % \renewcommand*{\cftpartpagefont}{\normalfont}
 	  % \renewcommand*{\cftpartleader}{ \textperiodcentered\space}
 	  % \renewcommand*{\cftpartafterpnum}{\cftparfillskip}
+	  % \newlength\@suacse@toc@short@entrytitle@length
+	  % \setlength{\@suacse@toc@short@entrytitle@length}{0.6\textwidth}
+	  % \let\oldctfchapterfont
 	  \renewcommand*{\cftchapterfont}{\hfill\sffamily}
 	  \renewcommand*{\cftchapterpagefont}{\normalfont}
 	  \renewcommand*{\cftchapterleader}{ \textperiodcentered\space}
 	  \renewcommand*{\cftchapterafterpnum}{\cftparfillskip}
+	  % \renewcommand*{\cftchapterafterpnum}{\hfill}
 	  % \setpnumwidth{0em}
 	  % \setpnumwidth{1.5em}
 	  \renewcommand*{\cftchapterfillnum}[1]{%
@@ -911,7 +920,7 @@
 	  \renewcommand*{\cftbookformatpnum}[1]{%
 	    \hbox to\unitlength{{\cftbookpagefont ####1}}}}
 
-	\newcommand*{\setupparasubsecs}{%
+	\renewcommand*{\setupparasubsecs}{%
 	  \@shorttocfalse
 	  \let\oldnumberline\numberline
 	  \renewcommand*{\cftsubsectionfont}{\itshape}
@@ -940,7 +949,7 @@
 	\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
 
 	%%   - Define long TOC
-	\newcommand*{\setupmaintoc}{%
+	\renewcommand*{\setupmaintoc}{%
 	  \renewcommand{\contentsname}{Contents}
 	  \let\changetocdepth\oldchangetocdepth
 	  \let\precistoctext\oldprecistoctext
@@ -966,11 +975,14 @@
 
 %% * Show TOC
 \newcommand{\printtoc}{%
+%%   - Setup short TOC at the begin
+\setupshorttoc
 \ifsuacse@toc@short@show
-	\setupshorttoc
 	\if@suacse@toc@toc@show \tableofcontents \else \tableofcontents* \fi
 	\clearpage
 \fi
+%%   - Setup main TOC, note that some commands are defined in the short toc
+%%     so that don't forget to load it first.
 \setupparasubsecs
 \setupmaintoc
 \if@suacse@toc@toc@show \tableofcontents \else \tableofcontents* \fi
