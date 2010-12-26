@@ -47,8 +47,10 @@
 %% * eTeX
 \RequirePackage{etex}  % Load Package 'etex'
 
+
 %% * 
 \RequirePackage{atbegshi}
+
 
 %% * PGF key
 \RequirePackage{pgfkeys}  % Load Package 'pgfkeys'
@@ -57,19 +59,23 @@
 \RequirePackage{ifthen}  % Load Package 'ifthen'
 \RequirePackage{ifpdf}  % Load Package 'ifpdf'
 
+
 %% * Caption
 %%   !!! Some commands defined in memoir are incompatible with the package
 %%       caption
 % \RequirePackage[width=\textwidth]{caption}
 % \captionsetup[table]{position=top}
 
+
 %% * Language
 \RequirePackage[british]{babel}
+
 
 %% * Input encoding
 \RequirePackage[utf8]{inputenc}% sane input encoding
 \DeclareUnicodeCharacter{2014}{\dash}
 \DeclareUnicodeCharacter{2022}{\item}
+
 
 %% * Font & Symbol
 %%   - Load the commonly-used font & symbol packages
@@ -82,10 +88,12 @@
 \RequirePackage{pifont}  % Load Package 'pifont'
 \newcommand\diameter{\Pisymbol{psy}{'306}} % Define new symbol
 
+
 %% * MISC
 \RequirePackage{calc,listings}
 \RequirePackage{verbatim}	% Environment \begin{comment} \end{comment}
 \RequirePackage{soul}		% Underlining command: \ul
+
 
 %% * Graph-related package
 \RequirePackage{graphics}							% Graphy style
@@ -162,6 +170,33 @@
 
 % \input{DJpgfmanual-en-macros}
 % \input{DJpgfplots-macros}
+
+
+%% * Table-related packages
+\RequirePackage{longtable}			% Long table
+\RequirePackage{tabulary}			% Auto adjust column width
+\RequirePackage{booktabs}			% Define the hrule width for tabel
+\RequirePackage{multirow}			% Multirow
+
+\newcolumntype{Y}{>{\sf}L}
+
+
+%% * Algorithm-related packages
+\RequirePackage{algorithm}			% Algorithm
+\RequirePackage{algpseudocode}		% Algorithmic
+
+% Required by titletoc, but should be commented when using \numberwithin
+% Required by article style maybe.
+%\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+\algnewcommand\algorithmicto{\textbf{to}}
+\algrenewtext{For}[3]%
+{\algorithmicfor\ $#1 \gets #2\ \algorithmicto\ #3$ \algorithmicdo}
+
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}%
+\algrenewcommand\algorithmicensure{\textbf{Output:}}%
+% \algrenewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) #1}%
+% \algrenewcommand\algorithmiccomment[1]{\hfill\(\blacktriangleright\) #1}%
 
 
 %% END: Packages
@@ -1600,6 +1635,16 @@
 
 
 %% END: Fonts
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-26 03:29:14 +0000 (Sun, 26 Dec 2010)
+%% Glossaries
+
+
+
+%% END: Glossaries
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
