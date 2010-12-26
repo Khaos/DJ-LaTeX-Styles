@@ -1,0 +1,48 @@
+%% The Framework of Anomaly Detection
+% \pgfkeys{/tikz/external/export=true}
+\begin{tikzpicture} [auto,
+         block/.style = {rectangle, draw, thick, fill=black!10,
+             text width=6em, text centered, rounded corners,
+             minimum height=2em},
+         line/.style = {draw, thick, -latex',shorten >=2pt},
+         cloud/.style = {draw,densely dashed, thick, ellipse,fill=cyan!10,
+             minimum height=1em}]
+    \matrix [column sep=12mm,row sep=0mm] {
+        % row 1
+        \node [block] (MS) {Measurement Space}; &   \\
+        % row 2
+        \node (stage1) {}; & 
+        \node [cloud] (FE) {Feature Extraction};    \\
+        % row 3
+        \node [block] (FS) {Feature Space}; &       \\
+        % row 4
+        \node (stage2) {}; & 
+        \node [cloud] (Tr1) {Thresholding, etc.};   \\
+        % row 5
+        \node [block] (DS) {Decision Space}; &      \\
+        % row 6
+        \node (stage3) {}; & 
+        \node [cloud] (Tr2) {Classification, etc.}; \\
+        % row 7
+        \node [block] (CS) {Class Space}; &         \\
+    };
+    \node [anchor=north, rotate=90] (AD) at ($(FS.west)+(-7mm,0)$) 
+            {\textsc{Anomaly Detection}};
+    \begin{scope}[every path/.style=line]
+        \path (MS) -- (FS);
+        \path (FS) -- (DS);
+        \path (DS) -- (CS);
+        \path [densely dashed] (FE) -- (stage1);
+        \path [densely dashed] (Tr1) -- (stage2);
+        \path [densely dashed] (Tr2) -- (stage3);
+    \end{scope}
+    
+    \begin{pgfonlayer}{background}
+        %% Compute a few helper coordinates
+        \path (DS.south west)+(-0.75,-0.15) node (ad1) {};
+        \path (MS.north east)+(+0.75,+0.15) node (ad2) {};
+        \path[fill=green!20,rounded corners, draw=black!50, dashed]
+                (ad1) rectangle (ad2);
+    \end{pgfonlayer}
+    
+\end{tikzpicture}

@@ -18,5 +18,6 @@ Test/tkz-bode/gnuplot
 Test/DJThesis/*.*
 !Test/DJThesis/*.tex
 !Test/DJThesis/*.sh
+Test/DJThesis/Figs/pdf/*.*
 
 .tex

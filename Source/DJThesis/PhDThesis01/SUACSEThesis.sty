@@ -44,16 +44,18 @@
 %% Created by Dazhi Jiang, 2010-11-16 16:01:56 +0000 (Tue, 16 Nov 2010)
 %% Packages
 
+%% * eTeX
 \RequirePackage{etex}  % Load Package 'etex'
 
+%% * 
+\RequirePackage{atbegshi}
+
+%% * PGF key
 \RequirePackage{pgfkeys}  % Load Package 'pgfkeys'
 \RequirePackage{pgfopts}  % Load Package 'pgfopts'
 
 \RequirePackage{ifthen}  % Load Package 'ifthen'
 \RequirePackage{ifpdf}  % Load Package 'ifpdf'
-
-%% * Graph-related package
-\RequirePackage[svgnames]{xcolor}
 
 %% * Caption
 %%   !!! Some commands defined in memoir are incompatible with the package
@@ -70,8 +72,96 @@
 \DeclareUnicodeCharacter{2022}{\item}
 
 %% * Font & Symbol
+%%   - Load the commonly-used font & symbol packages
+% \RequirePackage[OT1]{fontenc} % sane font encoding
+\RequirePackage[T1]{fontenc} % sane font encoding
+
+\RequirePackage{textcomp} % provide lots of new symbols
+\RequirePackage{lmodern} % for sensible sans and tt font
+
 \RequirePackage{pifont}  % Load Package 'pifont'
 \newcommand\diameter{\Pisymbol{psy}{'306}} % Define new symbol
+
+%% * MISC
+\RequirePackage{calc,listings}
+\RequirePackage{verbatim}	% Environment \begin{comment} \end{comment}
+\RequirePackage{soul}		% Underlining command: \ul
+
+%% * Graph-related package
+\RequirePackage{graphics}							% Graphy style
+\RequirePackage[usenames, dvipsnames]{color}		% Color
+\RequirePackage{graphicx}
+\RequirePackage[svgnames]{xcolor}
+
+%%   - PGF-related package
+\RequirePackage{pgf}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage{pgfplotstable}
+
+% We need lots of libraries...
+\usetikzlibrary{%
+	arrows,%
+	calc,%
+	fit,%
+	patterns,%
+	plotmarks,%
+	shapes.geometric,%
+	shapes.misc,%
+	shapes.symbols,%
+	shapes.arrows,%
+	shapes.callouts,%
+	shapes.multipart,%
+	shapes.gates.logic.US,%
+	shapes.gates.logic.IEC,%
+	circuits.logic.US,%
+	circuits.logic.IEC,%
+	circuits.logic.CDH,%
+	circuits.ee.IEC,%
+	datavisualization,%
+	datavisualization.formats.functions,%
+	er,%
+	automata,%
+	backgrounds,%
+	chains,%
+	topaths,%
+	trees,%
+	petri,%
+	mindmap,%
+	matrix,%
+	calendar,%
+	folding,%
+	fadings,%
+	shadings,%
+	spy,%
+	through,%
+	turtle,%
+	positioning,%
+	scopes,%
+	decorations.fractals,%
+	decorations.shapes,%
+	decorations.text,%
+	decorations.pathmorphing,%
+	decorations.pathreplacing,%
+	decorations.footprints,%
+	decorations.markings,%
+	shadows,%
+	lindenmayersystems,%
+	intersections,%
+	fixedpointarithmetic,%
+	fpu,%
+	svg.path,%
+	external,%
+}
+
+\usepgfplotslibrary{dateplot,%
+					units,%
+					groupplots}
+
+\RequirePackage{xxcolor} %% Part of <pgf>
+
+% \input{DJpgfmanual-en-macros}
+% \input{DJpgfplots-macros}
 
 
 %% END: Packages
@@ -353,7 +443,7 @@
 \newcommand{\suacse@loadpagenumberstyle}{%
 	%% - Load required package
 	% \RequirePackage[svgnames]{xcolor}  % Load Package 'xcolor'
-	\RequirePackage{tikz}  % Load Package 'tikz'
+	% \RequirePackage{tikz}  % Load Package 'tikz'
 	% \providecommand\thesispage{\normalfont p.\,\thepage}
 	% \providecommand\thesispage{\normalfont \colorbox{black}%
 	% 		{\color{white}p.\,\thepage}}
@@ -1050,7 +1140,8 @@
 %%   outer one.
 \newcommand{\suacse@loadextrachapsty}{%
 \ifsuacse@chapterstyle@daleifi
-	\RequirePackage{color,calc,graphicx,soul}
+	% \RequirePackage{color,calc,graphicx,soul}
+	% \RequirePackage{graphicx}
 	\definecolor{nicered}{rgb}{.647,.129,.149}
 	\newlength\dlf@normtxtw
 	\setlength\dlf@normtxtw{\textwidth}
@@ -1085,7 +1176,7 @@
 \ifsuacse@chapterstyle@GreyNum
 	% \RequirePackage{fix-cm}
 	% \RequirePackage{fourier}%................... Roman+math - Utopia
-	\RequirePackage{color}
+	% \RequirePackage{color}
 	\definecolor{ChapGrey}{rgb}{0.6,0.6,0.6}
 	\newcommand{\LargeFont}{% Needs a 'stretchable' font
 	      \usefont{\encodingdefault}{\rmdefault}{b}{n}%
@@ -1124,7 +1215,7 @@
 	% \fi
 	% \typeout{done!}
 	% \RequirePackage[svgnames]{xcolor}
-	\RequirePackage{tikz}
+	% \RequirePackage{tikz}
 	%% helper macros
 	\newcommand{\ChapWithNumber}[1]{
 	\begin{tikzpicture}[remember picture,overlay]
@@ -1389,10 +1480,10 @@
 }
 
 %% * Load the commonly-used font & symbol packages
-\RequirePackage[T1]{fontenc} % sane font encoding
-
-\RequirePackage{textcomp} % provide lots of new symbols
-\RequirePackage{lmodern} % for sensible sans and tt font
+% \RequirePackage[T1]{fontenc} % sane font encoding
+% 
+% \RequirePackage{textcomp} % provide lots of new symbols
+% \RequirePackage{lmodern} % for sensible sans and tt font
 
 % \renewcommand{\suacseopt@setfont}{%
 \newcommand{\suacseopt@setfont}{%
@@ -1708,6 +1799,124 @@
 
 
 %% END: Hyperref Options
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-25 16:55:49 +0000 (Sat, 25 Dec 2010)
+%% PGF/TikZ
+
+%% * Externalising
+%%   - Switcher for externalising
+\newif\if@suacse@pgf@externalexpensive
+\let\@suacse@pgf@externalexpensivetrue@orig=\@suacse@pgf@externalexpensivetrue
+
+%%   - Command for switching on the externalising library
+%%   ! Use \@suacse@pgf@externalexpensivetrue to externalise expensive figures
+\def\@suacse@pgf@externalexpensivetrue{%
+	\usepgfplotslibrary{external}
+	\@suacse@pgf@externalexpensivetrue@orig
+	\tikzexternalize[
+		prefix=Figs/pdf/pgfexternalfig-,
+		export=false, % needs to be activated for single pictures (i.e. expensive ones)
+		mode=list and make,
+		verbose IO=false,
+		% export=true,% FASTER FOR DEBUGGING
+	]
+		%% !!!
+		%% Changed by Dazhi Jiang - 2010-09-20
+		%% The following line is commented since the new definition of
+		%% \tikzexternalize in PGF 2.0 cvs
+		% {pgfplots}
+	\tikzifexternalizing{%
+		\nofiles
+	}{}%
+}%
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% !!!
+%% Modified by Dazhi Jiang, 2010-12-25 17:09:03 +0000 (Sat, 25 Dec 2010)
+%% A modified alias of \@suacse@pgf@externalexpensivetrue
+%% It allows to specify the main document.
+\newcommand{\@suacse@pgf@externalmainfile@set}[1]{%
+% \def\suacse@pgf@externalexpensivetrue#1{%
+	\usepgfplotslibrary{external}
+	\@suacse@pgf@externalexpensivetrue@orig
+	\tikzexternalize[
+		prefix=Figs/pdf/pgfexternalfig-,
+		export=false, % needs to be activated for single pictures (i.e. expensive ones)
+		mode=list and make,
+		verbose IO=false,
+		%xport=true,% FASTER FOR DEBUGGING
+	]{#1}
+		%% !!!
+		%% Changed by Dazhi Jiang - 2010-09-20
+		%% The following line is commented since the new definition of
+		%% \tikzexternalize in PGF cvs
+		% {pgfplots}
+	\tikzifexternalizing{%
+		\nofiles
+	}{}%
+}%
+%% END: A modified alias of \pgfplotsmanualexternalexpensivetrue
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\graphicspath{{Figs/pdf/}}
+
+%%   - Switcher for the single figure externalisation
+\newif\if@suacse@fig@pgf@is@expensive
+
+% \pgfkeys{
+% 	/tikz/every picture/.append code={%
+% 		\if@suacse@fig@pgf@is@expensive
+% 			\pgfkeys{/tikz/external/export=true}%
+% 			\global\@suacse@fig@pgf@is@expensivefalse
+% 		\fi
+% 	}
+% }
+
+%%   - Hack 'tikzpicture' environment
+% \let\@tikzpicture@orig\tikzpicture
+% \def\tikzpicture{%
+% 	\if@suacse@fig@pgf@is@expensive
+% 		\pgfkeys{/tikz/external/export=true}%
+% 		\global\@suacse@fig@pgf@is@expensivefalse
+% 	\fi
+% 	\@tikzpicture@orig
+% }
+
+%% Write this macro directly in front of \begin{codeexample} (without arguments):
+\def\cmd@suacse@pgf@export@fig{%
+	\if@suacse@pgf@externalexpensive
+		\@suacse@fig@pgf@is@expensivetrue
+	\else
+		\message{[NOTE: I am now about to typeset an expensive example. You will need to ENLARGE YOUR TeX MEMORY CAPACITIES if this fails.]}%
+	\fi
+	\if@suacse@fig@pgf@is@expensive
+		\pgfkeys{/tikz/external/export=true}%
+		\global\@suacse@fig@pgf@is@expensivefalse
+	\fi
+}%
+
+%% * Define keys for pgf externalisation
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Keys for pgf externalisation
+	pgf/makeexternalfig/.code={\cmd@suacse@pgf@export@fig},
+}
+
+
+%% * Define package option keys for hyperref options
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for pgf externalisation
+	pgf/externalising/.is if=@suacse@pgf@externalexpensive,
+	pgf/externalising/.default=true,
+	pgf/externalmainfile/.code={\@suacse@pgf@externalmainfile@set{#1}},
+}
+
+
+%% END: PGF/TikZ
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 

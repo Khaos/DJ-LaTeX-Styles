@@ -155,19 +155,49 @@
 			<key>firstVisibleLine</key>
 			<integer>8</integer>
 		</dict>
+		<key>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportOtherP0.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>16</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>8</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>12</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+		</dict>
 		<key>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>11</integer>
 				<key>line</key>
-				<integer>848</integer>
+				<integer>44</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>832</integer>
+			<integer>27</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -262,14 +292,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>13</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>42</integer>
+				<integer>40</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>24</integer>
+			<integer>22</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
@@ -529,6 +559,7 @@
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 		<string>tmp/Templete/thesis-preamble.sty</string>
 		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportLoadAll.tex</string>
+		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportOtherP0.tex</string>
 		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportHyperrefBibUrlP.tex</string>
 		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportIFP.tex</string>
 		<string>tmp/Templete/thesis.tex</string>
