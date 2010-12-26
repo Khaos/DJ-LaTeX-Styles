@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+	<string>Test/DJThesis/stypull.sh</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -66,7 +66,7 @@
 			<key>filename</key>
 			<string>.gitignore</string>
 			<key>lastUsed</key>
-			<date>2010-11-17T16:37:48Z</date>
+			<date>2010-12-26T02:49:05Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -78,67 +78,59 @@
 			<key>sourceDirectory</key>
 			<string>Test</string>
 		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Source/DJThesis/PhDThesis01/SUACSEThesisMath.sty</string>
+			<key>lastUsed</key>
+			<date>2010-12-26T12:01:21Z</date>
+		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>406</integer>
 	<key>metaData</key>
 	<dict>
-		<key>.gitignore</key>
+		<key>Source/DJMath/DJMathCom.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>19</integer>
+				<integer>143</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportHyperrefBibUrlP.tex</key>
+		<key>Source/DJMath/DJMathP.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>161</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>159</integer>
-		</dict>
-		<key>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportIFP.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>33</integer>
-				<key>line</key>
-				<integer>16</integer>
+				<integer>110</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>74</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>15</integer>
+				<integer>88</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>16</integer>
+				<integer>110</integer>
 			</dict>
 		</dict>
 		<key>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportLoadAll.tex</key>
@@ -146,7 +138,7 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>23</integer>
+				<integer>12</integer>
 				<key>line</key>
 				<integer>41</integer>
 			</dict>
@@ -155,49 +147,33 @@
 			<key>firstVisibleLine</key>
 			<integer>8</integer>
 		</dict>
-		<key>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportOtherP0.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>16</integer>
-				<key>line</key>
-				<integer>17</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>8</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>12</integer>
-				<key>line</key>
-				<integer>17</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>17</integer>
-			</dict>
-		</dict>
 		<key>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>32</integer>
 				<key>line</key>
-				<integer>44</integer>
+				<integer>2036</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>27</integer>
+			<integer>2017</integer>
+		</dict>
+		<key>Source/DJThesis/PhDThesis01/SUACSEThesisMath.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>80</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>90</integer>
+			<key>firstVisibleLine</key>
+			<integer>53</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -292,23 +268,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>17</integer>
+				<integer>35</integer>
 				<key>line</key>
-				<integer>40</integer>
+				<integer>197</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>22</integer>
+			<integer>188</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
-				<key>line</key>
 				<integer>0</integer>
+				<key>line</key>
+				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -403,66 +379,6 @@
 			<key>firstVisibleLine</key>
 			<integer>280</integer>
 		</dict>
-		<key>tmp/Templete/thesis-preamble.sty</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>334</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>401</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>12</integer>
-				<key>line</key>
-				<integer>334</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>334</integer>
-			</dict>
-		</dict>
-		<key>tmp/Templete/thesis.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>11</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>8</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>10</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>11</integer>
-			</dict>
-		</dict>
 		<key>tmp/pgf-2.00-cvs/tex/latex/pgf/doc/pgfmanual.code.tex</key>
 		<dict>
 			<key>caret</key>
@@ -555,19 +471,16 @@
 	<key>openDocuments</key>
 	<array>
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+		<string>Source/DJThesis/PhDThesis01/SUACSEThesisMath.sty</string>
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
-		<string>tmp/Templete/thesis-preamble.sty</string>
 		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportLoadAll.tex</string>
-		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportOtherP0.tex</string>
-		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportHyperrefBibUrlP.tex</string>
-		<string>Source/DJReport/DJPreambleAlstomReport/DJAlstomReportIFP.tex</string>
-		<string>tmp/Templete/thesis.tex</string>
-		<string>tmp/Templete/pwasu.sty</string>
+		<string>Source/DJMath/DJMathCom.tex</string>
+		<string>Source/DJMath/DJMathP.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{314, 4}, {966, 774}}</string>
+	<string>{{313, 4}, {966, 774}}</string>
 </dict>
 </plist>

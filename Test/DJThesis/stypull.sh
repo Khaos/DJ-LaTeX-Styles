@@ -1,5 +1,6 @@
 # cp SUACSEThesis.sty ../../Source/DJThesis/PhDThesis01/SUACSEThesis.sty
 cp ../../Source/DJThesis/PhDThesis01/SUACSEThesis.sty SUACSEThesis.sty
+cp ../../Source/DJThesis/PhDThesis01/SUACSEThesisMath.sty SUACSEThesisMath.sty
 
 # pdflatex -shell-escape -interaction=nonstopmode -file-line-error SUACSEThesis-test01.tex
 

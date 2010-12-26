@@ -1,17 +1,23 @@
 %% -*- Mode: LaTeX; tab-width: 4;
 
 %% SUACSEThesisMath.sty    Math style for ACSE@SU Thesis
-%% ! THE PACKAGE LOADS MATHEMATICAL MACROS FOR ACSE@SU THESIS STYLE
-%% Created by Dazhi Jiang, 2010-12-26 09:54:06 +0000 (Sun, 26 Dec 2010)
+%% Comment
+%% Created by Dazhi Jiang, 2010-12-26 11:06:24 +0000 (Sun, 26 Dec 2010)
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% * Usage
 %%   - Short outline
+%%     - Initialisation
+%%     - Load packages
+%%     - Font
+%%     - Symbol
+%%     - Macro/Command
+%%     - Environment
 %%
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% * Change Log
-%%   @ 2010-12-26 09:54:06 +0000 (Sun, 26 Dec 2010)
+%%   @ 2010-12-26 11:06:24 +0000 (Sun, 26 Dec 2010)
 %%     - Create the initial file
 %%
 
@@ -20,3 +26,178 @@
 %%   - 
 %%
 
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-26 11:06:24 +0000 (Sun, 26 Dec 2010)
+%% Initialisation
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{SUACSEThesisMath}[2010/12/26 v0.0.1 SUACSE Thesis Math]
+
+%% END: Initialisation
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-26 11:16:21 +0000 (Sun, 26 Dec 2010)
+%% Packages
+
+\RequirePackage{xspace}		% For command \xspace
+
+\RequirePackage{savesym}	% Use this package to save commands,
+							% such as iint, iiint in amsmath, because LyX use esint
+							% package which confilct with amsmath.
+
+\RequirePackage{amsmath}	% For command \ensuremath
+							% 			  \DeclareMathOperator
+							%			  \mathrel
+
+% Top-or-bottom tags
+% For a split equation, place equation numbers level with the last (resp. first) line, if numbers are on the right (resp. left).
+% \RequirePackage[tbtags]{amsmath}
+
+\RequirePackage{amssymb}		% For command \mathbb
+
+\RequirePackage{amsfonts}		% For command \mathbb
+
+\RequirePackage{xargs}			% For command with optional arguments
+
+\RequirePackage{mathrsfs}		% For command \mathscr
+
+% \RequirePackage{eucal}			% Euler math font
+\RequirePackage{euscript}		% Euler math font, \EuScript
+
+\RequirePackage{commath}		% \begin{bmatrix} ... \end{bmatrix}, etc.
+
+% Load automatically by beamer
+\RequirePackage{amsthm}
+
+\RequirePackage{bm}				% \bm
+\RequirePackage{esvect}
+\RequirePackage{vector}
+\RequirePackage{tensor}
+%\RequirePackage{delarray}		% Delimiters surrounding an array
+\RequirePackage{pmat}
+\RequirePackage{array}
+
+% \RequirePackage{amsmath,amssymb,bm,cool,mathtools}
+\RequirePackage{cool}  % Load Package 'cool'
+\RequirePackage{mathtools}  % Load Package 'mathtools'
+
+
+%% END: Packages
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-26 11:18:23 +0000 (Sun, 26 Dec 2010)
+%% Font
+
+%% END: Font
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-26 11:18:33 +0000 (Sun, 26 Dec 2010)
+%% Symbol
+
+\savesymbol{iint}
+\savesymbol{iiint}
+\savesymbol{iiiint}
+
+\RequirePackage{esint}		% Create nice multiple integral signsRequirePackage
+
+\restoresymbol{ES}{iint}	% Now use ESiint to generate nice double integral sigh
+\restoresymbol{ES}{iiint}	% Now use ESiiint to generate nice triple integral sigh
+\restoresymbol{ES}{iiiint}	% Now use ESiiiint to generate nice multiple integral sigh
+
+%% END: Symbol
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-26 11:16:47 +0000 (Sun, 26 Dec 2010)
+%% Macro/Command
+
+%% For COOL
+%% * Brilliant Definition!
+%%   This gives a nested integrate, that is,
+%%     \Integrate{f(x,y,z,t)}{t}{x}{y}{z}
+%%   gives a fourth-order integrate
+\let\orig@Integrate\Integrate
+\renewcommand\Integrate[2]{%
+  \@ifnextchar\bgroup
+    {\Integrate{\orig@Integrate{#1}{#2}}}
+    {\orig@Integrate{#1}{#2}}}
+\let\Int\Integrate
+
+
+%% * Part I:    Abbreviation
+
+% \newcommand{\eg}{e.g.,\xspace}          % <Package>: xspace
+% \newcommand{\ie}{i.e.,\xspace}          % <Package>: xspace
+% \newcommand{\etc}{etc.\@\xspace}        % <Package>: xspace
+
+%%   - Statistical Abbreviation
+%%     - Independent and Identically Distributed, also Independent Identically
+%%       Distributed
+\newcommand{\iid}{i.i.d.\xspace} 		% Should be able to be a label
+
+%%     - Probability Density Function
+\newcommand{\spdf}{p.d.f.\xspace}      % <Pakcage>: xspace
+%%     - Cumulative Distribution Function
+\newcommand{\scdf}{c.d.f.\xspace}      % <Pakcage>: xspace
+
+%% Original Ones
+% \newcommand{\ie}{i.e.{}}
+% \newcommand{\eg}{e.g.{}}
+% \newcommand{\exante}{ex ante}
+% \newcommand{\expost}{ex post}
+% \newcommand{\apriori}{a priori}
+% \newcommand{\adinfinitum}{ad infinitum}
+% \newcommand{\aka}{a.k.a.{}}
+
+
+% * Part II:    Ordinal number
+
+\global\long\def\upst{\ensuremath{^{\text{st}}}\xspace}
+\global\long\def\upnd{\ensuremath{^{\text{nd}}}\xspace}
+\global\long\def\uprd{\ensuremath{^{\text{rd}}}\xspace}
+% Do not use \th command, it is not compatible with OT1 font
+\global\long\def\upth{\ensuremath{^{\text{th}}}\xspace}
+% \th has already been defined
+%\global\long\def\th{\ensuremath{^{\text{th}}}}
+%\newcommand{\th}{\upth}
+
+
+
+%% END: Macro/Command
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-26 11:17:20 +0000 (Sun, 26 Dec 2010)
+%% Environment
+
+%% END: Environment
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%%
+%% The followings come from the LaTeX template ---- tpavlic_masters_thesis
+%%
+%% Upper-case    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+%% Lower-case    a b c d e f g h i j k l m n o p q r s t u v w x y z
+%% Digits        0 1 2 3 4 5 6 7 8 9
+%% Exclamation   !           Double quote "          Hash (number) #
+%% Dollar        $           Percent      %          Ampersand     &
+%% Acute accent  '           Left paren   (          Right paren   )
+%% Asterisk      *           Plus         +          Comma         ,
+%% Minus         -           Point        .          Solidus       /
+%% Colon         :           Semicolon    ;          Less than     <
+%% Equals        =           Greater than >          Question mark ?
+%% At            @           Left bracket [          Backslash     \
+%% Right bracket ]           Circumflex   ^          Underscore    _
+%% Grave accent  `           Left brace   {          Vertical bar  |
+%% Right brace   }           Tilde        ~
+
+
+\endinput

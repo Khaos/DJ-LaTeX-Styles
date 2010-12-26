@@ -10,6 +10,7 @@
 %%     @suacse
 %%     @suacseopt
 %%   - Short outline
+%%     - Initialisation
 %%     - Load packages
 %%     - Package-setting commands
 %%     - Spacing
@@ -73,6 +74,7 @@
 
 %% * 
 \RequirePackage{atbegshi}
+\RequirePackage{xspace}  % For command \xspace
 
 
 %% * PGF key
@@ -2029,6 +2031,18 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-26 11:40:45 +0000 (Sun, 26 Dec 2010)
+%% Math
+
+%% * Load math package
+\RequirePackage{SUACSEThesisMath}  % Load Package 'SUACSEThesisMath'
+
+
+%% END: Math
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-17 14:05:56 +0000 (Wed, 17 Nov 2010)
 %% Initialise Keys
 
@@ -2108,25 +2122,6 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:42:17 +0000 (Tue, 16 Nov 2010)
 %% Commands
-% \RequirePackage{amsmath,amssymb,bm,cool,mathtools}
-\RequirePackage{amsmath}  % Load Package 'amsmath'
-\RequirePackage{amssymb}  % Load Package 'amssymb'
-\RequirePackage{bm}  % Load Package 'bm'
-\RequirePackage{cool}  % Load Package 'cool'
-\RequirePackage{mathtools}  % Load Package 'mathtools'
-
-%% For COOL
-%% * Brilliant Definition!
-%%   This gives a nested integrate, that is,
-%%     \Integrate{f(x,y,z,t)}{t}{x}{y}{z}
-%%   gives a fourth-order integrate
-\let\orig@Integrate\Integrate
-\renewcommand\Integrate[2]{%
-  \@ifnextchar\bgroup
-    {\Integrate{\orig@Integrate{#1}{#2}}}
-    {\orig@Integrate{#1}{#2}}}
-\let\Int\Integrate
-
 
 %% * Floats
 %%   - Renew the environments, figure and table, so that they are automatically
@@ -2141,6 +2136,12 @@
                  {\end@float}
 %% !!! A few comment
 %% The command \capstart is defined in the package 'hypcap'
+
+
+%% * Abbreviation
+\newcommand{\eg}{e.g.,\xspace}			% <Package>: xspace
+\newcommand{\ie}{i.e.,\xspace}          % <Package>: xspace
+\newcommand{\etc}{etc.\@\xspace}        % <Package>: xspace
 
 
 %% END: Commands
