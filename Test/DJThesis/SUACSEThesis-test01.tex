@@ -135,6 +135,9 @@
 
 \usepackage{fonttable}
 
+\author{Dazhi Jiang}
+\title{A Test File for My Ph.\,D Thesis}
+
 \begin{document}
 
 % \pgfkeys{/suacseopt/pagelayout=acseii}
@@ -192,6 +195,14 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
+\section{Cross References} % (fold)
+\label{sec:cross_references}
+
+This section is a cross-reference test. \Cref{sec:float} tests the floats. A various styles of chapter are shown in \cref{chap:a_GreyNum_chapter_style,chap:a_acsei_chapter_style,chap:a_daleifi_chapter_style,chap:a_long_GreyNum_chapter_style,chap:a_long_acsei_chapter_style,chap:a_long_daleifi_chapter_style,chap:a_long_lyhne_chapter_style,chap:a_long_madsen_chapter_style,chap:a_long_pedersen_chapter_style,chap:a_long_texblogtikz_chapter_style,chap:a_lyhne_chapter_style,chap:a_madsen_chapter_style,chap:a_pedersen_chapter_style,chap:a_texblogtikz_chapter_style} (or \crefrange{chap:a_lyhne_chapter_style}{chap:a_long_acsei_chapter_style})
+
+
+% section cross_references (end)
+
 \clearpage
 \section{Equations}
 
@@ -209,20 +220,27 @@ y570123456789, 1977 $y570123456789$
 
 \scdf
 
+$\Log{5}$
+% \Style{DSymb={\mathrm d}}
+\[\D{f}{x}\]
+
 $1\upst$
 
 \[ \mathcal{A} = \EuScript{A} \neq \CMcal{A} \]
-
 \[
-\iint\limits_0^{\infty}x^2 dx \neq \ESiint\limits_0^{\infty}x^2 dx
+	\left(\frac{x}{y}\right)
 \]
 
 \[
-\iiint\limits_0^{\infty}x^2 dx \neq \ESiiint\limits_0^{\infty}x^2 dx
+\iint\limits_0^{\infty}x^2 dx \neq \ESiint\limits_0^{\infty}x^2 \diff x
 \]
 
 \[
-y_{57}=0123456789=f(x)=\sum\sin(x)\int\limits_0^{\infty}x^2 dx
+\iiint\limits_0^{\infty}x^2 dx \neq \ESiiint\limits_0^{\infty}x^2 \diff x
+\]
+
+\[
+y_{57}=0123456789=f(x)=\sum\sin(x)\int\limits_0^{\infty}x^2 \diff x
 \]
 
 \[

@@ -20,6 +20,7 @@
 %%     - Chapter Styling
 %%     - Section, etc., Styling
 %%     - Fonts
+%%     - Title Page
 %%     - Glossaries
 %%     - Bibliography
 %%     - Hyperref Options
@@ -210,8 +211,8 @@
 \RequirePackage{algorithm}			% Algorithm
 \RequirePackage{algpseudocode}		% Algorithmic
 
-% Required by titletoc, but should be commented when using \numberwithin
-% Required by article style maybe.
+%% Required by titletoc, but should be commented when using \numberwithin
+%% Required by article style maybe.
 %\newcommand{\theHalgorithm}{\arabic{algorithm}}
 
 \algnewcommand\algorithmicto{\textbf{to}}
@@ -1664,6 +1665,14 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-27 08:47:04 +0000 (Mon, 27 Dec 2010)
+%% Title Page
+
+%% END: Title Page
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-12-26 03:29:14 +0000 (Sun, 26 Dec 2010)
 %% Glossaries
 
@@ -2114,6 +2123,8 @@
 \RequirePackage[open,openlevel=4]{bookmark}
 \RequirePackage{hypcap}
 
+\RequirePackage[capitalise]{cleveref}
+
 
 %% END: Load Packages with Options Given by /suacseopt
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -2144,6 +2155,10 @@
 \newcommand{\etc}{etc.\@\xspace}        % <Package>: xspace
 
 
+%% * Symbol
+% \newcommand{\ttbs}{\char'134} % double quotation marks
+
+
 %% END: Commands
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -2151,6 +2166,8 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-18 11:59:23 +0000 (Thu, 18 Nov 2010)
 %% MISC
+
+\AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
 
 %% END: MISC
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

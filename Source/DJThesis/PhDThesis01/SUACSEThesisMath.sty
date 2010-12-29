@@ -32,6 +32,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{SUACSEThesisMath}[2010/12/26 v0.0.1 SUACSE Thesis Math]
 
+\AtBeginDocument{%
+  \let\oldleft\left
+  \def\left{\mathopen{}\oldleft}%
+}
+
 %% END: Initialisation
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -77,6 +82,7 @@
 %\RequirePackage{delarray}		% Delimiters surrounding an array
 \RequirePackage{pmat}
 \RequirePackage{array}
+\RequirePackage{exscale}
 
 % \RequirePackage{amsmath,amssymb,bm,cool,mathtools}
 \RequirePackage{cool}  % Load Package 'cool'
@@ -117,8 +123,8 @@
 %% Created by Dazhi Jiang, 2010-12-26 11:16:47 +0000 (Sun, 26 Dec 2010)
 %% Macro/Command
 
-%% For COOL
-%% * Brilliant Definition!
+%% * Commands for the 'cool' package
+%% ! Brilliant Definition!
 %%   This gives a nested integrate, that is,
 %%     \Integrate{f(x,y,z,t)}{t}{x}{y}{z}
 %%   gives a fourth-order integrate
@@ -128,8 +134,19 @@
     {\Integrate{\orig@Integrate{#1}{#2}}}
     {\orig@Integrate{#1}{#2}}}
 \let\Int\Integrate
+%%   Default style for 'cool'
+\Style{LogParen=p} % always print parentheses for \Log
+\Style{ArcTrig=arc} % arcsin etc., not sin^{-1}
+\Style{ImagParen=p} % always print parentheses for imaginary part
+\Style{RealParen=p} % always print parentheses for real part
+\Style{DSymb={\mathrm d}} % print derivative symbol as math roman font
+\Style{IntegrateDifferentialDSymb={\mathrm d}} 
+						% print derivative symbol as math roman font
 
 
+
+%% ************************************************************
+%% ************************************************************
 %% * Part I:    Abbreviation
 
 % \newcommand{\eg}{e.g.,\xspace}          % <Package>: xspace
@@ -156,7 +173,9 @@
 % \newcommand{\aka}{a.k.a.{}}
 
 
-% * Part II:    Ordinal number
+%% ************************************************************
+%% ************************************************************
+%% * Part II:    Ordinal number
 
 \global\long\def\upst{\ensuremath{^{\text{st}}}\xspace}
 \global\long\def\upnd{\ensuremath{^{\text{nd}}}\xspace}
@@ -167,6 +186,99 @@
 %\global\long\def\th{\ensuremath{^{\text{th}}}}
 %\newcommand{\th}{\upth}
 
+
+%% ************************************************************
+%% ************************************************************
+%% * Part III:    Math Conventions
+
+%% ************************************************************
+%%   - Math function and operator
+
+%%     - Symbols for the AMA6020 Report
+\DeclareMathOperator \AMISE {AMISE}
+\DeclareMathOperator \MISE {MISE}
+\DeclareMathOperator \Bias {Bias}
+
+%%     - Statistics & statistical
+\DeclareMathOperator \kurt {kurt}			% Kurtosis
+
+\DeclareMathOperator \EX {E}				% Expectation
+
+%%     - Functions
+\DeclareMathOperator* \argmin {arg\,min}
+\DeclareMathOperator* \argmax {arg\,max}
+\DeclareMathOperator \sign {sign}
+
+\DeclareMathOperator \SPAN {span}
+\DeclareMathOperator \NULL {null}
+
+%%     - Differential
+% \DeclareMathOperator \diff {d}
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+%%     - Objective function
+\DeclareMathOperator \obJ {J}
+
+
+%%     - Phantom for math relationship operator
+\global\long\def\relphantom#1{\mathrel{\phantom{#1}}}
+
+%%     - Definition Equal
+\global\long\def\defeq{\stackrel{\mathrm{def}}{=}}
+
+
+%% ************************************************************
+%%   - Math set
+
+%%     - Common-defined set
+\global\long\def\R{\ensuremath{\mathbb{R}}}		% Real number set
+\global\long\def\N{\ensuremath{\mathbb{N}}}		% Natural number set
+\global\long\def\Z{\ensuremath{\mathbb{Z}}}		% Integer number set
+\global\long\def\Q{\ensuremath{\mathbb{Q}}}		% Rational number set
+\global\long\def\C{\ensuremath{\mathbb{C}}}		% Complex number set
+
+%%     - DJ style set
+%%       The set of set
+\global\long\def\setset#1{\ensuremath{\mathscr{#1}}}
+%%       set?
+\global\long\def\setdef#1{\ensuremath{\mathcal{#1}}}
+
+%%   - Matrix or vector
+%%     - Identity matrix
+\global\long\def\I{\ensuremath{\mathbf{I}}}
+%%     - zero matrix or vector
+\global\long\def\matzero{\ensuremath{\mathbf{0}}}
+
+
+%% ************************************************************
+%%   - Information theory
+%%     - Mutual information
+\global\long\def\muinform#1{\mathrm{I}{\left[#1\right]}}
+\global\long\def\minform#1{\mathrm{I}{\left[#1\right]}}
+%%     - Entropy
+\global\long\def\entropy#1{\mathrm{H}{\left[#1\right]}}
+
+
+%% ************************************************************
+%%   - Statistical function
+%%     ! The following commands require package xargs
+%%     - Expectation
+\newcommandx\argEX[2][usedefault, addprefix=\global, 1=]{\mathbb{E}_{#1}{\left[#2\right]}}
+
+%%     - Covariance
+\newcommandx\cov[2][usedefault, addprefix=\global, 1=]{\mathrm{cov}_{#1}{\left[#2\right]}}
+
+%%     - Variance
+\newcommandx\var[2][usedefault, addprefix=\global, 1=]{\mathrm{var}_{#1}{\left[#2\right]}}
+
+%%     - Normal Distribution
+\newcommandx\Normal[4][usedefault, addprefix=\global, 1=D]{\mathcal{N}{(#2|#3,#4)} = \frac{1}{(2\pi)^{#1/2}}\frac{1}{|#4|^{1/2}}\exp\left\{  -\frac{1}{2}(#2-#3)^{T}#4^{-1}(#2-#3)\right\}  }
+
+%%     - Normal Distribution right part
+\newcommandx\Normalr[4][usedefault, addprefix=\global, 1=D]{\frac{1}{(2\pi)^{#1/2}}\frac{1}{|#4|^{1/2}}\exp\left\{  -\frac{1}{2}(#2-#3)^{T}#4^{-1}(#2-#3)\right\}  }
+
+%%     - Normal Distribution left part
+\newcommandx\Normall[3][usedefault, addprefix=\global, 1=x]{\mathcal{N}{(#1|#2,#3)}  }
 
 
 %% END: Macro/Command
