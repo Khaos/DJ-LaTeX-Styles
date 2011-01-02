@@ -46,6 +46,7 @@
 	addtoctotoc,
 	% loadtocstyle=wspr,
 	% loadtocstyle=memsty,
+	% titlepagestyle=acsemaster,
 }
 
 % \suacseset{chapterstyle=texblogtikz}
@@ -103,6 +104,22 @@
 	loadheadstyle=acsei,
 	headstyle=acsei,
 }
+
+\collegeordept{Department of Automatic Control and Systems Engineering}
+\university{University of Sheffield}
+\crest{\includegraphics[width=0.25\textwidth]{Sheffield}}
+\degree{}
+\degreedate{June 2009}
+\supervisor{Supervisor: Prof. Steve Daley and Prof. Visakan Kadirkamanathan}
+\award{PhD in Control System}
+\submittedtext{A thesis submitted for the degree of}
+
+\suacseset{%
+	titlepagestyle=acsemaster,
+	% titlepage/title/font={\Huge\bfseries},
+}
+
+
 % \pagestyle{wspr}
 % \pagestyle{acsei}
 
@@ -144,6 +161,12 @@
 
 \frontmatter
 % \pagestyle{acsei}
+
+\maketitle
+% \makeatletter
+% \show\@suacse@titlepage@title@font
+% \makeatother
+% \cleardoublepage
 
 % \typeout{preface -->}
 \chapter*{Preface}

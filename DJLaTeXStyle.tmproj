@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tmp/Templete/pwasu.sty</string>
+	<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -88,44 +88,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>24</integer>
 				<key>line</key>
-				<integer>2125</integer>
+				<integer>1916</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1656</integer>
-		</dict>
-		<key>Source/DJThesis/PhDThesis01/SUACSEThesisMath.sty</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>37</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>19</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>34</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>37</integer>
-			</dict>
+			<integer>1896</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -222,12 +192,12 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>202</integer>
+				<integer>156</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>163</integer>
+			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>194</integer>
+			<integer>138</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
@@ -322,89 +292,43 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>46</integer>
+				<integer>6</integer>
 				<key>line</key>
-				<integer>194</integer>
+				<integer>307</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>285</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>41</integer>
-				<key>line</key>
-				<integer>194</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>46</integer>
-				<key>line</key>
-				<integer>194</integer>
-			</dict>
-		</dict>
-		<key>tmp/Templete/thesis-maths.sty</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>8</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>8</integer>
-			</dict>
+			<integer>284</integer>
 		</dict>
 		<key>tmp/Templete/thesis-preamble.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>268</integer>
+				<integer>308</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>290</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>268</integer>
+				<integer>308</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>268</integer>
+				<integer>308</integer>
 			</dict>
 		</dict>
 		<key>tmp/pgf-2.00-cvs/tex/latex/pgf/doc/pgfmanual.code.tex</key>
@@ -499,16 +423,14 @@
 	<key>openDocuments</key>
 	<array>
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
-		<string>Source/DJThesis/PhDThesis01/SUACSEThesisMath.sty</string>
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 		<string>tmp/Templete/pwasu.sty</string>
-		<string>tmp/Templete/thesis-maths.sty</string>
 		<string>tmp/Templete/thesis-preamble.sty</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{313, 4}, {966, 774}}</string>
+	<string>{{314, 4}, {966, 774}}</string>
 </dict>
 </plist>
