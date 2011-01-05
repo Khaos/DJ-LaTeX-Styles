@@ -1680,6 +1680,7 @@
 \newif\if@suacse@titlepage@award@isdefined
 \newif\if@suacse@titlepage@crest@isdefined
 \newif\if@suacse@titlepage@submittedtext@isdefined
+\newif\if@suacse@titlepage@place@isdefined
 
 %% * Declare the style switchers for title page
 \newif\if@suacse@titlepage@style@acsemaster
@@ -1711,6 +1712,7 @@
 	award/.code={\award{#1}\@suacse@titlepage@award@isdefinedtrue},
 	crest/.code={\crest{#1}\@suacse@titlepage@crest@isdefinedtrue},
 	submittedtext/.code={\submittedtext{#1}\@suacse@titlepage@submittedtext@isdefinedtrue},
+	place/.code={\place{#1}\@suacse@titlepage@place@isdefinedtrue},
 	%% - Title page layout
 	% titlepage/title/font/.code={\@suacse@titlepage@title@font{#1}},
 	titlepage/title/font/.code={\@suacse@titlepage@element@font@define{title}{#1}},
@@ -1746,6 +1748,9 @@
 	titlepage/submittedtext/font/.code={\@suacse@titlepage@element@font@define{submittedtext}{#1}},
 	titlepage/submittedtext/pre/.code={\@suacse@titlepage@element@pre@define{submittedtext}{#1}},
 	titlepage/submittedtext/post/.code={\@suacse@titlepage@element@post@define{submittedtext}{#1}},
+	titlepage/place/font/.code={\@suacse@titlepage@element@font@define{place}{#1}},
+	titlepage/place/pre/.code={\@suacse@titlepage@element@pre@define{place}{#1}},
+	titlepage/place/post/.code={\@suacse@titlepage@element@post@define{place}{#1}},
 	%% - Title page style
 	titlepagestyle/.is choice,
 	titlepagestyle/default/.code={\@suacse@titlepage@style@clear},
@@ -1753,9 +1758,11 @@
 									 \@suacse@titlepage@style@acsemastertrue %
 									 \@suacse@titlepage@style@set},
 	titlepagestyle/acsei/.code={\@suacse@titlepage@style@clear %
-								\@suacse@titlepage@style@acseitrue},
+								\@suacse@titlepage@style@acseitrue
+								\@suacse@titlepage@style@set},
 	titlepagestyle/acseii/.code={\@suacse@titlepage@style@clear %
-								 \@suacse@titlepage@style@acseiitrue},
+								 \@suacse@titlepage@style@acseiitrue
+								 \@suacse@titlepage@style@set},
 	titlepagestyle/.default=default,
 }
 
@@ -1872,6 +1879,11 @@
 % \newcommand{\submittedtext}{{A thesis submitted for the degree of}}
 \@suacse@titlepage@element@group@define{submittedtext}
 
+%%   - Place
+\@suacse@titlepage@element@define{place}
+% \newcommand{\submittedtext}{{A thesis submitted for the degree of}}
+\@suacse@titlepage@element@group@define{place}
+
 
 %% * Set up the title page style
 \newenvironment{alwayssingle}{%
@@ -1886,13 +1898,14 @@
 	\if@suacse@titlepage@style@acsemaster
 		\suacseset{%
 			titlepage/title/font={\Huge\bfseries},
-			titlepage/title/pre={\vspace*{\stretch{1.5}}},
+			titlepage/title/pre={\vspace*{\stretch{0.05}}},
+			% titlepage/title/pre={},
 			titlepage/title/post={\\},
 			titlepage/crest/font={\LARGE},
-			titlepage/crest/pre={\vspace*{\stretch{1}}},
+			titlepage/crest/pre={\vspace*{\stretch{2.1}}},
 			titlepage/crest/post={\\},
-			titlepage/author/font={\Large},
-			titlepage/author/pre={\vspace*{\stretch{0.8}}},
+			titlepage/author/font={\LARGE\bfseries},
+			titlepage/author/pre={\vspace*{\stretch{1.4}}},
 			titlepage/author/post={\\},
 			titlepage/award/pre={},
 			titlepage/award/font={\large},
@@ -1901,7 +1914,7 @@
 			titlepage/degreedate/pre={},
 			titlepage/degreedate/post={\\},
 			titlepage/supervisor/font={\large},
-			titlepage/supervisor/pre={\vspace*{\stretch{0.1}}},
+			titlepage/supervisor/pre={\vspace*{\stretch{0.4}}},
 			titlepage/supervisor/post={\\},
 			titlepage/collegeordept/font={\large},
 			titlepage/collegeordept/pre={},
@@ -1910,16 +1923,17 @@
 			titlepage/university/pre={},
 			titlepage/university/post={\\},
 			titlepage/submittedtext/font={},
-			titlepage/submittedtext/pre={\vspace*{\stretch{0.8}}},
+			titlepage/submittedtext/pre={\vspace*{\stretch{1}}},
 			titlepage/submittedtext/post={\\},
-			titlepage/degree/font={},
+			titlepage/degree/font={\itshape},
 			titlepage/degree/pre={},
-			titlepage/degree/post={},
+			titlepage/degree/post={\vspace*{\stretch{0.4}}},
 		}
 		\renewcommand{\maketitle}{%
 			\begin{alwayssingle}
 				\thispagestyle{empty}
 				% \null\vfill
+				\begin{DoubleSpace}
 				\begin{center}
 					%% - Main title
 					\@suacse@titlepage@group@title
@@ -1942,16 +1956,85 @@
 					%% - Degree
 					\@suacse@titlepage@group@degree
 				\end{center}
-				\null\vfill
+				\end{DoubleSpace}
+				% \null\vfill
 			\end{alwayssingle}
 		}
 	\fi
 	%% - ACSE style I
-	\if@suacse@titlepage@style@acsemaster
-	
+	\if@suacse@titlepage@style@acsei
+		\suacseset{%
+			titlepage/title/font={\Huge\bfseries},
+			titlepage/title/pre={\vspace*{\stretch{0.02}}},
+			% titlepage/title/pre={},
+			titlepage/title/post={\\},
+			titlepage/crest/font={\LARGE},
+			titlepage/crest/pre={\vspace*{\stretch{1.1}}},
+			titlepage/crest/post={\\},
+			titlepage/author/font={\LARGE\bfseries},
+			titlepage/author/pre={\vspace*{\stretch{0.5}}{\LARGE BY}\\ \vspace*{\stretch{0.4}}},
+			titlepage/author/post={\\},
+			titlepage/award/pre={},
+			titlepage/award/font={\large},
+			titlepage/award/post={\\},
+			titlepage/degreedate/font={\normalfont},
+			titlepage/degreedate/pre={},
+			titlepage/degreedate/post={\vspace*{\stretch{0.2}}},
+			titlepage/supervisor/font={\large},
+			titlepage/supervisor/pre={\vspace*{\stretch{0.9}}},
+			titlepage/supervisor/post={\\},
+			titlepage/collegeordept/font={\large},
+			titlepage/collegeordept/pre={},
+			titlepage/collegeordept/post={\\},
+			titlepage/university/font={\normalfont},
+			titlepage/university/pre={},
+			titlepage/university/post={\unskip,~\ignorespaces},
+			titlepage/place/font={\normalfont},
+			titlepage/place/pre={},
+			titlepage/place/post={\unskip,~\ignorespaces},
+			titlepage/submittedtext/font={\normalfont},
+			titlepage/submittedtext/pre={\vspace*{\stretch{1}}},
+			titlepage/submittedtext/post={\\},
+			titlepage/degree/font={\normalfont\itshape},
+			titlepage/degree/pre={},
+			titlepage/degree/post={\\},
+		}
+		\renewcommand{\maketitle}{%
+			\begin{alwayssingle}
+				\thispagestyle{empty}
+				% \null\vfill
+				\begin{DoubleSpace}
+				\begin{center}
+					%% - Main title
+					\@suacse@titlepage@group@title
+					%% - Author
+					\@suacse@titlepage@group@author
+					%% - Crest
+					\@suacse@titlepage@group@crest
+					%% - Award
+					% \@suacse@titlepage@group@award
+					%% - Supervisor
+					\@suacse@titlepage@group@supervisor
+					%% - College or department
+					\@suacse@titlepage@group@collegeordept
+					%% - Submitted text
+					\@suacse@titlepage@group@submittedtext
+					%% - Degree
+					\@suacse@titlepage@group@degree
+					%% - University
+					% \@suacse@titlepage@group@university
+					%% - Place
+					\@suacse@titlepage@group@place
+					%% - Degree date
+					\@suacse@titlepage@group@degreedate
+				\end{center}
+				\end{DoubleSpace}
+				% \null\vfill
+			\end{alwayssingle}
+		}
 	\fi
 	%% - ACSE style II
-	\if@suacse@titlepage@style@acsemaster
+	\if@suacse@titlepage@style@acseii
 	
 	\fi
 }
