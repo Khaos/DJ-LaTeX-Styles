@@ -107,15 +107,17 @@
 
 \collegeordept{Department of Automatic Control and Systems Engineering}
 \university{University of Sheffield}
-\crest{\includegraphics[width=0.25\textwidth]{Sheffield}}
-\degree{}
-\degreedate{June 2009}
+\crest{\includegraphics[width=0.3\textwidth]{Sheffield}}
+\degree{Doctor of Philosophy}
+\degreedate{Decemeber 2010}
+\degreedate{2010}
 \supervisor{Supervisor: Prof. Steve Daley and Prof. Visakan Kadirkamanathan}
-\award{PhD in Control System}
-\submittedtext{A thesis submitted for the degree of}
+\award{Ph.\,D in Control System}
+\submittedtext{A thesis submitted to the University of Sheffield for the degree of}
 
 \suacseset{%
-	titlepagestyle=acsemaster,
+	% titlepagestyle=acsemaster,
+	% titlepagestyle=acsei,
 	% titlepage/title/font={\Huge\bfseries},
 }
 
@@ -153,15 +155,32 @@
 \usepackage{fonttable}
 
 \author{Dazhi Jiang}
-\title{A Test File for My Ph.\,D Thesis}
-
+% \title{Optimal Data-Mining Methodologies for Power Plant Anomaly Detection}
+\title{Optimal Data-Mining Methodologies\\[10pt]
+	for Power Plant Anomaly Detection}
+\place{Sheffield}
 \begin{document}
 
 % \pgfkeys{/suacseopt/pagelayout=acseii}
 
 \frontmatter
 % \pagestyle{acsei}
-
+% \DoubleSpacing
+\maketitle
+\suacseset{%
+	titlepagestyle=acsemaster,
+	degreedate={December 2010},
+	% titlepagestyle=acsei,
+	% titlepage/title/font={\Huge\bfseries},
+}
+\maketitle
+\suacseset{%
+	% titlepagestyle=acsemaster,
+	titlepagestyle=acsei,
+	degreedate={2011},
+	% titlepage/collegeordept/post={\\ \includegraphics[width=\textwidth]{Pitest03}},
+	% titlepage/title/font={\Huge\bfseries},
+}
 \maketitle
 % \makeatletter
 % \show\@suacse@titlepage@title@font
@@ -179,6 +198,15 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{center}
+	\vfill
+	\begin{tikzpicture}[]
+		\node at (0,0) {\includegraphics[width=\textwidth]{Pitest03}};
+		\node at (2.6cm,0.5cm) {{\bfseries\itshape The magic number, $\bm\pi$, on the Archimedean spiral}};
+		% \filldraw (0,0) circle (2pt);
+	\end{tikzpicture}
+\end{center}
 
 
 \clearpage

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
+	<string>Test/DJThesis/stypull.sh</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -83,19 +83,33 @@
 	<integer>406</integer>
 	<key>metaData</key>
 	<dict>
+		<key>Source/DJThesis/DJThesis01/DJCUEDthesisPSnPDF.cls</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>120</integer>
+				<key>line</key>
+				<integer>30</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>118</integer>
+		</dict>
 		<key>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>1916</integer>
+				<integer>1991</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1896</integer>
+			<integer>1974</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -192,12 +206,12 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>156</integer>
+				<integer>182</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>138</integer>
+			<integer>164</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
@@ -425,6 +439,7 @@
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
+		<string>Source/DJThesis/DJThesis01/DJCUEDthesisPSnPDF.cls</string>
 		<string>tmp/Templete/pwasu.sty</string>
 		<string>tmp/Templete/thesis-preamble.sty</string>
 	</array>
