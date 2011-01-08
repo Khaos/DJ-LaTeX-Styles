@@ -30,6 +30,8 @@
 	biblatexopt=acsei,
 	% pgf/externalising,
 	pgf/externalmainfile=SUACSEThesis-test01,
+	% fncychap=bjornstrup,
+	makeglossary,
 	]{SUACSEThesis}
 
 \suacseset{%
@@ -154,6 +156,8 @@
 
 \usepackage{fonttable}
 
+% \usepackage[Bjornstrup]{fncychap}
+
 \author{Dazhi Jiang}
 % \title{Optimal Data-Mining Methodologies for Power Plant Anomaly Detection}
 \title{Optimal Data-Mining Methodologies\\[10pt]
@@ -187,6 +191,11 @@
 % \makeatother
 % \cleardoublepage
 
+\begin{abstract}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\end{abstract}
+
 % \typeout{preface -->}
 \chapter*{Preface}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -202,11 +211,38 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \begin{center}
 	\vfill
 	\begin{tikzpicture}[]
-		\node at (0,0) {\includegraphics[width=\textwidth]{Pitest03}};
+		\node at (0,0) {\includegraphics[width=\textwidth]{Pi-black}};
 		\node at (2.6cm,0.5cm) {{\bfseries\itshape The magic number, $\bm\pi$, on the Archimedean spiral}};
 		% \filldraw (0,0) circle (2pt);
 	\end{tikzpicture}
 \end{center}
+
+% \begin{center}
+% 	\vfill
+% 	\begin{tikzpicture}[]
+% 		\node at (0,0) {\includegraphics[width=\textwidth]{Pi-black90}};
+% 		\node at (2.6cm,0.5cm) {{\bfseries\itshape The magic number, $\bm\pi$, on the Archimedean spiral}};
+% 		% \filldraw (0,0) circle (2pt);
+% 	\end{tikzpicture}
+% \end{center}
+% 
+% \begin{center}
+% 	\vfill
+% 	\begin{tikzpicture}[]
+% 		\node at (0,0) {\includegraphics[width=\textwidth]{Pi-black80}};
+% 		\node at (2.6cm,0.5cm) {{\bfseries\itshape The magic number, $\bm\pi$, on the Archimedean spiral}};
+% 		% \filldraw (0,0) circle (2pt);
+% 	\end{tikzpicture}
+% \end{center}
+% 
+% \begin{center}
+% 	\vfill
+% 	\begin{tikzpicture}[]
+% 		\node at (0,0) {\includegraphics[width=\textwidth]{Pi-grey}};
+% 		\node at (2.6cm,0.5cm) {{\bfseries\itshape The magic number, $\bm\pi$, on the Archimedean spiral}};
+% 		% \filldraw (0,0) circle (2pt);
+% 	\end{tikzpicture}
+% \end{center}
 
 
 \clearpage
@@ -227,6 +263,14 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 %% matter. This will cause page numbering problem if you define the difference
 %% styles for the front matter and the main matter.
 \clearpage
+
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+
+\printglossary
+
 \pagenumbering{arabic}
 
 %% Main body
@@ -245,12 +289,28 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+\section{Glossary} % (fold)
+\label{sec:glossary}
+
+\begin{equation}
+	F=mg
+\end{equation}
+\glossary(xF){$F$}{Force}
+\glossary(m){$m$}{Mass}
+\glossary(g){$g$}{Gravity Constant}
+
+% \newcommand{\testcmd}[1]{\textbf{#1}}
+% % \renewcommand{\memglonum}[1]{\textbf{#1}}
+% \textbf{\hyperpage{3}}\hyperpage{3}\memglonum{\hyperpage{3}}
+% {\bfseries \hyperpage{3}}\testcmd{\hyperpage{3}}
+% section glossary (end)
 
 \section{Cross References} % (fold)
 \label{sec:cross_references}
 
 This section is a cross-reference test. \Cref{sec:float} tests the floats. A various styles of chapter are shown in \cref{chap:a_GreyNum_chapter_style,chap:a_acsei_chapter_style,chap:a_daleifi_chapter_style,chap:a_long_GreyNum_chapter_style,chap:a_long_acsei_chapter_style,chap:a_long_daleifi_chapter_style,chap:a_long_lyhne_chapter_style,chap:a_long_madsen_chapter_style,chap:a_long_pedersen_chapter_style,chap:a_long_texblogtikz_chapter_style,chap:a_lyhne_chapter_style,chap:a_madsen_chapter_style,chap:a_pedersen_chapter_style,chap:a_texblogtikz_chapter_style} (or \crefrange{chap:a_lyhne_chapter_style}{chap:a_long_acsei_chapter_style})
 
+\Cref{fig:ADFramework} shows that the framework of anomaly detection
 
 % section cross_references (end)
 
@@ -674,6 +734,22 @@ From the table, charater `0' is defined as ``'060''. So we can redefine the math
 \end{verbatim}
 
 \clearpage
+
+\appendix
+
+\chapter{Appendix A} % (fold)
+\label{chap:appendix_a}
+
+\section{subappendix} % (fold)
+\label{sec:subappendix}
+
+% section subappendix (end)
+
+% chapter appendix_a (end)
+
+\backmatter
+
+\printbibliography
 
 
 \end{document}

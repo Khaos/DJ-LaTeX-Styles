@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Test/DJThesis/stypull.sh</string>
+	<string>tmp/Thesis/UoMThesis/nomencl.cfg</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -43,8 +43,6 @@
 			<string>Release</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>Source</string>
 			<key>regexFolderFilter</key>
@@ -66,7 +64,7 @@
 			<key>filename</key>
 			<string>.gitignore</string>
 			<key>lastUsed</key>
-			<date>2010-12-26T02:49:05Z</date>
+			<date>2011-01-05T16:37:17Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -97,19 +95,33 @@
 			<key>firstVisibleLine</key>
 			<integer>118</integer>
 		</dict>
+		<key>Source/DJThesis/DJThesis01/DJThesisNomenclatureP.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>24</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>24</integer>
+		</dict>
 		<key>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>30</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>1991</integer>
+				<integer>2115</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1974</integer>
+			<integer>2097</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -124,6 +136,36 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>Test/DJThesis/Makefile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>25</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>25</integer>
+			</dict>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis copy.sty</key>
 		<dict>
@@ -199,28 +241,56 @@
 				<integer>84</integer>
 			</dict>
 		</dict>
-		<key>Test/DJThesis/SUACSEThesis-test01.tex</key>
+		<key>Test/DJThesis/SUACSEThesis-test01.gls</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>182</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>164</integer>
+			<integer>0</integer>
+		</dict>
+		<key>Test/DJThesis/SUACSEThesis-test01.gst</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Test/DJThesis/SUACSEThesis-test01.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>297</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>163</integer>
+			<key>firstVisibleLine</key>
+			<integer>287</integer>
 		</dict>
 		<key>Test/DJThesis/stypull.sh</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>32</integer>
+				<integer>62</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -315,35 +385,139 @@
 			<key>firstVisibleLine</key>
 			<integer>284</integer>
 		</dict>
-		<key>tmp/Templete/thesis-preamble.sty</key>
+		<key>tmp/Thesis/UoMThesis/nomencl.cfg</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>308</integer>
+				<integer>2</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>290</integer>
+			<integer>0</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>15</integer>
 				<key>line</key>
-				<integer>308</integer>
+				<integer>2</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<key>tmp/Thesis/UoMThesis/nomencl.ist</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>69</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>39</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>69</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>69</integer>
+			</dict>
+		</dict>
+		<key>tmp/Thesis/UoMThesis/nomencl.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>152</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>134</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
 				<integer>5</integer>
 				<key>line</key>
-				<integer>308</integer>
+				<integer>152</integer>
 			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>152</integer>
+			</dict>
+		</dict>
+		<key>tmp/Thesis/WillRobertson/Makefile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>2</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>20</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
+		</dict>
+		<key>tmp/nomencl/nomencl.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>tmp/pgf-2.00-cvs/tex/latex/pgf/doc/pgfmanual.code.tex</key>
 		<dict>
@@ -439,13 +613,20 @@
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
-		<string>Source/DJThesis/DJThesis01/DJCUEDthesisPSnPDF.cls</string>
+		<string>tmp/Thesis/UoMThesis/nomencl.cfg</string>
+		<string>Test/DJThesis/Makefile</string>
+		<string>Test/DJThesis/SUACSEThesis-test01.gls</string>
+		<string>tmp/Thesis/WillRobertson/Makefile</string>
+		<string>Test/DJThesis/SUACSEThesis-test01.gst</string>
+		<string>tmp/Thesis/UoMThesis/nomencl.sty</string>
+		<string>tmp/Thesis/UoMThesis/nomencl.ist</string>
+		<string>tmp/nomencl/nomencl.sty</string>
+		<string>Source/DJThesis/DJThesis01/DJThesisNomenclatureP.tex</string>
 		<string>tmp/Templete/pwasu.sty</string>
-		<string>tmp/Templete/thesis-preamble.sty</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{314, 4}, {966, 774}}</string>
+	<string>{{285, 10}, {966, 768}}</string>
 </dict>
 </plist>

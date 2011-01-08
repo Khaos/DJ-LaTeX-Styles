@@ -847,6 +847,7 @@
 	maxtocdepth/.code = {\maxtocdepth{#1}},
 	addtoctotoc/.is if = @suacse@toc@toc@show,
 	addtoctotoc/.default = true,
+	tocparskip/.code={\setlength{\cftparskip}{#1}},
 }
 
 %% * Define TOC-related option keys
@@ -1150,10 +1151,20 @@
 %% Chapter Styling
 
 %% * Declare switchers for the extra chapter styles
-\newif\ifsuacse@chapterstyle@daleifi
-\newif\ifsuacse@chapterstyle@GreyNum
-\newif\ifsuacse@chapterstyle@texblogtikz
-\newif\ifsuacse@chapterstyle@acsei
+\newif\if@suacse@chapterstyle@daleifi
+\newif\if@suacse@chapterstyle@GreyNum
+\newif\if@suacse@chapterstyle@texblogtikz
+\newif\if@suacse@chapterstyle@acsei
+\newif\if@suacse@chapterstyle@fncychap@bjornstrup
+
+%% * Clear chapter style
+\newcommand*{\@suacse@chapterstyle@clear}{%
+	\@suacse@chapterstyle@daleififalse
+	\@suacse@chapterstyle@GreyNumfalse
+	\@suacse@chapterstyle@texblogtikzfalse
+	\@suacse@chapterstyle@acseifalse
+	\@suacse@chapterstyle@fncychap@bjornstrupfalse
+}
 
 %% * Define chapter-style-related keys
 \pgfkeys{%
@@ -1161,31 +1172,25 @@
 	%% - Chapter style
 	chapterstyle/.code={\chapterstyle{#1}
 						\def\@suacse@chapter@style{#1}},
-	chapterstyle@daleifi/.is if=suacse@chapterstyle@daleifi,
-	chapterstyle@GreyNum/.is if=suacse@chapterstyle@GreyNum,
-	chapterstyle@texblogtikz/.is if=suacse@chapterstyle@texblogtikz,
-	chapterstyle@acsei/.is if=suacse@chapterstyle@acsei,
+	chapterstyle@daleifi/.is if=@suacse@chapterstyle@daleifi,
+	chapterstyle@GreyNum/.is if=@suacse@chapterstyle@GreyNum,
+	chapterstyle@texblogtikz/.is if=@suacse@chapterstyle@texblogtikz,
+	chapterstyle@acsei/.is if=@suacse@chapterstyle@acsei,
 	loadextrachapsty/.is choice,
-	loadextrachapsty/all/.style={chapterstyle@daleifi=true,%
-								 chapterstyle@GreyNum=true,%
-								 chapterstyle@texblogtikz=true,%
-								 chapterstyle@acsei=true},
-	loadextrachapsty/daleifi/.style={chapterstyle@daleifi=true,%
-									 chapterstyle@GreyNum=false,%
-									 chapterstyle@texblogtikz=false,%
-					 				 chapterstyle@acsei=false},
-	loadextrachapsty/GreyNum/.style={chapterstyle@daleifi=false,%
-									 chapterstyle@GreyNum=true,%
-									 chapterstyle@texblogtikz=false,%
-					 				 chapterstyle@acsei=false},
-	loadextrachapsty/texblogtikz/.style={chapterstyle@daleifi=false,%
-										 chapterstyle@GreyNum=false,%
-										 chapterstyle@texblogtikz=true,%
-					 					 chapterstyle@acsei=false},
-	loadextrachapsty/acsei/.style={chapterstyle@daleifi=false,%
-								   chapterstyle@GreyNum=false,%
-								   chapterstyle@texblogtikz=false,%
-					 			   chapterstyle@acsei=true},
+	loadextrachapsty/all/.code={\@suacse@chapterstyle@clear%
+								\@suacse@chapterstyle@daleifitrue%
+								\@suacse@chapterstyle@GreyNumtrue%
+								\@suacse@chapterstyle@texblogtikztrue%
+								\@suacse@chapterstyle@acseitrue%
+								\@suacse@chapterstyle@fncychap@bjornstruptrue},
+	loadextrachapsty/daleifi/.code={\@suacse@chapterstyle@clear%
+									\@suacse@chapterstyle@daleifitrue},
+	loadextrachapsty/GreyNum/.code={\@suacse@chapterstyle@clear%
+									\@suacse@chapterstyle@GreyNumtrue},
+	loadextrachapsty/texblogtikz/.code={\@suacse@chapterstyle@clear%
+										\@suacse@chapterstyle@texblogtikztrue},
+	loadextrachapsty/acsei/.code={\@suacse@chapterstyle@clear%
+					 			  \@suacse@chapterstyle@acseitrue},
 	loadextrachapsty/.append code={\suacse@loadextrachapsty},
 }
 
@@ -1194,13 +1199,30 @@
 	/suacseopt/.cd,
 	%% - Chapter style
 	chapterstyle/.code={\suacseset{chapterstyle=#1}},
+	%% - Chapter styles provided by the package 'fncychap'
+	fncychap/.is choice,
+	fncychap/bjornstrup/.prefix style={chapterstyle=default},
+	fncychap/bjornstrup/.code={\RequirePackage[Bjornstrup]{fncychap}
+							   \ChTitleVar{\raggedleft\LARGE\sffamily\bfseries}},
+}
+
+\newcommand{\@suacse@chapterhead@memoir}{%
+	\def\@makeschapterhead##1{%
+	  \chapterheadstart
+	  {%\parindent \z@ \raggedright \normalfont
+	   \parindent \z@ \memRTLraggedright \normalfont
+	   \printchapternonum
+	   \interlinepenalty\@M
+	   \printchaptertitle{##1}%
+	   \afterchaptertitle}%
+	}
 }
 
 %% ! Note that in the nested \newcommand command, #1 is the first argument
 %%   for the most outer one, and ##1 is the first argument for the next less
 %%   outer one.
 \newcommand{\suacse@loadextrachapsty}{%
-\ifsuacse@chapterstyle@daleifi
+\if@suacse@chapterstyle@daleifi
 	% \RequirePackage{color,calc,graphicx,soul}
 	% \RequirePackage{graphicx}
 	\definecolor{nicered}{rgb}{.647,.129,.149}
@@ -1234,7 +1256,7 @@
 	  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ####1\par}
 	}
 \fi
-\ifsuacse@chapterstyle@GreyNum
+\if@suacse@chapterstyle@GreyNum
 	% \RequirePackage{fix-cm}
 	% \RequirePackage{fourier}%................... Roman+math - Utopia
 	% \RequirePackage{color}
@@ -1266,7 +1288,7 @@
 \fi
 \newif\ifnumberedchap
 \numberedchaptrue
-\ifsuacse@chapterstyle@texblogtikz
+\if@suacse@chapterstyle@texblogtikz
 	% \newif\iftestii
 	% \testiitrue
 	% \iftestii
@@ -1327,7 +1349,7 @@
 	  }
 	}
 \fi
-\ifsuacse@chapterstyle@acsei
+\if@suacse@chapterstyle@acsei
 	% \RequirePackage{xcolor}  % Load Package 'xcolor'
 	% \RequirePackage{tikz}  % Load Package 'tikz'
 	% \providecommand\thesispage{\normalfont p.\,\thepage}
@@ -2048,11 +2070,129 @@
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-12-26 03:29:14 +0000 (Sun, 26 Dec 2010)
-%% Glossaries
+%% Glossary
+
+%% * Define switcher for glossary
+\newif\if@suacse@glossary@make
+\newif\if@suacse@glossary@style@twocolumn
 
 
+%% * Define keys for glossary
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Options for glossary
+	glossary/twocolumn/.is if=@suacse@glossary@style@twocolumn,
+	glossary/twocolumn/.default=true,
+	glossary/twocolumn/.append code={%
+						\if@suacse@glossary@style@twocolumn
+							\twocolglossary
+						\else
+							\onecolglossary
+						\fi},
+	glossary/column sep/.code={\setlength{\glossarycolsep}{#1}},
+	glossary/rule width/.code={\setlength{\glossaryrule}{#1}},
+	glossary/.style={\pgfkeys{%
+						/suacse/glossary/.cd,
+						#1}},
+	glossary/pagestyle/.code={#1},
+}
 
-%% END: Glossaries
+\gdef\suacseglossnumformat#1{\textbf{\hyperpage{#1}}}
+
+%%%%%% hypermarks in index
+%    from email from Lars Madsen
+\providecommand{\doidxbookmark}[1]{{\def\@tempa{Symbols}\def\@tempb{#1}%
+  \centering\bfseries \ifx\@tempa\@tempb @ \else #1\fi\vskip\onelineskip\par}}
+% extended to add booksmarks for each letter group.
+\renewcommand{\doidxbookmark}[1]{{\def\@tempa{Symbols}\def\@tempb{#1}%
+  \centering\bfseries \ifx\@tempa\@tempb %
+  Analphabetics 
+  \phantomsection%
+  \pdfbookmark[0]{Analphabetics}{Analphabetics-idx}%
+%  \label{AnalphabeticsAnalphabeticsAnalphabetics-idx}%
+  \else 
+  #1%
+  \phantomsection%
+  \pdfbookmark[1]{#1}{#1-idx}%
+%  \label{#1#1#1-idx}%
+  \fi%
+  \vskip\onelineskip\par}}
+
+%% * Define package option keys for glossary
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for glossary
+	makeglossary/.is if=@suacse@glossary@make,
+	makeglossary/.default=true,
+	makeglossary/.append code={%% * Make glossary file, glo%
+								\if@suacse@glossary@make
+									\makeglossary
+									\changeglossactual{?}
+									\changeglossnum{\thepage}
+									\changeglossnumformat{|suacseglossnumformat}%% for hyperlinks
+								\fi},
+}
+
+%% * Make glossary file, glo
+% \if@suacse@glossary@make
+% 	\makeglossary
+% \fi
+
+%% END: Glossary
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2011-01-06 16:54:01 +0000 (Thu,  6 Jan 2011)
+%% Index
+
+%% * Define switcher for glossary
+\newif\if@suacse@index@make
+
+%% * Define package option keys for index
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for index
+	makeindex/.is if=@suacse@index@make,
+	makeindex/.default=true,
+	makeindex/.append code={%% * Make index file, idx
+							\if@suacse@index@make
+								\makeindex
+							\fi},
+}
+
+%% * Make index file, idx
+% \if@suacse@index@make
+% 	\makeindex
+% \fi
+
+
+%% END: Index
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2011-01-06 17:27:46 +0000 (Thu,  6 Jan 2011)
+%% Lists
+
+%% * List of Figure
+\pgfkeys{%
+	/suacse/.cd,
+	lofparskip/.code={\setlength{\cftparskip}{#1}},
+}
+
+% \pgfkeys{%
+% 	/suacseopt/.cd,	
+% }
+
+
+%% * List of Table
+\pgfkeys{%
+	/suacse/.cd,
+	lotparskip/.code={\setlength{\cftparskip}{#1}},
+}
+
+%% END: Lists
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -2083,6 +2223,8 @@
 										  bibstyle=numeric,%
 										  citestyle=numeric-comp,}},
 	biblatexopt@acsei/.style={biblatexopt=\@suacse@biblatex@opt@acsei},
+	bibname/.code={\defbibheading{bibliography}[\bibname]{\chapter*{#1}}},
+	bibname/.initial={References},
 }
 
 %% * Commands required by key /suacse/hyperrefopt
@@ -2256,6 +2398,26 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2011-01-05 10:19:03 +0000 (Wed,  5 Jan 2011)
+%% PSTricks
+
+%% * Define switcher for PSTricks
+\newif\if@suacse@pstricks@fig
+
+%% * Define package option keys for PSTricks options
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for PSTricks
+	pstricks/figure/.is if=@suacse@pstricks@fig,
+	pstricks/figure/.default=false,
+	pstricks/figure/.initial=false,
+}
+
+%% END: PSTricks
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-12-25 16:55:49 +0000 (Sat, 25 Dec 2010)
 %% PGF/TikZ
 
@@ -2267,6 +2429,9 @@
 %%   - Command for switching on the externalising library
 %%   ! Use \@suacse@pgf@externalexpensivetrue to externalise expensive figures
 \def\@suacse@pgf@externalexpensivetrue{%
+	\if@suacse@pstricks@fig
+		\@suacse@pgf@externalexpensivefalse
+	\else
 	\usepgfplotslibrary{external}
 	\@suacse@pgf@externalexpensivetrue@orig
 	\tikzexternalize[
@@ -2284,6 +2449,7 @@
 	\tikzifexternalizing{%
 		\nofiles
 	}{}%
+	\fi
 }%
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -2292,7 +2458,10 @@
 %% A modified alias of \@suacse@pgf@externalexpensivetrue
 %% It allows to specify the main document.
 \newcommand{\@suacse@pgf@externalmainfile@set}[1]{%
-% \def\suacse@pgf@externalexpensivetrue#1{%
+	\if@suacse@pstricks@fig
+		\@suacse@pgf@externalexpensivefalse
+	\else
+	% \def\suacse@pgf@externalexpensivetrue#1{%
 	\usepgfplotslibrary{external}
 	\@suacse@pgf@externalexpensivetrue@orig
 	\tikzexternalize[
@@ -2310,6 +2479,7 @@
 	\tikzifexternalizing{%
 		\nofiles
 	}{}%
+	\fi
 }%
 %% END: A modified alias of \pgfplotsmanualexternalexpensivetrue
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -2359,12 +2529,13 @@
 }
 
 
-%% * Define package option keys for hyperref options
+%% * Define package option keys for PGF/TikZ options
 \pgfkeys{%
 	/suacseopt/.cd,
 	%% - Options for pgf externalisation
 	pgf/externalising/.is if=@suacse@pgf@externalexpensive,
 	pgf/externalising/.default=true,
+	% pgf/externalmainfile/.code={\if@suacse@pgf@externalexpensive\@suacse@pgf@externalmainfile@set{#1}\fi},
 	pgf/externalmainfile/.code={\@suacse@pgf@externalmainfile@set{#1}},
 }
 
