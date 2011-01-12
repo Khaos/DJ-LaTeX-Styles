@@ -18,6 +18,10 @@
 % \listfiles
 % \usepackage{etex}
 % \usepackage{comment}
+% \usepackage{etextools}
+\usepackage{etoolbox}
+\usepackage{letltxmacro}
+% \usepackage{etextools}
 
 \usepackage[%
 	spacing=onehalf,
@@ -33,6 +37,11 @@
 	% fncychap=bjornstrup,
 	makeglossary,
 	]{SUACSEThesis}
+
+% \let\myforlistloop\forlistloop 
+% \usepackage{etextools} 
+% \let\forlistloop\myforlistloop 
+% Save and restore etoolbox's definition of \forlistloop
 
 \suacseset{%
 	% pagelayout=acseii,
@@ -156,6 +165,9 @@
 
 \usepackage{fonttable}
 
+% \include{texapi}
+% \usepackage{etextools}
+
 % \usepackage[Bjornstrup]{fncychap}
 
 \author{Dazhi Jiang}
@@ -269,7 +281,25 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \listoftables
 \clearpage
 
+% \suacseset{%
+% 	glossary/twocolumn,
+% 	glossary/name=Nomenclature,
+% }
+\suacseset{%
+	glossary={twocolumn, name={Nomenclature}, rule width=0.5pt,%
+		description={\textit{#1}},%
+		% number={\textbf{#1}},%
+		number format={\hyperpage{#1}},%
+		group heading format={\centering\bfseries},
+	},
+}
+% \renewcommand*{\glossaryname}{Nomenclature}
+
+
+
 \printglossary
+
+\clearpage
 
 \pagenumbering{arabic}
 
@@ -292,12 +322,46 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \section{Glossary} % (fold)
 \label{sec:glossary}
 
+\begin{itemize}
+	\item Constants, Variables \& Functions (c)
+	\item Operators (e)
+	\item Notation (n)
+	\item Acronyms/Terminology (t)
+\end{itemize}
+
 \begin{equation}
 	F=mg
 \end{equation}
-\glossary(xF){$F$}{Force}
-\glossary(m){$m$}{Mass}
-\glossary(g){$g$}{Gravity Constant}
+
+\glossary(zF){$F$}{Force}
+
+\glossary(cF){$F$}{Force}
+\glossary(cm){$m$}{Mass}
+\glossary(cg){$g$}{Gravity Constant}
+\glossary(clF){$F$}{A long long long long long long long long long long long long long long long long long long description of Force}
+\glossary(clm){$m$}{A long long long long long long long long long long long long long long long long long long description of Mass}
+\glossary(clg){$g$}{A long long long long long long long long long long long long long long long long long long description of Gravity Constant}
+
+\glossary(eF){$F$}{Force}
+\glossary(em){$m$}{Mass}
+\glossary(eg){$g$}{Gravity Constant}
+\glossary(elF){$F$}{A long long long long long long long long long long long long long long long long long long description of Force}
+\glossary(elm){$m$}{A long long long long long long long long long long long long long long long long long long description of Mass}
+\glossary(elg){$g$}{A long long long long long long long long long long long long long long long long long long description of Gravity Constant}
+
+\glossary(nF){$F$}{Force}
+\glossary(nm){$m$}{Mass}
+\glossary(ng){$g$}{Gravity Constant}
+\glossary(nlF){$F$}{A long long long long long long long long long long long long long long long long long long description of Force}
+\glossary(nlm){$m$}{A long long long long long long long long long long long long long long long long long long description of Mass}
+\glossary(nlg){$g$}{A long long long long long long long long long long long long long long long long long long description of Gravity Constant}
+
+\glossary(tF){$F$}{Force}
+\glossary(tm){$m$}{Mass}
+\glossary(tg){$g$}{Gravity Constant}
+\glossary(tlF){$F$}{A long long long long long long long long long long long long long long long long long long description of Force}
+\glossary(tlm){$m$}{A long long long long long long long long long long long long long long long long long long description of Mass}
+\glossary(tlg){$g$}{A long long long long long long long long long long long long long long long long long long description of Gravity Constant}
 
 % \newcommand{\testcmd}[1]{\textbf{#1}}
 % % \renewcommand{\memglonum}[1]{\textbf{#1}}
@@ -330,6 +394,16 @@ y570123456789, 1977 $y570123456789$
 \spdf
 
 \scdf
+
+% \newfornoempty\fooabc(#1,#2){[#1/#2]} [Input exhausted.]
+% \edef\bardef{\fooabc{(a,b)(c,d)(,e)(f,)}} 
+% \meaning\bardef
+
+\def\cfrac#1,#2;{\if\relax#2\relax #1\else\frac{1}{#1+\expandafter\cfrac#2;}\fi}
+
+\[\cfrac a,23,c,24,12,49,w,3,;\]
+\[\cfrac{a},{23},{c},{24},{12},{49,\quad {\color{red} abc}},{w},{3},;\]
+% \[\cfrac a,23,c,24,12,49,w,3;\]
 
 $\Log{5}$
 % \Style{DSymb={\mathrm d}}

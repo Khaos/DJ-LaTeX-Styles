@@ -2091,32 +2091,185 @@
 						\fi},
 	glossary/column sep/.code={\setlength{\glossarycolsep}{#1}},
 	glossary/rule width/.code={\setlength{\glossaryrule}{#1}},
-	glossary/.style={\pgfkeys{%
-						/suacse/glossary/.cd,
-						#1}},
+	glossary/name/.code={\renewcommand*{\glossaryname}{#1}},
+	glossary/term/.code={\renewcommand{\memgloterm}[1]{#1}},
+	glossary/description/.code={\renewcommand{\memglodesc}[1]{#1}},
+	glossary/ref/.code={\renewcommand{\memgloref}[1]{#1}},
+	glossary/number/.code={\renewcommand{\memglonum}[1]{#1}},
+	glossary/number format/.code={\renewcommand{\suacseglossnumformat}[1]{#1}},
+	glossary/group heading format/.code={\def\@suacse@glossary@heading@format{#1}},
+	% glossary/group heading/add/.code 2 args={%
+	% 	\show\@suacse@glossary@heading@group@oldname
+	% 	\edef\@suacse@glossary@heading@group@oldname{%
+	% 		\@suacse@glossary@heading@group@oldname @old}
+	% 	\show\@suacse@glossary@heading@group@oldname
+	% 	\expandafter\expandafter\expandafter\let%
+	% 		\@nameuse{\@suacse@glossary@heading@group@oldname}%
+	% 		\@suacse@glossary@heading@group
+	% 	\renewcommand{\@suacse@glossary@heading@group}[1]{%
+	% 		\@nameuse{\@suacse@glossary@heading@group@oldname}{##1}
+	% 		\@suacse@glossary@heading@group@mask{##1}{#1}{#2}
+	% 	}\show\@suacse@glossary@heading@group},
+	glossary/group heading/add/.code 2 args={%
+		\@suacse@glossary@heading@group@add{#1}{#2}},
+	glossary/.code={\pgfkeys{/suacse/glossary/.cd, #1}},
 	glossary/pagestyle/.code={#1},
 }
 
-\gdef\suacseglossnumformat#1{\textbf{\hyperpage{#1}}}
+% {\cftKfont {\cftKname \cftKpresnum SNUM\cftKaftersnum\hfil} \cftKaftersnumb TITLE} {\cftKleader}{\cftKformatpnum{PAGE}}\cftKafterpnum\par
+% \gdef\suacseglossnumformat#1{\textbf{\hyperpage{#1}}}
+% \def\suacseglossnumformat#1{#1}
+\newcommand{\suacseglossnumformat}[1]{#1}
+
+% %%%%%% hypermarks in index
+% %    from email from Lars Madsen
+% \providecommand{\doglobookmark}[1]{{\def\@tempa{Symbols}\def\@tempb{#1}%
+%   \centering\bfseries \ifx\@tempa\@tempb @ \else #1\fi\vskip\onelineskip\par}}
+% % extended to add booksmarks for each letter group.
+% \renewcommand{\doglobookmark}[1]{{\def\@tempa{Symbols}\def\@tempb{#1}%
+%   \centering\bfseries \ifx\@tempa\@tempb %
+%   Analphabetics 
+%   \phantomsection%
+%   \pdfbookmark[0]{Analphabetics}{Analphabetics-glo}%
+% %  \label{AnalphabeticsAnalphabeticsAnalphabetics-idx}%
+%   \else 
+%   #1%
+%   \phantomsection%
+%   \pdfbookmark[1]{#1}{#1-glo}%
+% %  \label{#1#1#1-idx}%
+%   \fi%
+%   \vskip\onelineskip\par}}
 
 %%%%%% hypermarks in index
 %    from email from Lars Madsen
-\providecommand{\doidxbookmark}[1]{{\def\@tempa{Symbols}\def\@tempb{#1}%
-  \centering\bfseries \ifx\@tempa\@tempb @ \else #1\fi\vskip\onelineskip\par}}
-% extended to add booksmarks for each letter group.
-\renewcommand{\doidxbookmark}[1]{{\def\@tempa{Symbols}\def\@tempb{#1}%
-  \centering\bfseries \ifx\@tempa\@tempb %
-  Analphabetics 
-  \phantomsection%
-  \pdfbookmark[0]{Analphabetics}{Analphabetics-idx}%
-%  \label{AnalphabeticsAnalphabeticsAnalphabetics-idx}%
-  \else 
-  #1%
-  \phantomsection%
-  \pdfbookmark[1]{#1}{#1-idx}%
-%  \label{#1#1#1-idx}%
-  \fi%
-  \vskip\onelineskip\par}}
+\providecommand{\doglobookmark}[1]{%
+	{\def\@tempa{Symbols}\def\@tempb{#1}%
+	\centering\bfseries 
+	\ifx\@tempa\@tempb @ \else #1\fi\vskip\onelineskip\par}}
+
+%% * Define the formats of the glossary group headings
+\let\@suacse@glossary@heading@format\relax
+
+%% * Define the glossary group headings according their keys
+\newcommand{\@suacse@glossary@heading@group@mask}[3]{%
+	\nametest{#1}{#2}
+	\ifsamename
+		\def\@suacse@glossary@heading{#3}
+		\samenamefalse
+	\fi
+	\@ifnextchar\bgroup
+		{\@suacse@glossary@heading@group@mask{#1}}
+		{\relax}
+}
+
+\newcommand{\@suacse@glossary@heading@group}[1]{%
+	\def\@suacse@glossary@heading{#1}
+}
+
+%% * Redefine the glossary headings as desired.
+\renewcommand{\@suacse@glossary@heading@group}[1]{%
+	% \def\@suacse@glossary@heading{Miscellaneous}
+	\@suacse@glossary@heading@group@mask{#1}{C}{Constants, Variables \& Functions}%
+											{E}{Operators}%
+											{N}{Notation}%
+											{T}{Acronyms/Terminology}%
+											{Z}{{Miscellaneous}}
+}
+
+
+% \edef\@suacse@glossary@heading@group@oldname{@suacse@glossary@heading@group}
+
+% \newcommand{\@suacse@glossary@heading@group@add}[2]{%
+% 	% \show\@suacse@glossary@heading@group@oldname
+% 	\edef\@suacse@glossary@heading@group@oldname{%
+% 		\@suacse@glossary@heading@group@oldname @old}
+% 	% \show\@suacse@glossary@heading@group@oldname
+% 	\expandafter\expandafter\expandafter\let\@nameuse{\@suacse@glossary@heading@group@oldname}=\@suacse@glossary@heading@group
+% 	% \@namedef{\@suacse@glossary@heading@group@oldname}##1{\@suacse@glossary@heading@group{##1}}
+% 	\show\@suacse@glossary@heading@group
+% 	\renewcommand{\@suacse@glossary@heading@group}[1]{%
+% 		\@nameuse{\@suacse@glossary@heading@group@oldname}{##1}
+% 		\@suacse@glossary@heading@group@mask{##1}{#1}{#2}
+% 	}
+% 	% \show\@suacse@glossary@heading@group
+% }
+
+% \@suacse@glossary@heading@group@add{E}{Operators}
+% \show\@suacse@glossary@heading@group@old
+% \@suacse@glossary@heading@group@add{N}{Notation}
+% \show\@suacse@glossary@heading@group@old
+% \show\@suacse@glossary@heading@group@old@old
+
+% % \newcommand{\@suacse@glossary@heading@group@old}[1]{\@suacse@glossary@heading@group{#1}}
+% \let\@suacse@glossary@heading@group@old\@suacse@glossary@heading@group
+% % \edef\@suacse@glossary@heading@group@old[#1]{\@suacse@glossary@heading@group{#1}}
+% % \edef\@suacse@glossary@heading@group@old#1{\@suacse@glossary@heading@group{#1}}
+% 
+% \edef\@suacse@test@tmpa{@suacse@glossary@heading@group}
+% \edef\@suacse@test@tmpa{\@suacse@test@tmpa @old}
+% \expandafter\expandafter\expandafter\let\@nameuse{\@suacse@test@tmpa}\@suacse@glossary@heading@group
+
+% \renewcommand{\@suacse@glossary@heading@group}[1]{%
+% 	\@nameuse{\@suacse@test@tmpa}{#1}
+% 	\@suacse@glossary@heading@group@mask{#1}{E}{Operators}
+% }
+% 
+% % \def\@suacse@glossary@heading@group@old{\@empty}
+% % \def\@suacse@test@tmpa{@suacse@glossary@heading@group@old@old}
+% \edef\@suacse@test@tmpa{@suacse@glossary@heading@group}
+% \edef\@suacse@test@tmpa{\@suacse@test@tmpa @old}
+% % \def\@suacse@test@tmpb{}
+% \let\@suacse@test@tmpb=\@suacse@test@tmpa
+% \def\@suacse@test@tmpa\expandafter{\@suacse@test@tmpb @old}
+% \let\@suacse@test@tmpb=\@suacse@test@tmpa
+% % \def\@suacse@test@tmpa{\@suacse@test@tmpb\ignorespaces @old}
+% % \show\@suacse@test@tmpa
+% \expandafter\expandafter\expandafter\let\@nameuse{\@suacse@test@tmpa}\@suacse@glossary@heading@group
+% \show\@suacse@test@tmpa
+% \show\@suacse@glossary@heading@group@old@old
+% % \renewcommand{\@suacse@glossary@heading@group@old}[1]{\@suacse@glossary@heading@group{#1}}
+% % \def\@suacse@glossary@heading@group@old@old[#1]{\@suacse@glossary@heading@group{#1}}
+% % \edef\@suacse@glossary@heading@group@old#1{\@suacse@glossary@heading@group{#1}}
+% \renewcommand{\@suacse@glossary@heading@group}[1]{%
+% 	% \@nameuse{\@suacse@test@tmpa}{#1}
+% 	\@suacse@glossary@heading@group@old@old{#1}
+% 	\@suacse@glossary@heading@group@mask{#1}{N}{Notation}
+% }
+% % \renewcommand{\@suacse@glossary@heading@group}[1]{%
+% % 	\@suacse@glossary@heading@group@old{#1}
+% % 	\@suacse@glossary@heading@group@mask{#1}{E}{Operators}
+% % 	\@suacse@glossary@heading@group@mask{#1}{N}{Notation}
+% % }
+
+
+
+%% extended to add booksmarks for each letter group.
+\renewcommand{\doglobookmark}[1]{%
+	{\def\@tempa{Symbols}\def\@tempb{#1}%
+	{\@suacse@glossary@heading@format %
+	% \centering\bfseries %
+	\ifx\@tempa\@tempb %
+		Analphabetics 
+		\phantomsection%
+		\pdfbookmark[0]{Analphabetics}{Analphabetics-glo}%
+		% \label{AnalphabeticsAnalphabeticsAnalphabetics-idx}%
+	\else 
+		\@suacse@glossary@heading@group{#1}
+		% \ifthenelse{\equal{#1}{C}}{\def\@suacse@glossary@heading{Constants, Variables \& Functions}}{%
+		% 		\ifthenelse{\equal{#1}{E}}{\def\@suacse@glossary@heading{Operators}}{%
+		% 		\ifthenelse{\equal{#1}{N}}{\def\@suacse@glossary@heading{Notation}}{%
+		% 		\ifthenelse{\equal{#1}{T}}{\def\@suacse@glossary@heading{Acronyms/Terminology}}%
+		% 			{\def\@suacse@glossary@heading{Others}}}}}
+		% #1%
+		\@suacse@glossary@heading%
+		\phantomsection%
+		\pdfbookmark[1]{\@suacse@glossary@heading}{\@suacse@glossary@heading}%
+		% \label{#1#1#1-idx}%
+	\fi%
+	\vskip\onelineskip\par
+	}
+	}
+}
 
 %% * Define package option keys for glossary
 \pgfkeys{%
@@ -2132,6 +2285,15 @@
 									\changeglossnumformat{|suacseglossnumformat}%% for hyperlinks
 								\fi},
 }
+
+
+% \renewcommand{\glossitem}[4]{%
+% }
+%% * \glossitem{<term>}{<desc>}{<ref>}{<num>}
+%%   - #1: term
+%%   - #2: description
+%%   - #3: reference
+%%   - #4: number
 
 %% * Make glossary file, glo
 % \if@suacse@glossary@make

@@ -12,10 +12,15 @@ show: $(main).pdf
 
 thesis: $(main).pdf
 
-glotest:
-	pdflatex -shell-escape -interaction=nonstopmode -file-line-error $(main); \
+bibtest:
+	pdflatex -shell-escape -file-line-error $(main); \
 	makeindex -s $(main).gst -o $(main).gls $(main).glo; \
-	pdflatex -shell-escape -interaction=nonstopmode -file-line-error $(main)
+	pdflatex -shell-escape -file-line-error $(main)
+
+glotest:
+	pdflatex -shell-escape -file-line-error $(main); \
+	makeindex -s $(main).gst -o $(main).gls $(main).glo; \
+	pdflatex -shell-escape -file-line-error $(main)
 
 clean:
 	-rm -f *.pdf *.log *.aux *.bib *.figlist *.glo *.lof *.lot *.xml *.gz *.toc
