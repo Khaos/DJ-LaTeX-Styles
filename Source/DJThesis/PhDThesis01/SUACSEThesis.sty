@@ -2363,10 +2363,13 @@
 %% Bibliography
 
 %% * Define keys for biblatex options
-% \pgfkeys{%
-% 	/suacse/.cd,
-% 	%% - Options for biblatex
-% }
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Options for biblatex
+	bibname/.code={\defbibheading{bibliography}[\bibname]{%
+					\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}},
+	% bibname/.initial={References},
+}
 
 %% * Define package option keys for hyperref options
 \pgfkeys{%
@@ -2385,8 +2388,7 @@
 										  bibstyle=numeric,%
 										  citestyle=numeric-comp,}},
 	biblatexopt@acsei/.style={biblatexopt=\@suacse@biblatex@opt@acsei},
-	bibname/.code={\defbibheading{bibliography}[\bibname]{\chapter*{#1}}},
-	bibname/.initial={References},
+	% bibname/.code={\renewcommand\bibname{#1}},
 }
 
 %% * Commands required by key /suacse/hyperrefopt
@@ -2424,7 +2426,9 @@
 							    firstinits=true,%
 							    sorting=nyt,%
 							    bibstyle=numeric,%
-							    citestyle=numeric-comp,}
+							    citestyle=numeric-comp,%
+							    backend=biber,%
+}
 
 
 %% END: Bibliography
@@ -2814,8 +2818,8 @@
 %% * Load biblatex
 \RequirePackage[\@suacse@biblatex@option]{biblatex}
 \def\bibfont{\small}
-\bibliography{journals,phd,ARK}
-\renewcommand\bibname{References}
+% \bibliography{journals,phd,ARK}
+% \renewcommand\bibname{References}
 
 %% !!! Now we are safe to load hyperref
 \RequirePackage[\@suacse@hyperref@option]{hyperref}

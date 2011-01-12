@@ -12,9 +12,14 @@ show: $(main).pdf
 
 thesis: $(main).pdf
 
-bibtest:
+bibtextest:
 	pdflatex -shell-escape -file-line-error $(main); \
-	makeindex -s $(main).gst -o $(main).gls $(main).glo; \
+	bibtex $(main); \
+	pdflatex -shell-escape -file-line-error $(main)
+
+bibertest:
+	pdflatex -shell-escape -file-line-error $(main); \
+	biber $(main); \
 	pdflatex -shell-escape -file-line-error $(main)
 
 glotest:
@@ -22,8 +27,11 @@ glotest:
 	makeindex -s $(main).gst -o $(main).gls $(main).glo; \
 	pdflatex -shell-escape -file-line-error $(main)
 
+pdflatexonly:
+	pdflatex -shell-escape -file-line-error $(main)
+
 clean:
-	-rm -f *.pdf *.log *.aux *.bib *.figlist *.glo *.lof *.lot *.xml *.gz *.toc
+	-rm -f *.pdf *.log *.aux *.bbl *.bcf *.blg *.figlist *.glo *.gls *.lof *.lot *.xml *.gz *.toc
 
 # $(main).pdf: $(main).tex $(addsuffix .tex,$(chapters)) $(support)
 # 	pdflatex --shell-escape $(main); \

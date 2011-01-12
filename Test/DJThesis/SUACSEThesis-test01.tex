@@ -30,13 +30,25 @@
 	% hyperrefopt=wspr,
 	% hyperrefopt=djreport,
 	hyperrefopt=acsei,
-	biblatexopt=wspr,
+	% biblatexopt=wspr,
 	biblatexopt=acsei,
+	% bibname=References,
 	% pgf/externalising,
 	pgf/externalmainfile=SUACSEThesis-test01,
 	% fncychap=bjornstrup,
 	makeglossary,
 	]{SUACSEThesis}
+
+\suacseset{%
+	bibname=References,
+}
+
+\bibliography{biblatextest}% is part of TeXLive 
+
+% \renewcommand\bibname{References}
+% \defbibheading{bibliography}[\bibname]{%
+% 	\chapter*{References}%
+% 	\markboth{#1}{#1}}
 
 % \let\myforlistloop\forlistloop 
 % \usepackage{etextools} 
@@ -175,6 +187,8 @@
 \title{Optimal Data-Mining Methodologies\\[10pt]
 	for Power Plant Anomaly Detection}
 \place{Sheffield}
+
+
 \begin{document}
 
 % \pgfkeys{/suacseopt/pagelayout=acseii}
@@ -318,6 +332,14 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\section{Bibliography} % (fold)
+\label{sec:bibliography}
+
+foo~\citeauthor{companion}. and \cite{companion}
+
+% section bibliography (end)
 
 \section{Glossary} % (fold)
 \label{sec:glossary}
@@ -821,9 +843,11 @@ From the table, charater `0' is defined as ``'060''. So we can redefine the math
 
 % chapter appendix_a (end)
 
-\backmatter
+% \backmatter
 
 \printbibliography
+% \addcontentsline{toc}{chapter}{References}
+% \addtocontents{toc}{References}
 
 
 \end{document}
