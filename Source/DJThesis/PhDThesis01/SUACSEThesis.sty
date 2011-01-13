@@ -1155,6 +1155,7 @@
 \newif\if@suacse@chapterstyle@GreyNum
 \newif\if@suacse@chapterstyle@texblogtikz
 \newif\if@suacse@chapterstyle@acsei
+\newif\if@suacse@chapterstyle@acseii
 \newif\if@suacse@chapterstyle@fncychap@bjornstrup
 
 %% * Clear chapter style
@@ -1163,6 +1164,7 @@
 	\@suacse@chapterstyle@GreyNumfalse
 	\@suacse@chapterstyle@texblogtikzfalse
 	\@suacse@chapterstyle@acseifalse
+	\@suacse@chapterstyle@acseiifalse
 	\@suacse@chapterstyle@fncychap@bjornstrupfalse
 }
 
@@ -1182,6 +1184,7 @@
 								\@suacse@chapterstyle@GreyNumtrue%
 								\@suacse@chapterstyle@texblogtikztrue%
 								\@suacse@chapterstyle@acseitrue%
+								\@suacse@chapterstyle@acseiitrue%
 								\@suacse@chapterstyle@fncychap@bjornstruptrue},
 	loadextrachapsty/daleifi/.code={\@suacse@chapterstyle@clear%
 									\@suacse@chapterstyle@daleifitrue},
@@ -1191,6 +1194,8 @@
 										\@suacse@chapterstyle@texblogtikztrue},
 	loadextrachapsty/acsei/.code={\@suacse@chapterstyle@clear%
 					 			  \@suacse@chapterstyle@acseitrue},
+	loadextrachapsty/acseii/.code={\@suacse@chapterstyle@clear%
+					 			  \@suacse@chapterstyle@acseiitrue},
 	loadextrachapsty/.append code={\suacse@loadextrachapsty},
 }
 
@@ -1247,6 +1252,7 @@
 	    \makebox[1cm][r]{\usebox\feline@chapter}%
 	  }}
 	\makechapterstyle{daleifi}{
+	  \chapterstyle{default}
 	  \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
 	  \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{nicered}}
 	  \renewcommand\chapternamenum{}
@@ -1265,6 +1271,7 @@
 	      \usefont{\encodingdefault}{\rmdefault}{b}{n}%
 	      \fontsize{60}{80}\selectfont\color{ChapGrey}}
 	\makechapterstyle{GreyNum}{%
+	  \chapterstyle{default}
 	  \renewcommand{\chapnamefont}{\large\sffamily\bfseries\itshape}
 	  \renewcommand{\chapnumfont}{\LargeFont}
 	  \renewcommand{\chaptitlefont}{\Huge\sffamily\bfseries\itshape}
@@ -1331,6 +1338,7 @@
 	% \newif\ifnumberedchap
 	% \numberedchaptrue
 	\makechapterstyle{texblogtikz}{
+	  \chapterstyle{default}
 	  \renewcommand\chapnamefont{\normalfont\sffamily\Huge\bfseries}
 	  \renewcommand\chapnumfont{\normalfont\sffamily\Huge\bfseries}
 	  \renewcommand\chaptitlefont{\normalfont\sffamily\Huge\bfseries}
@@ -1360,6 +1368,7 @@
 	% \setlength{\headheight}{\baselineskip}
 	% \setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
 	\makechapterstyle{acsei}{%
+	  \chapterstyle{default}
 	  \setlength\beforechapskip{0pt}
 	  \setlength\midchapskip{0pt}
 	  \setlength\afterchapskip{40pt}
@@ -1383,6 +1392,50 @@
 		% \makeoddfoot{plain}{}{}{\thepage}
 		% 	  \fi
 	}
+\fi
+\if@suacse@chapterstyle@acseii
+	\gdef\@suacse@chapterstyle@acseii@chapterrule{\hrule}
+	\makechapterstyle{acseii}{% requires graphicx package
+	  \chapterstyle{default}
+	  \renewcommand{\chapterheadstart}{%
+	    \if@mainmatter%
+	      \vspace*{\beforechapskip}%
+	    \else%
+	      \vspace*{0.1\beforechapskip}
+	    \fi
+	}
+	  \renewcommand*{\chapnamefont}{%
+	    \normalfont\Large\scshape%
+	    \raggedleft}
+	    % \if@mainmatter\raggedleft\fi}
+	  \renewcommand*{\chaptitlefont}{%
+	    \normalfont\Huge\bfseries\sffamily%
+	    \raggedleft}
+	    % \if@mainmatter\raggedleft\fi}
+	  \renewcommand*{\chapternamenum}{}
+	  \renewcommand*{\printchapternum}{%
+	    \makebox[0pt][l]{\hspace{0.4em}%
+	      \resizebox{!}{4ex}{%
+	        \chapnamefont\bfseries\sffamily\thechapter}%
+	    }%
+	    \gdef\@suacse@chapterstyle@acseii@chapterrule{\hrule}
+	  }%
+	  \renewcommand*{\printchapternonum}{%
+	    \chapnamefont \phantom{\printchaptername \chapternamenum%
+	      \makebox[0pt][l]{\hspace{0.4em}%
+	        \resizebox{!}{4ex}{%
+	          \chapnamefont\bfseries\sffamily 1}%
+	      }%
+	    \gdef\@suacse@chapterstyle@acseii@chapterrule{\relax}
+	    }%
+	    \afterchapternum %
+	  }%
+	  \renewcommand*{\afterchapternum}{%
+	    \par\hspace{1.5cm}%
+	    % \if@mainmatter\@ifstar{\relax}{\hrule}\fi%
+	    \if@mainmatter\@suacse@chapterstyle@acseii@chapterrule\fi%
+	    \vskip\midchapskip}}
+	    % \par\hspace{1.5cm}\hrule\vskip\midchapskip}}
 \fi
 }
 
@@ -2362,12 +2415,16 @@
 %% Created by Dazhi Jiang, 2010-11-16 16:12:36 +0000 (Tue, 16 Nov 2010)
 %% Bibliography
 
+\newif\if@suacse@mainmatter
+
 %% * Define keys for biblatex options
 \pgfkeys{%
 	/suacse/.cd,
 	%% - Options for biblatex
 	bibname/.code={\defbibheading{bibliography}[\bibname]{%
-					\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}},
+				   \if@mainmatter\@suacse@mainmattertrue\@mainmatterfalse\fi%
+				   \chapter*{#1}\addcontentsline{toc}{chapter}{#1}}%
+				   \if@suacse@mainmatter\@mainmattertrue\fi},
 	% bibname/.initial={References},
 }
 

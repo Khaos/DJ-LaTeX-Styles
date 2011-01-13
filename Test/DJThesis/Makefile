@@ -33,6 +33,19 @@ pdflatexonly:
 clean:
 	-rm -f *.pdf *.log *.aux *.bbl *.bcf *.blg *.figlist *.glo *.gls *.lof *.lot *.xml *.gz *.toc
 
-# $(main).pdf: $(main).tex $(addsuffix .tex,$(chapters)) $(support)
-# 	pdflatex --shell-escape $(main); \
-# 	bibtex $(main)
+$(main).pdf: $(main).tex $(support)
+	pdflatex -shell-escape -file-line-error $(main); \
+	biber $(main); \
+	makeindex -s $(main).gst -o $(main).gls $(main).glo; \
+	pdflatex -shell-escape -file-line-error $(main); \
+	pdflatex -shell-escape -file-line-error $(main)
+
+ch-%.pdf: %.tex ch-%.bbl ch-%.aux $(support)
+	pdflatex --shell-escape --jobname=ch-$* \
+	  "\includeonly{$*}\input{$(main)}"
+
+ch-%.bbl: $(main).bbl
+	cp $(main).bbl ch-$*.bbl
+
+ch-%.aux: $(main).aux
+	cp $(main).aux ch-$*.aux

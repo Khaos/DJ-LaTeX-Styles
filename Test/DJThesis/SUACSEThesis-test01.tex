@@ -74,7 +74,8 @@
 
 % \suacseset{chapterstyle=texblogtikz}
 % \suacseset{chapterstyle=acsei}
-\suacseset{chapterstyle=madsen}
+% \suacseset{chapterstyle=madsen}
+\suacseset{chapterstyle=acseii}
 
 
 % \suacseset{%
@@ -234,7 +235,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+
 \begin{center}
+	{~\relax}
 	\vfill
 	\begin{tikzpicture}[]
 		\node at (0,0) {\includegraphics[width=\textwidth]{Pi-black}};
@@ -300,7 +303,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 % 	glossary/name=Nomenclature,
 % }
 \suacseset{%
-	glossary={twocolumn, name={Nomenclature}, rule width=0.5pt,%
+	glossary={twocolumn, name={Nomenclature}, %
+		% rule width=0.5pt,%
 		description={\textit{#1}},%
 		% number={\textbf{#1}},%
 		number format={\hyperpage{#1}},%
@@ -319,6 +323,20 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 %% Main body
 \mainmatter
+
+\chapter*{The First Starred Chapter} % (fold)
+\label{chap:the_first_starred_chapter}
+
+% chapter the_first_starred_chapter (end)
+
+\chapter*{The Second Starred Chapter} % (fold)
+\label{chap:the_second_starred_chapter}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% chapter the_second_starred_chapter (end)
 
 \chapter[Test TOC][Test Header]{Test} % (fold)
 \label{chap:test}
@@ -661,6 +679,16 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 % chapter a_long_madsen_chapter_style (end)
 
+\suacseset{chapterstyle=acseii}
+\chapter{An `acseii--madsen' Chapter Style} % (fold)
+\label{chap:a_acseii_chapter_style}
+
+% chapter a_acseii_chapter_style (end)
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `acseii--madsen' Chapter Style} % (fold)
+\label{chap:a_long_acseii_chapter_style}
+
+% chapter a_long_acsei_chapter_style (end)
 
 \suacseset{chapterstyle=pedersen}
 \chapter{A `pedersen' Chapter Style} % (fold)
@@ -732,7 +760,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 
 % \chapterstyle{default}
-\suacseset{chapterstyle=madsen}
+% \suacseset{chapterstyle=madsen}
+\suacseset{chapterstyle=acseii}
 \chapter{Introduction}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -843,7 +872,11 @@ From the table, charater `0' is defined as ``'060''. So we can redefine the math
 
 % chapter appendix_a (end)
 
-% \backmatter
+\backmatter
+
+% \suacseset{%
+% 	bibname=References,
+% }
 
 \printbibliography
 % \addcontentsline{toc}{chapter}{References}
