@@ -859,7 +859,8 @@
 \newif\if@shorttoc
 
 %%   - Pre-defined command
-%%     Hide content line in short toc
+%%     - Hide content line in short toc
+%%       !!! DO NOT PUT ANY \clearpage inside of this environment.
 \newenvironment {hideshorttoc} {
   \addtocontents{toc}{ \protect\if@shorttoc \protect\else }
 }{
@@ -1125,20 +1126,24 @@
 
 }
 
-%% * Show TOC
-\newcommand{\printtoc}{%
-%%   - Setup short TOC at the begin
-\setupshorttoc
-\ifsuacse@toc@short@show
+%% * Print TOC
+%%   - Short TOC
+\newcommand{\printshorttoc}{%
+	\setupshorttoc
+	\ifsuacse@toc@short@show
+		\if@suacse@toc@toc@show \tableofcontents \else \tableofcontents* \fi
+		% \clearpage
+	\fi
+}
+\newcommand{\printmaintoc}{%
+	%% - Setup short TOC at the begin
+	\setupshorttoc
+	%% - Setup main TOC, note that some commands are defined in the short toc
+	%%   so that don't forget to load it first.
+	\setupparasubsecs
+	\setupmaintoc
 	\if@suacse@toc@toc@show \tableofcontents \else \tableofcontents* \fi
-	\clearpage
-\fi
-%%   - Setup main TOC, note that some commands are defined in the short toc
-%%     so that don't forget to load it first.
-\setupparasubsecs
-\setupmaintoc
-\if@suacse@toc@toc@show \tableofcontents \else \tableofcontents* \fi
-\clearpage
+	% \clearpage
 }
 
 
@@ -2139,6 +2144,7 @@
 	glossary/twocolumn/.append code={%
 						\if@suacse@glossary@style@twocolumn
 							\twocolglossary
+							\show\columnwidth
 						\else
 							\onecolglossary
 						\fi},
@@ -2625,15 +2631,35 @@
 %% PSTricks
 
 %% * Define switcher for PSTricks
+\newif\if@suacse@pstricks@load
 \newif\if@suacse@pstricks@fig
 
 %% * Define package option keys for PSTricks options
 \pgfkeys{%
 	/suacseopt/.cd,
 	%% - Options for PSTricks
+	pstricks/.is if=@suacse@pstricks@load,
+	pstricks/.default=false,
+	pstricks/.initial=false,
+	pstricks/.append code={\@suacse@pstricks@load},
 	pstricks/figure/.is if=@suacse@pstricks@fig,
 	pstricks/figure/.default=false,
 	pstricks/figure/.initial=false,
+	pstricks/package/.code={#1},
+}
+
+\newcommand{\@suacse@pstricks@load}{%
+	\if@suacse@pstricks@load
+		\RequirePackage{pstricks}
+		\RequirePackage{pst-node}
+		\RequirePackage{pst-tree}
+		\RequirePackage{pst-plot}
+		\RequirePackage{pst-text}
+		\RequirePackage{pstricks-add}
+		\RequirePackage[active,tightpage]{preview}
+		\PreviewEnvironment{pspicture}
+		\setlength\PreviewBorder{0.1pt}
+	\fi
 }
 
 %% END: PSTricks

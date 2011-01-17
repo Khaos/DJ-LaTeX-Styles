@@ -283,9 +283,13 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 % \frontmatter
 \begin{hideshorttoc}
 
-\printtoc
+\printshorttoc
 
 \end{hideshorttoc}
+
+\clearpage
+\printmaintoc
+
 
 %% !!! The following \clearpage is necessary, because if it is not included,
 %% the \if@mainmatter will be set to true at the last part of the front
@@ -297,6 +301,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \clearpage
 \listoftables
 \clearpage
+
+\show\columnwidth
 
 % \suacseset{%
 % 	glossary/twocolumn,

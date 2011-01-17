@@ -4,7 +4,7 @@ support = SUACSEThesis.sty SUACSEThesisMath.sty
 chapters = \
   frontmatter abstract acknowledgements
 
-.PHONY: $(chapters) show clean glotest
+.PHONY: $(chapters) show clean glotest bibtextest bibertest pdflatexonly
 
 show: $(main).pdf
 	open -a Skim.app $<
@@ -33,7 +33,7 @@ pdflatexonly:
 clean:
 	-rm -f *.pdf *.log *.aux *.bbl *.bcf *.blg *.figlist *.glo *.gls *.lof *.lot *.xml *.gz *.toc
 
-$(main).pdf: $(main).tex $(support)
+$(main).pdf: $(main).tex $(support) $(main).gst
 	pdflatex -shell-escape -file-line-error $(main); \
 	biber $(main); \
 	makeindex -s $(main).gst -o $(main).gls $(main).glo; \

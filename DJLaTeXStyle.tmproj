@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+	<string>tmp/glossary/doc/samples/sampleDB.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -43,6 +43,8 @@
 			<string>Release</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>Source</string>
 			<key>regexFolderFilter</key>
@@ -114,14 +116,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>24</integer>
 				<key>line</key>
-				<integer>2407</integer>
+				<integer>2146</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2382</integer>
+			<integer>2130</integer>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -142,14 +144,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>48</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>40</integer>
+				<integer>6</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>14</integer>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>72</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test01 copy 2.tex</key>
 		<dict>
@@ -186,14 +204,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>860</integer>
+				<integer>304</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>842</integer>
+			<integer>293</integer>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test02.tex</key>
 		<dict>
@@ -390,30 +408,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>47</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>16</integer>
+				<integer>160</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>42</integer>
-				<key>line</key>
-				<integer>16</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>47</integer>
-				<key>line</key>
-				<integer>16</integer>
-			</dict>
+			<integer>146</integer>
 		</dict>
 		<key>tmp/Thesis/UoMThesis/nomencl.ist</key>
 		<dict>
@@ -450,60 +452,100 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>13</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>152</integer>
+				<integer>154</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>134</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
-				<key>line</key>
-				<integer>152</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>13</integer>
-				<key>line</key>
-				<integer>152</integer>
-			</dict>
 		</dict>
 		<key>tmp/Thesis/WillRobertson/Makefile</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>15</integer>
+				<integer>54</integer>
 				<key>line</key>
-				<integer>22</integer>
+				<integer>20</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>25</integer>
 				<key>line</key>
 				<integer>20</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>15</integer>
+				<integer>54</integer>
 				<key>line</key>
-				<integer>22</integer>
+				<integer>20</integer>
 			</dict>
+		</dict>
+		<key>tmp/glossary/doc/samples/database2.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>tmp/glossary/doc/samples/sampleDB.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>10</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>tmp/glossary/doc/samples/sampleNtn.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>29</integer>
+		</dict>
+		<key>tmp/glossary/doc/samples/sampleSec.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>17</integer>
 		</dict>
 		<key>tmp/nomencl/nomencl.sty</key>
 		<dict>
@@ -613,14 +655,16 @@
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
-		<string>Test/DJThesis/SUACSEThesisMath.sty</string>
-		<string>tmp/Thesis/UoMThesis/main.tex</string>
+		<string>tmp/glossary/doc/samples/sampleNtn.tex</string>
+		<string>tmp/glossary/doc/samples/sampleSec.tex</string>
+		<string>tmp/glossary/doc/samples/sampleDB.tex</string>
+		<string>tmp/glossary/doc/samples/database2.tex</string>
 		<string>Test/DJThesis/Makefile</string>
 		<string>tmp/Thesis/WillRobertson/Makefile</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{312, 10}, {968, 768}}</string>
+	<string>{{303, 10}, {968, 768}}</string>
 </dict>
 </plist>
