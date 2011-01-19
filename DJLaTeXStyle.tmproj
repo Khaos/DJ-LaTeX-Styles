@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tmp/glossary/doc/samples/sampleDB.tex</string>
+	<string>tmp/glossary/doc/samples/sampleacronymstest01.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -78,6 +78,14 @@
 			<key>sourceDirectory</key>
 			<string>Test</string>
 		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tmp/glossary/doc/samples/sampleacronymstest01.tex</string>
+			<key>lastUsed</key>
+			<date>2011-01-19T01:12:11Z</date>
+			<key>selected</key>
+			<true/>
+		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>406</integer>
@@ -116,14 +124,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>2146</integer>
+				<integer>96</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2130</integer>
+			<integer>78</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>96</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>96</integer>
+			</dict>
 		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
@@ -144,30 +168,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>35</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>42</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>72</integer>
-				<key>line</key>
-				<integer>6</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>6</integer>
-			</dict>
+			<integer>17</integer>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test01 copy 2.tex</key>
 		<dict>
@@ -204,14 +212,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>17</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>304</integer>
+				<integer>105</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>293</integer>
+			<integer>87</integer>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test02.tex</key>
 		<dict>
@@ -491,14 +499,14 @@
 				<integer>20</integer>
 			</dict>
 		</dict>
-		<key>tmp/glossary/doc/samples/database2.tex</key>
+		<key>tmp/glossary/doc/samples/sample-custom-acronym.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>10</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -510,16 +518,90 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>10</integer>
+				<integer>0</integer>
 				<key>line</key>
+				<integer>11</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>tmp/glossary/doc/samples/sampleEq.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>60</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>15</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+		</dict>
+		<key>tmp/glossary/doc/samples/sampleEqPg.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>7</integer>
+				<key>line</key>
+				<integer>145</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>145</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
 				<integer>14</integer>
+				<key>line</key>
+				<integer>145</integer>
+			</dict>
+		</dict>
+		<key>tmp/glossary/doc/samples/sampleacronymstest01.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>20</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>tmp/glossary/doc/samples/sampleNtn.tex</key>
+		<key>tmp/glossary/doc/samples/sampletree.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -531,21 +613,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>29</integer>
-		</dict>
-		<key>tmp/glossary/doc/samples/sampleSec.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
 			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>17</integer>
 		</dict>
 		<key>tmp/nomencl/nomencl.sty</key>
 		<dict>
@@ -655,16 +723,18 @@
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
-		<string>tmp/glossary/doc/samples/sampleNtn.tex</string>
-		<string>tmp/glossary/doc/samples/sampleSec.tex</string>
+		<string>tmp/glossary/doc/samples/sampleacronymstest01.tex</string>
+		<string>tmp/glossary/doc/samples/sample-custom-acronym.tex</string>
+		<string>tmp/glossary/doc/samples/sampleEq.tex</string>
+		<string>tmp/glossary/doc/samples/sampleEqPg.tex</string>
 		<string>tmp/glossary/doc/samples/sampleDB.tex</string>
-		<string>tmp/glossary/doc/samples/database2.tex</string>
 		<string>Test/DJThesis/Makefile</string>
+		<string>tmp/glossary/doc/samples/sampletree.tex</string>
 		<string>tmp/Thesis/WillRobertson/Makefile</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{303, 10}, {968, 768}}</string>
+	<string>{{262, 10}, {968, 768}}</string>
 </dict>
 </plist>

@@ -2130,6 +2130,65 @@
 %% Created by Dazhi Jiang, 2010-12-26 03:29:14 +0000 (Sun, 26 Dec 2010)
 %% Glossary
 
+%% * Glossaries
+%%   The package 'glossaries' provides many advanced features. The following
+%%   part is used to define the style of glossary using this package.
+
+%% * Define keys for glossaries
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Options for glossaries
+}
+
+
+%% * Define package option keys for glossaries
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for glossaries
+	glossariesopt/.code={\@suacse@glossaries@option@setup{#1}},
+	% hyperrefopt/.store in=\@suacse@hyperref@option,
+	glossaries@opt@acsei/.style={glossariesopt=\@suacse@glossaries@opt@acsei},
+}
+
+%% * Commands required by key /suacse/hyperrefopt
+\newif\if@suacse@glossaries@option@predefined
+\newcommand{\@suacse@glossaries@option@setup}[1]{%
+	\@suacse@glossaries@option@predefinedfalse
+	\nametest{#1}{acsei}
+	\ifsamename
+		\suacse@opt@set{glossaries@opt@acsei}
+		\samenamefalse
+		\@suacse@glossaries@option@predefinedtrue
+	\fi
+	\if@suacse@glossaries@option@predefined \else
+		\def\@suacse@glossaries@option{#1}
+	\fi
+}
+
+%% * Initialise the glossaries options
+\def\@suacse@glossaries@option{}
+
+\def\@suacse@glossaries@opt@acsei{style=long3col,%
+								  toc,%
+								  section,%
+								  }
+
+%% * Configure the glossaries
+%%   - ACSEI style
+%%     The following command sets up the glossaries for SUACSEThesis
+\newcommand{\@suacse@glossaries@setting@acsei}{%
+	\@ifclassloaded{glossaries}{\let\endsuacsethesis\relax}{\let\endsuacsethesis\endinput
+	  \PackageError{SUACSEThesis}{Forget to load the glossaries package?}{\@ehd}}
+	\endsuacsethesis
+	% \newglossary[nlg]{symbols}{not}{ntn}{Symbols}
+	\makeglossaries
+	% \loadglsentries{database1}
+	% \loadglsentries[symbols]{database2}
+}
+
+
+%% * Settings using the original 'glossary' support in memoir.
+
 %% * Define switcher for glossary
 \newif\if@suacse@glossary@make
 \newif\if@suacse@glossary@style@twocolumn
@@ -2144,7 +2203,7 @@
 	glossary/twocolumn/.append code={%
 						\if@suacse@glossary@style@twocolumn
 							\twocolglossary
-							\show\columnwidth
+							% \show\columnwidth
 						\else
 							\onecolglossary
 						\fi},
@@ -2908,7 +2967,7 @@
 \RequirePackage[\@suacse@hyperref@option]{hyperref}
 
 %% * Load hyperref-related packages
-\AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
+% \AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
 
 \@ifpackageloaded{hyperref}{}{%
   \PackageError{hyperref}{I am not loaded!}
