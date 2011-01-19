@@ -372,6 +372,28 @@ $\ldots$}
 %% Created by Dazhi Jiang, 2010-12-26 11:17:20 +0000 (Sun, 26 Dec 2010)
 %% Environment
 
+%% * Matrix
+\newenvironment{djpmatrix}[1]
+{\left[\begin{array}{#1}}%
+{\end{array}\right]}
+
+%% * Theorem
+\theoremstyle{theorem}					% theorem
+\newtheorem{thm}{Theorem}[chapter]
+\theoremstyle{definition}				% definition
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{lemma}					% lemma
+\newtheorem{lem}[thm]{Lemma}
+\theoremstyle{remark}					% Remark
+\newtheorem{rem}[thm]{Remark}
+
+%\newtheoremstyle{algorithm}{9pt}{9pt} {\rm } {0pt}
+%    {\bfseries}{:} {\,} {}
+
+\theoremstyle{algorithm}				% algorithm
+\newtheorem{algthm}{Algorithm}
+
+
 %% END: Environment
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
