@@ -37,6 +37,7 @@
 	pgf/externalmainfile=SUACSEThesis-test01,
 	% fncychap=bjornstrup,
 	% makeglossary,
+	glossariesopt=acsei,
 	]{SUACSEThesis}
 
 \suacseset{%
@@ -103,23 +104,24 @@
 
 \usepackage{fonttable}
 
-\usepackage[british]{translator}
+% \usepackage[british]{translator}
 
-\usepackage[%
-			acronym,
-			style=long3colheader,%
-			toc,%
-			section,%
-			% translate=false,%
-			]{glossaries}
+% \usepackage[%
+% 			acronym,
+% 			style=long3colheader,%
+% 			toc,%
+% 			section,%
+% 			% translate=false,%
+% 			]{glossaries}
+\suacseset{glossaries/settings=acsei}
 
-
-\setlength{\glsdescwidth}{0.6\textwidth}
-\setlength{\glspagelistwidth}{0.15\textwidth}
+% \setlength{\glsdescwidth}{0.6\textwidth}
+% \setlength{\glspagelistwidth}{0.15\textwidth}
 
 % \newglossary[alg]{acronym}{acr}{acn}{Acronyms}
 
-\makeglossaries
+
+% \makeglossaries
 
 % \renewcommand*{\glossaryname}{Notations}
 % \renewcommand*{\acronymname}{Acronyms}
@@ -288,11 +290,13 @@ In general, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiu
 
 % \printglossary
 % \printglossaries
-\renewcommand*{\glsgroupskip}{}
-\renewcommand{\entryname}{\tikz[baseline=0pt] \node[anchor=base, text width=0.2\textwidth,align=flushleft, inner sep=0pt] {Notation};}
+% \renewcommand*{\glsgroupskip}{}
+\suacseset{glossaries/entryname/pgf={0.2\textwidth}{Notation}}
+% \renewcommand{\entryname}{\tikz[baseline=0pt] \node[anchor=base, text width=0.2\textwidth,align=flushleft, inner sep=0pt] {Notation};}
 \printglossary[title=List of Notations, toctitle=List of Notations]
 
-\renewcommand{\entryname}{\tikz[baseline=0pt] \node[anchor=base, text width=0.2\textwidth,align=flushleft, inner sep=0pt] {Abbreviation};}
+% \renewcommand{\entryname}{\tikz[baseline=0pt] \node[anchor=base, text width=0.2\textwidth,align=flushleft, inner sep=0pt] {Abbreviation};}
+\suacseset{glossaries/entryname/pgf={0.2\textwidth}{Abbreviation}}
 \printglossary[type=\acronymtype,title=List of Acronyms, toctitle=List of Acronyms]
 
 

@@ -2138,6 +2138,9 @@
 \pgfkeys{%
 	/suacse/.cd,
 	%% - Options for glossaries
+	glossaries/settings/.is choice,
+	glossaries/settings/acsei/.code={\@suacse@glossaries@setting@acsei},
+	glossaries/entryname/pgf/.code 2 args={\@suacse@glossaries@entryname@pgf[#1]{#2}},
 }
 
 
@@ -2168,7 +2171,8 @@
 %% * Initialise the glossaries options
 \def\@suacse@glossaries@option{}
 
-\def\@suacse@glossaries@opt@acsei{style=long3col,%
+\def\@suacse@glossaries@opt@acsei{acronym,%
+								  style=long3colheader,%
 								  toc,%
 								  section,%
 								  }
@@ -2177,13 +2181,30 @@
 %%   - ACSEI style
 %%     The following command sets up the glossaries for SUACSEThesis
 \newcommand{\@suacse@glossaries@setting@acsei}{%
-	\@ifclassloaded{glossaries}{\let\endsuacsethesis\relax}{\let\endsuacsethesis\endinput
-	  \PackageError{SUACSEThesis}{Forget to load the glossaries package?}{\@ehd}}
+	\@ifpackageloaded{glossaries}%
+		{\let\endsuacsethesis\relax}%
+		{\let\endsuacsethesis\endinput %
+		\PackageError{SUACSEThesis}{Forget to load the glossaries package?}{\@ehd}}
 	\endsuacsethesis
+	
+	\setlength{\glsdescwidth}{0.6\textwidth}
+	\setlength{\glspagelistwidth}{0.15\textwidth}
+	
 	% \newglossary[nlg]{symbols}{not}{ntn}{Symbols}
 	\makeglossaries
 	% \loadglsentries{database1}
 	% \loadglsentries[symbols]{database2}
+	
+	\renewcommand*{\glsgroupskip}{}
+}
+
+%% * Commands for glossaries
+%%   - Change entry name
+\newcommand*{\@suacse@glossaries@entryname@pgf}[2][2cm]{%
+	\renewcommand*{\entryname}{%
+		\tikz[baseline=0pt]%
+		\node[anchor=base, text width=#1,align=flushleft, inner sep=0pt] %
+			{#2};}
 }
 
 
@@ -2976,6 +2997,12 @@
 \RequirePackage[open,openlevel=4]{bookmark}
 \RequirePackage{hypcap}
 
+%% * Load glossaries
+\RequirePackage[\@suacse@glossaries@option]{glossaries}  % Load Package 'glossaries'
+
+
+
+%% * Load cleverref
 \RequirePackage[capitalise]{cleveref}
 
 
