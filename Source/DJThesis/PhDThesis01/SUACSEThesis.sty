@@ -72,6 +72,8 @@
 %% * eTeX
 \RequirePackage{etex}  % Load Package 'etex'
 
+%% * etoolbox
+\RequirePackage{etoolbox} % Load Package 'etoolbox'
 
 %% * 
 \RequirePackage{atbegshi}
@@ -93,14 +95,17 @@
 % \captionsetup[table]{position=top}
 
 
-%% * Language
-\RequirePackage[british]{babel}
-
-
 %% * Input encoding
 \RequirePackage[utf8]{inputenc}% sane input encoding
 \DeclareUnicodeCharacter{2014}{\dash}
 \DeclareUnicodeCharacter{2022}{\item}
+
+
+%% * Language
+\RequirePackage{csquotes}
+\MakeOuterQuote{"}
+
+\RequirePackage[british]{babel}
 
 
 %% * Font & Symbol
@@ -205,6 +210,8 @@
 \RequirePackage{multirow}			% Multirow
 
 \newcolumntype{Y}{>{\sf}L}
+
+\RequirePackage{tabu}  % Load Package 'tabu'
 
 
 %% * Algorithm-related packages
@@ -2187,7 +2194,16 @@
 		\PackageError{SUACSEThesis}{Forget to load the glossaries package?}{\@ehd}}
 	\endsuacsethesis
 	
-	\setlength{\glsdescwidth}{0.6\textwidth}
+	%% - Set up the glossary entry style. 
+	%%   Note that,
+	%%   1. This style only works with the option 'long3col*'.
+	%%   2. The package 'biblatex' has to be loaded before this command is
+	%%      invoked, because it contains a command, \MakeCapital, which is
+	%%      defined in the package 'biblatex'.
+	% \renewcommand*{\glossaryentryfield}[5]{%
+	% 	\glstarget{####1}{####2} & \MakeCapital{####3} & ####5\\}%
+	
+	\setlength{\glsdescwidth}{0.58\textwidth}
 	\setlength{\glspagelistwidth}{0.15\textwidth}
 	
 	% \newglossary[nlg]{symbols}{not}{ntn}{Symbols}
@@ -2203,7 +2219,7 @@
 \newcommand*{\@suacse@glossaries@entryname@pgf}[2][2cm]{%
 	\renewcommand*{\entryname}{%
 		\tikz[baseline=0pt]%
-		\node[anchor=base, text width=#1,align=flushleft, inner sep=0pt] %
+		\node[anchor=base, text width=#1, align=flush left, inner sep=0pt] %
 			{#2};}
 }
 
@@ -2561,7 +2577,8 @@
 
 
 \def\@suacse@biblatex@opt@acsei{hyperref,backref,%
-							    defernums,sortcites,%
+							    defernumbers,%
+							    sortcites,%
 							    date=short,%
 							    bibencoding=inputenc,%
 							    maxnames=3,%
@@ -2572,7 +2589,15 @@
 							    citestyle=numeric-comp,%
 							    backend=biber,%
 }
-
+%% !!! Comment
+%%     The option 'defernumbers' has been disabled, since it is not compatible
+%%     with the externalization library of PGF (mode = list and make).
+%% 
+%% !!! Update
+%%     This issue can be fixed by add the following code in your preamble.
+%%     \tikzifexternalizing{%
+%%         \ExecuteBibliographyOptions{defernumbers=false}
+%%     }{}
 
 %% END: Bibliography
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -2868,6 +2893,13 @@
 	pgf/externalmainfile/.code={\@suacse@pgf@externalmainfile@set{#1}},
 }
 
+%% * Solve the confliction between biblatex (defernumbers) and pgf/TikZ 
+%%   (externalization library)
+\newcommand{\fixbiblatexpgf}{%
+	\tikzifexternalizing{%
+		\ExecuteBibliographyOptions{defernumbers=false}%
+	}{}
+}
 
 %% END: PGF/TikZ
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -3048,6 +3080,8 @@
 %% MISC
 
 \AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
+
+% \csdef{blx@opts@type@\abx@field@entrytype}{}
 
 %% END: MISC
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

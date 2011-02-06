@@ -19,5 +19,6 @@ Test/DJThesis/*.*
 !Test/DJThesis/*.tex
 !Test/DJThesis/*.sh
 Test/DJThesis/Figs/pdf/*.*
+Source/schema-bloc/*.pdf
 
 .tex

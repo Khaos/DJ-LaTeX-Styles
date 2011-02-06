@@ -33,6 +33,11 @@ glostest:
 	pdflatex -shell-escape -file-line-error $(main); \
 	pdflatex -shell-escape -file-line-error $(main)
 
+pgftest:
+	pdflatex -shell-escape -file-line-error $(main); \
+	make -f $(main).makefile -B; \
+	pdflatex -shell-escape -file-line-error $(main)
+
 pdflatexonly:
 	pdflatex -shell-escape -file-line-error $(main)
 

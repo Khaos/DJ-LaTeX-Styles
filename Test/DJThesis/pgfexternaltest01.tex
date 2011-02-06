@@ -1,0 +1,48 @@
+\documentclass{article} % main document, called main.tex 
+\usepackage{tikz}
+
+\usepackage[defernumbers]{biblatex}
+
+% \bibliography{biblatextest}
+
+\usetikzlibrary{external}
+
+% \usepgfplotslibrary{external}
+\tikzexternalize[
+	prefix=pgfexternalfig-,
+	export=false, 
+	mode=list and make,
+	verbose IO=false,
+]{pgfexternaltest01}
+
+\tikzifexternalizing{\nofiles}{}
+
+% \usepackage[defernumbers]{biblatex}
+\tikzifexternalizing{%
+	\ExecuteBibliographyOptions{defernumbers=false}
+}{}
+
+\bibliography{biblatextest}
+
+% \tikzexternalize % activate
+
+\begin{document}
+
+% foo~\citeauthor{companion}. and 
+\cite{companion}
+
+{
+\tikzset{external/export=true}
+\begin{tikzpicture} % will be written to ’main-figure0.pdf’ 
+	\node {root}
+		child {node {left}} 
+		child {node {right}
+			child {node {child}}
+			child {node {child}} 
+		};
+\end{tikzpicture} 
+}
+
+\printbibliography
+
+\end{document}

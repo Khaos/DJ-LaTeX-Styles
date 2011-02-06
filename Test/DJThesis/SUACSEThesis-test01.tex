@@ -101,6 +101,12 @@
 	% titlepage/title/font={\Huge\bfseries},
 }
 
+%% * Solve the confliction between biblatex (defernumbers) and pgf/TikZ 
+%%   (externalization library)
+% \tikzifexternalizing{%
+% 	\ExecuteBibliographyOptions{defernumbers=false}
+% }{}
+\fixbiblatexpgf
 
 \usepackage{fonttable}
 
