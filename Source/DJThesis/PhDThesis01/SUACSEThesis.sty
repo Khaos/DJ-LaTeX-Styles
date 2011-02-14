@@ -130,6 +130,8 @@
 \RequirePackage{graphics}							% Graphy style
 \RequirePackage[usenames, dvipsnames]{color}		% Color
 \RequirePackage{graphicx}
+%% !!! Comment
+%%     The package 'xcolor' has to be loaded before the package 'pstricks'.
 \RequirePackage[svgnames]{xcolor}
 
 %%   - PGF-related package
@@ -2880,6 +2882,8 @@
 	/suacse/.cd,
 	%% - Keys for pgf externalisation
 	pgf/makeexternalfig/.code={\cmd@suacse@pgf@export@fig},
+	pgf/externalprefix/.code={\tikzsetexternalprefix{#1}},
+	pgf/makenextfig/.code={\cmd@suacse@pgf@export@fig\tikzsetnextfilename{#1}}
 }
 
 
