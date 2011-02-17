@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+	<string>Source/schema-bloc/tikz-blockdiagram.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -117,6 +117,20 @@
 			<key>firstVisibleLine</key>
 			<integer>132</integer>
 		</dict>
+		<key>Source/DJReport/DJReport01/DJReportHyperrefBibUrlP.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>30</integer>
+		</dict>
 		<key>Source/DJThesis/DJThesis01/DJCUEDthesisPSnPDF.cls</key>
 		<dict>
 			<key>caret</key>
@@ -150,14 +164,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>75</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>133</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>114</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Source/schema-bloc/djschemabloc.sty</key>
 		<dict>
@@ -173,14 +187,42 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>Source/schema-bloc/schemabloc.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>33</integer>
+				<key>line</key>
+				<integer>59</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>Source/schema-bloc/tikz-blockdiagram.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>31</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>21</integer>
-				<key>line</key>
 				<integer>0</integer>
+				<key>line</key>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -194,28 +236,12 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>11</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test01 copy 2.tex</key>
 		<dict>
@@ -266,14 +292,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>103</integer>
+				<integer>347</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>627</integer>
+			<integer>320</integer>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test02.tex</key>
 		<dict>
@@ -701,15 +727,17 @@
 	<key>openDocuments</key>
 	<array>
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+		<string>Source/schema-bloc/djschemabloc.sty</string>
+		<string>Source/schema-bloc/tikz-blockdiagram.sty</string>
+		<string>Source/tkz-bode/tikzlibrarybodeplot.code.tex</string>
+		<string>Source/schema-bloc/schemabloc.sty</string>
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 		<string>Test/DJThesis/Makefile</string>
-		<string>Source/DJPreamble/DJpgfplots-macros.tex</string>
-		<string>Source/DJPreamble/DJpgfmanual-en-macros.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{123, 10}, {968, 768}}</string>
+	<string>{{294, 10}, {968, 768}}</string>
 </dict>
 </plist>

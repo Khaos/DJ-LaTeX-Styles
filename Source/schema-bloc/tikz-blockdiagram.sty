@@ -1,8 +1,8 @@
 %% -*- Mode: LaTeX; tab-width: 4;
 
-%% tikz-bode.sty    Bode Plot
-%% This file provides macros to draw Bode plot in LaTeX
-%% Created by Dazhi Jiang, 2011-02-17 09:33:45 +0000 (Thu, 17 Feb 2011)
+%% tikz-blockdiagram.sty    Block Diagram with TikZ
+%% This file provides macros to draw block diagrams in LaTeX
+%% Created by Dazhi Jiang, 2011-02-17 09:27:48 +0000 (Thu, 17 Feb 2011)
 
 %%
 %% This file may be distributed and/or modified
@@ -20,7 +20,7 @@
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% * Change Log
-%%   @ 2011-02-17 09:33:45 +0000 (Thu, 17 Feb 2011)
+%%   @ 2011-02-17 09:27:48 +0000 (Thu, 17 Feb 2011)
 %%     - Create the initial file
 %%
 
@@ -30,15 +30,11 @@
 %%
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% Created by Dazhi Jiang, 2011-02-17 09:33:45 +0000 (Thu, 17 Feb 2011)
+%% Created by Dazhi Jiang, 2011-02-17 09:27:48 +0000 (Thu, 17 Feb 2011)
 %% Initialisation
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{tikz-bode}[2011/02/17 v0.0.1 Bode plot]
+\ProvidesPackage{tikz-blockdiagram}[2011/02/17 v0.0.1 Block Diagram]
 
 %% END: Initialisation
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
-\RequirePackage{tikz}
-
-\input tikzlibrarybodeplot.code.tex
