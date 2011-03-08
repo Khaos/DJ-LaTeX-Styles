@@ -73,7 +73,7 @@
 \RequirePackage{etex}  % Load Package 'etex'
 
 %% * etoolbox
-\RequirePackage{etoolbox} % Load Package 'etoolbox'
+% \RequirePackage{etoolbox} % Load Package 'etoolbox'
 
 %% * 
 \RequirePackage{atbegshi}
@@ -84,8 +84,11 @@
 \RequirePackage{pgfkeys}  % Load Package 'pgfkeys'
 \RequirePackage{pgfopts}  % Load Package 'pgfopts'
 
+%% * IF*
 \RequirePackage{ifthen}  % Load Package 'ifthen'
 \RequirePackage{ifpdf}  % Load Package 'ifpdf'
+\RequirePackage{ifxetex}  % Load Package 'ifxetex'
+
 
 
 %% * Caption
@@ -232,6 +235,10 @@
 \algrenewcommand\algorithmicensure{\textbf{Output:}}%
 % \algrenewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) #1}%
 % \algrenewcommand\algorithmiccomment[1]{\hfill\(\blacktriangleright\) #1}%
+
+
+%% * TODO-related packages
+\RequirePackage[obeyDraft]{todonotes}  % Load Package 'todonotes'
 
 
 %% END: Packages
@@ -2532,7 +2539,7 @@
 	% bibname/.initial={References},
 }
 
-%% * Define package option keys for hyperref options
+%% * Define package option keys for biblatex options
 \pgfkeys{%
 	/suacseopt/.cd,
 	%% - Options for biblatex
@@ -2653,6 +2660,12 @@
 	\fi
 	\if@suacse@hyperref@option@predefined \else
 		\def\@suacse@hyperref@option{#1}
+		% \ifxetex
+		% 	\def\@suacse@hyperref@option{#1}
+		% 	% \def\@suacse@hyperref@option{#1,xetex}
+		% \else
+		% 	\def\@suacse@hyperref@option{#1}
+		% \fi
 	\fi
 }
 
@@ -2663,8 +2676,12 @@
 \definecolor{darkgreen}{rgb}{0,0.4,0}
 \definecolor{darkblue}{rgb}{0,0,0.4}
 
+%%   - Define the pre-defined hyperref options
+%%     Since 'hyperref' can detect the latex drivers automatically, no need
+%%     to specify the drivers explicitly (you can ignore the options like
+%%     pdftex, dvips, xetex, etc.)
 \ifpdf
-	\def\@suacse@hyperref@opt@acsei{pdftex,%
+	\def\@suacse@hyperref@opt@acsei{%pdftex,%
 									ocgcolorlinks,%
 									plainpages=false,%
 									pdfpagelabels,%
@@ -2681,7 +2698,7 @@
 									anchorcolor = darkgreen,%
 									hyperindex = true,%
 									hyperfigures}
-	\def\@suacse@hyperref@opt@djreport{pdftex,%
+	\def\@suacse@hyperref@opt@djreport{%pdftex,%
 									   plainpages = false,%
 									   pdfpagelabels,%
 									   pdfpagelayout = OneColumn,%
@@ -2698,7 +2715,7 @@
 									   hyperindex = true,%
 									   hyperfigures}
 \else
-	\def\@suacse@hyperref@opt@acsei{dvips,%
+	\def\@suacse@hyperref@opt@acsei{%dvips,%
 									plainpages=false,%
 									bookmarks,%
 									bookmarksopen = true,%
@@ -2712,7 +2729,7 @@
 									anchorcolor = darkgreen,%
 									hyperindex = true,%
 									hyperfigures}
-	\def\@suacse@hyperref@opt@djreport{dvips,%
+	\def\@suacse@hyperref@opt@djreport{%dvips,%
 									   plainpages=false,%
 									   bookmarks,%
 									   bookmarksopen = true,%

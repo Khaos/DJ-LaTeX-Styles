@@ -1,0 +1,268 @@
+%#% extstart input preamble.tex
+%
+% memman.tex  Memoir class user manual (Part II only)  last updated 2009/09/07
+%             Author: Peter Wilson
+%             Copyright 2001, 2002, 2003, 2004, 2008, 2009 Peter R. wilson
+%\listfiles
+\documentclass[10pt,letterpaper,extrafontsizes]{memoir}
+\listfiles
+\usepackage{comment}
+\usepackage[nofancy]{svninfo}
+\svnInfo $Id: memman.tex 178 2010-02-16 09:33:34Z daleif $ 
+
+
+% For (non-printing) notes  \PWnote{date}{text}
+\newcommand{\PWnote}[2]{} 
+\PWnote{2009/04/29}{Added fonttable to the used packages}
+\PWnote{2009/08/19}{Made Part I a separate doc (memdesign.tex).}
+
+% same
+\newcommand{\LMnote}[2]{} 
+
+
+\usepackage{memsty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{titlepages}  % code of the example titlepages
+\usepackage{memlays}     % extra layout diagrams
+\usepackage{dpfloat}     % floats on facing pages
+\usepackage{fonttable}[2009/04/01]   % font tables
+%%%%\usepackage{xr-hyper} \externaldocument{memdesign} Doesn't work, 
+%%%%                      Idea won't work in general for memman/memdesin
+%%%%                      as at display time, who knows where everything
+%%%%                      will be located on the individual's computer.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Change section heading styles
+%%%\memmansecheads
+
+%%%% Use the built-in division styling
+\headstyles{memman}
+
+%%% ToC down to subsections
+\settocdepth{subsection}
+%%% Numbering down to subsections as well
+\setsecnumdepth{subsection}
+
+%%%% extra index for first lines
+\makeindex[lines]
+
+%% end preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%#% extend
+
+\begin{document}
+
+%#% extstart input intro.tex
+\tightlists
+%%%%\firmlists
+\midsloppy
+\raggedbottom
+\chapterstyle{demo3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{memnoidxnum}
+
+\frontmatter
+\pagestyle{empty}
+
+
+% half-title page
+\vspace*{\fill}
+\begin{adjustwidth}{1in}{1in}
+\begin{flushleft}
+\HUGE\sffamily The
+\end{flushleft}
+\begin{center}
+\HUGE\sffamily  Memoir
+\end{center}
+\begin{flushright}
+\HUGE\sffamily  Class
+\end{flushright}
+%%\begin{center}
+%%\sffamily (Draft Edition 7)
+%%\end{center}
+\end{adjustwidth}
+\vspace*{\fill}
+\cleardoublepage
+
+% title page
+\vspace*{\fill}
+\begin{center}
+\HUGE\textsf{The Memoir Class}\par
+\end{center}
+\begin{center}
+\LARGE\textsf{for}\par
+\end{center}
+\begin{center}
+\HUGE\textsf{Configurable Typesetting}\par
+\end{center}
+
+\begin{center}
+\Huge\textsf{User Guide}\par
+\end{center}
+\begin{center}
+\LARGE\textsf{Peter Wilson}\par
+\end{center}
+\vspace*{\fill}
+\def\THP{T\kern-0.2em H\kern-0.4em P}%   OK for CMR
+\def\THP{T\kern-0.15em H\kern-0.3em P}%   OK for Palatino
+\newcommand*{\THPress}{The Herries Press}%
+\begin{center}
+\settowidth{\droptitle}{\textsf{\THPress}}%
+\textrm{\normalsize \THP} \\
+\textsf{\THPress} \\[0.2\baselineskip]
+\includegraphics[width=\droptitle]{anvil2.mps}
+\setlength{\droptitle}{0pt}%
+\end{center}
+\clearpage
+
+\PWnote{2009/06/26}{Updated the copyright page for 9th impression}
+% copyright page
+\begingroup
+\footnotesize
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+%%\ttfamily
+\textcopyright{} 2001 --- 2010 Peter R. Wilson \\
+All rights reserved
+
+The Herries Press, Normandy Park, WA.
+
+Printed in the World 
+
+The paper used in this publication may meet the minimum requirements
+of the American National Standard for Information 
+Sciences --- Permanence of Paper for Printed Library Materials, 
+ANSI Z39.48--1984.
+
+\PWnote{2009/07/08}{Changed manual date to 8 July 2009}
+\begin{center}
+10 09 08 07 06 05 04 03 02 01\hspace{2em}19 18 17 16 15 14 13
+\end{center}
+\begin{center}
+\begin{tabular}{ll}
+First edition:                        & 3 June 2001 \\
+Second impression, with corrections:    & 2 July 2001 \\
+Second edition:                       & 14 July 2001 \\
+Second impression, with corrections:    & 3 August 2001 \\
+Third impression, with minor additions: & 31 August 2001 \\
+Third edition:                        & 17 November 2001 \\
+Fourth edition:                       & 16 March 2002 \\
+Fifth edition:                        & 10 August 2002 \\
+Sixth edition:                        & 31 January 2004 \\
+%%Draft Seventh edition:                & 31 January 2008 \\
+Seventh edition:                       & 10 May 2008 \\
+Eighth impression, with very minor corrections: & 12 July 2008 \\
+Ninth impression, with additions and corrections: & 8 July 2009 \\
+Eighth edition:                        & August 2009 \\
+\end{tabular}
+\end{center}
+Last changed \svnInfoDate
+
+\endgroup
+
+\clearpage
+\vspace*{\fill}
+\begin{quote}
+\textbf{memoir,} \textit{n.} a written record set down as material
+  for a history or biography: 
+  a biographical sketch:
+  a record of some study investigated by the writer:
+  (in \textit{pl.}) the transactions of a society.
+  [Fr. \textit{m\'{e}moire} --- L. \textit{memoria,} memory ---
+   \textit{memor}, mindful.] \\[0.5\baselineskip]
+  \hspace*{\fill} 
+      \textit{Chambers Twentieth Century Dictionary, New Edition}, 1972.
+\end{quote}
+
+\vspace{2\baselineskip}
+
+\begin{quote}
+\textbf{memoir,} \textit{n.} [Fr. \textit{m\'{e}moire,} masc., a memorandum,
+    memoir, fem., memory $<$ L. \textit{memoria,} \textsc{memory}]
+  \hspace{1ex} \textbf{1.} a biography or biographical notice, 
+      usually written by a relative or personal friend of the subject 
+  \hspace{1ex} \textbf{2.} [\textit{pl.}] an autobiography, 
+      usually a full or highly personal account
+  \hspace{1ex} \textbf{3.} [\textit{pl.}] a report or record of 
+      important events based on the writer's personal observation, 
+      special knowledge, etc.
+  \hspace{1ex} \textbf{4.} a report or record of a scholarly 
+      investigation, scientific study, etc.
+  \hspace{1ex} \textbf{5.} [\textit{pl.}] the record of the proceedings
+      of a learned society \\[0.5\baselineskip]
+  \hspace*{\fill} \textit{Webster's New World Dictionary, Second College Edition}.
+\end{quote}
+
+\vspace{2\baselineskip}
+
+
+\begin{quote}
+\textbf{memoir,} \textit{n.} a fiction designed to flatter the subject 
+  and to impress the reader. \\[0.5\baselineskip]
+\hspace*{\fill} With apologies to Ambrose Bierce % and Reuben Thomas
+\end{quote}
+
+\vspace*{\fill}
+
+\cleardoublepage
+
+% ToC, etc
+%%%\pagenumbering{roman}
+\pagestyle{headings}
+%%%%\pagestyle{Ruled}
+
+\setupshorttoc
+\tableofcontents
+\clearpage
+\setupparasubsecs
+\setupmaintoc
+\tableofcontents
+\setlength{\unitlength}{1pt}
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+\listofegresults
+
+%#% extend
+
+
+%#% extstart include preface.tex
+%\chapter{Foreword}
+\chapter{Preface}
+
+    From personal experience and also from lurking on the \url{comp.text.tex}
+newsgroup the major problems with using LaTeX are related to document
+design. Some years ago most questions on \texttt{ctt} were answered by
+someone providing a piece of code that solved a particular problem, and
+again and again. More recently these questions are answered along the
+lines of `Use the ---------{} package', and again and again.
+
+    I have used many of the more common of these packages but my filing system
+is not always well ordered and I tend to mislay the various user manuals,
+even for the packages I have written. The \Pclass{memoir} class is an attempt
+to integrate some of the more design-related packages with the LaTeX
+\Pclass{book} class. I chose the \Pclass{book} class as the \Pclass{report} class
+is virtually identical to \Pclass{book}, except that \Pclass{book} does
+not have an \Ie{abstract} environment while \Pclass{report} does; however it is 
+easy to fake an \Ie{abstract} if it is needed. With a little bit of tweaking,
+\Pclass{book} class documents can be made to look just like \Pclass{article}
+class documents, and the \Pclass{memoir} class is designed with tweaking very
+much in mind.
+
+
+
+\end{document}
+
+%\endinput
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-source-specials-mode: t
+%%% TeX-PDF-mode: nil
+%%% End: 

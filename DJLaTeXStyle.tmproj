@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Source/schema-bloc/tikz-blockdiagram.sty</string>
+	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -43,8 +43,6 @@
 			<string>Release</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>Source</string>
 			<key>regexFolderFilter</key>
@@ -69,8 +67,6 @@
 			<date>2011-02-12T08:48:35Z</date>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>Test</string>
 			<key>regexFolderFilter</key>
@@ -83,6 +79,12 @@
 			<string>tmp/glossary/doc/samples/sampleacronymstest01.tex</string>
 			<key>lastUsed</key>
 			<date>2011-01-19T10:40:45Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Source/schema-bloc/blockdiagram.sty</string>
+			<key>lastUsed</key>
+			<date>2011-02-17T12:17:31Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -102,20 +104,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>1170</integer>
-		</dict>
-		<key>Source/DJPreamble/DJpgfplots-macros.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>9</integer>
-				<key>line</key>
-				<integer>139</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>132</integer>
 		</dict>
 		<key>Source/DJReport/DJReport01/DJReportHyperrefBibUrlP.tex</key>
 		<dict>
@@ -164,70 +152,56 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>34</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>2662</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>2639</integer>
 		</dict>
-		<key>Source/schema-bloc/djschemabloc.sty</key>
+		<key>Source/DJThesis/PhDThesis01/SUACSEThesisMath.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>19</integer>
+				<integer>24</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>84</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>66</integer>
 		</dict>
-		<key>Source/schema-bloc/schemabloc.sty</key>
+		<key>Source/schema-bloc/blockdiagram.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>59</integer>
+				<integer>47</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>13</integer>
 		</dict>
 		<key>Source/schema-bloc/tikz-blockdiagram.sty</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>34</integer>
 				<key>line</key>
-				<integer>31</integer>
+				<integer>35</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>Source/tkz-bode/tikzlibrarybodeplot.code.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 		<key>Test/DJThesis/Makefile</key>
 		<dict>
@@ -292,14 +266,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>347</integer>
+				<integer>17</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>320</integer>
+			<integer>621</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>12</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test02.tex</key>
 		<dict>
@@ -563,6 +553,20 @@
 			<key>firstVisibleLine</key>
 			<integer>134</integer>
 		</dict>
+		<key>tmp/Thesis/WillRobertson/Makefile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>54</integer>
+				<key>line</key>
+				<integer>20</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>2</integer>
+		</dict>
 		<key>tmp/glossary/doc/samples/sample4col.tex</key>
 		<dict>
 			<key>caret</key>
@@ -621,19 +625,19 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>tmp/nomencl/nomencl.sty</key>
+		<key>tmp/pgf-2.00-cvs/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>1149</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>1130</integer>
 		</dict>
 		<key>tmp/pgf-2.00-cvs/tex/latex/pgf/doc/pgfmanual.code.tex</key>
 		<dict>
@@ -727,10 +731,8 @@
 	<key>openDocuments</key>
 	<array>
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
-		<string>Source/schema-bloc/djschemabloc.sty</string>
-		<string>Source/schema-bloc/tikz-blockdiagram.sty</string>
-		<string>Source/tkz-bode/tikzlibrarybodeplot.code.tex</string>
-		<string>Source/schema-bloc/schemabloc.sty</string>
+		<string>Source/DJThesis/PhDThesis01/SUACSEThesisMath.sty</string>
+		<string>tmp/Thesis/WillRobertson/Makefile</string>
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 		<string>Test/DJThesis/Makefile</string>
