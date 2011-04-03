@@ -127,6 +127,8 @@
 \RequirePackage{calc,listings}
 \RequirePackage{verbatim}	% Environment \begin{comment} \end{comment}
 \RequirePackage{soul}		% Underlining command: \ul
+% \RequirePackage{paralist}  % Load Package 'paralist'
+\RequirePackage{enumitem}  % Load Package 'enumitem'
 
 
 %% * Graph-related package
@@ -219,22 +221,22 @@
 \RequirePackage{tabu}  % Load Package 'tabu'
 
 
-%% * Algorithm-related packages
-\RequirePackage{algorithm}			% Algorithm
-\RequirePackage{algpseudocode}		% Algorithmic
-
-%% Required by titletoc, but should be commented when using \numberwithin
-%% Required by article style maybe.
-%\newcommand{\theHalgorithm}{\arabic{algorithm}}
-
-\algnewcommand\algorithmicto{\textbf{to}}
-\algrenewtext{For}[3]%
-{\algorithmicfor\ $#1 \gets #2\ \algorithmicto\ #3$ \algorithmicdo}
-
-\algrenewcommand\algorithmicrequire{\textbf{Input:}}%
-\algrenewcommand\algorithmicensure{\textbf{Output:}}%
-% \algrenewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) #1}%
-% \algrenewcommand\algorithmiccomment[1]{\hfill\(\blacktriangleright\) #1}%
+% %% * Algorithm-related packages
+% \RequirePackage{algorithm}			% Algorithm
+% \RequirePackage{algpseudocode}		% Algorithmic
+% 
+% %% Required by titletoc, but should be commented when using \numberwithin
+% %% Required by article style maybe.
+% %\newcommand{\theHalgorithm}{\arabic{algorithm}}
+% 
+% \algnewcommand\algorithmicto{\textbf{to}}
+% \algrenewtext{For}[3]%
+% {\algorithmicfor\ $#1 \gets #2\ \algorithmicto\ #3$ \algorithmicdo}
+% 
+% \algrenewcommand\algorithmicrequire{\textbf{Input:}}%
+% \algrenewcommand\algorithmicensure{\textbf{Output:}}%
+% % \algrenewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) #1}%
+% % \algrenewcommand\algorithmiccomment[1]{\hfill\(\blacktriangleright\) #1}%
 
 
 %% * TODO-related packages
@@ -2592,11 +2594,14 @@
 							    bibencoding=inputenc,%
 							    maxnames=3,%
 							    minnames=2,%
+							    maxcitenames=2,%
+							    mincitenames=1,%
 							    firstinits=true,%
 							    sorting=nyt,%
 							    bibstyle=numeric,%
 							    citestyle=numeric-comp,%
 							    backend=biber,%
+							    natbib=true,%
 }
 %% !!! Comment
 %%     The option 'defernumbers' has been disabled, since it is not compatible
@@ -3031,6 +3036,13 @@
 %% Created by Dazhi Jiang, 2010-12-13 10:35:16 +0000 (Mon, 13 Dec 2010)
 %% Load Packages with Options Given by /suacseopt
 
+%% * Packages have to be loaded before hyperref
+
+%%   - 'float'
+\RequirePackage{float}  % Load Package 'float'
+% \usepackage{float}  % Load Package 'float'
+
+
 %% * Load biblatex
 \RequirePackage[\@suacse@biblatex@option]{biblatex}
 \def\bibfont{\small}
@@ -3039,6 +3051,7 @@
 
 %% !!! Now we are safe to load hyperref
 \RequirePackage[\@suacse@hyperref@option]{hyperref}
+% \usepackage[\@suacse@hyperref@option]{hyperref}
 
 %% * Load hyperref-related packages
 % \AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
@@ -3054,9 +3067,61 @@
 \RequirePackage[\@suacse@glossaries@option]{glossaries}  % Load Package 'glossaries'
 
 
-
 %% * Load cleverref
+%%   !!! Load the package 'cleveref' before 'algorithm' and 'algorithmicx' 
+%%       (algpseudocode), otherwise you will get the following warining message
+%%         pdfTeX warning (ext4): destination with the same identifier 
+%%         (name{ALC@line.1}) has been already used, duplicate ignored.
+%%       In addition, if you use \cref or \ref, the wrong reference positions
+%%       are given.
+%%       See, 
+%%         http://www.macfreek.nl/mindmaster/LaTeX_package_conflicts
+%%         http://developer.berlios.de/feature/?func=detailfeature&feature_id=2973&group_id=3442
+%%         http://www.stud.uni-karlsruhe.de/~uucom/?p=99
 \RequirePackage[capitalise]{cleveref}
+
+
+%% * Pakcages have to be loaded after hyperref
+%% * Algorithm-related packages
+\RequirePackage{algorithm}			% Algorithm, in the package 'algorithms'
+% \usepackage{algorithm}			% Algorithm, in the package 'algorithms'
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%   - The 'algorithms' package and its settings
+% \RequirePackage{algorithmic}  % Load Package 'algorithmic', in 'algorithms'
+
+%%     - Redefined the leading label of the algorithm entry terms
+%%       Require: -> Input:  &  Ensure: -> Output:
+% \renewcommand\algorithmicrequire{\textbf{Input:}}%
+% \renewcommand\algorithmicensure{\textbf{Output:}}%
+
+% \newcommand{}{}
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%% ------------------------------------------------------------
+%%   - The 'algorithmicx' package and its settings
+\RequirePackage{algpseudocode}		% Algorithmic
+
+% %% Required by titletoc, but should be commented when using \numberwithin
+% %% Required by article style maybe.
+% %\newcommand{\theHalgorithm}{\arabic{algorithm}}
+% 
+\algnewcommand\algorithmicto{\textbf{to}}
+\algrenewtext{For}[3]%
+{\algorithmicfor\ $#1 \gets #2\ \algorithmicto\ #3$ \algorithmicdo}
+
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}%
+\algrenewcommand\algorithmicensure{\textbf{Output:}}%
+% % \algrenewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) #1}%
+% % \algrenewcommand\algorithmiccomment[1]{\hfill\(\blacktriangleright\) #1}%
+
+%% ------------------------------------------------------------
+
+
+% %% * Load cleverref
+% \RequirePackage[capitalise]{cleveref}
 
 
 %% END: Load Packages with Options Given by /suacseopt

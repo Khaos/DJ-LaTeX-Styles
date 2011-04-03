@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+	<string>Source/DJNote/DJespcrc2.sty</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -43,6 +43,8 @@
 			<string>Release</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>Source</string>
 			<key>regexFolderFilter</key>
@@ -91,6 +93,50 @@
 	<integer>406</integer>
 	<key>metaData</key>
 	<dict>
+		<key>Source/DJCodeSnippet/DJminted.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>199</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>183</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>199</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>199</integer>
+			</dict>
+		</dict>
+		<key>Source/DJNote/DJespcrc2.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>55</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>37</integer>
+		</dict>
 		<key>Source/DJPreamble/DJpgfmanual-en-macros.tex</key>
 		<dict>
 			<key>caret</key>
@@ -104,20 +150,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>1170</integer>
-		</dict>
-		<key>Source/DJReport/DJReport01/DJReportHyperrefBibUrlP.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>30</integer>
 		</dict>
 		<key>Source/DJThesis/DJThesis01/DJCUEDthesisPSnPDF.cls</key>
 		<dict>
@@ -152,14 +184,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>34</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>2662</integer>
+				<integer>2120</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2639</integer>
+			<integer>2094</integer>
 		</dict>
 		<key>Source/DJThesis/PhDThesis01/SUACSEThesisMath.sty</key>
 		<dict>
@@ -261,35 +293,33 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>Test/DJThesis/SUACSEThesis-test01.makefile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test01.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>12</integer>
+				<integer>72</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>346</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
-			<integer>0</integer>
+			<integer>184</integer>
 			<key>firstVisibleLine</key>
-			<integer>621</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>17</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>12</integer>
-				<key>line</key>
-				<integer>17</integer>
-			</dict>
+			<integer>340</integer>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test02.tex</key>
 		<dict>
@@ -406,6 +436,36 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>Test/DJThesis/tmp/memoircn.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
 		</dict>
 		<key>Test/tkz-bode/bodeplot-pgfplot-test02.tex</key>
 		<dict>
@@ -558,14 +618,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>54</integer>
+				<integer>40</integer>
 				<key>line</key>
-				<integer>20</integer>
+				<integer>29</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2</integer>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>35</integer>
+				<key>line</key>
+				<integer>29</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>40</integer>
+				<key>line</key>
+				<integer>29</integer>
+			</dict>
 		</dict>
 		<key>tmp/glossary/doc/samples/sample4col.tex</key>
 		<dict>
@@ -731,8 +807,10 @@
 	<key>openDocuments</key>
 	<array>
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
-		<string>Source/DJThesis/PhDThesis01/SUACSEThesisMath.sty</string>
+		<string>Source/DJCodeSnippet/DJminted.sty</string>
+		<string>Source/DJNote/DJespcrc2.sty</string>
 		<string>tmp/Thesis/WillRobertson/Makefile</string>
+		<string>Test/DJThesis/SUACSEThesis-test01.makefile</string>
 		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
 		<string>Test/DJThesis/Makefile</string>
@@ -740,6 +818,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{294, 10}, {968, 768}}</string>
+	<string>{{295, 0}, {983, 778}}</string>
 </dict>
 </plist>
