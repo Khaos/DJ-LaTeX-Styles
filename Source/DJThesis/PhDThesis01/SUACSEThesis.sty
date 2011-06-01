@@ -6,7 +6,30 @@
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% * Usage
-%%   - 
+%%   - Available keys
+%%     @suacse
+%%     @suacseopt
+%%   - Short outline
+%%     - Initialisation
+%%     - Load packages
+%%     - Package-setting commands
+%%     - Spacing
+%%     - Page Layout
+%%     - Page Styles
+%%     - TOC etc.
+%%     - Chapter Styling
+%%     - Section, etc., Styling
+%%     - Fonts
+%%     - Title Page
+%%     - Glossaries
+%%     - Bibliography
+%%     - Hyperref Options
+%%     - PGF/TikZ
+%%     - Captions
+%%     - Initialise Keys
+%%     - Load Packages with Options Given by /suacseopt
+%%     - Commands
+%%     - MISC
 %%
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -18,6 +41,8 @@
 %%       has to be put somewhere carefully as stated in the code.
 %%   @ 2010-12-05 10:07:25 +0000 (Sun,  5 Dec 2010)
 %%     - Seperate the pgf-key's definition
+%%   @ 2010-12-26 10:08:55 +0000 (Sun, 26 Dec 2010)
+%%     - Prepare the first release
 %%
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -43,8 +68,180 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:01:56 +0000 (Tue, 16 Nov 2010)
 %% Packages
+
+%% * eTeX
+\RequirePackage{etex}  % Load Package 'etex'
+
+%% * etoolbox
+% \RequirePackage{etoolbox} % Load Package 'etoolbox'
+
+%% * 
+\RequirePackage{atbegshi}
+\RequirePackage{xspace}  % For command \xspace
+
+
+%% * PGF key
 \RequirePackage{pgfkeys}  % Load Package 'pgfkeys'
 \RequirePackage{pgfopts}  % Load Package 'pgfopts'
+
+%% * IF*
+\RequirePackage{ifthen}  % Load Package 'ifthen'
+\RequirePackage{ifpdf}  % Load Package 'ifpdf'
+\RequirePackage{ifxetex}  % Load Package 'ifxetex'
+
+
+
+%% * Caption
+%%   !!! Some commands defined in memoir are incompatible with the package
+%%       caption
+% \RequirePackage[width=\textwidth]{caption}
+% \captionsetup[table]{position=top}
+
+
+%% * Input encoding
+\RequirePackage[utf8]{inputenc}% sane input encoding
+\DeclareUnicodeCharacter{2014}{\dash}
+\DeclareUnicodeCharacter{2022}{\item}
+
+
+%% * Language
+\RequirePackage{csquotes}
+\MakeOuterQuote{"}
+
+\RequirePackage[british]{babel}
+
+
+%% * Font & Symbol
+%%   - Load the commonly-used font & symbol packages
+% \RequirePackage[OT1]{fontenc} % sane font encoding
+\RequirePackage[T1]{fontenc} % sane font encoding
+
+\RequirePackage{textcomp} % provide lots of new symbols
+\RequirePackage{lmodern} % for sensible sans and tt font
+
+\RequirePackage{pifont}  % Load Package 'pifont'
+\newcommand\diameter{\Pisymbol{psy}{'306}} % Define new symbol
+
+
+%% * MISC
+\RequirePackage{calc,listings}
+\RequirePackage{verbatim}	% Environment \begin{comment} \end{comment}
+\RequirePackage{soul}		% Underlining command: \ul
+% \RequirePackage{paralist}  % Load Package 'paralist'
+\RequirePackage{enumitem}  % Load Package 'enumitem'
+
+
+%% * Graph-related package
+\RequirePackage{graphics}							% Graphy style
+\RequirePackage[usenames, dvipsnames]{color}		% Color
+\RequirePackage{graphicx}
+%% !!! Comment
+%%     The package 'xcolor' has to be loaded before the package 'pstricks'.
+\RequirePackage[svgnames]{xcolor}
+
+%%   - PGF-related package
+\RequirePackage{pgf}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage{pgfplotstable}
+
+% We need lots of libraries...
+\usetikzlibrary{%
+	arrows,%
+	calc,%
+	fit,%
+	patterns,%
+	plotmarks,%
+	shapes.geometric,%
+	shapes.misc,%
+	shapes.symbols,%
+	shapes.arrows,%
+	shapes.callouts,%
+	shapes.multipart,%
+	shapes.gates.logic.US,%
+	shapes.gates.logic.IEC,%
+	circuits.logic.US,%
+	circuits.logic.IEC,%
+	circuits.logic.CDH,%
+	circuits.ee.IEC,%
+	datavisualization,%
+	datavisualization.formats.functions,%
+	er,%
+	automata,%
+	backgrounds,%
+	chains,%
+	topaths,%
+	trees,%
+	petri,%
+	mindmap,%
+	matrix,%
+	calendar,%
+	folding,%
+	fadings,%
+	shadings,%
+	spy,%
+	through,%
+	turtle,%
+	positioning,%
+	scopes,%
+	decorations.fractals,%
+	decorations.shapes,%
+	decorations.text,%
+	decorations.pathmorphing,%
+	decorations.pathreplacing,%
+	decorations.footprints,%
+	decorations.markings,%
+	shadows,%
+	lindenmayersystems,%
+	intersections,%
+	fixedpointarithmetic,%
+	fpu,%
+	svg.path,%
+	external,%
+}
+
+\usepgfplotslibrary{dateplot,%
+					units,%
+					groupplots}
+
+\RequirePackage{xxcolor} %% Part of <pgf>
+
+% \input{DJpgfmanual-en-macros}
+% \input{DJpgfplots-macros}
+
+
+%% * Table-related packages
+\RequirePackage{longtable}			% Long table
+\RequirePackage{tabulary}			% Auto adjust column width
+\RequirePackage{booktabs}			% Define the hrule width for tabel
+\RequirePackage{multirow}			% Multirow
+
+\newcolumntype{Y}{>{\sf}L}
+
+\RequirePackage{tabu}  % Load Package 'tabu'
+
+
+% %% * Algorithm-related packages
+% \RequirePackage{algorithm}			% Algorithm
+% \RequirePackage{algpseudocode}		% Algorithmic
+% 
+% %% Required by titletoc, but should be commented when using \numberwithin
+% %% Required by article style maybe.
+% %\newcommand{\theHalgorithm}{\arabic{algorithm}}
+% 
+% \algnewcommand\algorithmicto{\textbf{to}}
+% \algrenewtext{For}[3]%
+% {\algorithmicfor\ $#1 \gets #2\ \algorithmicto\ #3$ \algorithmicdo}
+% 
+% \algrenewcommand\algorithmicrequire{\textbf{Input:}}%
+% \algrenewcommand\algorithmicensure{\textbf{Output:}}%
+% % \algrenewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) #1}%
+% % \algrenewcommand\algorithmiccomment[1]{\hfill\(\blacktriangleright\) #1}%
+
+
+%% * TODO-related packages
+\RequirePackage[obeyDraft]{todonotes}  % Load Package 'todonotes'
+
 
 %% END: Packages
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -66,6 +263,9 @@
 
 %% * Use '\suacseset' to set-up the suacse keys 
 \def\suacseset#1{\pgfkeys{/suacse/.cd,#1}}
+
+%% * Use '\suacse@opt@set' to set-up the suacseopt keys 
+\def\suacse@opt@set#1{\pgfkeys{/suacseopt/.cd,#1}}
 
 
 % \newcommand*{\setsuacsespacing}[1]{%
@@ -321,8 +521,8 @@
 %%   ! The following styles are only available when ACSE page styles are used.
 \newcommand{\suacse@loadpagenumberstyle}{%
 	%% - Load required package
-	\RequirePackage[svgnames]{xcolor}  % Load Package 'xcolor'
-	\RequirePackage{tikz}  % Load Package 'tikz'
+	% \RequirePackage[svgnames]{xcolor}  % Load Package 'xcolor'
+	% \RequirePackage{tikz}  % Load Package 'tikz'
 	% \providecommand\thesispage{\normalfont p.\,\thepage}
 	% \providecommand\thesispage{\normalfont \colorbox{black}%
 	% 		{\color{white}p.\,\thepage}}
@@ -389,10 +589,15 @@
 			\if@mainmatter
 				\@suacse@pagenumber@text\;%
 				\tikz [baseline=0pt]{%[baseline=(current bounding box.south)]
-				\path [use as bounding box] (0, 0) rectangle (1.5mm, 2ex);
+				\path [use as bounding box] (0, 0) rectangle (1.5mm, 2.5ex);
 				% \filldraw[anchor=base] (0,0) rectangle (2mm, 2.5ex); \;\thepage
+				% \filldraw [anchor=base,
+				% \node [anchor=base,
+				% 	   fill=gray,
+				% 	   minimum height=2ex,
+				% 	   minimum width=1.2mm] {};}
 				\filldraw [anchor=base,
-						   gray] (0,-1mm) rectangle (1.5mm, 1.8ex);}
+						   gray,] (0,-1.3mm) rectangle (1.3mm, 2.3ex);}
 			\else
 				\@suacse@pagenumber@text%
 				% \;%
@@ -509,7 +714,7 @@
 	\else
 		\setlength{\headheight}{\baselineskip}
 		% \setlength{\headwidth}{\textwidth}
-		\setlength{\headwidth}{\textwidth+\marginparsep+0.4\marginparwidth}
+		\setlength{\headwidth}{\textwidth+\marginparsep+0.2\marginparwidth}
 		\makepagestyle{acsei}
 		  \makepsmarks{acsei}{%
 		    % \let\@mkboth\markboth%
@@ -538,7 +743,7 @@
 		  % \fi
 		  % \setlength{\headwidth}{\textwidth}
 		  % \makeheadrule{acsei}{\headwidth}{0.4pt}
-		  \makeheadrule{acsei}{\textwidth}{0.4pt}
+		  \makeheadrule{acsei}{\textwidth}{0.6pt}
 		
 		% \if@mainmatter
 		% \setlength{\headwidth}{\textwidth+\marginparsep+0.4\marginparwidth}
@@ -632,30 +837,35 @@
 \newif\ifsuacse@toc@style@wspr
 \newif\ifsuacse@toc@style@acsei
 
+\newif\if@suacse@toc@toc@show
+
 %% * Define TOC-related keys
 \pgfkeys{%
 	/suacse/.cd,
 	%% - TOC
-	showshorttoc/.is if=suacse@toc@short@show,
-	showshorttoc/.default=false,
-	tocstyle@memsty/.is if=suacse@toc@style@memsty,
-	tocstyle@wspr/.is if=suacse@toc@style@wspr,
-	tocstyle@acsei/.is if=suacse@toc@style@acsei,
+	showshorttoc/.is if = suacse@toc@short@show,
+	showshorttoc/.default = false,
+	tocstyle@memsty/.is if = suacse@toc@style@memsty,
+	tocstyle@wspr/.is if = suacse@toc@style@wspr,
+	tocstyle@acsei/.is if = suacse@toc@style@acsei,
 	loadtocstyle/.is choice,
-	loadtocstyle/memsty/.style={tocstyle@memsty=true,%
-								tocstyle@wspr=false,%
+	loadtocstyle/memsty/.style = {tocstyle@memsty=true,%
+								  tocstyle@wspr=false,%
+								  tocstyle@acsei=false,},
+	loadtocstyle/wspr/.style = {tocstyle@memsty=false,%
+								tocstyle@wspr=true,%
 								tocstyle@acsei=false,},
-	loadtocstyle/wspr/.style={tocstyle@memsty=false,%
-							  tocstyle@wspr=true,%
-							  tocstyle@acsei=false,},
-	loadtocstyle/acsei/.style={tocstyle@memsty=false,%
-							   tocstyle@wspr=false,%
-							   tocstyle@acsei=true,},
-	loadtocstyle/.default=acsei,
-	loadtocstyle/.append code={\suacse@loadtocstyle},
-	tocstyle/.style={loadtocstyle=#1},
-	tocdepth/.code={\settocdepth{#1}},
-	maxtocdepth/.code={\maxtocdepth{#1}},
+	loadtocstyle/acsei/.style = {tocstyle@memsty=false,%
+								 tocstyle@wspr=false,%
+								 tocstyle@acsei=true,},
+	loadtocstyle/.default = acsei,
+	loadtocstyle/.append code = {\suacse@loadtocstyle},
+	tocstyle/.style = {loadtocstyle=#1},
+	tocdepth/.code = {\settocdepth{#1}},
+	maxtocdepth/.code = {\maxtocdepth{#1}},
+	addtoctotoc/.is if = @suacse@toc@toc@show,
+	addtoctotoc/.default = true,
+	tocparskip/.code={\setlength{\cftparskip}{#1}},
 }
 
 %% * Define TOC-related option keys
@@ -667,19 +877,25 @@
 \newif\if@shorttoc
 
 %%   - Pre-defined command
-%%     Hide content line in short toc
+%%     - Hide content line in short toc
+%%       !!! DO NOT PUT ANY \clearpage inside of this environment.
 \newenvironment {hideshorttoc} {
   \addtocontents{toc}{ \protect\if@shorttoc \protect\else }
 }{
   \addtocontents{toc}{ \protect\fi }
 }
 
+%%   - Pre-define commands for TOC
+\newcommand{\setupshorttoc}{}
+\newcommand{\setupparasubsecs}{}
+\newcommand{\setupmaintoc}{}
+
 
 \newcommand{\suacse@loadtocstyle}{%
 %% * Memsty style
 \ifsuacse@toc@style@memsty
 	%% - Define short TOC
-	\newcommand*{\setupshorttoc}{%
+	\renewcommand*{\setupshorttoc}{%
 	  \@shorttoctrue
 	  \renewcommand*{\contentsname}{Short contents}
 	  \let\oldchangetocdepth\changetocdepth
@@ -711,7 +927,7 @@
 	  \renewcommand*{\cftbookformatpnum}[1]{%
 	    \hbox to\unitlength{{\cftbookpagefont ####1}}}}
 
-	\newcommand*{\setupparasubsecs}{%
+	\renewcommand*{\setupparasubsecs}{%
 	  \@shorttocfalse
 	  \let\oldnumberline\numberline
 	  \renewcommand*{\cftsubsectionfont}{\itshape}
@@ -733,7 +949,7 @@
 	\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
 
 	%%   - Define long TOC
-	\newcommand*{\setupmaintoc}{%
+	\renewcommand*{\setupmaintoc}{%
 	  \renewcommand{\contentsname}{Contents}
 	  \let\changetocdepth\oldchangetocdepth
 	  \let\precistoctext\oldprecistoctext
@@ -755,7 +971,7 @@
 
 %% * Will Robertson's style
 \ifsuacse@toc@style@wspr
-	\newcommand*{\setupshorttoc}{%
+	\renewcommand*{\setupshorttoc}{%
 	  \@shorttoctrue
 	  \renewcommand*{\contentsname}{Short contents}
 	  \let\oldchangetocdepth\changetocdepth
@@ -781,7 +997,7 @@
 	  \renewcommand*{\cftpartfillnum}[1]{\hfill\null\par}
 	}
 
-	\newcommand*{\setupparasubsecs}{%
+	\renewcommand*{\setupparasubsecs}{%
 	  \@shorttocfalse
 	  \let\oldnumberline\numberline
 	  \renewcommand \cftsubsectionfont     {\small}
@@ -809,7 +1025,7 @@
 
 	\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
 
-	\newcommand*{\setupmaintoc}{%
+	\renewcommand*{\setupmaintoc}{%
 	  \renewcommand{\contentsname}{Contents}
 	  \let\changetocdepth\oldchangetocdepth
 	  \renewcommand{\precistoctext}[1]{}
@@ -839,7 +1055,7 @@
 %% * ACSE style I
 \ifsuacse@toc@style@acsei
 	%% - Define short TOC
-	\newcommand*{\setupshorttoc}{%
+	\renewcommand*{\setupshorttoc}{%
 	  \@shorttoctrue
 	  \renewcommand*{\contentsname}{Short contents}
 	  \let\oldchangetocdepth\changetocdepth
@@ -852,10 +1068,14 @@
 	  % \renewcommand*{\cftpartpagefont}{\normalfont}
 	  % \renewcommand*{\cftpartleader}{ \textperiodcentered\space}
 	  % \renewcommand*{\cftpartafterpnum}{\cftparfillskip}
+	  % \newlength\@suacse@toc@short@entrytitle@length
+	  % \setlength{\@suacse@toc@short@entrytitle@length}{0.6\textwidth}
+	  % \let\oldctfchapterfont
 	  \renewcommand*{\cftchapterfont}{\hfill\sffamily}
 	  \renewcommand*{\cftchapterpagefont}{\normalfont}
 	  \renewcommand*{\cftchapterleader}{ \textperiodcentered\space}
 	  \renewcommand*{\cftchapterafterpnum}{\cftparfillskip}
+	  % \renewcommand*{\cftchapterafterpnum}{\hfill}
 	  % \setpnumwidth{0em}
 	  % \setpnumwidth{1.5em}
 	  \renewcommand*{\cftchapterfillnum}[1]{%
@@ -871,7 +1091,7 @@
 	  \renewcommand*{\cftbookformatpnum}[1]{%
 	    \hbox to\unitlength{{\cftbookpagefont ####1}}}}
 
-	\newcommand*{\setupparasubsecs}{%
+	\renewcommand*{\setupparasubsecs}{%
 	  \@shorttocfalse
 	  \let\oldnumberline\numberline
 	  \renewcommand*{\cftsubsectionfont}{\itshape}
@@ -884,16 +1104,23 @@
 	      % \advance\rightskip 0pt plus \hsize % uncomment this for raggedright
 	      % \advance\rightskip 0pt plus 2em    % uncomment this for semi-ragged
 	      \parfillskip=\fill
-	      \ifhmode ,\ \else\noindent\fi
+	      \ifhmode
+	        \unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip%
+	        \unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip%
+	        \,,\space\space\space\space
+	      \else
+	        \noindent
+	      \fi
 	      \ignorespaces 
-	      {\cftsubsectionfont ####1}~{\cftsubsectionpagefont####2}%
+	      {\cftsubsectionfont \S\,####1}~~~{\cftsubsectionpagefont####2}%
 	       \let\numberline\oldnumberline\ignorespaces
-	    \fi}}
+	    \fi}
+	}
 
 	\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
 
 	%%   - Define long TOC
-	\newcommand*{\setupmaintoc}{%
+	\renewcommand*{\setupmaintoc}{%
 	  \renewcommand{\contentsname}{Contents}
 	  \let\changetocdepth\oldchangetocdepth
 	  \let\precistoctext\oldprecistoctext
@@ -903,6 +1130,8 @@
 	  \renewcommand*{\cftchapterleader}{\sffamily\cftdotfill{\cftchapterdotsep}}
 	  \renewcommand*{\cftchapterafterpnum}{}
 	  \renewcommand{\cftchapterbreak}{\par\addpenalty{-\@highpenalty}}
+	  % \renewcommand{\cftsectionname}{\S\,}
+	  % \renewcommand{\cftsubsectionname}{\S\,}
 	  \setpnumwidth{2.55em}
 	  \setrmarg{3.55em}
 	  \setcounter{tocdepth}{2}
@@ -915,17 +1144,24 @@
 
 }
 
-%% * Show TOC
-\newcommand{\printtoc}{%
-\ifsuacse@toc@short@show
+%% * Print TOC
+%%   - Short TOC
+\newcommand{\printshorttoc}{%
 	\setupshorttoc
-	\tableofcontents
-	\clearpage
-\fi
-\setupparasubsecs
-\setupmaintoc
-\tableofcontents
-\clearpage
+	\ifsuacse@toc@short@show
+		\if@suacse@toc@toc@show \tableofcontents \else \tableofcontents* \fi
+		% \clearpage
+	\fi
+}
+\newcommand{\printmaintoc}{%
+	%% - Setup short TOC at the begin
+	\setupshorttoc
+	%% - Setup main TOC, note that some commands are defined in the short toc
+	%%   so that don't forget to load it first.
+	\setupparasubsecs
+	\setupmaintoc
+	\if@suacse@toc@toc@show \tableofcontents \else \tableofcontents* \fi
+	% \clearpage
 }
 
 
@@ -938,10 +1174,22 @@
 %% Chapter Styling
 
 %% * Declare switchers for the extra chapter styles
-\newif\ifsuacse@chapterstyle@daleifi
-\newif\ifsuacse@chapterstyle@GreyNum
-\newif\ifsuacse@chapterstyle@texblogtikz
-\newif\ifsuacse@chapterstyle@acsei
+\newif\if@suacse@chapterstyle@daleifi
+\newif\if@suacse@chapterstyle@GreyNum
+\newif\if@suacse@chapterstyle@texblogtikz
+\newif\if@suacse@chapterstyle@acsei
+\newif\if@suacse@chapterstyle@acseii
+\newif\if@suacse@chapterstyle@fncychap@bjornstrup
+
+%% * Clear chapter style
+\newcommand*{\@suacse@chapterstyle@clear}{%
+	\@suacse@chapterstyle@daleififalse
+	\@suacse@chapterstyle@GreyNumfalse
+	\@suacse@chapterstyle@texblogtikzfalse
+	\@suacse@chapterstyle@acseifalse
+	\@suacse@chapterstyle@acseiifalse
+	\@suacse@chapterstyle@fncychap@bjornstrupfalse
+}
 
 %% * Define chapter-style-related keys
 \pgfkeys{%
@@ -949,31 +1197,28 @@
 	%% - Chapter style
 	chapterstyle/.code={\chapterstyle{#1}
 						\def\@suacse@chapter@style{#1}},
-	chapterstyle@daleifi/.is if=suacse@chapterstyle@daleifi,
-	chapterstyle@GreyNum/.is if=suacse@chapterstyle@GreyNum,
-	chapterstyle@texblogtikz/.is if=suacse@chapterstyle@texblogtikz,
-	chapterstyle@acsei/.is if=suacse@chapterstyle@acsei,
+	chapterstyle@daleifi/.is if=@suacse@chapterstyle@daleifi,
+	chapterstyle@GreyNum/.is if=@suacse@chapterstyle@GreyNum,
+	chapterstyle@texblogtikz/.is if=@suacse@chapterstyle@texblogtikz,
+	chapterstyle@acsei/.is if=@suacse@chapterstyle@acsei,
 	loadextrachapsty/.is choice,
-	loadextrachapsty/all/.style={chapterstyle@daleifi=true,%
-								 chapterstyle@GreyNum=true,%
-								 chapterstyle@texblogtikz=true,%
-								 chapterstyle@acsei=true},
-	loadextrachapsty/daleifi/.style={chapterstyle@daleifi=true,%
-									 chapterstyle@GreyNum=false,%
-									 chapterstyle@texblogtikz=false,%
-					 				 chapterstyle@acsei=false},
-	loadextrachapsty/GreyNum/.style={chapterstyle@daleifi=false,%
-									 chapterstyle@GreyNum=true,%
-									 chapterstyle@texblogtikz=false,%
-					 				 chapterstyle@acsei=false},
-	loadextrachapsty/texblogtikz/.style={chapterstyle@daleifi=false,%
-										 chapterstyle@GreyNum=false,%
-										 chapterstyle@texblogtikz=true,%
-					 					 chapterstyle@acsei=false},
-	loadextrachapsty/acsei/.style={chapterstyle@daleifi=false,%
-								   chapterstyle@GreyNum=false,%
-								   chapterstyle@texblogtikz=false,%
-					 			   chapterstyle@acsei=true},
+	loadextrachapsty/all/.code={\@suacse@chapterstyle@clear%
+								\@suacse@chapterstyle@daleifitrue%
+								\@suacse@chapterstyle@GreyNumtrue%
+								\@suacse@chapterstyle@texblogtikztrue%
+								\@suacse@chapterstyle@acseitrue%
+								\@suacse@chapterstyle@acseiitrue%
+								\@suacse@chapterstyle@fncychap@bjornstruptrue},
+	loadextrachapsty/daleifi/.code={\@suacse@chapterstyle@clear%
+									\@suacse@chapterstyle@daleifitrue},
+	loadextrachapsty/GreyNum/.code={\@suacse@chapterstyle@clear%
+									\@suacse@chapterstyle@GreyNumtrue},
+	loadextrachapsty/texblogtikz/.code={\@suacse@chapterstyle@clear%
+										\@suacse@chapterstyle@texblogtikztrue},
+	loadextrachapsty/acsei/.code={\@suacse@chapterstyle@clear%
+					 			  \@suacse@chapterstyle@acseitrue},
+	loadextrachapsty/acseii/.code={\@suacse@chapterstyle@clear%
+					 			  \@suacse@chapterstyle@acseiitrue},
 	loadextrachapsty/.append code={\suacse@loadextrachapsty},
 }
 
@@ -982,14 +1227,32 @@
 	/suacseopt/.cd,
 	%% - Chapter style
 	chapterstyle/.code={\suacseset{chapterstyle=#1}},
+	%% - Chapter styles provided by the package 'fncychap'
+	fncychap/.is choice,
+	fncychap/bjornstrup/.prefix style={chapterstyle=default},
+	fncychap/bjornstrup/.code={\RequirePackage[Bjornstrup]{fncychap}
+							   \ChTitleVar{\raggedleft\LARGE\sffamily\bfseries}},
+}
+
+\newcommand{\@suacse@chapterhead@memoir}{%
+	\def\@makeschapterhead##1{%
+	  \chapterheadstart
+	  {%\parindent \z@ \raggedright \normalfont
+	   \parindent \z@ \memRTLraggedright \normalfont
+	   \printchapternonum
+	   \interlinepenalty\@M
+	   \printchaptertitle{##1}%
+	   \afterchaptertitle}%
+	}
 }
 
 %% ! Note that in the nested \newcommand command, #1 is the first argument
 %%   for the most outer one, and ##1 is the first argument for the next less
 %%   outer one.
 \newcommand{\suacse@loadextrachapsty}{%
-\ifsuacse@chapterstyle@daleifi
-	\RequirePackage{color,calc,graphicx,soul}
+\if@suacse@chapterstyle@daleifi
+	% \RequirePackage{color,calc,graphicx,soul}
+	% \RequirePackage{graphicx}
 	\definecolor{nicered}{rgb}{.647,.129,.149}
 	\newlength\dlf@normtxtw
 	\setlength\dlf@normtxtw{\textwidth}
@@ -1012,6 +1275,7 @@
 	    \makebox[1cm][r]{\usebox\feline@chapter}%
 	  }}
 	\makechapterstyle{daleifi}{
+	  \chapterstyle{default}
 	  \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
 	  \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{nicered}}
 	  \renewcommand\chapternamenum{}
@@ -1021,15 +1285,16 @@
 	  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ####1\par}
 	}
 \fi
-\ifsuacse@chapterstyle@GreyNum
+\if@suacse@chapterstyle@GreyNum
 	% \RequirePackage{fix-cm}
 	% \RequirePackage{fourier}%................... Roman+math - Utopia
-	\RequirePackage{color}
+	% \RequirePackage{color}
 	\definecolor{ChapGrey}{rgb}{0.6,0.6,0.6}
 	\newcommand{\LargeFont}{% Needs a 'stretchable' font
 	      \usefont{\encodingdefault}{\rmdefault}{b}{n}%
 	      \fontsize{60}{80}\selectfont\color{ChapGrey}}
 	\makechapterstyle{GreyNum}{%
+	  \chapterstyle{default}
 	  \renewcommand{\chapnamefont}{\large\sffamily\bfseries\itshape}
 	  \renewcommand{\chapnumfont}{\LargeFont}
 	  \renewcommand{\chaptitlefont}{\Huge\sffamily\bfseries\itshape}
@@ -1053,7 +1318,7 @@
 \fi
 \newif\ifnumberedchap
 \numberedchaptrue
-\ifsuacse@chapterstyle@texblogtikz
+\if@suacse@chapterstyle@texblogtikz
 	% \newif\iftestii
 	% \testiitrue
 	% \iftestii
@@ -1062,8 +1327,8 @@
 	% 	\typeout{iftestii is false.}
 	% \fi
 	% \typeout{done!}
-	\RequirePackage[svgnames]{xcolor}
-	\RequirePackage{tikz}
+	% \RequirePackage[svgnames]{xcolor}
+	% \RequirePackage{tikz}
 	%% helper macros
 	\newcommand{\ChapWithNumber}[1]{
 	\begin{tikzpicture}[remember picture,overlay]
@@ -1096,6 +1361,7 @@
 	% \newif\ifnumberedchap
 	% \numberedchaptrue
 	\makechapterstyle{texblogtikz}{
+	  \chapterstyle{default}
 	  \renewcommand\chapnamefont{\normalfont\sffamily\Huge\bfseries}
 	  \renewcommand\chapnumfont{\normalfont\sffamily\Huge\bfseries}
 	  \renewcommand\chaptitlefont{\normalfont\sffamily\Huge\bfseries}
@@ -1114,7 +1380,7 @@
 	  }
 	}
 \fi
-\ifsuacse@chapterstyle@acsei
+\if@suacse@chapterstyle@acsei
 	% \RequirePackage{xcolor}  % Load Package 'xcolor'
 	% \RequirePackage{tikz}  % Load Package 'tikz'
 	% \providecommand\thesispage{\normalfont p.\,\thepage}
@@ -1125,6 +1391,7 @@
 	% \setlength{\headheight}{\baselineskip}
 	% \setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
 	\makechapterstyle{acsei}{%
+	  \chapterstyle{default}
 	  \setlength\beforechapskip{0pt}
 	  \setlength\midchapskip{0pt}
 	  \setlength\afterchapskip{40pt}
@@ -1148,6 +1415,50 @@
 		% \makeoddfoot{plain}{}{}{\thepage}
 		% 	  \fi
 	}
+\fi
+\if@suacse@chapterstyle@acseii
+	\gdef\@suacse@chapterstyle@acseii@chapterrule{\hrule}
+	\makechapterstyle{acseii}{% requires graphicx package
+	  \chapterstyle{default}
+	  \renewcommand{\chapterheadstart}{%
+	    \if@mainmatter%
+	      \vspace*{\beforechapskip}%
+	    \else%
+	      \vspace*{0.1\beforechapskip}
+	    \fi
+	}
+	  \renewcommand*{\chapnamefont}{%
+	    \normalfont\Large\scshape%
+	    \raggedleft}
+	    % \if@mainmatter\raggedleft\fi}
+	  \renewcommand*{\chaptitlefont}{%
+	    \normalfont\Huge\bfseries\sffamily%
+	    \raggedleft}
+	    % \if@mainmatter\raggedleft\fi}
+	  \renewcommand*{\chapternamenum}{}
+	  \renewcommand*{\printchapternum}{%
+	    \makebox[0pt][l]{\hspace{0.4em}%
+	      \resizebox{!}{4ex}{%
+	        \chapnamefont\bfseries\sffamily\thechapter}%
+	    }%
+	    \gdef\@suacse@chapterstyle@acseii@chapterrule{\hrule}
+	  }%
+	  \renewcommand*{\printchapternonum}{%
+	    \chapnamefont \phantom{\printchaptername \chapternamenum%
+	      \makebox[0pt][l]{\hspace{0.4em}%
+	        \resizebox{!}{4ex}{%
+	          \chapnamefont\bfseries\sffamily 1}%
+	      }%
+	    \gdef\@suacse@chapterstyle@acseii@chapterrule{\relax}
+	    }%
+	    \afterchapternum %
+	  }%
+	  \renewcommand*{\afterchapternum}{%
+	    \par\hspace{1.5cm}%
+	    % \if@mainmatter\@ifstar{\relax}{\hrule}\fi%
+	    \if@mainmatter\@suacse@chapterstyle@acseii@chapterrule\fi%
+	    \vskip\midchapskip}}
+	    % \par\hspace{1.5cm}\hrule\vskip\midchapskip}}
 \fi
 }
 
@@ -1244,7 +1555,6 @@
 %% using \setsecnumformat
 
 
-
 %% * Command used to set the default head style
 \newcommand*{\defaultsecheads}{
   \defaultsecnum
@@ -1304,22 +1614,6 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% Created by Dazhi Jiang, 2010-11-16 16:12:17 +0000 (Tue, 16 Nov 2010)
-%% Captions
-
-%% END: Captions
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% Created by Dazhi Jiang, 2010-11-16 16:12:36 +0000 (Tue, 16 Nov 2010)
-%% Bibliography
-
-%% END: Bibliography
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:03:18 +0000 (Tue, 16 Nov 2010)
 %% Fonts
 
@@ -1344,11 +1638,11 @@
 	% font/.code={\suacseset{font=#1}},
 }
 
-%% * Load the commonly-used packages
-\RequirePackage[T1]{fontenc} % sane font encoding
-
-\RequirePackage{textcomp} % provide lots of new symbols
-\RequirePackage{lmodern} % for sensible sans and tt font
+%% * Load the commonly-used font & symbol packages
+% \RequirePackage[T1]{fontenc} % sane font encoding
+% 
+% \RequirePackage{textcomp} % provide lots of new symbols
+% \RequirePackage{lmodern} % for sensible sans and tt font
 
 % \renewcommand{\suacseopt@setfont}{%
 \newcommand{\suacseopt@setfont}{%
@@ -1366,9 +1660,6 @@
 	\fi
 }
 \@onlypreamble\suacseopt@setfont
-
-\RequirePackage{pifont}  % Load Package 'pifont'
-\newcommand\diameter{\Pisymbol{psy}{'306}} % Define new symbol
 
 %% * Make maths use lining numbers: (old-style look bad most-times)
 \DeclareMathSymbol{0}{0}{letters}{'060}
@@ -1472,24 +1763,1223 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% Created by Dazhi Jiang, 2010-11-18 13:11:44 +0000 (Thu, 18 Nov 2010)
-%% Declare Package Options
-%%   - Declare pgf package options
-%%     Note that the command,\ProcessPgfPackageOptions, has to be put
-%%     an proper place, see below,
-%%     1. This declaration command has to be put after all \pgfkeys
-%%     2. If the <if> keys are used directly, this command has to be put
-%%        somewhere before the commands that include the <if> keys. This is
-%%        because that the <if> keys are set in this command and will take
-%%        the default value if the command is used after the <if> keys.
-%%     3. Any command used by keys has to be defined before the declaration.
-%%        You can define an empty command in advance, do the declaration
-%%        and then renew it.
-%%     4. Avoid to use the <if> keys directly. If necessary, define a new
-%%        command within which the <if> keys is used and include this command
-%%        into a key, /path/key/.append code.
-\ProcessPgfPackageOptions{/suacseopt}
-%% END: Declare Package Options
+%% Created by Dazhi Jiang, 2010-12-27 08:47:04 +0000 (Mon, 27 Dec 2010)
+%% Title Page
+
+%% * Define indicator for the elements of title page
+\newif\if@suacse@titlepage@title@isdefined
+\newif\if@suacse@titlepage@author@isdefined
+\newif\if@suacse@titlepage@date@isdefined
+\newif\if@suacse@titlepage@degree@isdefined
+\newif\if@suacse@titlepage@degreedate@isdefined
+\newif\if@suacse@titlepage@collegeordept@isdefined
+\newif\if@suacse@titlepage@university@isdefined
+\newif\if@suacse@titlepage@supervisor@isdefined
+\newif\if@suacse@titlepage@award@isdefined
+\newif\if@suacse@titlepage@crest@isdefined
+\newif\if@suacse@titlepage@submittedtext@isdefined
+\newif\if@suacse@titlepage@place@isdefined
+
+%% * Declare the style switchers for title page
+\newif\if@suacse@titlepage@style@acsemaster
+\newif\if@suacse@titlepage@style@acsei
+\newif\if@suacse@titlepage@style@acseii
+
+%% * Clear title page style
+\let\@suacse@maketitle@orig\maketitle
+\newcommand*{\@suacse@titlepage@style@clear}{%
+	\@suacse@titlepage@style@acsemasterfalse
+	\@suacse@titlepage@style@acseifalse
+	\@suacse@titlepage@style@acseiifalse
+	\def\maketitle{\@suacse@maketitle@orig}
+}
+
+
+%% * Define title-page-related keys
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Elements for title page
+	title/.code={\title{#1}\@suacse@titlepage@title@isdefinedtrue},
+	author/.code={\author{#1}\@suacse@titlepage@author@isdefinedtrue},
+	date/.code={\date{#1}\@suacse@titlepage@date@isdefinedtrue},
+	degree/.code={\degree{#1}\@suacse@titlepage@degree@isdefinedtrue},
+	degreedate/.code={\degreedate{#1}\@suacse@titlepage@degreedate@isdefinedtrue},
+	collegeordept/.code={\collegeordept{#1}\@suacse@titlepage@collegeordept@isdefinedtrue},
+	university/.code={\university{#1}\@suacse@titlepage@university@isdefinedtrue},
+	supervisor/.code={\supervisor{#1}\@suacse@titlepage@supervisor@isdefinedtrue},
+	award/.code={\award{#1}\@suacse@titlepage@award@isdefinedtrue},
+	crest/.code={\crest{#1}\@suacse@titlepage@crest@isdefinedtrue},
+	submittedtext/.code={\submittedtext{#1}\@suacse@titlepage@submittedtext@isdefinedtrue},
+	place/.code={\place{#1}\@suacse@titlepage@place@isdefinedtrue},
+	%% - Title page layout
+	% titlepage/title/font/.code={\@suacse@titlepage@title@font{#1}},
+	titlepage/title/font/.code={\@suacse@titlepage@element@font@define{title}{#1}},
+	titlepage/title/pre/.code={\@suacse@titlepage@element@pre@define{title}{#1}},
+	titlepage/title/post/.code={\@suacse@titlepage@element@post@define{title}{#1}},
+	titlepage/author/font/.code={\@suacse@titlepage@element@font@define{author}{#1}},
+	titlepage/author/pre/.code={\@suacse@titlepage@element@pre@define{author}{#1}},
+	titlepage/author/post/.code={\@suacse@titlepage@element@post@define{author}{#1}},
+	titlepage/date/font/.code={\@suacse@titlepage@element@font@define{date}{#1}},
+	titlepage/date/pre/.code={\@suacse@titlepage@element@pre@define{date}{#1}},
+	titlepage/date/post/.code={\@suacse@titlepage@element@post@define{date}{#1}},
+	titlepage/degree/font/.code={\@suacse@titlepage@element@font@define{degree}{#1}},
+	titlepage/degree/pre/.code={\@suacse@titlepage@element@pre@define{degree}{#1}},
+	titlepage/degree/post/.code={\@suacse@titlepage@element@post@define{degree}{#1}},
+	titlepage/degreedate/font/.code={\@suacse@titlepage@element@font@define{degreedate}{#1}},
+	titlepage/degreedate/pre/.code={\@suacse@titlepage@element@pre@define{degreedate}{#1}},
+	titlepage/degreedate/post/.code={\@suacse@titlepage@element@post@define{degreedate}{#1}},
+	titlepage/collegeordept/font/.code={\@suacse@titlepage@element@font@define{collegeordept}{#1}},
+	titlepage/collegeordept/pre/.code={\@suacse@titlepage@element@pre@define{collegeordept}{#1}},
+	titlepage/collegeordept/post/.code={\@suacse@titlepage@element@post@define{collegeordept}{#1}},
+	titlepage/university/font/.code={\@suacse@titlepage@element@font@define{university}{#1}},
+	titlepage/university/pre/.code={\@suacse@titlepage@element@pre@define{university}{#1}},
+	titlepage/university/post/.code={\@suacse@titlepage@element@post@define{university}{#1}},
+	titlepage/supervisor/font/.code={\@suacse@titlepage@element@font@define{supervisor}{#1}},
+	titlepage/supervisor/pre/.code={\@suacse@titlepage@element@pre@define{supervisor}{#1}},
+	titlepage/supervisor/post/.code={\@suacse@titlepage@element@post@define{supervisor}{#1}},
+	titlepage/award/font/.code={\@suacse@titlepage@element@font@define{award}{#1}},
+	titlepage/award/pre/.code={\@suacse@titlepage@element@pre@define{award}{#1}},
+	titlepage/award/post/.code={\@suacse@titlepage@element@post@define{award}{#1}},
+	titlepage/crest/font/.code={\@suacse@titlepage@element@font@define{crest}{#1}},
+	titlepage/crest/pre/.code={\@suacse@titlepage@element@pre@define{crest}{#1}},
+	titlepage/crest/post/.code={\@suacse@titlepage@element@post@define{crest}{#1}},
+	titlepage/submittedtext/font/.code={\@suacse@titlepage@element@font@define{submittedtext}{#1}},
+	titlepage/submittedtext/pre/.code={\@suacse@titlepage@element@pre@define{submittedtext}{#1}},
+	titlepage/submittedtext/post/.code={\@suacse@titlepage@element@post@define{submittedtext}{#1}},
+	titlepage/place/font/.code={\@suacse@titlepage@element@font@define{place}{#1}},
+	titlepage/place/pre/.code={\@suacse@titlepage@element@pre@define{place}{#1}},
+	titlepage/place/post/.code={\@suacse@titlepage@element@post@define{place}{#1}},
+	%% - Title page style
+	titlepagestyle/.is choice,
+	titlepagestyle/default/.code={\@suacse@titlepage@style@clear},
+	titlepagestyle/acsemaster/.code={\@suacse@titlepage@style@clear %
+									 \@suacse@titlepage@style@acsemastertrue %
+									 \@suacse@titlepage@style@set},
+	titlepagestyle/acsei/.code={\@suacse@titlepage@style@clear %
+								\@suacse@titlepage@style@acseitrue
+								\@suacse@titlepage@style@set},
+	titlepagestyle/acseii/.code={\@suacse@titlepage@style@clear %
+								 \@suacse@titlepage@style@acseiitrue
+								 \@suacse@titlepage@style@set},
+	titlepagestyle/.default=default,
+}
+
+
+%% * Define the elements of the title page
+%%   - Prototype used to define the element command
+\DeclareRobustCommand{\@suacse@titlepage@element@define}[1]{%
+	\@namedef{#1}##1{%
+		\expandafter\expandafter\expandafter\gdef\@nameuse{@suacse@titlepage@#1}{##1}}
+}
+%%   - Prototype used to define the element font
+% \DeclareRobustCommand{\@suacse@titlepage@element@define}[1]{%
+% 	\@namedef{#1}##1{%
+% 		\expandafter\expandafter\expandafter\gdef\@nameuse{@suacse@titlepage@#1}{##1}}
+% }
+\DeclareRobustCommand{\@suacse@titlepage@element@font@define}[2]{%
+	% \@suacse@titlepage@element@define{@suacse@titlepage@#1@font}
+	\@namedef{@suacse@titlepage@#1@font}{\normalfont #2}
+	% \expandafter\def\csname @suacse@titlepage@#1@font\endcsname ##1{##1}
+	% \expandafter\long\@namedef{@suacse@titlepage@#1@font}##1{##1}
+	% \expandafter\expandafter\expandafter\gdef\@nameuse{@suacse@titlepage@#1@font}{##1}
+}
+%%   - Prototype used to define the text before the main element
+\DeclareRobustCommand{\@suacse@titlepage@element@pre@define}[2]{%
+	% \@suacse@titlepage@element@define{@suacse@titlepage@#1@font}
+	\@namedef{@suacse@titlepage@#1@pre}{#2}
+}
+%%   - Prototype used to define the text after the main element
+\DeclareRobustCommand{\@suacse@titlepage@element@post@define}[2]{%
+	% \@suacse@titlepage@element@define{@suacse@titlepage@#1@font}
+	\@namedef{@suacse@titlepage@#1@post}{#2}
+}
+%%   - Prototype used to define the layout of the elements
+\DeclareRobustCommand{\@suacse@titlepage@element@group@define}[1]{%
+	\@namedef{@suacse@titlepage@group@#1}{%
+		\@nameuse{@suacse@titlepage@#1@pre}
+		{\@nameuse{@suacse@titlepage@#1@font} \@nameuse{@suacse@titlepage@#1}}
+		\@nameuse{@suacse@titlepage@#1@post}
+	}
+}
+%%     !!! Comment
+%%     The definition of \@nameuse is
+%%         \def\@nameuse#1{\csname #1\endcsname}
+%%     The 1st \expandafter saves the 2nd one, while the 3rd one saves \gdef.
+%%     Thus, the 2nd \expandafter and \gdef are saved, while \@nameuse is
+%%     expanded to its definition. Then the command becomes
+%%         \expandafter\gdef\csname @#1\endcsname
+%%     This will allow the final expanded result is \@#1 with #1 replacing by
+%%     the corresponding text.
+
+
+%%   - Main title
+\let\title@orig\title
+\renewcommand{\title}[1]{%
+	\title@orig{#1}%
+	\let\@suacse@titlepage@title\@title
+}
+\@suacse@titlepage@element@group@define{title}
+
+%%   - Author
+\let\author@orig\author
+\renewcommand{\author}[1]{%
+	\author@orig{#1}%
+	\let\@suacse@titlepage@author\@author
+}
+\@suacse@titlepage@element@group@define{author}
+
+%%   - Date
+\let\date@orig\date
+\renewcommand{\date}[1]{%
+	\date@orig{#1}%
+	\let\@suacse@titlepage@date\@date
+}
+\@suacse@titlepage@element@group@define{date}
+
+%%   - Degreedate, the year and term the degree will be officially conferred
+\@suacse@titlepage@element@define{degreedate}
+% \def\degreedate#1{\gdef\@degreedate{#1}}
+\@suacse@titlepage@element@group@define{degreedate}
+
+%%   - Degree, the full (unabbreviated) name of the degree
+\@suacse@titlepage@element@define{degree}
+% \def\degree#1{\gdef\@degree{#1}}
+\@suacse@titlepage@element@group@define{degree}
+
+%%   - collegeordept, the name of your college or department (eg. Trinity,
+%%     Pembroke, Maths, Physics)
+\@suacse@titlepage@element@define{collegeordept}
+% \def\collegeordept#1{\gdef\@collegeordept{#1}}
+\@suacse@titlepage@element@group@define{collegeordept}
+
+%%   - University, the name of your University
+\@suacse@titlepage@element@define{university}
+% \def\university#1{\gdef\@university{#1}}
+\@suacse@titlepage@element@group@define{university}
+
+%%   - Supervisor, the name of your supervisor
+\@suacse@titlepage@element@define{supervisor}
+% \def\supervisor#1{\gdef\@supervisor{#1}}
+\@suacse@titlepage@element@group@define{supervisor}
+
+%%   - Award
+\@suacse@titlepage@element@define{award}
+% \def\award#1{\gdef\@award{#1}}
+\@suacse@titlepage@element@group@define{award}
+
+%%   - Defining the crest
+\@suacse@titlepage@element@define{crest}
+% \def\crest#1{\gdef\@crest{#1}}
+\@suacse@titlepage@element@group@define{crest}
+
+%%   - Submitted text
+\@suacse@titlepage@element@define{submittedtext}
+% \newcommand{\submittedtext}{{A thesis submitted for the degree of}}
+\@suacse@titlepage@element@group@define{submittedtext}
+
+%%   - Place
+\@suacse@titlepage@element@define{place}
+% \newcommand{\submittedtext}{{A thesis submitted for the degree of}}
+\@suacse@titlepage@element@group@define{place}
+
+
+%% * Set up the title page style
+\newenvironment{alwayssingle}{%
+	\@restonecolfalse
+	\if@twocolumn \@restonecoltrue\onecolumn
+	\else \newpage
+	\fi}
+{\if@restonecol\twocolumn\else\newpage\fi}
+
+\newcommand{\@suacse@titlepage@style@set}{%
+	%% - ACSE master style
+	\if@suacse@titlepage@style@acsemaster
+		\suacseset{%
+			titlepage/title/font={\Huge\bfseries},
+			titlepage/title/pre={\vspace*{\stretch{0.05}}},
+			% titlepage/title/pre={},
+			titlepage/title/post={\\},
+			titlepage/crest/font={\LARGE},
+			titlepage/crest/pre={\vspace*{\stretch{2.1}}},
+			titlepage/crest/post={\\},
+			titlepage/author/font={\LARGE\bfseries},
+			titlepage/author/pre={\vspace*{\stretch{1.4}}},
+			titlepage/author/post={\\},
+			titlepage/award/pre={},
+			titlepage/award/font={\large},
+			titlepage/award/post={\\},
+			titlepage/degreedate/font={\large},
+			titlepage/degreedate/pre={},
+			titlepage/degreedate/post={\\},
+			titlepage/supervisor/font={\large},
+			titlepage/supervisor/pre={\vspace*{\stretch{0.4}}},
+			titlepage/supervisor/post={\\},
+			titlepage/collegeordept/font={\large},
+			titlepage/collegeordept/pre={},
+			titlepage/collegeordept/post={\\},
+			titlepage/university/font={\large},
+			titlepage/university/pre={},
+			titlepage/university/post={\\},
+			titlepage/submittedtext/font={},
+			titlepage/submittedtext/pre={\vspace*{\stretch{1}}},
+			titlepage/submittedtext/post={\\},
+			titlepage/degree/font={\itshape},
+			titlepage/degree/pre={},
+			titlepage/degree/post={\vspace*{\stretch{0.4}}},
+		}
+		\renewcommand{\maketitle}{%
+			\begin{alwayssingle}
+				\thispagestyle{empty}
+				% \null\vfill
+				\begin{DoubleSpace}
+				\begin{center}
+					%% - Main title
+					\@suacse@titlepage@group@title
+					%% - Crest
+					\@suacse@titlepage@group@crest
+					%% - Author
+					\@suacse@titlepage@group@author
+					%% - Award
+					\@suacse@titlepage@group@award
+					%% - Degree date
+					\@suacse@titlepage@group@degreedate
+					%% - Supervisor
+					\@suacse@titlepage@group@supervisor
+					%% - College or department
+					\@suacse@titlepage@group@collegeordept
+					%% - University
+					\@suacse@titlepage@group@university
+					%% - Submitted text
+					\@suacse@titlepage@group@submittedtext
+					%% - Degree
+					\@suacse@titlepage@group@degree
+				\end{center}
+				\end{DoubleSpace}
+				% \null\vfill
+			\end{alwayssingle}
+		}
+	\fi
+	%% - ACSE style I
+	\if@suacse@titlepage@style@acsei
+		\suacseset{%
+			titlepage/title/font={\Huge\bfseries},
+			titlepage/title/pre={\vspace*{\stretch{0.02}}},
+			% titlepage/title/pre={},
+			titlepage/title/post={\\},
+			titlepage/crest/font={\LARGE},
+			titlepage/crest/pre={\vspace*{\stretch{1.1}}},
+			titlepage/crest/post={\\},
+			titlepage/author/font={\LARGE\bfseries},
+			titlepage/author/pre={\vspace*{\stretch{0.5}}{\LARGE BY}\\ \vspace*{\stretch{0.4}}},
+			titlepage/author/post={\\},
+			titlepage/award/pre={},
+			titlepage/award/font={\large},
+			titlepage/award/post={\\},
+			titlepage/degreedate/font={\normalfont},
+			titlepage/degreedate/pre={},
+			titlepage/degreedate/post={\vspace*{\stretch{0.2}}},
+			titlepage/supervisor/font={\large},
+			titlepage/supervisor/pre={\vspace*{\stretch{0.9}}},
+			titlepage/supervisor/post={\\},
+			titlepage/collegeordept/font={\large},
+			titlepage/collegeordept/pre={},
+			titlepage/collegeordept/post={\\},
+			titlepage/university/font={\normalfont},
+			titlepage/university/pre={},
+			titlepage/university/post={\unskip,~\ignorespaces},
+			titlepage/place/font={\normalfont},
+			titlepage/place/pre={},
+			titlepage/place/post={\unskip,~\ignorespaces},
+			titlepage/submittedtext/font={\normalfont},
+			titlepage/submittedtext/pre={\vspace*{\stretch{1}}},
+			titlepage/submittedtext/post={\\},
+			titlepage/degree/font={\normalfont\itshape},
+			titlepage/degree/pre={},
+			titlepage/degree/post={\\},
+		}
+		\renewcommand{\maketitle}{%
+			\begin{alwayssingle}
+				\thispagestyle{empty}
+				% \null\vfill
+				\begin{DoubleSpace}
+				\begin{center}
+					%% - Main title
+					\@suacse@titlepage@group@title
+					%% - Author
+					\@suacse@titlepage@group@author
+					%% - Crest
+					\@suacse@titlepage@group@crest
+					%% - Award
+					% \@suacse@titlepage@group@award
+					%% - Supervisor
+					\@suacse@titlepage@group@supervisor
+					%% - College or department
+					\@suacse@titlepage@group@collegeordept
+					%% - Submitted text
+					\@suacse@titlepage@group@submittedtext
+					%% - Degree
+					\@suacse@titlepage@group@degree
+					%% - University
+					% \@suacse@titlepage@group@university
+					%% - Place
+					\@suacse@titlepage@group@place
+					%% - Degree date
+					\@suacse@titlepage@group@degreedate
+				\end{center}
+				\end{DoubleSpace}
+				% \null\vfill
+			\end{alwayssingle}
+		}
+	\fi
+	%% - ACSE style II
+	\if@suacse@titlepage@style@acseii
+	
+	\fi
+}
+
+% \newcommand{\submittedtext}{{A thesis submitted for the degree of}}
+% \newcommand{\submittedtext}{A dissertation submitted in partial fulfilment of the requirements for the degree of}
+
+%% END: Title Page
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-26 03:29:14 +0000 (Sun, 26 Dec 2010)
+%% Glossary
+
+%% * Glossaries
+%%   The package 'glossaries' provides many advanced features. The following
+%%   part is used to define the style of glossary using this package.
+
+%% * Define keys for glossaries
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Options for glossaries
+	glossaries/settings/.is choice,
+	glossaries/settings/acsei/.code={\@suacse@glossaries@setting@acsei},
+	glossaries/entryname/pgf/.code 2 args={\@suacse@glossaries@entryname@pgf[#1]{#2}},
+}
+
+
+%% * Define package option keys for glossaries
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for glossaries
+	glossariesopt/.code={\@suacse@glossaries@option@setup{#1}},
+	% hyperrefopt/.store in=\@suacse@hyperref@option,
+	glossaries@opt@acsei/.style={glossariesopt=\@suacse@glossaries@opt@acsei},
+}
+
+%% * Commands required by key /suacse/hyperrefopt
+\newif\if@suacse@glossaries@option@predefined
+\newcommand{\@suacse@glossaries@option@setup}[1]{%
+	\@suacse@glossaries@option@predefinedfalse
+	\nametest{#1}{acsei}
+	\ifsamename
+		\suacse@opt@set{glossaries@opt@acsei}
+		\samenamefalse
+		\@suacse@glossaries@option@predefinedtrue
+	\fi
+	\if@suacse@glossaries@option@predefined \else
+		\def\@suacse@glossaries@option{#1}
+	\fi
+}
+
+%% * Initialise the glossaries options
+\def\@suacse@glossaries@option{}
+
+\def\@suacse@glossaries@opt@acsei{acronym,%
+								  style=long3colheader,%
+								  toc,%
+								  section,%
+								  }
+
+%% * Configure the glossaries
+%%   - ACSEI style
+%%     The following command sets up the glossaries for SUACSEThesis
+\newcommand{\@suacse@glossaries@setting@acsei}{%
+	\@ifpackageloaded{glossaries}%
+		{\let\endsuacsethesis\relax}%
+		{\let\endsuacsethesis\endinput %
+		\PackageError{SUACSEThesis}{Forget to load the glossaries package?}{\@ehd}}
+	\endsuacsethesis
+	
+	%% - Set up the glossary entry style. 
+	%%   Note that,
+	%%   1. This style only works with the option 'long3col*'.
+	%%   2. The package 'biblatex' has to be loaded before this command is
+	%%      invoked, because it contains a command, \MakeCapital, which is
+	%%      defined in the package 'biblatex'.
+	% \renewcommand*{\glossaryentryfield}[5]{%
+	% 	\glstarget{####1}{####2} & \MakeCapital{####3} & ####5\\}%
+	
+	\setlength{\glsdescwidth}{0.58\textwidth}
+	\setlength{\glspagelistwidth}{0.15\textwidth}
+	
+	% \newglossary[nlg]{symbols}{not}{ntn}{Symbols}
+	\makeglossaries
+	% \loadglsentries{database1}
+	% \loadglsentries[symbols]{database2}
+	
+	\renewcommand*{\glsgroupskip}{}
+}
+
+%% * Commands for glossaries
+%%   - Change entry name
+\newcommand*{\@suacse@glossaries@entryname@pgf}[2][2cm]{%
+	\renewcommand*{\entryname}{%
+		\tikz[baseline=0pt]%
+		\node[anchor=base, text width=#1, align=flush left, inner sep=0pt] %
+			{#2};}
+}
+
+
+%% * Settings using the original 'glossary' support in memoir.
+
+%% * Define switcher for glossary
+\newif\if@suacse@glossary@make
+\newif\if@suacse@glossary@style@twocolumn
+
+
+%% * Define keys for glossary
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Options for glossary
+	glossary/twocolumn/.is if=@suacse@glossary@style@twocolumn,
+	glossary/twocolumn/.default=true,
+	glossary/twocolumn/.append code={%
+						\if@suacse@glossary@style@twocolumn
+							\twocolglossary
+							% \show\columnwidth
+						\else
+							\onecolglossary
+						\fi},
+	glossary/column sep/.code={\setlength{\glossarycolsep}{#1}},
+	glossary/rule width/.code={\setlength{\glossaryrule}{#1}},
+	glossary/name/.code={\renewcommand*{\glossaryname}{#1}},
+	glossary/term/.code={\renewcommand{\memgloterm}[1]{#1}},
+	glossary/description/.code={\renewcommand{\memglodesc}[1]{#1}},
+	glossary/ref/.code={\renewcommand{\memgloref}[1]{#1}},
+	glossary/number/.code={\renewcommand{\memglonum}[1]{#1}},
+	glossary/number format/.code={\renewcommand{\suacseglossnumformat}[1]{#1}},
+	glossary/group heading format/.code={\def\@suacse@glossary@heading@format{#1}},
+	% glossary/group heading/add/.code 2 args={%
+	% 	\show\@suacse@glossary@heading@group@oldname
+	% 	\edef\@suacse@glossary@heading@group@oldname{%
+	% 		\@suacse@glossary@heading@group@oldname @old}
+	% 	\show\@suacse@glossary@heading@group@oldname
+	% 	\expandafter\expandafter\expandafter\let%
+	% 		\@nameuse{\@suacse@glossary@heading@group@oldname}%
+	% 		\@suacse@glossary@heading@group
+	% 	\renewcommand{\@suacse@glossary@heading@group}[1]{%
+	% 		\@nameuse{\@suacse@glossary@heading@group@oldname}{##1}
+	% 		\@suacse@glossary@heading@group@mask{##1}{#1}{#2}
+	% 	}\show\@suacse@glossary@heading@group},
+	glossary/group heading/add/.code 2 args={%
+		\@suacse@glossary@heading@group@add{#1}{#2}},
+	glossary/.code={\pgfkeys{/suacse/glossary/.cd, #1}},
+	glossary/pagestyle/.code={#1},
+}
+
+% {\cftKfont {\cftKname \cftKpresnum SNUM\cftKaftersnum\hfil} \cftKaftersnumb TITLE} {\cftKleader}{\cftKformatpnum{PAGE}}\cftKafterpnum\par
+% \gdef\suacseglossnumformat#1{\textbf{\hyperpage{#1}}}
+% \def\suacseglossnumformat#1{#1}
+\newcommand{\suacseglossnumformat}[1]{#1}
+
+% %%%%%% hypermarks in index
+% %    from email from Lars Madsen
+% \providecommand{\doglobookmark}[1]{{\def\@tempa{Symbols}\def\@tempb{#1}%
+%   \centering\bfseries \ifx\@tempa\@tempb @ \else #1\fi\vskip\onelineskip\par}}
+% % extended to add booksmarks for each letter group.
+% \renewcommand{\doglobookmark}[1]{{\def\@tempa{Symbols}\def\@tempb{#1}%
+%   \centering\bfseries \ifx\@tempa\@tempb %
+%   Analphabetics 
+%   \phantomsection%
+%   \pdfbookmark[0]{Analphabetics}{Analphabetics-glo}%
+% %  \label{AnalphabeticsAnalphabeticsAnalphabetics-idx}%
+%   \else 
+%   #1%
+%   \phantomsection%
+%   \pdfbookmark[1]{#1}{#1-glo}%
+% %  \label{#1#1#1-idx}%
+%   \fi%
+%   \vskip\onelineskip\par}}
+
+%%%%%% hypermarks in index
+%    from email from Lars Madsen
+\providecommand{\doglobookmark}[1]{%
+	{\def\@tempa{Symbols}\def\@tempb{#1}%
+	\centering\bfseries 
+	\ifx\@tempa\@tempb @ \else #1\fi\vskip\onelineskip\par}}
+
+%% * Define the formats of the glossary group headings
+\let\@suacse@glossary@heading@format\relax
+
+%% * Define the glossary group headings according their keys
+\newcommand{\@suacse@glossary@heading@group@mask}[3]{%
+	\nametest{#1}{#2}
+	\ifsamename
+		\def\@suacse@glossary@heading{#3}
+		\samenamefalse
+	\fi
+	\@ifnextchar\bgroup
+		{\@suacse@glossary@heading@group@mask{#1}}
+		{\relax}
+}
+
+\newcommand{\@suacse@glossary@heading@group}[1]{%
+	\def\@suacse@glossary@heading{#1}
+}
+
+%% * Redefine the glossary headings as desired.
+\renewcommand{\@suacse@glossary@heading@group}[1]{%
+	% \def\@suacse@glossary@heading{Miscellaneous}
+	\@suacse@glossary@heading@group@mask{#1}{C}{Constants, Variables \& Functions}%
+											{E}{Operators}%
+											{N}{Notation}%
+											{T}{Acronyms/Terminology}%
+											{Z}{{Miscellaneous}}
+}
+
+
+% \edef\@suacse@glossary@heading@group@oldname{@suacse@glossary@heading@group}
+
+% \newcommand{\@suacse@glossary@heading@group@add}[2]{%
+% 	% \show\@suacse@glossary@heading@group@oldname
+% 	\edef\@suacse@glossary@heading@group@oldname{%
+% 		\@suacse@glossary@heading@group@oldname @old}
+% 	% \show\@suacse@glossary@heading@group@oldname
+% 	\expandafter\expandafter\expandafter\let\@nameuse{\@suacse@glossary@heading@group@oldname}=\@suacse@glossary@heading@group
+% 	% \@namedef{\@suacse@glossary@heading@group@oldname}##1{\@suacse@glossary@heading@group{##1}}
+% 	\show\@suacse@glossary@heading@group
+% 	\renewcommand{\@suacse@glossary@heading@group}[1]{%
+% 		\@nameuse{\@suacse@glossary@heading@group@oldname}{##1}
+% 		\@suacse@glossary@heading@group@mask{##1}{#1}{#2}
+% 	}
+% 	% \show\@suacse@glossary@heading@group
+% }
+
+% \@suacse@glossary@heading@group@add{E}{Operators}
+% \show\@suacse@glossary@heading@group@old
+% \@suacse@glossary@heading@group@add{N}{Notation}
+% \show\@suacse@glossary@heading@group@old
+% \show\@suacse@glossary@heading@group@old@old
+
+% % \newcommand{\@suacse@glossary@heading@group@old}[1]{\@suacse@glossary@heading@group{#1}}
+% \let\@suacse@glossary@heading@group@old\@suacse@glossary@heading@group
+% % \edef\@suacse@glossary@heading@group@old[#1]{\@suacse@glossary@heading@group{#1}}
+% % \edef\@suacse@glossary@heading@group@old#1{\@suacse@glossary@heading@group{#1}}
+% 
+% \edef\@suacse@test@tmpa{@suacse@glossary@heading@group}
+% \edef\@suacse@test@tmpa{\@suacse@test@tmpa @old}
+% \expandafter\expandafter\expandafter\let\@nameuse{\@suacse@test@tmpa}\@suacse@glossary@heading@group
+
+% \renewcommand{\@suacse@glossary@heading@group}[1]{%
+% 	\@nameuse{\@suacse@test@tmpa}{#1}
+% 	\@suacse@glossary@heading@group@mask{#1}{E}{Operators}
+% }
+% 
+% % \def\@suacse@glossary@heading@group@old{\@empty}
+% % \def\@suacse@test@tmpa{@suacse@glossary@heading@group@old@old}
+% \edef\@suacse@test@tmpa{@suacse@glossary@heading@group}
+% \edef\@suacse@test@tmpa{\@suacse@test@tmpa @old}
+% % \def\@suacse@test@tmpb{}
+% \let\@suacse@test@tmpb=\@suacse@test@tmpa
+% \def\@suacse@test@tmpa\expandafter{\@suacse@test@tmpb @old}
+% \let\@suacse@test@tmpb=\@suacse@test@tmpa
+% % \def\@suacse@test@tmpa{\@suacse@test@tmpb\ignorespaces @old}
+% % \show\@suacse@test@tmpa
+% \expandafter\expandafter\expandafter\let\@nameuse{\@suacse@test@tmpa}\@suacse@glossary@heading@group
+% \show\@suacse@test@tmpa
+% \show\@suacse@glossary@heading@group@old@old
+% % \renewcommand{\@suacse@glossary@heading@group@old}[1]{\@suacse@glossary@heading@group{#1}}
+% % \def\@suacse@glossary@heading@group@old@old[#1]{\@suacse@glossary@heading@group{#1}}
+% % \edef\@suacse@glossary@heading@group@old#1{\@suacse@glossary@heading@group{#1}}
+% \renewcommand{\@suacse@glossary@heading@group}[1]{%
+% 	% \@nameuse{\@suacse@test@tmpa}{#1}
+% 	\@suacse@glossary@heading@group@old@old{#1}
+% 	\@suacse@glossary@heading@group@mask{#1}{N}{Notation}
+% }
+% % \renewcommand{\@suacse@glossary@heading@group}[1]{%
+% % 	\@suacse@glossary@heading@group@old{#1}
+% % 	\@suacse@glossary@heading@group@mask{#1}{E}{Operators}
+% % 	\@suacse@glossary@heading@group@mask{#1}{N}{Notation}
+% % }
+
+
+
+%% extended to add booksmarks for each letter group.
+\renewcommand{\doglobookmark}[1]{%
+	{\def\@tempa{Symbols}\def\@tempb{#1}%
+	{\@suacse@glossary@heading@format %
+	% \centering\bfseries %
+	\ifx\@tempa\@tempb %
+		Analphabetics 
+		\phantomsection%
+		\pdfbookmark[0]{Analphabetics}{Analphabetics-glo}%
+		% \label{AnalphabeticsAnalphabeticsAnalphabetics-idx}%
+	\else 
+		\@suacse@glossary@heading@group{#1}
+		% \ifthenelse{\equal{#1}{C}}{\def\@suacse@glossary@heading{Constants, Variables \& Functions}}{%
+		% 		\ifthenelse{\equal{#1}{E}}{\def\@suacse@glossary@heading{Operators}}{%
+		% 		\ifthenelse{\equal{#1}{N}}{\def\@suacse@glossary@heading{Notation}}{%
+		% 		\ifthenelse{\equal{#1}{T}}{\def\@suacse@glossary@heading{Acronyms/Terminology}}%
+		% 			{\def\@suacse@glossary@heading{Others}}}}}
+		% #1%
+		\@suacse@glossary@heading%
+		\phantomsection%
+		\pdfbookmark[1]{\@suacse@glossary@heading}{\@suacse@glossary@heading}%
+		% \label{#1#1#1-idx}%
+	\fi%
+	\vskip\onelineskip\par
+	}
+	}
+}
+
+%% * Define package option keys for glossary
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for glossary
+	makeglossary/.is if=@suacse@glossary@make,
+	makeglossary/.default=true,
+	makeglossary/.append code={%% * Make glossary file, glo%
+								\if@suacse@glossary@make
+									\makeglossary
+									\changeglossactual{?}
+									\changeglossnum{\thepage}
+									\changeglossnumformat{|suacseglossnumformat}%% for hyperlinks
+								\fi},
+}
+
+
+% \renewcommand{\glossitem}[4]{%
+% }
+%% * \glossitem{<term>}{<desc>}{<ref>}{<num>}
+%%   - #1: term
+%%   - #2: description
+%%   - #3: reference
+%%   - #4: number
+
+%% * Make glossary file, glo
+% \if@suacse@glossary@make
+% 	\makeglossary
+% \fi
+
+%% END: Glossary
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2011-01-06 16:54:01 +0000 (Thu,  6 Jan 2011)
+%% Index
+
+%% * Define switcher for glossary
+\newif\if@suacse@index@make
+
+%% * Define package option keys for index
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for index
+	makeindex/.is if=@suacse@index@make,
+	makeindex/.default=true,
+	makeindex/.append code={%% * Make index file, idx
+							\if@suacse@index@make
+								\makeindex
+							\fi},
+}
+
+%% * Make index file, idx
+% \if@suacse@index@make
+% 	\makeindex
+% \fi
+
+
+%% END: Index
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2011-01-06 17:27:46 +0000 (Thu,  6 Jan 2011)
+%% Lists
+
+%% * List of Figure
+\pgfkeys{%
+	/suacse/.cd,
+	lofparskip/.code={\setlength{\cftparskip}{#1}},
+}
+
+% \pgfkeys{%
+% 	/suacseopt/.cd,	
+% }
+
+
+%% * List of Table
+\pgfkeys{%
+	/suacse/.cd,
+	lotparskip/.code={\setlength{\cftparskip}{#1}},
+}
+
+%% END: Lists
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:12:36 +0000 (Tue, 16 Nov 2010)
+%% Bibliography
+
+\newif\if@suacse@mainmatter
+
+%% * Define keys for biblatex options
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Options for biblatex
+	bibname/.code={\defbibheading{bibliography}[\bibname]{%
+				   \if@mainmatter\@suacse@mainmattertrue\@mainmatterfalse\fi%
+				   \chapter*{#1}\addcontentsline{toc}{chapter}{#1}}%
+				   \if@suacse@mainmatter\@mainmattertrue\fi},
+	% bibname/.initial={References},
+}
+
+%% * Define package option keys for biblatex options
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for biblatex
+	biblatexopt/.code={\@suacse@biblatex@option@setup{#1}},
+	% biblatexopt/.store in=\@suacse@hyperref@option,
+	biblatexopt@wspr/.style={biblatexopt={hyperref,backref,%
+										  defernums,sortcites,%
+										  date=short,%
+										  bibencoding=inputenc,%
+										  maxnames=3,%
+										  minnames=2,%
+										  firstinits=true,%
+										  sorting=nyt,%
+										  bibstyle=numeric,%
+										  citestyle=numeric-comp,}},
+	biblatexopt@acsei/.style={biblatexopt=\@suacse@biblatex@opt@acsei},
+	% bibname/.code={\renewcommand\bibname{#1}},
+}
+
+%% * Commands required by key /suacse/hyperrefopt
+\newif\if@suacse@biblatex@option@predefined
+\newcommand{\@suacse@biblatex@option@setup}[1]{%
+	\@suacse@biblatex@option@predefinedfalse
+	\nametest{#1}{wspr}
+	\ifsamename
+		\suacse@opt@set{biblatexopt@wspr}
+		\samenamefalse
+		\@suacse@biblatex@option@predefinedtrue
+	\fi
+	\nametest{#1}{acsei}
+	\ifsamename
+		\suacse@opt@set{biblatexopt@acsei}
+		\samenamefalse
+		\@suacse@biblatex@option@predefinedtrue
+	\fi
+	\if@suacse@biblatex@option@predefined \else
+		\def\@suacse@biblatex@option{#1}
+	\fi
+}
+
+
+%%   - Initialise the biblatex options
+\def\@suacse@biblatex@option{}
+
+
+\def\@suacse@biblatex@opt@acsei{hyperref,backref,%
+							    defernumbers,%
+							    sortcites,%
+							    date=short,%
+							    bibencoding=inputenc,%
+							    maxnames=3,%
+							    minnames=2,%
+							    maxcitenames=2,%
+							    mincitenames=1,%
+							    firstinits=true,%
+							    sorting=nyt,%
+							    bibstyle=numeric,%
+							    citestyle=numeric-comp,%
+							    backend=biber,%
+							    natbib=true,%
+}
+%% !!! Comment
+%%     The option 'defernumbers' has been disabled, since it is not compatible
+%%     with the externalization library of PGF (mode = list and make).
+%% 
+%% !!! Update
+%%     This issue can be fixed by add the following code in your preamble.
+%%     \tikzifexternalizing{%
+%%         \ExecuteBibliographyOptions{defernumbers=false}
+%%     }{}
+
+%% END: Bibliography
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-12 10:25:57 +0000 (Sun, 12 Dec 2010)
+%% Hyperref Options
+
+%% * Define keys for hyperref options
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Options for hyperref
+	sethyperrefopt/.code={\hypersetup{#1}},
+}
+
+
+%% * Define package option keys for hyperref options
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for hyperref
+	hyperrefopt/.code={\@suacse@hyperref@option@setup{#1}},
+	% hyperrefopt/.store in=\@suacse@hyperref@option,
+	hyperrefopt@wspr/.style={hyperrefopt={ocgcolorlinks,breaklinks,%
+							plainpages=false,pdfpagelabels,linktocpage}},
+	hyperrefopt@acsei/.style={hyperrefopt=\@suacse@hyperref@opt@acsei},
+	hyperrefopt@djreport/.style={hyperrefopt=\@suacse@hyperref@opt@djreport},
+}
+
+%% * Commands required by key /suacse/hyperrefopt
+\newif\if@suacse@hyperref@option@predefined
+\newcommand{\@suacse@hyperref@option@setup}[1]{%
+	\@suacse@hyperref@option@predefinedfalse
+	\nametest{#1}{wspr}
+	\ifsamename
+		\suacse@opt@set{hyperrefopt@wspr}
+		\samenamefalse
+		\@suacse@hyperref@option@predefinedtrue
+	\fi
+	\nametest{#1}{acsei}
+	\ifsamename
+		\suacse@opt@set{hyperrefopt@acsei}
+		\samenamefalse
+		\@suacse@hyperref@option@predefinedtrue
+	\fi
+	\nametest{#1}{djreport}
+	\ifsamename
+		\suacse@opt@set{hyperrefopt@djreport}
+		\samenamefalse
+		\@suacse@hyperref@option@predefinedtrue
+	\fi
+	\if@suacse@hyperref@option@predefined \else
+		\def\@suacse@hyperref@option{#1}
+		% \ifxetex
+		% 	\def\@suacse@hyperref@option{#1}
+		% 	% \def\@suacse@hyperref@option{#1,xetex}
+		% \else
+		% 	\def\@suacse@hyperref@option{#1}
+		% \fi
+	\fi
+}
+
+%%   - Initialise the hyperref options
+\def\@suacse@hyperref@option{}
+
+\definecolor{darkred}{rgb}{0.4,0,0}
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{darkblue}{rgb}{0,0,0.4}
+
+%%   - Define the pre-defined hyperref options
+%%     Since 'hyperref' can detect the latex drivers automatically, no need
+%%     to specify the drivers explicitly (you can ignore the options like
+%%     pdftex, dvips, xetex, etc.)
+\ifpdf
+	\def\@suacse@hyperref@opt@acsei{%pdftex,%
+									ocgcolorlinks,%
+									plainpages=false,%
+									pdfpagelabels,%
+									pdfpagelayout = OneColumn,%
+									bookmarks,%
+									bookmarksopen = true,%
+									bookmarksnumbered = true,%
+									breaklinks = true,%
+									linktocpage,%
+									colorlinks = true,%
+									linkcolor = darkblue,%
+									urlcolor  = darkblue,%
+									citecolor = darkblue,%
+									anchorcolor = darkgreen,%
+									hyperindex = true,%
+									hyperfigures}
+	\def\@suacse@hyperref@opt@djreport{%pdftex,%
+									   plainpages = false,%
+									   pdfpagelabels,%
+									   pdfpagelayout = OneColumn,%
+									   bookmarks,%
+									   bookmarksopen = true,%
+									   bookmarksnumbered = true,%
+									   breaklinks = true,%
+									   linktocpage,%
+									   colorlinks = true,%
+									   linkcolor = blue,%
+									   urlcolor  = blue,%
+									   citecolor = blue,%
+									   anchorcolor = green,%
+									   hyperindex = true,%
+									   hyperfigures}
+\else
+	\def\@suacse@hyperref@opt@acsei{%dvips,%
+									plainpages=false,%
+									bookmarks,%
+									bookmarksopen = true,%
+									bookmarksnumbered = true,%
+									breaklinks = true,%
+									linktocpage,%
+									colorlinks = true,%
+									linkcolor = darkblue,%
+									urlcolor  = darkblue,%
+									citecolor = darkblue,%
+									anchorcolor = darkgreen,%
+									hyperindex = true,%
+									hyperfigures}
+	\def\@suacse@hyperref@opt@djreport{%dvips,%
+									   plainpages=false,%
+									   bookmarks,%
+									   bookmarksopen = true,%
+									   bookmarksnumbered = true,%
+									   breaklinks = true,%
+									   linktocpage,%
+									   colorlinks = true,%
+									   linkcolor = blue,%
+									   urlcolor  = blue,%
+									   citecolor = blue,%
+									   anchorcolor = green,%
+									   hyperindex = true,%
+									   hyperfigures}
+\fi
+
+
+%% END: Hyperref Options
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2011-01-05 10:19:03 +0000 (Wed,  5 Jan 2011)
+%% PSTricks
+
+%% * Define switcher for PSTricks
+\newif\if@suacse@pstricks@load
+\newif\if@suacse@pstricks@fig
+
+%% * Define package option keys for PSTricks options
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for PSTricks
+	pstricks/.is if=@suacse@pstricks@load,
+	pstricks/.default=false,
+	pstricks/.initial=false,
+	pstricks/.append code={\@suacse@pstricks@load},
+	pstricks/figure/.is if=@suacse@pstricks@fig,
+	pstricks/figure/.default=false,
+	pstricks/figure/.initial=false,
+	pstricks/package/.code={#1},
+}
+
+\newcommand{\@suacse@pstricks@load}{%
+	\if@suacse@pstricks@load
+		\RequirePackage{pstricks}
+		\RequirePackage{pst-node}
+		\RequirePackage{pst-tree}
+		\RequirePackage{pst-plot}
+		\RequirePackage{pst-text}
+		\RequirePackage{pstricks-add}
+		\RequirePackage[active,tightpage]{preview}
+		\PreviewEnvironment{pspicture}
+		\setlength\PreviewBorder{0.1pt}
+	\fi
+}
+
+%% END: PSTricks
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-25 16:55:49 +0000 (Sat, 25 Dec 2010)
+%% PGF/TikZ
+
+%% * Externalising
+%%   - Switcher for externalising
+\newif\if@suacse@pgf@externalexpensive
+\let\@suacse@pgf@externalexpensivetrue@orig=\@suacse@pgf@externalexpensivetrue
+
+%%   - Command for switching on the externalising library
+%%   ! Use \@suacse@pgf@externalexpensivetrue to externalise expensive figures
+\def\@suacse@pgf@externalexpensivetrue{%
+	\if@suacse@pstricks@fig
+		\@suacse@pgf@externalexpensivefalse
+	\else
+	\usepgfplotslibrary{external}
+	\@suacse@pgf@externalexpensivetrue@orig
+	\tikzexternalize[
+		prefix=Figs/pdf/pgfexternalfig-,
+		export=false, % needs to be activated for single pictures (i.e. expensive ones)
+		mode=list and make,
+		verbose IO=false,
+		% export=true,% FASTER FOR DEBUGGING
+	]
+		%% !!!
+		%% Changed by Dazhi Jiang - 2010-09-20
+		%% The following line is commented since the new definition of
+		%% \tikzexternalize in PGF 2.0 cvs
+		% {pgfplots}
+	\tikzifexternalizing{%
+		\nofiles
+	}{}%
+	\fi
+}%
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% !!!
+%% Modified by Dazhi Jiang, 2010-12-25 17:09:03 +0000 (Sat, 25 Dec 2010)
+%% A modified alias of \@suacse@pgf@externalexpensivetrue
+%% It allows to specify the main document.
+\newcommand{\@suacse@pgf@externalmainfile@set}[1]{%
+	\if@suacse@pstricks@fig
+		\@suacse@pgf@externalexpensivefalse
+	\else
+	% \def\suacse@pgf@externalexpensivetrue#1{%
+	\usepgfplotslibrary{external}
+	\@suacse@pgf@externalexpensivetrue@orig
+	\tikzexternalize[
+		prefix=Figs/pdf/pgfexternalfig-,
+		export=false, % needs to be activated for single pictures (i.e. expensive ones)
+		mode=list and make,
+		verbose IO=false,
+		%xport=true,% FASTER FOR DEBUGGING
+	]{#1}
+		%% !!!
+		%% Changed by Dazhi Jiang - 2010-09-20
+		%% The following line is commented since the new definition of
+		%% \tikzexternalize in PGF cvs
+		% {pgfplots}
+	\tikzifexternalizing{%
+		\nofiles
+	}{}%
+	\fi
+}%
+%% END: A modified alias of \pgfplotsmanualexternalexpensivetrue
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\graphicspath{{Figs/pdf/}}
+
+%%   - Switcher for the single figure externalisation
+\newif\if@suacse@fig@pgf@is@expensive
+
+% \pgfkeys{
+% 	/tikz/every picture/.append code={%
+% 		\if@suacse@fig@pgf@is@expensive
+% 			\pgfkeys{/tikz/external/export=true}%
+% 			\global\@suacse@fig@pgf@is@expensivefalse
+% 		\fi
+% 	}
+% }
+
+%%   - Hack 'tikzpicture' environment
+% \let\@tikzpicture@orig\tikzpicture
+% \def\tikzpicture{%
+% 	\if@suacse@fig@pgf@is@expensive
+% 		\pgfkeys{/tikz/external/export=true}%
+% 		\global\@suacse@fig@pgf@is@expensivefalse
+% 	\fi
+% 	\@tikzpicture@orig
+% }
+
+%% Write this macro directly in front of \begin{codeexample} (without arguments):
+\def\cmd@suacse@pgf@export@fig{%
+	\if@suacse@pgf@externalexpensive
+		\@suacse@fig@pgf@is@expensivetrue
+	\else
+		\message{[NOTE: I am now about to typeset an expensive example. You will need to ENLARGE YOUR TeX MEMORY CAPACITIES if this fails.]}%
+	\fi
+	\if@suacse@fig@pgf@is@expensive
+		\pgfkeys{/tikz/external/export=true}%
+		\global\@suacse@fig@pgf@is@expensivefalse
+	\fi
+}%
+
+%% * Define keys for pgf externalisation
+\pgfkeys{%
+	/suacse/.cd,
+	%% - Keys for pgf externalisation
+	pgf/makeexternalfig/.code={\cmd@suacse@pgf@export@fig},
+	pgf/externalprefix/.code={\tikzsetexternalprefix{#1}},
+	pgf/makenextfig/.code={\cmd@suacse@pgf@export@fig\tikzsetnextfilename{#1}}
+}
+
+
+%% * Define package option keys for PGF/TikZ options
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for pgf externalisation
+	pgf/externalising/.is if=@suacse@pgf@externalexpensive,
+	pgf/externalising/.default=true,
+	% pgf/externalmainfile/.code={\if@suacse@pgf@externalexpensive\@suacse@pgf@externalmainfile@set{#1}\fi},
+	pgf/externalmainfile/.code={\@suacse@pgf@externalmainfile@set{#1}},
+}
+
+%% * Solve the confliction between biblatex (defernumbers) and pgf/TikZ 
+%%   (externalization library)
+\newcommand{\fixbiblatexpgf}{%
+	\tikzifexternalizing{%
+		\ExecuteBibliographyOptions{defernumbers=false}%
+	}{}
+}
+
+%% END: PGF/TikZ
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-16 16:12:17 +0000 (Tue, 16 Nov 2010)
+%% Captions
+
+%%
+
+%% * Define float placement parameters
+\renewcommand{\topfraction}{.8}
+\renewcommand{\bottomfraction}{.3}
+\renewcommand{\textfraction}{.15}
+\renewcommand{\floatpagefraction}{.66}
+\renewcommand{\dbltopfraction}{.66}
+\renewcommand{\dblfloatpagefraction}{.66}
+
+\setcounter{topnumber}{9}
+\setcounter{bottomnumber}{9}
+\setcounter{totalnumber}{20}
+\setcounter{dbltopnumber}{9}
+
+
+%% * Specify the caption font
+% \captionnamefont{\bfseries\small}
+% \captiontitlefont{\small}
+\captionnamefont{\bfseries}
+% \captiontitlefont{\normalfont}
+
+%% * Specify the caption width
+% \normalcaptionwidth
+\changecaptionwidth
+%% !!! Memoir bugs ???
+%%   - Somehow, the \textwidth is changed in figure evironment. So I define
+%%     a width ratio which is over than 1.
+\def\@suacse@caption@width@ratio{1.025}
+\captionwidth{\@suacse@caption@width@ratio\textwidth}
+% \captionwidth{1.025\textwidth}
+
+%% END: Captions
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-26 11:40:45 +0000 (Sun, 26 Dec 2010)
+%% Math
+
+%% * Load math package
+\RequirePackage{SUACSEThesisMath}  % Load Package 'SUACSEThesisMath'
+
+
+%% END: Math
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -1519,26 +3009,153 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-11-18 13:11:44 +0000 (Thu, 18 Nov 2010)
+%% Declare Package Options
+%%   - Declare pgf package options
+%%     Note that the command,\ProcessPgfPackageOptions, has to be put
+%%     an proper place, see below,
+%%     1. This declaration command has to be put after all \pgfkeys
+%%     2. If the <if> keys are used directly, this command has to be put
+%%        somewhere before the commands that include the <if> keys. This is
+%%        because that the <if> keys are set in this command and will take
+%%        the default value if the command is used after the <if> keys.
+%%     3. Any command used by keys has to be defined before the declaration.
+%%        You can define an empty command in advance, do the declaration
+%%        and then renew it.
+%%     4. Avoid to use the <if> keys directly. If necessary, define a new
+%%        command within which the <if> keys is used and include this command
+%%        into a key, /path/key/.append code.
+%%     5. Put this command before the hyperref loaded since it sets up the
+%%        options for hyperref
+\ProcessPgfPackageOptions{/suacseopt}
+%% END: Declare Package Options
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2010-12-13 10:35:16 +0000 (Mon, 13 Dec 2010)
+%% Load Packages with Options Given by /suacseopt
+
+%% * Packages have to be loaded before hyperref
+
+%%   - 'float'
+\RequirePackage{float}  % Load Package 'float'
+% \usepackage{float}  % Load Package 'float'
+
+
+%% * Load biblatex
+\RequirePackage[\@suacse@biblatex@option]{biblatex}
+\def\bibfont{\small}
+% \bibliography{journals,phd,ARK}
+% \renewcommand\bibname{References}
+
+%% !!! Now we are safe to load hyperref
+\RequirePackage[\@suacse@hyperref@option]{hyperref}
+% \usepackage[\@suacse@hyperref@option]{hyperref}
+
+%% * Load hyperref-related packages
+% \AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
+
+\@ifpackageloaded{hyperref}{}{%
+  \PackageError{hyperref}{I am not loaded!}
+    {\string\pdfdef\space requires hyperref.}}
+
+\RequirePackage[open,openlevel=4]{bookmark}
+\RequirePackage{hypcap}
+
+%% * Load glossaries
+\RequirePackage[\@suacse@glossaries@option]{glossaries}  % Load Package 'glossaries'
+
+
+%% * Load cleverref
+%%   !!! Load the package 'cleveref' before 'algorithm' and 'algorithmicx' 
+%%       (algpseudocode), otherwise you will get the following warining message
+%%         pdfTeX warning (ext4): destination with the same identifier 
+%%         (name{ALC@line.1}) has been already used, duplicate ignored.
+%%       In addition, if you use \cref or \ref, the wrong reference positions
+%%       are given.
+%%       See, 
+%%         http://www.macfreek.nl/mindmaster/LaTeX_package_conflicts
+%%         http://developer.berlios.de/feature/?func=detailfeature&feature_id=2973&group_id=3442
+%%         http://www.stud.uni-karlsruhe.de/~uucom/?p=99
+\RequirePackage[capitalise]{cleveref}
+
+
+%% * Pakcages have to be loaded after hyperref
+%% * Algorithm-related packages
+\RequirePackage{algorithm}			% Algorithm, in the package 'algorithms'
+% \usepackage{algorithm}			% Algorithm, in the package 'algorithms'
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%   - The 'algorithms' package and its settings
+% \RequirePackage{algorithmic}  % Load Package 'algorithmic', in 'algorithms'
+
+%%     - Redefined the leading label of the algorithm entry terms
+%%       Require: -> Input:  &  Ensure: -> Output:
+% \renewcommand\algorithmicrequire{\textbf{Input:}}%
+% \renewcommand\algorithmicensure{\textbf{Output:}}%
+
+% \newcommand{}{}
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%% ------------------------------------------------------------
+%%   - The 'algorithmicx' package and its settings
+\RequirePackage{algpseudocode}		% Algorithmic
+
+% %% Required by titletoc, but should be commented when using \numberwithin
+% %% Required by article style maybe.
+% %\newcommand{\theHalgorithm}{\arabic{algorithm}}
+% 
+\algnewcommand\algorithmicto{\textbf{to}}
+\algrenewtext{For}[3]%
+{\algorithmicfor\ $#1 \gets #2\ \algorithmicto\ #3$ \algorithmicdo}
+
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}%
+\algrenewcommand\algorithmicensure{\textbf{Output:}}%
+% % \algrenewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) #1}%
+% % \algrenewcommand\algorithmiccomment[1]{\hfill\(\blacktriangleright\) #1}%
+
+%% ------------------------------------------------------------
+
+
+% %% * Load cleverref
+% \RequirePackage[capitalise]{cleveref}
+
+
+%% END: Load Packages with Options Given by /suacseopt
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:42:17 +0000 (Tue, 16 Nov 2010)
 %% Commands
-% \RequirePackage{amsmath,amssymb,bm,cool,mathtools}
-\RequirePackage{amsmath}  % Load Package 'amsmath'
-\RequirePackage{amssymb}  % Load Package 'amssymb'
-\RequirePackage{bm}  % Load Package 'bm'
-\RequirePackage{cool}  % Load Package 'cool'
-\RequirePackage{mathtools}  % Load Package 'mathtools'
 
-%% For COOL
-%% * Brilliant Definition!
-%%   This gives a nested integrate, that is,
-%%     \Integrate{f(x,y,z,t)}{t}{x}{y}{z}
-%%   gives a fourth-order integrate
-\let\orig@Integrate\Integrate
-\renewcommand\Integrate[2]{%
-  \@ifnextchar\bgroup
-    {\Integrate{\orig@Integrate{#1}{#2}}}
-    {\orig@Integrate{#1}{#2}}}
-\let\Int\Integrate
+%% * Floats
+%%   - Renew the environments, figure and table, so that they are automatically
+%%     centred and hooked to the \capstart
+\renewenvironment{figure}[1][\fps@figure]
+                 {\edef\@tempa{\noexpand\@float{figure}[#1]}
+                  \@tempa\capstart\centering}
+                 {\end@float}
+\renewenvironment{table}[1][\fps@table]
+                 {\edef\@tempa{\noexpand\@float{table}[#1]}
+                  \@tempa\capstart\centering}
+                 {\end@float}
+%% !!! A few comment
+%% The command \capstart is defined in the package 'hypcap'
+
+
+%% * Abbreviation
+\newcommand{\eg}{e.g.,\xspace}			% <Package>: xspace
+\newcommand{\ie}{i.e.,\xspace}          % <Package>: xspace
+\newcommand{\etc}{etc.\@\xspace}        % <Package>: xspace
+
+
+%% * Symbol
+% \newcommand{\ttbs}{\char'134} % double quotation marks
+
 
 %% END: Commands
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1547,6 +3164,10 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-18 11:59:23 +0000 (Thu, 18 Nov 2010)
 %% MISC
+
+\AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
+
+% \csdef{blx@opts@type@\abx@field@entrytype}{}
 
 %% END: MISC
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -15,15 +15,37 @@
 %% !!!
 % \RequirePackage{etex} % This needs an additional output stream
 \documentclass[10pt,a4paper,extrafontsizes,oldfontcommands,oneside]{memoir}
-\listfiles
-\usepackage{etex}
-\usepackage{comment}
+% \listfiles
+% \usepackage{etex}
+% \usepackage{comment}
+% \usepackage{etextools}
+\usepackage{etoolbox}
+\usepackage{letltxmacro}
+% \usepackage{etextools}
 
 \usepackage[%
 	spacing=onehalf,
 	pagelayout=acseii,
 	font=ppl,
+	% hyperrefopt=wspr,
+	% hyperrefopt=djreport,
+	hyperrefopt=acsei,
+	% biblatexopt=wspr,
+	biblatexopt=acsei,
+	% bibname=References,
+	% pgf/externalising,
+	pgf/externalmainfile=SUACSEThesis-test01,
+	% fncychap=bjornstrup,
+	% makeglossary,
+	glossariesopt=acsei,
 	]{SUACSEThesis}
+
+\suacseset{%
+	bibname=References,
+}
+
+\bibliography{biblatextest}% is part of TeXLive 
+
 
 \suacseset{%
 	% pagelayout=acseii,
@@ -33,88 +55,143 @@
 	% loadextrachapsty=acsei,
 	% loadextrachapsty=texblogtikz,
 	% loadextrachapsty=daleifi,
-	showshorttoc=true,
+	% showshorttoc=true,
+	loadtocstyle=wspr,
 	loadtocstyle=acsei,
+	addtoctotoc,
 	% loadtocstyle=wspr,
 	% loadtocstyle=memsty,
+	% titlepagestyle=acsemaster,
 }
 
 % \suacseset{chapterstyle=texblogtikz}
 % \suacseset{chapterstyle=acsei}
-\suacseset{chapterstyle=madsen}
+% \suacseset{chapterstyle=madsen}
+\suacseset{chapterstyle=acseii}
 
 
-% \suacseset{%
-% 	% pagelayout=acseii,
-% 	% font=ppl,
-% 	% chapterstyle=lyhne,
-% 	loadextrachapsty=daleifi,
-% }
-
-% \makeheadrule{headings}{}{0.5pt}
-
-% \makeatletter
-% %% Page headers
-% \setlength{\headheight}{\baselineskip}
-% \setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
-% \makepagestyle{wspr}
-% \makepsmarks{wspr}{%
-%   \let\@mkboth\markboth%
-%   \def\chaptermark##1{%
-%     \markboth{%
-%       \if@mainmatter
-%         \textsc{Chapter \thechapter:} %
-%       \fi
-%       left ##1}{right ##1}}%
-%   \def\sectionmark##1{%
-%     \markright{%
-%       \if@mainmatter
-%         \textsc{\S\thesection:} %
-%       \fi
-%       ##1}}}
-% \makerunningwidth{wspr}{\headwidth}
-% \makeheadposition{wspr}{flushright}{flushleft}{}{}
-% \makeevenhead{wspr}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
-% \makeoddhead{wspr} {\small\rightmark}              {} {\thesispage}
-% \makeheadrule{wspr}{\headwidth}{0.5pt}
-% \pagestyle{wspr}
-% 
-% \makeatother
 \suacseset{%
 	% loadpagestyle=wspr,
 	pagenumberstyle=plain,
 	pagenumberstyle=bold,
 	pagenumberstyle=blackbg,
 	pagenumberstyle=bari,
-	pagenumberstyle=acsei,
-	% pagenumberstyle=largebold,
+	% pagenumberstyle=acsei,
+	pagenumberstyle=largebold,
 	loadpagestyle=acsei,
 	loadpagestyle=acsei,
 	pagestyle=acsei,
 	loadheadstyle=acsei,
 	headstyle=acsei,
 }
-% \pagestyle{wspr}
-% \pagestyle{acsei}
 
+\collegeordept{Department of Automatic Control and Systems Engineering}
+\university{University of Sheffield}
+\crest{\includegraphics[width=0.3\textwidth]{Sheffield}}
+\degree{Doctor of Philosophy}
+\degreedate{Decemeber 2010}
+\degreedate{2010}
+\supervisor{Supervisor: Prof. Steve Daley and Prof. Visakan Kadirkamanathan}
+\award{Ph.\,D in Control System}
+\submittedtext{A thesis submitted to the University of Sheffield for the degree of}
 
+\suacseset{%
+	% titlepagestyle=acsemaster,
+	% titlepagestyle=acsei,
+	% titlepage/title/font={\Huge\bfseries},
+}
 
-% \pgfkeys{/suacseopt/pagelayout=acseii}
-
-% \settrimmedsize{11in}{210mm}{*}
-% \checkandfixthelayout
+%% * Solve the confliction between biblatex (defernumbers) and pgf/TikZ 
+%%   (externalization library)
+% \tikzifexternalizing{%
+% 	\ExecuteBibliographyOptions{defernumbers=false}
+% }{}
+\fixbiblatexpgf
 
 \usepackage{fonttable}
 
-\begin{document}
+% \usepackage[british]{translator}
 
+% \usepackage[%
+% 			acronym,
+% 			style=long3colheader,%
+% 			toc,%
+% 			section,%
+% 			% translate=false,%
+% 			]{glossaries}
+\suacseset{glossaries/settings=acsei}
+
+% \setlength{\glsdescwidth}{0.6\textwidth}
+% \setlength{\glspagelistwidth}{0.15\textwidth}
+
+% \newglossary[alg]{acronym}{acr}{acn}{Acronyms}
+
+
+% \makeglossaries
+
+% \renewcommand*{\glossaryname}{Notations}
+% \renewcommand*{\acronymname}{Acronyms}
+
+
+\newglossaryentry{force}{name=\ensuremath{F},description=Force,sort=Force}
+\newglossaryentry{mass}{name=\ensuremath{m},description=Mass,sort=Mass}
+\newglossaryentry{gravity}{name=\ensuremath{g},description=gravity,sort=gravity}
+
+\newacronym{svm}% label %
+		   {svm}% abbreviation
+		   {support vector machine}% long form
+% \renewcommand*{\glossaryname}{Notations}
+
+% \include{texapi}
+% \usepackage{etextools}
+
+% \usepackage[Bjornstrup]{fncychap}
+
+\author{Dazhi Jiang}
+% \title{Optimal Data-Mining Methodologies for Power Plant Anomaly Detection}
+\title{Optimal Data-Mining Methodologies\\[10pt]
+	for Power Plant Anomaly Detection}
+\place{Sheffield}
+
+% \renewcommand*{\glossaryname}{Notations}
+% \renewcommand*{\glossaryname}{Notations}
+% \show\glossaryname
+\begin{document}
+% \show\glossaryname
+% \renewcommand*{\glossaryname}{Notations}
 % \pgfkeys{/suacseopt/pagelayout=acseii}
 
 \frontmatter
 % \pagestyle{acsei}
+% \DoubleSpacing
+\maketitle
+\suacseset{%
+	titlepagestyle=acsemaster,
+	degreedate={December 2010},
+	% titlepagestyle=acsei,
+	% titlepage/title/font={\Huge\bfseries},
+}
+\maketitle
+\suacseset{%
+	% titlepagestyle=acsemaster,
+	titlepagestyle=acsei,
+	degreedate={2011},
+	% titlepage/collegeordept/post={\\ \includegraphics[width=\textwidth]{Pitest03}},
+	% titlepage/title/font={\Huge\bfseries},
+}
+\maketitle
+% \makeatletter
+% \show\@suacse@titlepage@title@font
+% \makeatother
+% \cleardoublepage
+
+\begin{abstract}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\end{abstract}
 
 % \typeout{preface -->}
-\chapter{Preface}
+\chapter*{Preface}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -124,6 +201,44 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\begin{center}
+	{~\relax}
+	\vfill
+	\begin{tikzpicture}[]
+		\node at (0,0) {\includegraphics[width=\textwidth]{Pi-black}};
+		\node at (2.6cm,0.5cm) {{\bfseries\itshape The magic number, $\bm\pi$, on the Archimedean spiral}};
+		% \filldraw (0,0) circle (2pt);
+	\end{tikzpicture}
+\end{center}
+
+% \begin{center}
+% 	\vfill
+% 	\begin{tikzpicture}[]
+% 		\node at (0,0) {\includegraphics[width=\textwidth]{Pi-black90}};
+% 		\node at (2.6cm,0.5cm) {{\bfseries\itshape The magic number, $\bm\pi$, on the Archimedean spiral}};
+% 		% \filldraw (0,0) circle (2pt);
+% 	\end{tikzpicture}
+% \end{center}
+% 
+% \begin{center}
+% 	\vfill
+% 	\begin{tikzpicture}[]
+% 		\node at (0,0) {\includegraphics[width=\textwidth]{Pi-black80}};
+% 		\node at (2.6cm,0.5cm) {{\bfseries\itshape The magic number, $\bm\pi$, on the Archimedean spiral}};
+% 		% \filldraw (0,0) circle (2pt);
+% 	\end{tikzpicture}
+% \end{center}
+% 
+% \begin{center}
+% 	\vfill
+% 	\begin{tikzpicture}[]
+% 		\node at (0,0) {\includegraphics[width=\textwidth]{Pi-grey}};
+% 		\node at (2.6cm,0.5cm) {{\bfseries\itshape The magic number, $\bm\pi$, on the Archimedean spiral}};
+% 		% \filldraw (0,0) circle (2pt);
+% 	\end{tikzpicture}
+% \end{center}
 
 
 \clearpage
@@ -135,24 +250,87 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 % \frontmatter
 \begin{hideshorttoc}
 
-\printtoc
+\printshorttoc
 
 \end{hideshorttoc}
+
+
+\clearpage
+\printmaintoc
+
 
 %% !!! The following \clearpage is necessary, because if it is not included,
 %% the \if@mainmatter will be set to true at the last part of the front
 %% matter. This will cause page numbering problem if you define the difference
 %% styles for the front matter and the main matter.
 \clearpage
+
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+
+% \show\columnwidth
+
+% \suacseset{%
+% 	glossary/twocolumn,
+% 	glossary/name=Nomenclature,
+% }
+% \suacseset{%
+% 	glossary={twocolumn, name={Nomenclature}, %
+% 		% rule width=0.5pt,%
+% 		description={\textit{#1}},%
+% 		% number={\textbf{#1}},%
+% 		number format={\hyperpage{#1}},%
+% 		group heading format={\centering\bfseries},
+% 	},
+% }
+% \renewcommand*{\glossaryname}{Nomenclature}
+
+\chapter*{Nomenclature}
+\addcontentsline{toc}{chapter}{Nomenclature}
+
+In general, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% \renewcommand*{\glossaryname}{Notations}
+
+% \printglossary
+% \printglossaries
+% \renewcommand*{\glsgroupskip}{}
+\suacseset{glossaries/entryname/pgf={0.2\textwidth}{Notation}}
+% \renewcommand{\entryname}{\tikz[baseline=0pt] \node[anchor=base, text width=0.2\textwidth,align=flushleft, inner sep=0pt] {Notation};}
+\printglossary[title=List of Notations, toctitle=List of Notations]
+
+% \renewcommand{\entryname}{\tikz[baseline=0pt] \node[anchor=base, text width=0.2\textwidth,align=flushleft, inner sep=0pt] {Abbreviation};}
+\suacseset{glossaries/entryname/pgf={0.2\textwidth}{Abbreviation}}
+\printglossary[type=\acronymtype,title=List of Acronyms, toctitle=List of Acronyms]
+
+
+\clearpage
+
 \pagenumbering{arabic}
 
 %% Main body
 \mainmatter
 
+\chapter*{The First Starred Chapter} % (fold)
+\label{chap:the_first_starred_chapter}
+
+% chapter the_first_starred_chapter (end)
+
+\chapter*{The Second Starred Chapter} % (fold)
+\label{chap:the_second_starred_chapter}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% chapter the_second_starred_chapter (end)
+
 \chapter[Test TOC][Test Header]{Test} % (fold)
 \label{chap:test}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, \todo{First try ...}consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -160,16 +338,137 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in \todo{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}\todo[inline]{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+
+\section{Bibliography} % (fold)
+\label{sec:bibliography}
+
+foo~\citeauthor{companion}. and \cite{companion} and \textcite{companion}
+
+% section bibliography (end)
+
+\section{Glossary} % (fold)
+\label{sec:glossary}
+
+\begin{itemize}
+	\item Constants, Variables \& Functions (c)
+	\item Operators (e)
+	\item Notation (n)
+	\item Acronyms/Terminology (t)
+\end{itemize}
+
+\begin{equation}
+	\gls{force}=\gls{mass}\gls{gravity}
+\end{equation}
+
+\gls{svm}
+
+
+% \begin{itemize}
+% 	\item Constants, Variables \& Functions (c)
+% 	\item Operators (e)
+% 	\item Notation (n)
+% 	\item Acronyms/Terminology (t)
+% \end{itemize}
+% 
+\begin{equation}
+	F=mg
+\end{equation}
+% 
+% \glossary(zF){$F$}{Force}
+% 
+% \glossary(cF){$F$}{Force}
+% \glossary(cm){$m$}{Mass}
+% \glossary(cg){$g$}{Gravity Constant}
+% \glossary(clF){$F$}{A long long long long long long long long long long long long long long long long long long description of Force}
+% \glossary(clm){$m$}{A long long long long long long long long long long long long long long long long long long description of Mass}
+% \glossary(clg){$g$}{A long long long long long long long long long long long long long long long long long long description of Gravity Constant}
+% 
+% \glossary(eF){$F$}{Force}
+% \glossary(em){$m$}{Mass}
+% \glossary(eg){$g$}{Gravity Constant}
+% \glossary(elF){$F$}{A long long long long long long long long long long long long long long long long long long description of Force}
+% \glossary(elm){$m$}{A long long long long long long long long long long long long long long long long long long description of Mass}
+% \glossary(elg){$g$}{A long long long long long long long long long long long long long long long long long long description of Gravity Constant}
+% 
+% \glossary(nF){$F$}{Force}
+% \glossary(nm){$m$}{Mass}
+% \glossary(ng){$g$}{Gravity Constant}
+% \glossary(nlF){$F$}{A long long long long long long long long long long long long long long long long long long description of Force}
+% \glossary(nlm){$m$}{A long long long long long long long long long long long long long long long long long long description of Mass}
+% \glossary(nlg){$g$}{A long long long long long long long long long long long long long long long long long long description of Gravity Constant}
+% 
+% \glossary(tF){$F$}{Force}
+% \glossary(tm){$m$}{Mass}
+% \glossary(tg){$g$}{Gravity Constant}
+% \glossary(tlF){$F$}{A long long long long long long long long long long long long long long long long long long description of Force}
+% \glossary(tlm){$m$}{A long long long long long long long long long long long long long long long long long long description of Mass}
+% \glossary(tlg){$g$}{A long long long long long long long long long long long long long long long long long long description of Gravity Constant}
+
+% \newcommand{\testcmd}[1]{\textbf{#1}}
+% % \renewcommand{\memglonum}[1]{\textbf{#1}}
+% \textbf{\hyperpage{3}}\hyperpage{3}\memglonum{\hyperpage{3}}
+% {\bfseries \hyperpage{3}}\testcmd{\hyperpage{3}}
+% section glossary (end)
+
+\section{Cross References} % (fold)
+\label{sec:cross_references}
+
+This section is a cross-reference test. \Cref{sec:float} tests the floats. A various styles of chapter are shown in \cref{chap:a_GreyNum_chapter_style,chap:a_acsei_chapter_style,chap:a_daleifi_chapter_style,chap:a_long_GreyNum_chapter_style,chap:a_long_acsei_chapter_style,chap:a_long_daleifi_chapter_style,chap:a_long_lyhne_chapter_style,chap:a_long_madsen_chapter_style,chap:a_long_pedersen_chapter_style,chap:a_long_texblogtikz_chapter_style,chap:a_lyhne_chapter_style,chap:a_madsen_chapter_style,chap:a_pedersen_chapter_style,chap:a_texblogtikz_chapter_style} (or \crefrange{chap:a_lyhne_chapter_style}{chap:a_long_acsei_chapter_style})
+
+\Cref{fig:ADFramework} shows that the framework of anomaly detection
+
+% section cross_references (end)
 
 \clearpage
 \section{Equations}
 
 y570123456789, 1977 $y570123456789$
 
+\eg
+
+\ie
+
+\etc
+
+\iid
+
+\spdf
+
+\scdf
+
+% \newfornoempty\fooabc(#1,#2){[#1/#2]} [Input exhausted.]
+% \edef\bardef{\fooabc{(a,b)(c,d)(,e)(f,)}} 
+% \meaning\bardef
+
+\def\cfrac#1,#2;{\if\relax#2\relax #1\else\frac{1}{#1+\expandafter\cfrac#2;}\fi}
+
+\[\cfrac a,23,c,24,12,49,w,3,;\]
+\[\cfrac{a},{23},{c},{24},{12},{49,\quad {\color{red} abc}},{w},{3},;\]
+% \[\cfrac a,23,c,24,12,49,w,3;\]
+
+$\Log{5}$
+% \Style{DSymb={\mathrm d}}
+\[\D{f}{x}\]
+
+$1\upst$
+
+\[ \mathcal{A} = \EuScript{A} \neq \CMcal{A} \]
 \[
-y_{57}=0123456789=f(x)=\sum\sin(x)\int\limits_0^{\infty}x^2 dx
+	\left(\frac{x}{y}\right)
+\]
+
+\[
+\iint\limits_0^{\infty}x^2 dx \neq \ESiint\limits_0^{\infty}x^2 \diff x
+\]
+
+\[
+\iiint\limits_0^{\infty}x^2 dx \neq \ESiiint\limits_0^{\infty}x^2 \diff x
+\]
+
+\[
+y_{57}=0123456789=f(x)=\sum\sin(x)\int\limits_0^{\infty}x^2 \diff x
 \]
 
 \[
@@ -200,6 +499,163 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 % subsection fonts (end)
 
 
+\section{Float} % (fold)
+\label{sec:float}
+
+\subsection{PGF figure} % (fold)
+\label{sub:pgf_figure}
+
+% \suacseset{pgf/makeexternalfig}
+\begin{figure}[!htbp]
+% {
+\suacseset{pgf/makeexternalfig}
+% \pgfkeys{/tikz/external/export=true}%
+\input{Figs/Src/FrameworkofADpgf.tikz}
+% }
+\caption{PGF figure test 1}
+\label{fig:pgftest}
+\end{figure}
+
+\begin{figure}[!htbp]
+\input{Figs/Src/FrameworkofADpgf.tikz}
+\caption{PGF figure test 2}
+\label{fig:pgftest2}
+\end{figure}
+
+
+% subsection pgf_figure (end)
+
+\subsection{Figure} % (fold)
+\label{sub:figure}
+
+text before figure
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{figure}[!htbp]
+\centering{}\includegraphics{FrameworkofAD01} \caption{Framework of anomaly detection. The raw data points, originally lying
+in the measurement space, are sequentially transformed into the feature
+space via the first stage and then into the decision space via the
+second stage. A further stage can be included when more a priori knowledge
+is available. This stage maps data points in the decision space into
+the class space.}
+\label{fig:ADFramework}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering{}\includegraphics{FrameworkofAD01} \caption{Short caption.}
+\label{fig:ADFramework1}
+\end{figure}
+
+\begin{figure}[!htbp]
+\includegraphics{FrameworkofAD01} 
+\caption{Framework of anomaly detection. The raw data points, originally lying
+in the measurement space, are sequentially transformed into the feature
+space via the first stage and then into the decision space via the
+second stage. A further stage can be included when more a priori knowledge
+is available. This stage maps data points in the decision space into
+the class space.}
+\label{fig:ADFramework2}
+\end{figure}
+% \show\linewidth
+% \show\textwidth
+text after figure
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% 
+% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% subsection figure (end)
+
+\subsection{Table} % (fold)
+\label{sub:table1}
+
+\subsection{Subsection with long long long long long long long title} % (fold)
+\label{sub:table}
+
+text before table
+
+\begin{table}[!ht]
+\caption{Table Test} \label{tab:rectsize}
+\begin{tabular}{cccl} \toprule
+\meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
+ H   & W   & r   & ambiguous \\
+ H   & W   & {*} & $H$, $W$  \\
+ H   & {*} & r   & $W = rH$  \\
+ H   & {*} & {*} & ambiguous \\
+{*}  & W   & r   & $H = rW$  \\
+{*}  & W   & {*} & ambiguous \\
+{*}  & {*} & r   & ambiguous \\
+{*}  & {*} & {*} & ambiguous \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+\caption{Table Test} \label{tab:rectsize1}
+\begin{tabular}{cccl} \toprule
+\meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
+ H   & W   & r   & ambiguous \\
+ H   & W   & {*} & $H$, $W$  \\
+ H   & {*} & r   & $W = rH$  \\
+ H   & {*} & {*} & ambiguous \\
+{*}  & W   & r   & $H = rW$  \\
+{*}  & W   & {*} & ambiguous \\
+{*}  & {*} & r   & ambiguous \\
+{*}  & {*} & {*} & ambiguous \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+text between tables
+
+\begin{table}[!ht]
+\caption{Table Test} \label{tab:rectsize2}
+\begin{tabular}{cccl} \toprule
+\meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
+ H   & W   & r   & ambiguous \\
+ H   & W   & {*} & $H$, $W$  \\
+ H   & {*} & r   & $W = rH$  \\
+ H   & {*} & {*} & ambiguous \\
+{*}  & W   & r   & $H = rW$  \\
+{*}  & W   & {*} & ambiguous \\
+{*}  & {*} & r   & ambiguous \\
+{*}  & {*} & {*} & ambiguous \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+text after table
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% subsection table (end)
+
+% section float (end)
+
+
+\section{Environment} % (fold)
+\label{sec:environment}
+
+\subsection{Itemise} % (fold)
+\label{sub:itemise}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{itemize}
+	\item 
+	\item abc
+\end{itemize}
+
+% subsection itemise (end)
+
+% section environment (end)
+
+
 \suacseset{chapterstyle=lyhne}
 \chapter{A `lyhne' Chapter Style} % (fold)
 \label{chap:a_lyhne_chapter_style}
@@ -226,6 +682,16 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 % chapter a_long_madsen_chapter_style (end)
 
+\suacseset{chapterstyle=acseii}
+\chapter{An `acseii--madsen' Chapter Style} % (fold)
+\label{chap:a_acseii_chapter_style}
+
+% chapter a_acseii_chapter_style (end)
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `acseii--madsen' Chapter Style} % (fold)
+\label{chap:a_long_acseii_chapter_style}
+
+% chapter a_long_acsei_chapter_style (end)
 
 \suacseset{chapterstyle=pedersen}
 \chapter{A `pedersen' Chapter Style} % (fold)
@@ -297,7 +763,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 
 % \chapterstyle{default}
-\suacseset{chapterstyle=madsen}
+% \suacseset{chapterstyle=madsen}
+\suacseset{chapterstyle=acseii}
 \chapter{Introduction}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -365,6 +832,11 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 % section text (end)
 
+\subsection{Table} % (fold)
+\label{sub:table2}
+
+\subsection{Table} % (fold)
+\label{sub:table3}
 
 \clearpage
 \section{Math Fonts}
@@ -390,6 +862,28 @@ From the table, charater `0' is defined as ``'060''. So we can redefine the math
 \end{verbatim}
 
 \clearpage
+
+\appendix
+
+\chapter{Appendix A} % (fold)
+\label{chap:appendix_a}
+
+\section{subappendix} % (fold)
+\label{sec:subappendix}
+
+% section subappendix (end)
+
+% chapter appendix_a (end)
+
+\backmatter
+
+% \suacseset{%
+% 	bibname=References,
+% }
+
+\printbibliography
+% \addcontentsline{toc}{chapter}{References}
+% \addtocontents{toc}{References}
 
 
 \end{document}
