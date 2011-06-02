@@ -1,0 +1,94 @@
+\usetheme{default}
+
+\RequirePackage{tikz}  % Load Package 'tikz'
+
+% \usetikzlibrary{calc}
+
+\defbeamertemplate*{sidebar right}{uoregon theme}
+{ % Removes the logo from the lower right so that we can place it less obtrusively
+	\vfill%
+	\llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+	\vskip 2pt%
+}
+
+%% Change appearance of logo form here, e.g., height
+\pgfdeclareimage[height=0.14\textheight]{UoSlogo}{UoS}  % Sheffield
+\pgfdeclareimage[height=0.08\textheight]{SCSElogo}{SCSE} % SUSE
+\pgfdeclareimage[height=0.08\textheight]{GTClogo}{GTC}  % Gas Turbine Control
+\pgfdeclareimage[height=0.04\textheight]{UTClogo}{UTC}  % UTC
+\pgfdeclareimage[height=0.08\textheight]{UoYlogo}{UoY}  % York
+
+%% Logo of Univ. of Sheffield
+\logo{\pgfuseimage{UoSlogo}}
+
+%% Round inner theme
+\useinnertheme[shadow]{rounded}
+
+%% Uncommnet the following to give an orange color theme. 
+%% This will change the color of the label button and the section head.
+% \definecolor{oxygenorange}{HTML}{F7800A}
+% \usecolortheme[named=oxygenorange]{structure}
+
+%% Define the fonts
+\setbeamerfont{title}{shape=\normalfont, family=\sffamily, size=\large}
+\setbeamerfont{subtitle}{shape=\itshape, family=\rmfamily, size=\footnotesize}
+
+\setbeamerfont{section in head/foot}{size=\tiny,series=\normalfont}
+\setbeamerfont{frametitle}{size=\large}
+% \setbeamerfont{framesubtitle}{size=\normal}
+
+
+%% Define the frame title. Note that the verticle skip at the beginning which
+%% is used to suppress the unnecessary gap above.
+\setbeamertemplate{frametitle}
+{
+	\vskip-5.5ex
+	% \vskip-0.2cm
+	% \vskip 3cm
+	\hskip8em\parbox{0.67\textwidth}{\usebeamerfont*{frametitle}\insertframetitle}
+	% \hskip5em\makebox[0.7\textwidth][l]{\usebeamerfont*{frametitle}\insertframetitle}
+	% \hskip5em\usebeamerfont*{frametitle}\insertframetitle
+	\vskip0.10em
+	
+	\hskip8em\usebeamerfont*{framesubtitle}\insertframesubtitle
+}
+
+%% Define the head line. Here we define the top navigation bar and load the
+%% logo of Sheffield Univ
+\setbeamertemplate{headline}
+{
+	\@tempdimb=11ex
+	\vskip -5ex
+	
+	\begin{beamercolorbox}[wd=\paperwidth,ht=0.1\textheight]{Title bar}
+		\usebeamerfont{section in head/foot}%
+		\insertsectionnavigationhorizontal{0pt}{\hskip0.22cm}{}%
+	\end{beamercolorbox}
+	
+	\vskip 0.5ex
+	
+	%\hskip2em
+	\vbox to\@tempdimb{\framelatex{\insertlogo}}
+}
+
+%% Define the foot line. Here we load the other logos.
+\setbeamertemplate{footline}
+{
+	\centering
+	
+	\tikz[remember picture]\coordinate (left); \pgfuseimage{SCSElogo}\pgfuseimage{GTClogo} \hfill \pgfuseimage{UoYlogo} \hspace{0.01\textwidth}
+	
+	\vskip -0.06\textheight
+	\begin{beamercolorbox}[leftskip=.3cm,wd=\paperwidth,ht=0.08\textheight,sep=0.1cm]{Location bar}
+		\usebeamerfont{section in head/foot}%
+		\centering
+		\pgfuseimage{UTClogo}
+		\vskip 1.5ex
+		\inserttitle~|~\insertframenumber/\inserttotalframenumber
+		
+	\end{beamercolorbox}
+	
+	\vskip0.5ex
+	
+	\tikz[remember picture,overlay] \draw [thick] (left)++(0,0.11\textheight) -- + (\textwidth,0);
+}

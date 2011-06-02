@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
+	<string>Test/VKBeamer/Beamertest01.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -64,7 +64,7 @@
 			<key>filename</key>
 			<string>.gitignore</string>
 			<key>lastUsed</key>
-			<date>2011-02-12T08:48:35Z</date>
+			<date>2011-06-01T16:14:29Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -93,6 +93,20 @@
 	<integer>406</integer>
 	<key>metaData</key>
 	<dict>
+		<key>.gitignore</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>28</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>Source/DJCodeSnippet/DJminted.sty</key>
 		<dict>
 			<key>caret</key>
@@ -499,6 +513,50 @@
 				<integer>6</integer>
 			</dict>
 		</dict>
+		<key>Test/VKBeamer/Beamertest01.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>72</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>54</integer>
+		</dict>
+		<key>Test/VKBeamer/beamerthemeVKlecture.sty</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>51</integer>
+				<key>line</key>
+				<integer>78</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>61</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>45</integer>
+				<key>line</key>
+				<integer>78</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>56</integer>
+				<key>line</key>
+				<integer>78</integer>
+			</dict>
+		</dict>
 		<key>Test/tkz-bode/bodeplot-pgfplot-test02.tex</key>
 		<dict>
 			<key>caret</key>
@@ -793,17 +851,15 @@
 	<key>openDocuments</key>
 	<array>
 		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+		<string>.gitignore</string>
+		<string>Test/VKBeamer/Beamertest01.tex</string>
+		<string>Test/VKBeamer/beamerthemeVKlecture.sty</string>
 		<string>tmp/Thesis/WillRobertson/Makefile</string>
-		<string>Test/DJThesis/stypull.sh</string>
 		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
-		<string>Test/DJThesis/tmp/AlgHypertest02.tex</string>
-		<string>Test/DJThesis/tmp/AlgHypertest01.tex</string>
-		<string>Test/DJThesis/tmp/SUACSEThesis.sty</string>
-		<string>Test/DJThesis/Makefile</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{328, 0}, {983, 778}}</string>
+	<string>{{238, 0}, {983, 778}}</string>
 </dict>
 </plist>
