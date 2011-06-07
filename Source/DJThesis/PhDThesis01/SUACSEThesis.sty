@@ -2685,9 +2685,13 @@
 %%     Since 'hyperref' can detect the latex drivers automatically, no need
 %%     to specify the drivers explicitly (you can ignore the options like
 %%     pdftex, dvips, xetex, etc.)
+%%    
+%%    !!!
+%%      The option 'ocgcolorlinks' in acsei has been disabled because it is
+%%      incompatible with the transparency feature of PGF/TikZ
 \ifpdf
 	\def\@suacse@hyperref@opt@acsei{%pdftex,%
-									ocgcolorlinks,%
+									%ocgcolorlinks,%
 									plainpages=false,%
 									pdfpagelabels,%
 									pdfpagelayout = OneColumn,%
