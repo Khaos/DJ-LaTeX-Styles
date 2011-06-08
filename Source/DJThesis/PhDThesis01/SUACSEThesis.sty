@@ -2936,6 +2936,106 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2011-06-08 00:00:05 +0100 (Wed,  8 Jun 2011)
+%% pgfplots
+
+%% Define color themes for ggplot2-like style
+%%   - GGPLOTS default theme
+\definecolor[named]{ggplotDefaultBG}{rgb}{0.90,0.90,0.90}
+\definecolor[named]{ggplotDefaultMajorGrid}{rgb}{1.00,1.00,1.00}
+\definecolor[named]{ggplotDefaultMinorGrid}{rgb}{0.95,0.95,0.95}
+\definecolor[named]{ggplotDefaultMajorTick}{rgb}{0.50,0.50,0.50}
+\definecolor[named]{ggplotDefaultMinorTick}{rgb}{1.00,1.00,1.00}
+\definecolor[named]{ggplotDefaultAxisBox}{rgb}{0.00,0.00,0.00}
+
+\newlength{\ggplotDefaultMajorTickLW}
+\setlength{\ggplotDefaultMajorTickLW}{0.6pt}
+\newlength{\ggplotDefaultMinorTickLW}
+\setlength{\ggplotDefaultMinorTickLW}{0.0pt}
+\newlength{\ggplotDefaultMajorGridLW}
+\setlength{\ggplotDefaultMajorGridLW}{0.6pt}
+\newlength{\ggplotDefaultMinorGridLW}
+\setlength{\ggplotDefaultMinorGridLW}{0.3pt}
+\newlength{\ggplotDefaultAxisBoxLW}
+\setlength{\ggplotDefaultAxisBoxLW}{0.3pt}
+
+%%   - GGPLOTS black-white theme
+\definecolor[named]{ggplotBWBG}{rgb}{1.00,1.00,1.00}
+\definecolor[named]{ggplotBWMajorGrid}{rgb}{0.90,0.90,0.90}
+\definecolor[named]{ggplotBWMinorGrid}{rgb}{0.98,0.98,0.98}
+\definecolor[named]{ggplotBWMajorTick}{rgb}{0.00,0.00,0.00}
+\definecolor[named]{ggplotBWMinorTick}{rgb}{1.00,1.00,1.00}
+\definecolor[named]{ggplotBWAxisBox}{rgb}{0.50,0.50,0.50}
+
+\newlength{\ggplotBWMajorTickLW}
+\setlength{\ggplotBWMajorTickLW}{0.2pt}
+\newlength{\ggplotBWMinorTickLW}
+\setlength{\ggplotBWMinorTickLW}{0.0pt}
+\newlength{\ggplotBWMajorGridLW}
+\setlength{\ggplotBWMajorGridLW}{0.2pt}
+\newlength{\ggplotBWMinorGridLW}
+\setlength{\ggplotBWMinorGridLW}{0.6pt}
+\newlength{\ggplotBWAxisBoxLW}
+\setlength{\ggplotBWAxisBoxLW}{0.3pt}
+
+%% Define theme styles
+\pgfplotsset{
+	SUACSEThesisPgfplotsggplot/.style = {
+		tick align=outside,
+		tickpos=left,
+		major tick style = {color=ggplotDefaultMajorTick, 
+			line width=\ggplotDefaultMajorTickLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		minor tick style = {color=ggplotDefaultMinorTick, 
+			line width=\ggplotDefaultMinorTickLW},
+		major grid style = {color=ggplotDefaultMajorGrid, 
+			line width=\ggplotDefaultMajorGridLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		minor grid style = {color=ggplotDefaultMinorGrid, 
+			line width=\ggplotDefaultMinorGridLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		outer axis line style = {color=ggplotDefaultAxisBox, 
+			line width=\ggplotDefaultAxisBoxLW,
+			fill opacity=1.00},
+		grid=both,
+		minor tick num=1,
+		axis background/.style={fill=ggplotDefaultBG},
+	},
+	SUACSEThesisPgfplotsggplotBW/.style = {
+		tick align=outside,
+		tickpos=left,
+		major tick style = {color=ggplotBWMajorTick, 
+			line width=\ggplotBWMajorTickLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		minor tick style = {color=ggplotBWMinorTick, 
+			line width=\ggplotBWMinorTickLW},
+		major grid style = {color=ggplotBWMajorGrid, 
+			line width=\ggplotBWMajorGridLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		minor grid style = {color=ggplotBWMinorGrid, 
+			line width=\ggplotBWMinorGridLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		outer axis line style = {color=ggplotBWAxisBox, 
+			line width=\ggplotBWAxisBoxLW,
+			fill opacity=1.00},
+		grid=both,
+		minor tick num=1,
+		axis background/.style={fill=ggplotBWBG},
+	},
+}
+
+%% END: pgfplots
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2010-11-16 16:12:17 +0000 (Tue, 16 Nov 2010)
 %% Captions
 
@@ -3170,6 +3270,10 @@
 %% MISC
 
 \AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
+
+%% Declare subfloat
+\newsubfloat{figure}
+
 
 % \csdef{blx@opts@type@\abx@field@entrytype}{}
 
