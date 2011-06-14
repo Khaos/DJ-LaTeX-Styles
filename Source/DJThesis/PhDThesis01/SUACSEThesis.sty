@@ -145,7 +145,7 @@
 \RequirePackage{pgfplots}
 \RequirePackage{pgfplotstable}
 
-\usepackage{gnuplot-lua-tikz}
+\RequirePackage{gnuplot-lua-tikz}
 
 % We need lots of libraries...
 \usetikzlibrary{%
@@ -162,22 +162,22 @@
 	shapes.multipart,%
 	shapes.gates.logic.US,%
 	shapes.gates.logic.IEC,%
-	circuits.logic.US,%
-	circuits.logic.IEC,%
-	circuits.logic.CDH,%
-	circuits.ee.IEC,%
+	% circuits.logic.US,%
+	% circuits.logic.IEC,%
+	% circuits.logic.CDH,%
+	% circuits.ee.IEC,%
 	datavisualization,%
 	datavisualization.formats.functions,%
 	er,%
 	automata,%
 	backgrounds,%
-	chains,%
+	% chains,%
 	topaths,%
 	trees,%
-	petri,%
-	mindmap,%
+	% petri,%
+	% mindmap,%
 	matrix,%
-	calendar,%
+	% calendar,%
 	folding,%
 	fadings,%
 	shadings,%
@@ -2763,6 +2763,41 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Created by Dazhi Jiang, 2011-06-14 20:08:20 +0100 (Tue, 14 Jun 2011)
+%% Cleveref
+
+%% * Define switcher for Cleveref
+\newif\if@suacse@cleveref@crefname@shorten %% Abbreviation, e.g., Fig. for Figure
+
+%% * Define package option keys for Cleveref options
+\pgfkeys{%
+	/suacseopt/.cd,
+	%% - Options for Cleveref
+	cleveref/shorten/.is if=@suacse@cleveref@crefname@shorten,
+	cleveref/shorten/.default=true,
+	cleveref/shorten/.initial=true,
+	% cleveref/.append code={\@suacse@cleveref@crefname@shorten},
+}
+
+% \newcommand{\@suacse@cleveref@crefname@shorten}{%
+% 	\RequirePackage{cleveref}%
+% 	\if@suacse@cleverref@crefname@shorten% keep the original shorten
+% 	\else%
+% 		\if@cref@capitalise%
+% 			\crefname@preamble{equation}{Equation}{Equations}%
+% 			\crefname@preamble{figure}{Figure}{Figures}%
+% 		\else%
+% 			\crefname@preamble{equation}{equation}{equations}%
+% 			\crefname@preamble{figure}{figure}{figures}%
+% 		\fi%
+% 	\fi%
+% }
+
+%% END: Cleveref
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Created by Dazhi Jiang, 2011-01-05 10:19:03 +0000 (Wed,  5 Jan 2011)
 %% PSTricks
 
@@ -3280,7 +3315,7 @@
 \RequirePackage[\@suacse@glossaries@option]{glossaries}  % Load Package 'glossaries'
 
 
-%% * Load cleverref
+%% * Load cleveref
 %%   !!! Load the package 'cleveref' before 'algorithm' and 'algorithmicx' 
 %%       (algpseudocode), otherwise you will get the following warining message
 %%         pdfTeX warning (ext4): destination with the same identifier 
@@ -3293,6 +3328,17 @@
 %%         http://www.stud.uni-karlsruhe.de/~uucom/?p=99
 \RequirePackage[capitalise]{cleveref}
 
+%% * Choose the shorten names according to the cleveref package options
+\if@suacse@cleveref@crefname@shorten% keep the original shorten
+\else%
+	\if@cref@capitalise%
+		\crefname{equation}{Equation}{Equations}%
+		\crefname{figure}{Figure}{Figures}%
+	\else%
+		\crefname{equation}{equation}{equations}%
+		\crefname{figure}{figure}{figures}%
+	\fi%
+\fi%
 
 %% * Pakcages have to be loaded after hyperref
 %% * Algorithm-related packages
@@ -3333,7 +3379,7 @@
 %% ------------------------------------------------------------
 
 
-% %% * Load cleverref
+% %% * Load cleveref
 % \RequirePackage[capitalise]{cleveref}
 
 
