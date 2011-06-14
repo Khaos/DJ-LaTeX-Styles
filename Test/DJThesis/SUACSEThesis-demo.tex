@@ -1,0 +1,728 @@
+%% -*- Mode: LaTeX Memoir; tab-width: 4;
+
+%% SUACSEThesis-test01.tex    Testing file for SUACSEThesis.sty
+%% 
+%% Created by Dazhi Jiang, 2010-11-16 16:23:21 +0000 (Tue, 16 Nov 2010)
+%% Copyright (c) 2010 Dazhi Jiang. All Rights Reserved. 
+
+%% TextMate Settings
+%!TEX TS-program = pdflatex
+%!TEX TS-options = -shell-escape -interaction=nonstopmode -file-line-error
+
+\pdfminorversion=5 % to allow compression
+\pdfobjcompresslevel=2
+
+%% !!!
+\documentclass[10pt,a4paper,extrafontsizes,oldfontcommands,oneside]{memoir}
+% \listfiles
+\usepackage{etoolbox}
+\usepackage{letltxmacro}
+
+\usepackage[%
+	spacing=onehalf,
+	pagelayout=acseii,
+	font=cm,
+	% hyperrefopt=wspr,
+	% hyperrefopt=djreport,
+	hyperrefopt=acsei,
+	% biblatexopt=wspr,
+	biblatexopt=acsei,
+	% bibname=References,
+	% pgf/externalising,
+	pgf/externalmainfile=SUACSEThesis-demo,
+	% fncychap=bjornstrup,
+	% makeglossary,
+	glossariesopt=acsei,
+	]{SUACSEThesis}
+
+\suacseset{%
+	bibname=References,
+}
+
+\bibliography{biblatextest}% is part of TeXLive 
+
+
+\suacseset{%
+	% pagelayout=acseii,
+	% font=ppl,
+	% chapterstyle=lyhne,
+	loadextrachapsty=all,
+	% loadextrachapsty=acsei,
+	% loadextrachapsty=texblogtikz,
+	% loadextrachapsty=daleifi,
+	% showshorttoc=true,
+	loadtocstyle=wspr,
+	loadtocstyle=acsei,
+	addtoctotoc,
+	% loadtocstyle=wspr,
+	% loadtocstyle=memsty,
+	% titlepagestyle=acsemaster,
+}
+
+% \suacseset{chapterstyle=texblogtikz}
+% \suacseset{chapterstyle=acsei}
+% \suacseset{chapterstyle=madsen}
+\suacseset{chapterstyle=acseii}
+
+
+\suacseset{%
+	% loadpagestyle=wspr,
+	pagenumberstyle=plain,
+	pagenumberstyle=bold,
+	pagenumberstyle=blackbg,
+	pagenumberstyle=bari,
+	% pagenumberstyle=acsei,
+	pagenumberstyle=largebold,
+	loadpagestyle=acsei,
+	loadpagestyle=acsei,
+	pagestyle=acsei,
+	loadheadstyle=acsei,
+	headstyle=acsei,
+}
+
+\collegeordept{Department of Automatic Control and Systems Engineering}
+\university{University of Sheffield}
+\crest{\includegraphics[width=0.3\textwidth]{Sheffield}}
+\degree{Doctor of Philosophy}
+\degreedate{Decemeber 2010}
+\degreedate{2010}
+\supervisor{Supervisor: Prof. Steve Daley and Prof. Visakan Kadirkamanathan}
+\award{Ph.\,D in Control System}
+\submittedtext{A thesis submitted to the University of Sheffield for the degree of}
+
+\author{Dazhi Jiang}
+% \title{Optimal Data-Mining Methodologies for Power Plant Anomaly Detection}
+\title{Optimal Data-Mining Methodologies\\[10pt]
+	for Power Plant Anomaly Detection}
+\place{Sheffield}
+
+
+%% * Solve the confliction between biblatex (defernumbers) and pgf/TikZ 
+%%   (externalization library)
+% \tikzifexternalizing{%
+% 	\ExecuteBibliographyOptions{defernumbers=false}
+% }{}
+\fixbiblatexpgf
+
+\usepackage{fonttable}
+
+\suacseset{glossaries/settings=acsei}
+
+
+\newglossaryentry{force}{name=\ensuremath{F},description=Force,sort=Force}
+\newglossaryentry{mass}{name=\ensuremath{m},description=Mass,sort=Mass}
+\newglossaryentry{gravity}{name=\ensuremath{g},description=gravity,sort=gravity}
+
+\newacronym{svm}% label %
+		   {svm}% abbreviation
+		   {support vector machine}% long form
+% \renewcommand*{\glossaryname}{Notations}
+
+
+
+\begin{document}
+
+\frontmatter
+% \pagestyle{acsei}
+
+%% Default title style
+\maketitle
+
+%% ACSE master title style
+\suacseset{%
+	titlepagestyle=acsemaster,
+	degreedate={December 2010},
+	% titlepagestyle=acsei,
+	% titlepage/title/font={\Huge\bfseries},
+}
+\maketitle
+
+%% ACSE thesis title style
+\suacseset{%
+	% titlepagestyle=acsemaster,
+	titlepagestyle=acsei,
+	degreedate={2011},
+	% titlepage/collegeordept/post={\\ \includegraphics[width=\textwidth]{Pitest03}},
+	% titlepage/title/font={\Huge\bfseries},
+}
+\maketitle
+
+\begin{abstract}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\end{abstract}
+
+
+\chapter*{Preface}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\clearpage
+
+\begin{hideshorttoc}
+
+\printshorttoc
+
+\end{hideshorttoc}
+
+
+\clearpage
+\printmaintoc
+
+
+%% !!! The following \clearpage is necessary, because if it is not included,
+%% the \if@mainmatter will be set to true at the last part of the front
+%% matter. This will cause page numbering problem if you define the difference
+%% styles for the front matter and the main matter.
+\clearpage
+
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+
+
+\chapter*{Nomenclature}
+\addcontentsline{toc}{chapter}{Nomenclature}
+
+In general, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\suacseset{glossaries/entryname/pgf={0.2\textwidth}{Notation}}
+
+\printglossary[title=List of Notations, toctitle=List of Notations]
+
+
+\suacseset{glossaries/entryname/pgf={0.2\textwidth}{Abbreviation}}
+\printglossary[type=\acronymtype,title=List of Acronyms, toctitle=List of Acronyms]
+
+
+\clearpage
+
+\pagenumbering{arabic}
+
+%% Main body
+\mainmatter
+
+\chapter*{The First Starred Chapter} % (fold)
+\label{chap:the_first_starred_chapter}
+
+% chapter the_first_starred_chapter (end)
+
+\chapter*{The Second Starred Chapter} % (fold)
+\label{chap:the_second_starred_chapter}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% chapter the_second_starred_chapter (end)
+
+\chapter[Test TOC][Test Header]{Test} % (fold)
+\label{chap:test}
+
+Lorem ipsum dolor sit amet, \todo{First try ...}consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in \todo{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}\todo[inline]{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\section{Bibliography} % (fold)
+\label{sec:bibliography}
+
+foo~\citeauthor{companion}. and \cite{companion} and \textcite{companion}
+
+% section bibliography (end)
+
+\section{Glossary} % (fold)
+\label{sec:glossary}
+
+\begin{itemize}
+	\item Constants, Variables \& Functions (c)
+	\item Operators (e)
+	\item Notation (n)
+	\item Acronyms/Terminology (t)
+\end{itemize}
+
+\begin{equation}
+	\gls{force}=\gls{mass}\gls{gravity}
+\end{equation}
+
+\gls{svm}
+
+
+\begin{equation}
+	F=mg
+\end{equation}
+
+
+\section{Cross References} % (fold)
+\label{sec:cross_references}
+
+This section is a cross-reference test. \Cref{sec:float} tests the floats. A various styles of chapter are shown in \cref{chap:a_GreyNum_chapter_style,chap:a_acsei_chapter_style,chap:a_daleifi_chapter_style,chap:a_long_GreyNum_chapter_style,chap:a_long_acsei_chapter_style,chap:a_long_daleifi_chapter_style,chap:a_long_lyhne_chapter_style,chap:a_long_madsen_chapter_style,chap:a_long_pedersen_chapter_style,chap:a_long_texblogtikz_chapter_style,chap:a_lyhne_chapter_style,chap:a_madsen_chapter_style,chap:a_pedersen_chapter_style,chap:a_texblogtikz_chapter_style} (or \crefrange{chap:a_lyhne_chapter_style}{chap:a_long_acsei_chapter_style})
+
+\Cref{fig:ADFramework} shows that the framework of anomaly detection
+
+% section cross_references (end)
+
+\clearpage
+\section{Equations}
+
+y570123456789, 1977 $y570123456789$
+
+\eg
+
+\ie
+
+\etc
+
+\iid
+
+\spdf
+
+\scdf
+
+
+\def\cfrac#1,#2;{\if\relax#2\relax #1\else\frac{1}{#1+\expandafter\cfrac#2;}\fi}
+
+\[\cfrac a,23,c,24,12,49,w,3,;\]
+\[\cfrac{a},{23},{c},{24},{12},{49,\quad {\color{red} abc}},{w},{3},;\]
+
+
+$\Log{5}$
+
+\[\D{f}{x}\]
+
+$1\upst$
+
+\[ \mathcal{A} = \EuScript{A} \neq \CMcal{A} \]
+\[
+	\left(\frac{x}{y}\right)
+\]
+
+\[
+\iint\limits_0^{\infty}x^2 dx \neq \ESiint\limits_0^{\infty}x^2 \diff x
+\]
+
+\[
+\iiint\limits_0^{\infty}x^2 dx \neq \ESiiint\limits_0^{\infty}x^2 \diff x
+\]
+
+\[
+y_{57}=0123456789=f(x)=\sum\sin(x)\int\limits_0^{\infty}x^2 \diff x
+\]
+
+\[
+\Integrate{g(x,y,z,t)}{t,-\infty,\infty}{z,0,\infty}{y,0,\infty}{z,0,\infty}
+\]
+
+\[
+\Integrate{f(x,y,z,t)}{t}{x}{y}{z}
+\]
+
+{\scshape Small Caps shape}
+
+\subsection{Fonts} % (fold)
+\label{ssub:fonts}
+Mixing \textbf{different series, \textsf{families}} and \textsl{\texttt{shapes,}} \textsc{especially in one sentence,} is usually \emph{highly inadvisable!}
+
+
+\subsubsection{Subsubsection name} % (fold)
+\label{ssub:subsubsection_name}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+% subsubsection subsubsection_name (end)
+
+% subsection fonts (end)
+
+
+\section{Float} % (fold)
+\label{sec:float}
+
+\subsection{PGF figure} % (fold)
+\label{sub:pgf_figure}
+
+% \suacseset{pgf/makeexternalfig}
+\begin{figure}[!htbp]
+\suacseset{pgf/makeexternalfig}
+\input{Figs/Src/FrameworkofADpgf.tikz}
+\caption{PGF figure test 1}
+\label{fig:pgftest}
+\end{figure}
+
+\begin{figure}[!htbp]
+\input{Figs/Src/FrameworkofADpgf.tikz}
+\caption{PGF figure test 2}
+\label{fig:pgftest2}
+\end{figure}
+
+
+% subsection pgf_figure (end)
+
+\subsection{Figure} % (fold)
+\label{sub:figure}
+
+text before figure
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{figure}[!htbp]
+\centering{}\includegraphics{FrameworkofAD01} \caption{Framework of anomaly detection. The raw data points, originally lying
+in the measurement space, are sequentially transformed into the feature
+space via the first stage and then into the decision space via the
+second stage. A further stage can be included when more a priori knowledge
+is available. This stage maps data points in the decision space into
+the class space.}
+\label{fig:ADFramework}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering{}\includegraphics{FrameworkofAD01} \caption{Short caption.}
+\label{fig:ADFramework1}
+\end{figure}
+
+\begin{figure}[!htbp]
+\includegraphics{FrameworkofAD01} 
+\caption{Framework of anomaly detection. The raw data points, originally lying
+in the measurement space, are sequentially transformed into the feature
+space via the first stage and then into the decision space via the
+second stage. A further stage can be included when more a priori knowledge
+is available. This stage maps data points in the decision space into
+the class space.}
+\label{fig:ADFramework2}
+\end{figure}
+text after figure
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+% subsection figure (end)
+
+\subsection{Table} % (fold)
+\label{sub:table1}
+
+\subsection{Subsection with long long long long long long long title} % (fold)
+\label{sub:table}
+
+text before table
+
+\begin{table}[!ht]
+\caption{Table Test} \label{tab:rectsize}
+\begin{tabular}{cccl} \toprule
+\meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
+ H   & W   & r   & ambiguous \\
+ H   & W   & {*} & $H$, $W$  \\
+ H   & {*} & r   & $W = rH$  \\
+ H   & {*} & {*} & ambiguous \\
+{*}  & W   & r   & $H = rW$  \\
+{*}  & W   & {*} & ambiguous \\
+{*}  & {*} & r   & ambiguous \\
+{*}  & {*} & {*} & ambiguous \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+\caption{Table Test} \label{tab:rectsize1}
+\begin{tabular}{cccl} \toprule
+\meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
+ H   & W   & r   & ambiguous \\
+ H   & W   & {*} & $H$, $W$  \\
+ H   & {*} & r   & $W = rH$  \\
+ H   & {*} & {*} & ambiguous \\
+{*}  & W   & r   & $H = rW$  \\
+{*}  & W   & {*} & ambiguous \\
+{*}  & {*} & r   & ambiguous \\
+{*}  & {*} & {*} & ambiguous \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+text between tables
+
+\begin{table}[!ht]
+\caption{Table Test} \label{tab:rectsize2}
+\begin{tabular}{cccl} \toprule
+\meta{height} & \meta{width} & \meta{ratio} & Result \\ \midrule
+ H   & W   & r   & ambiguous \\
+ H   & W   & {*} & $H$, $W$  \\
+ H   & {*} & r   & $W = rH$  \\
+ H   & {*} & {*} & ambiguous \\
+{*}  & W   & r   & $H = rW$  \\
+{*}  & W   & {*} & ambiguous \\
+{*}  & {*} & r   & ambiguous \\
+{*}  & {*} & {*} & ambiguous \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+text after table
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% subsection table (end)
+
+% section float (end)
+
+
+\section{Environment} % (fold)
+\label{sec:environment}
+
+\subsection{Itemise} % (fold)
+\label{sub:itemise}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{itemize}
+	\item 
+	\item abc
+\end{itemize}
+
+% subsection itemise (end)
+
+% section environment (end)
+
+
+\suacseset{chapterstyle=lyhne}
+\chapter{A `lyhne' Chapter Style} % (fold)
+\label{chap:a_lyhne_chapter_style}
+
+% chapter a_lyhne_chapter_style (end)
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `lyhne' Chapter Style} % (fold)
+\label{chap:a_long_lyhne_chapter_style}
+
+% chapter a_long_lyhne_chapter_style (end)
+
+\suacseset{chapterstyle=madsen}
+\chapter{A `madsen' Chapter Style} % (fold)
+\label{chap:a_madsen_chapter_style}
+
+% chapter a_madsen_chapter_style (end)
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `madsen' Chapter Style} % (fold)
+\label{chap:a_long_madsen_chapter_style}
+
+% chapter a_long_madsen_chapter_style (end)
+
+\suacseset{chapterstyle=acseii}
+\chapter{An `acseii--madsen' Chapter Style} % (fold)
+\label{chap:a_acseii_chapter_style}
+
+% chapter a_acseii_chapter_style (end)
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `acseii--madsen' Chapter Style} % (fold)
+\label{chap:a_long_acseii_chapter_style}
+
+% chapter a_long_acsei_chapter_style (end)
+
+\suacseset{chapterstyle=pedersen}
+\chapter{A `pedersen' Chapter Style} % (fold)
+\label{chap:a_pedersen_chapter_style}
+
+% chapter a_pedersen_chapter_style (end)
+
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `pedersen' Chapter Style} % (fold)
+\label{chap:a_long_pedersen_chapter_style}
+
+% chapter a_long_pedersen_chapter_style (end)
+
+
+\suacseset{chapterstyle=daleifi}
+\chapter{A `daleifi' Chapter Style} % (fold)
+\label{chap:a_daleifi_chapter_style}
+
+% chapter a_daleifi_chapter_style (end)
+
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `daleifi' Chapter Style} % (fold)
+\label{chap:a_long_daleifi_chapter_style}
+
+% chapter a_long_daleifi_chapter_style (end)
+
+
+\suacseset{chapterstyle=GreyNum}
+\chapter{A `GreyNum' Chapter Style} % (fold)
+\label{chap:a_GreyNum_chapter_style}
+
+% chapter a_GreyNum_chapter_style (end)
+
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `GreyNum' Chapter Style} % (fold)
+\label{chap:a_long_GreyNum_chapter_style}
+
+% chapter a_long_GreyNum_chapter_style (end)
+
+
+\suacseset{chapterstyle=texblogtikz}
+\chapter{A `texblogtikz' Chapter Style} % (fold)
+\label{chap:a_texblogtikz_chapter_style}
+
+% chapter a_texblogtikz_chapter_style (end)
+
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `texblogtikz' Chapter Style} % (fold)
+\label{chap:a_long_texblogtikz_chapter_style}
+
+% chapter a_long_texblogtikz_chapter_style (end)
+
+
+\suacseset{chapterstyle=acsei}
+\chapter{An `acsei--wspr' Chapter Style} % (fold)
+\label{chap:a_acsei_chapter_style}
+
+% chapter a_acsei_chapter_style (end)
+
+
+\chapter{A Long Long Long Long Long Long Long Long Long Long Long Long Long `acsei--wspr' Chapter Style} % (fold)
+\label{chap:a_long_acsei_chapter_style}
+
+% chapter a_long_acsei_chapter_style (end)
+
+% chapter test (end)
+
+
+
+\suacseset{chapterstyle=acseii}
+\chapter{Introduction}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\clearpage
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\clearpage
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\clearpage
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\section{Text} % (fold)
+\label{sec:text}
+
+\suacseset{spacing=onehalf}
+
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\suacseset{spacing=double}
+% \DoubleSpacing
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\suacseset{spacing=single}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\suacseset{spacing}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% \suacseset{spacingfactor=1.2}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+% section text (end)
+
+\subsection{Table} % (fold)
+\label{sub:table2}
+
+\subsection{Table} % (fold)
+\label{sub:table3}
+
+\clearpage
+\section{Math Fonts}
+
+In file ../texmf-dist/tex/latex/psnfss/mathpazo.sty, the below line shows that the `letter' symbol font is defined by the it shape of zplm's (series) of OML (family).
+\begin{verbatim}
+\DeclareSymbolFont{letters}       {OML}{zplm}{m}{it}
+\end{verbatim}
+
+In file ../texmf-dist/tex/latex/psnfss/ot1zplm.fd, the following line indicates that `zplm7m' font is used to define zplm in OML
+\begin{verbatim}
+	\DeclareFontShape{OML}{zplm}{m}{it}{
+	   <-> zplmr7m
+	}{}
+\end{verbatim}
+
+Thus we can draw the font table for `zplm7m' by \verb+\fonttable{zplmr7m}+. This gives
+\fonttable{zplmr7m}
+
+From the table, charater `0' is defined as ``'060''. So we can redefine the math symbol `0' by
+\begin{verbatim}
+	\DeclareMathSymbol{0}{0}{letters}{'060}
+\end{verbatim}
+
+\clearpage
+
+\appendix
+
+\chapter{Appendix A} % (fold)
+\label{chap:appendix_a}
+
+\section{subappendix} % (fold)
+\label{sec:subappendix}
+
+% section subappendix (end)
+
+% chapter appendix_a (end)
+
+\backmatter
+
+
+\printbibliography
+
+
+\end{document}
+
+%\endinput
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%%% (TeX-source-specials-mode: t)
+%%% TeX-PDF-mode: t
+%%% End: 

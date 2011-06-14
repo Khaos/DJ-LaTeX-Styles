@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+	<string>Source/DJMath/DJMathCom.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -64,9 +64,11 @@
 			<key>filename</key>
 			<string>.gitignore</string>
 			<key>lastUsed</key>
-			<date>2011-06-01T16:14:29Z</date>
+			<date>2011-06-09T14:11:58Z</date>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>Test</string>
 			<key>regexFolderFilter</key>
@@ -135,6 +137,36 @@
 				<integer>199</integer>
 			</dict>
 		</dict>
+		<key>Source/DJMath/DJMathCom.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>186</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>166</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>185</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>186</integer>
+			</dict>
+		</dict>
 		<key>Source/DJPreamble/DJpgfmanual-en-macros.tex</key>
 		<dict>
 			<key>caret</key>
@@ -177,20 +209,6 @@
 			<key>firstVisibleLine</key>
 			<integer>24</integer>
 		</dict>
-		<key>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>62</integer>
-				<key>line</key>
-				<integer>2690</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>2672</integer>
-		</dict>
 		<key>Source/schema-bloc/blockdiagram.sty</key>
 		<dict>
 			<key>caret</key>
@@ -224,14 +242,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>26</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>Test/DJThesis/SUACSEThesis-demo.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>39</integer>
+				<key>line</key>
+				<integer>31</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>13</integer>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test01 copy 2.tex</key>
 		<dict>
@@ -276,20 +308,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>Test/DJThesis/SUACSEThesis-test01.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>387</integer>
-				<key>line</key>
-				<integer>532</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>518</integer>
 		</dict>
 		<key>Test/DJThesis/SUACSEThesis-test02.tex</key>
 		<dict>
@@ -657,20 +675,6 @@
 			<key>firstVisibleLine</key>
 			<integer>134</integer>
 		</dict>
-		<key>tmp/Thesis/WillRobertson/Makefile</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>tmp/glossary/doc/samples/sample4col.tex</key>
 		<dict>
 			<key>caret</key>
@@ -805,9 +809,9 @@
 	<key>openDocuments</key>
 	<array>
 		<string>.gitignore</string>
-		<string>tmp/Thesis/WillRobertson/Makefile</string>
-		<string>Test/DJThesis/SUACSEThesis-test01.tex</string>
-		<string>Source/DJThesis/PhDThesis01/SUACSEThesis.sty</string>
+		<string>Test/DJThesis/Makefile</string>
+		<string>Test/DJThesis/SUACSEThesis-demo.tex</string>
+		<string>Source/DJMath/DJMathCom.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>

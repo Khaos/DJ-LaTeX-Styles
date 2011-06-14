@@ -145,6 +145,8 @@
 \RequirePackage{pgfplots}
 \RequirePackage{pgfplotstable}
 
+\usepackage{gnuplot-lua-tikz}
+
 % We need lots of libraries...
 \usetikzlibrary{%
 	arrows,%
@@ -2193,6 +2195,7 @@
 								  style=long3colheader,%
 								  toc,%
 								  section,%
+								  shortcuts,%
 								  }
 
 %% * Configure the glossaries
@@ -3003,6 +3006,12 @@
 		grid=both,
 		minor tick num=1,
 		axis background/.style={fill=ggplotDefaultBG},
+		tick label style={font=\small},
+		label style={font=\small},
+		legend style={font=\footnotesize,
+			at={(1.03,0.5)}, anchor=west,
+			draw=ggplotDefaultAxisBox, fill=ggplotDefaultBG,
+			line width=\ggplotDefaultAxisBoxLW},
 	},
 	SUACSEThesisPgfplotsggplotBW/.style = {
 		tick align=outside,
@@ -3027,7 +3036,107 @@
 		grid=both,
 		minor tick num=1,
 		axis background/.style={fill=ggplotBWBG},
+		tick label style={font=\small},
+		label style={font=\small},
+		legend style={font=\footnotesize,
+			at={(1.03,0.5)}, anchor=west,
+			draw=ggplotBWAxisBox, fill=ggplotBWBG,
+			line width=\ggplotBWAxisBoxLW},
 	},
+}
+
+%% Define plot cycle list
+%%   * Color Sets, from http://colorbrewer2.org/
+%%     - SetI
+\definecolor[named]{SetICi}{RGB}{228,26,28}
+\definecolor[named]{SetICii}{RGB}{55,126,184}
+\definecolor[named]{SetICiii}{RGB}{77,175,74}
+\definecolor[named]{SetICiv}{RGB}{152,78,163}
+\definecolor[named]{SetICv}{RGB}{255,127,0}
+\definecolor[named]{SetICvi}{RGB}{255,255,51}
+\definecolor[named]{SetICvii}{RGB}{166,86,40}
+\definecolor[named]{SetICviii}{RGB}{247,129,191}
+
+%%     - SetII
+\definecolor[named]{SetIICi}{RGB}{102,194,165}
+\definecolor[named]{SetIICii}{RGB}{252,141,98}
+\definecolor[named]{SetIICiii}{RGB}{141,160,203}
+\definecolor[named]{SetIICiv}{RGB}{231,138,195}
+\definecolor[named]{SetIICv}{RGB}{166,216,84}
+\definecolor[named]{SetIICvi}{RGB}{255,217,47}
+\definecolor[named]{SetIICvii}{RGB}{229,196,148}
+\definecolor[named]{SetIICviii}{RGB}{179,179,179}
+
+%%     - SetIII
+\definecolor[named]{SetIIICi}{RGB}{141,211,199}
+\definecolor[named]{SetIIICii}{RGB}{255,255,179}
+\definecolor[named]{SetIIICiii}{RGB}{190,186,218}
+\definecolor[named]{SetIIICiv}{RGB}{251,128,114}
+\definecolor[named]{SetIIICv}{RGB}{128,177,211}
+\definecolor[named]{SetIIICvi}{RGB}{253,180,98}
+\definecolor[named]{SetIIICvii}{RGB}{179,222,105}
+\definecolor[named]{SetIIICviii}{RGB}{252,205,229}
+
+%%     - PastelI
+\definecolor[named]{PastelICi}{RGB}{251,180,174}
+\definecolor[named]{PastelICii}{RGB}{179,205,227}
+\definecolor[named]{PastelICiii}{RGB}{204,235,197}
+\definecolor[named]{PastelICiv}{RGB}{222,203,228}
+\definecolor[named]{PastelICv}{RGB}{254,217,166}
+\definecolor[named]{PastelICvi}{RGB}{255,255,204}
+\definecolor[named]{PastelICvii}{RGB}{229,216,189}
+\definecolor[named]{PastelICviii}{RGB}{253,218,236}
+
+%%     - PastelII
+\definecolor[named]{PastelIICi}{RGB}{179,226,205}
+\definecolor[named]{PastelIICii}{RGB}{253,205,172}
+\definecolor[named]{PastelIICiii}{RGB}{203,213,232}
+\definecolor[named]{PastelIICiv}{RGB}{244,202,228}
+\definecolor[named]{PastelIICv}{RGB}{230,245,201}
+\definecolor[named]{PastelIICvi}{RGB}{255,242,174}
+\definecolor[named]{PastelIICvii}{RGB}{241,226,204}
+\definecolor[named]{PastelIICviii}{RGB}{204,204,204}
+
+%%     - Accent
+\definecolor[named]{AccentCi}{RGB}{127,201,127}
+\definecolor[named]{AccentCii}{RGB}{190,174,212}
+\definecolor[named]{AccentCiii}{RGB}{253,192,134}
+\definecolor[named]{AccentCiv}{RGB}{255,255,153}
+\definecolor[named]{AccentCv}{RGB}{56,108,176}
+\definecolor[named]{AccentCvi}{RGB}{240,2,127}
+\definecolor[named]{AccentCvii}{RGB}{191,91,23}
+\definecolor[named]{AccentCviii}{RGB}{102,102,102}
+
+%%     - DarkII
+\definecolor[named]{DarkIICi}{RGB}{27,158,119}
+\definecolor[named]{DarkIICii}{RGB}{217,95,2}
+\definecolor[named]{DarkIICiii}{RGB}{117,112,179}
+\definecolor[named]{DarkIICiv}{RGB}{231,41,138}
+\definecolor[named]{DarkIICv}{RGB}{102,166,30}
+\definecolor[named]{DarkIICvi}{RGB}{230,171,2}
+\definecolor[named]{DarkIICvii}{RGB}{166,118,29}
+\definecolor[named]{DarkIICviii}{RGB}{102,102,102}
+
+%%   - Paired
+\definecolor[named]{PairedCi}{RGB}{166,206,227}
+\definecolor[named]{PairedCii}{RGB}{31,120,180}
+\definecolor[named]{PairedCiii}{RGB}{178,223,138}
+\definecolor[named]{PairedCiv}{RGB}{51,160,44}
+\definecolor[named]{PairedCv}{RGB}{251,154,153}
+\definecolor[named]{PairedCvi}{RGB}{227,26,28}
+\definecolor[named]{PairedCvii}{RGB}{253,191,111}
+\definecolor[named]{PairedCviii}{RGB}{255,127,0}
+
+%%   * Cycle Lists
+\pgfplotscreateplotcyclelist{SUACSEThesisCLSetI}{%
+	{SetICi},
+	{SetICii},
+	{SetICiii},
+	{SetICiv},
+	{SetICv},
+	{SetICvi},
+	{SetICvii},
+	{SetICviii}
 }
 
 %% END: pgfplots
