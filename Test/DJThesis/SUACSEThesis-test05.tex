@@ -1,0 +1,321 @@
+%% -*- Mode: LaTeX Memoir; tab-width: 4;
+
+%% SUACSEThesis.tex    Dazhi Jiang's PhD Thesis
+%% 
+%% Created by Dazhi Jiang, 2011-01-05 17:09:33 +0000 (Wed,  5 Jan 2011)
+%% Copyright (c) 2011 Dazhi Jiang. All Rights Reserved. 
+
+%% TextMate Settings
+%!TEX TS-program = pdflatex
+%!TEX TS-options = -shell-escape -interaction=nonstopmode -file-line-error
+
+% \includeonly{SUACSEThesis-A-frontmatter,SUACSEThesis-D-NDT}
+% \includeonly{SUACSEThesis-A-frontmatter,SUACSEThesis-E-ICA}
+
+\pdfminorversion=5 % to allow compression
+\pdfobjcompresslevel=2
+
+%% !!!
+% \RequirePackage{etex} % This needs an additional output stream
+\documentclass[10pt,a4paper,extrafontsizes,oldfontcommands,oneside]{memoir}
+\listfiles
+
+
+\usepackage[%
+	%% - Spacing
+	spacing=onehalf,
+	% spacing=double,
+	%% - Page layout
+	pagelayout=acseii,
+	%% - Font
+	font=ppl,
+	%% - Hyperref
+	hyperrefopt=acsei,
+	%% - Biblatex
+	biblatexopt=acsei,
+	%% - PGF/Tikz
+	pgf/externalmainfile=SUACSEThesis-test05,
+	%% - Glossary
+	glossariesopt=acsei,
+	%% - Cleveref
+	cleveref/shorten=false,
+	]{SUACSEThesis}
+
+%% * Set up the thesis style
+\suacseset{%
+	%% - Title page
+	titlepagestyle=acsei,
+	%% - Chapter style
+	loadextrachapsty=acseii,
+	chapterstyle=acseii,
+	%% - Table of content
+	loadtocstyle=acsei,
+	addtoctotoc,
+	%% - Page number style, only available for ACSEI page style
+	pagenumberstyle=largebold,
+	%% - Page style
+	loadpagestyle=acsei,
+	pagestyle=acsei,
+	%% - Header style, section, subsection, etc.,
+	loadheadstyle=acsei,
+	headstyle=acsei,
+	%% - Glossary
+	% glossary={twocolumn, name={Nomenclature}, %
+	% 	% rule width=0.5pt,%
+	% 	description={\textit{#1}},%
+	% 	% number={\textbf{#1}},%
+	% 	number format={\hyperpage{#1}},%
+	% 	group heading format={\centering\bfseries},
+	% },
+	%% - Bibliography
+	bibname=References,
+}
+
+%% * Define the elements of title page
+\suacseset{%
+	collegeordept={Department of Automatic Control and Systems Engineering},
+	university={University of Sheffield},
+	crest={\includegraphics[width=0.3\textwidth]{Sheffield}},
+	degree={Doctor of Philosophy},
+	degreedate={2011},
+	supervisor={Supervisor: Prof. Steve Daley and Prof. Visakan Kadirkamanathan},
+	award={Ph.\,D in Control System},
+	submittedtext={A thesis submitted to the University of Sheffield for the degree of},
+	author={Dazhi Jiang},
+	title={Optimal Data-Mining Methodologies\\[10pt]
+		   for Power Plant Anomaly Detection},
+	place={Sheffield},
+}
+
+
+%% * Bibliography
+\bibliography{./Ref/SUACSEThesis}
+
+
+%% * Glossaries
+\suacseset{glossaries/settings=acsei}
+
+\loadglsentries{SUACSEThesis-Z-notation}
+\loadglsentries{SUACSEThesis-Z-acronym}
+
+
+%% * Other packages
+% \usepackage{djsignalflowdiagram}
+\makeatletter
+\@ifundefined{signalflowdiagramtrue}{\newif\ifsignalflowdiagram}{}
+\makeatother
+\ifsignalflowdiagram
+	\usepackage{djsignalflowdiagram}
+\fi
+
+\makeatletter
+\@ifundefined{loadchainstrue}{\newif\ifloadchains}{}
+\makeatother
+\ifloadchains
+	\usetikzlibrary{chains}
+\fi
+
+
+% \usepackage[hang, raggedright]{subfigure}
+% \newsubfloat{figure}
+
+%% * PGF Externalisation Prefix
+\suacseset{pgf/externalprefix={Figs/pdf/pgf-}}
+
+%% * Solve the confliction between biblatex (defernumbers) and pgf/TikZ 
+%%   (externalization library)
+% \tikzifexternalizing{%
+% 	\ExecuteBibliographyOptions{defernumbers=false}
+% }{}
+\fixbiblatexpgf
+
+% \usepackage{fonttable}
+
+% \usepackage{enumitem}
+
+%% * Math environments and commands
+
+%%   * Theorem
+% \usepackage[amsmath, amsthm, thmmarks, thref, hyperref]{ntheorem}
+% \usepackage[amsmath, amsthm, thref, hyperref]{ntheorem}
+% \usepackage{amsthm}
+
+% % \theoremstyle{theorem}					% theorem
+% \newtheorem{thm}{Theorem}
+% % \theoremstyle{definition}				% definition
+% \newtheorem{defn}{Definition}
+% \newtheorem{cor}[thm]{Corollary}
+% \newtheorem{prop}{Proposition}
+% % \theoremstyle{lemma}					% lemma
+% \newtheorem{lem}[thm]{Lemma}
+% % \theoremstyle{remark}					% Remark
+% \newtheorem{rem}[thm]{Remark}
+% 
+% %\newtheoremstyle{algorithm}{9pt}{9pt} {\rm } {0pt}
+% %    {\bfseries}{:} {\,} {}
+% 
+% \theoremstyle{algorithm}				% algorithm
+% \newtheorem{algthm}{Algorithm}
+
+% \captiondelim{: }
+
+% \crefname{thm}{theorem}{theorems}
+% \crefname{defn}{definition}{definitions}
+% \crefname{cor}{corollary}{corollaries}
+% \crefname{prop}{proposition}{propositions}
+% \crefname{lem}{lemma}{lemmas}
+% \crefname{rem}{remark}{remarks}
+\Crefname{thm}{Theorem}{Theorems}
+\Crefname{defn}{Definition}{Definitions}
+\Crefname{cor}{Corollary}{Corollaries}
+\Crefname{prop}{Proposition}{Propositions}
+\Crefname{lem}{Lemma}{Lemmas}
+\Crefname{rem}{Remark}{Remarks}
+
+\makeatletter
+\let\cref@old@eq@setnumber\eq@setnumber
+\def\eq@setnumber{%
+\cref@old@eq@setnumber%
+\cref@constructprefix{equation}{\cref@result}%
+\protected@xdef\cref@currentlabel{%
+[equation][\arabic{equation}][\cref@result]\p@equation\theequation}}
+\makeatother
+
+% \Crefname{dmath}{Equation}{Equations}
+
+% \crefname{algorithm}{algorithm}{algorithms}
+% \Crefname{algorithm}{Algorithm}{Algorithms}
+
+%% * Define upgreek letters for math mode
+% \DeclareMathSymbol{\Gamma}{\mathord}{letters}{"00}
+% \DeclareMathSymbol{\Delta}{\mathord}{letters}{"01}
+% \DeclareMathSymbol{\Theta}{\mathord}{letters}{"02}
+% \DeclareMathSymbol{\Lambda}{\mathord}{letters}{"03}
+% \DeclareMathSymbol{\Xi}{\mathord}{letters}{"04}
+% \DeclareMathSymbol{\Pi}{\mathord}{letters}{"05}
+% \DeclareMathSymbol{\Sigma}{\mathord}{letters}{"06}
+% \DeclareMathSymbol{\Upsilon}{\mathord}{letters}{"07}
+% \DeclareMathSymbol{\Phi}{\mathord}{letters}{"08}
+% \DeclareMathSymbol{\Psi}{\mathord}{letters}{"09}
+% \DeclareMathSymbol{\Omega}{\mathord}{letters}{"0A}
+
+% \DeclareSymbolFont{upright}       {OT1}{zplm}{m}{n}
+% \DeclareSymbolFont{letters}       {OML}{zplm}{m}{it}
+% \DeclareSymbolFont{symbols}       {OMS}{zplm}{m}{n}
+% \DeclareSymbolFont{largesymbols}  {OMX}{zplm}{m}{n}
+% \SetSymbolFont{upright}{bold}     {OT1}{zplm}{b}{n}
+% \SetSymbolFont{letters}{bold}     {OML}{zplm}{b}{it}
+% \SetSymbolFont{symbols}{bold}     {OMS}{zplm}{b}{n}
+% \SetSymbolFont{largesymbols}{bold}{OMX}{zplm}{m}{n}
+% \DeclareMathAlphabet{\mathbf}     {OT1}{zplm}{b}{n}
+% \DeclareMathAlphabet{\mathbold}   {OML}{zplm}{b}{it}
+% \SetMathAlphabet{\mathbold}   {OML}{zplm}{b}{it}
+% \DeclareSymbolFontAlphabet{\mathrm}    {operators}
+% \DeclareSymbolFontAlphabet{\mathnormal}{letters}
+% \DeclareSymbolFontAlphabet{\mathcal}   {symbols}
+
+%% * New commands
+
+%\DeclareMathOperator \NID {N}
+%\newcommand \abs [1]{\left\lvert#1\right\rvert}
+%\newcommand \norm[1]{\left\lVert#1\right\rVert}
+\newcommand \ceil[1]{\left\lceil#1\right\rceil}
+\newcommand \rdv[1]{\bar{\bm #1}}
+\newcommand \Ln[1] {L_n(#1)}
+\newcommand \relh[1]{\mathrel{\phantom{#1}}}
+\newcommand \IND[2]{\text{IND}_{#1}(#2)}
+
+% Symbols for the 1st Report
+%\newcommand \infsys {$\mathcal{A} = (U, A)$}
+%\newcommand \Blower[2] {\underline{#1}#2}
+%\newcommand \Bupper[2] {\overline{#1}#2}
+%\newcommand \BlX[1] {\underline B (#1)}
+%\newcommand \BuX[1] {\overline B (#1)}
+
+% Symbols for the 4th Report
+% \DeclareMathOperator \AMISE {AMISE} \DeclareMathOperator \MISE {MISE}
+% \DeclareMathOperator \Bias {Bias} \DeclareMathOperator* \argmin {arg\,min}
+%\DeclareMathOperator \var {var}
+
+% \newcommand \E[1] {\mathbb{E}{\left[#1\right]}}
+% \newcommand \cov[1] {\mathrm{cov}{\left[#1\right]}}
+% \newcommand \var[1] {\mathrm{var}{\left[#1\right]}}
+\newcommand \Ef[2] {\mathbb{E}_{#1}{\left[#2\right]}}
+% \newcommand \covf[2] {\mathrm{cov}_{#1}{\left[#2\right]}}
+% \newcommand \varf[2] {\mathrm{var}_{#1}{\left[#2\right]}}
+% \newcommand \Normal[3] {\mathcal{N}{(#1|#2,#3)} = \frac{1}{(2\pi)^{D/2}}
+%                         \frac{1}{|#3|^{1/2}}
+%                         \exp{\biggl\{-\frac{1}{2}(#1-#2)^T#3^{-1}(#1-#2)\biggl\}}}
+% \newcommand \Normall[3] {\frac{1}{(2\pi)^{D/2}}
+%                         \frac{1}{|#3|^{1/2}}
+%                         \exp{\biggl\{-\frac{1}{2}(#1-#2)^T#3^{-1}(#1-#2)\biggl\}}}
+
+\begin{document}
+
+%% * Fix the confliction bug between algorithms and memoir (tocbibind)
+\renewcommand{\listofalgorithms}{\begingroup
+  \tocfile{List of Algorithms}{loa}
+\endgroup}
+
+\makeatletter
+\let\l@algorithm\l@figure
+\makeatother
+
+
+%% * Front matter
+% \frontmatter
+
+% \clearpage
+
+%% !!! Comment
+%%   Do not use \include here, while use \input instead. Since the 
+%%   <hideshorttoc> environment can not write the end \fi into the toc file.
+%%   The reason is unknown so far.
+% \include{SUACSEThesis-A-frontmatter}
+% \input{SUACSEThesis-A-frontmatter.tex}
+
+
+%% !!! The following \clearpage is necessary, because if it is not included,
+%% the \if@mainmatter will be set to true at the last part of the front
+%% matter. This will cause page numbering problem if you define the difference
+%% styles for the front matter and the main matter.
+% \clearpage
+
+% \pagenumbering{arabic}
+
+%% Main body
+% \mainmatter
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+0123456789
+
+\[0123456789\]
+
+\[
+	Y\ \mathbf{Y}\ \text{Y}\ \mathbb{Y}\ \mathrm{Y}%\ \mathfrak{Y}\ 
+\]
+\[
+	\upUpsilon\ \mathbf{\upUpsilon}\ \mathbold{\Upsilon}\ \mathnormal{\upUpsilon}%\ \mathfrak{\upUpsilon} 
+\]
+\[
+	xyz\Upsilon\ \mathbf{xyzXYZ\Upsilon}\ \mathbold{15xyzY\Upsilon}\ \mathnormal{\Upsilon}%\ \mathfrak{\Upsilon} %\bm{xyzXYZ} \mathit{\mathbf{xyzXYZ}}
+\]
+
+%% * Backmatter
+% \backmatter
+
+% \printbibliography
+
+\end{document}
+
+%\endinput
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%%% (TeX-source-specials-mode: t)
+%%% TeX-PDF-mode: t
+%%% End: 
